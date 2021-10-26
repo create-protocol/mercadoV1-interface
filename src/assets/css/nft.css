@@ -1,0 +1,170 @@
+.nft-card-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--unnamed-color-70707033) 0% 0% no-repeat padding-box;
+  background: #70707033 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 12px;
+  opacity: 1;
+  max-width: 400px;
+  transition: 0.5s;
+  color: #fff;
+  margin: 10px;
+}
+
+.scroll {
+  display: table-cell;
+}
+.nft-card-container:hover {
+  transform: scale(1.06);
+  background-color: white;
+  border-radius: 25px;
+}
+
+.nft-card-container:hover .nft-details-container .nft-details .clr {
+  color: black;
+}
+
+.nft-card-container:hover .nft-details-container .author-details .clr {
+  color: black;
+}
+
+.nft-img-container {
+  padding: 1rem;
+}
+
+.nft-img {
+  width: 100%;
+  border: 1px solid var(--unnamed-color-707070);
+
+  opacity: 1;
+}
+
+.nft-details-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--unnamed-color-70707033) 0% 0% no-repeat padding-box;
+  background: #70707033 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 12px;
+  opacity: 1;
+  padding: 1rem;
+}
+
+.nft-details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.author-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.nft-author-img {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.nft-title {
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-normal) var(--unnamed-font-size-36) /
+    var(--unnamed-line-spacing-50) var(--unnamed-font-family-bahnschrift);
+  letter-spacing: var(--unnamed-character-spacing-7-2);
+  color: var(--unnamed-color-ffffff);
+  text-align: left;
+  font: normal normal normal 1.7rem/2rem Bahnschrift;
+  letter-spacing: 7.2px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.nft-rating {
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
+    var(--unnamed-font-size-36) / var(--unnamed-line-spacing-50)
+    var(--unnamed-font-family-bahnschrift);
+  letter-spacing: var(--unnamed-character-spacing-7-2);
+  color: var(--unnamed-color-ffffff);
+  text-align: left;
+  font: normal normal normal 1.7rem/2rem Bahnschrift;
+  letter-spacing: 7.2px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.nft-author-title {
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
+    30px/42px var(--unnamed-font-family-bahnschrift);
+  color: var(--unnamed-color-ffffff);
+  text-align: left;
+  font: normal normal normal 1.7rem/2rem Bahnschrift;
+  letter-spacing: 6px;
+  color: #ffffff;
+  opacity: 1;
+  padding-top: 40px;
+}
+
+.nft-success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 90.8vh;
+}
+
+.fire-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fire-img {
+  width: 100%;
+}
+
+.nft-description {
+  width: 556px;
+  height: 94px;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-normal) 39px/55px
+    var(--unnamed-font-family-bahnschrift);
+  color: var(--unnamed-color-ffffff);
+  text-align: center;
+  font: normal normal normal 39px/55px Bahnschrift;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.nft-action-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 354px;
+  height: 80px;
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--unnamed-color-ffffff);
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #ffffff;
+  opacity: 1;
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
+    var(--unnamed-font-size-24) / var(--unnamed-line-spacing-34)
+    var(--unnamed-font-family-bahnschrift);
+  letter-spacing: var(--unnamed-character-spacing-4-8);
+  color: var(--unnamed-color-0c0c0c);
+  text-align: center;
+  font: normal normal bold 24px/34px Bahnschrift;
+  letter-spacing: 4.8px;
+  color: #0c0c0c;
+  opacity: 1;
+}

@@ -1,0 +1,85 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.menubutton{
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 20;
+  width: 2.4rem;
+  color: white;
+}
+
+.header-ham {
+  /* flex: 1 0 0; */
+  color: #707070;
+  font: normal normal bold 2.5rem/4rem Bahnschrift;
+}
+
+.header-title {
+  /* flex: 18 0 0; */
+  flex-basis: 95%;
+  text-align: center;
+  font: normal normal bold 3rem/4rem Bahnschrift;
+  letter-spacing: 1.75rem;
+  color: #707070;
+  opacity: 1;
+  white-space: normal;
+  text-transform: uppercase;
+  /* background-color: red; */
+}
+
+.drawer-container {
+  /* background-color: ; */
+}
+
+.drawer-title {
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
+    64px/90px var(--unnamed-font-family-bahnschrift);
+  color: var(--unnamed-color-ffffff);
+  text-align: left;
+  font: normal normal bold 2rem/3rem Bahnschrift;
+  letter-spacing: 1rem;
+  color: #ffffff;
+  opacity: 1;
+  background-color: #1a1a1a;
+  margin-left: 8rem;
+  margin-top: 2rem;
+}
+
+.drawer-route {
+  margin: 1.5rem;
+  margin-left: 10rem;
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
+    var(--unnamed-font-size-48) / var(--unnamed-line-spacing-68)
+    var(--unnamed-font-family-bahnschrift);
+  color: var(--unnamed-color-707070);
+  text-align: left;
+  font: normal normal bold 2rem/3rem Bahnschrift;
+  letter-spacing: 9.6px;
+  color: #707070;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.drawer-route:hover{
+  margin: 1.5rem;
+  margin-left: 10rem;
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
+    var(--unnamed-font-size-48) / var(--unnamed-line-spacing-68)
+    var(--unnamed-font-family-bahnschrift);
+  color: var(--unnamed-color-707070);
+  text-align: left;
+  font: normal normal bold 2rem/3rem Bahnschrift;
+  letter-spacing: 9.6px;
+  color: white;
+  opacity: 1;
+  cursor: pointer;
+}
