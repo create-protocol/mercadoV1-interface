@@ -3,14 +3,14 @@ import hero from "../assets/images/hero.png";
 import "../assets/css/home.css";
 import Cardcontainer from "../containers/CardContainer";
 import Nftslist from "./NFTsList";
-import Creatorslist from "./CreatorsList";
+// import Creatorslist from "./CreatorsList";
 import sqr from "../assets/images/space1.png";
 import cir from "../assets/images/cir.jpg";
 import four from "../assets/images/four.png";
 //import battle1 from "../assets/images/1.jpg";
-import battle4 from "../assets/images/battle4.jpg";
-import battle2 from "../assets/images/battle2.jpg";
-import battle3 from "../assets/images/battle3.jpg";
+// import battle4 from "../assets/images/battle4.jpg";
+// import battle2 from "../assets/images/battle2.jpg";
+// import battle3 from "../assets/images/battle3.jpg";
 import Dropmenucontainer from "./DropmenuContainer";
 //import HorizontalScroller from 'react-horizontal-scroll-container';
 const Home = (props) => {
@@ -53,9 +53,9 @@ const Home = (props) => {
       <div>
         <br />
       </div>
-      <div className="my-4">
+      {/* <div className="my-4">
         <Dropmenucontainer></Dropmenucontainer>
-      </div>
+      </div> */}
 
       <div>
         <br />
