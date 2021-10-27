@@ -2,20 +2,12 @@ import React from "react";
 import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-//import sqr from "../assets/images/space1.png";
-//import Nftcontainer from "./NFTContainer";
-//import amaz from "../assets/images/amazebox.jpg";
-//import pretty5 from "../assets/images/pretty image (5).jpg";
-//import battle4 from "../assets/images/battle4.jpg";
-//import pretty1 from "../assets/images/pretty_image.jpg";
 import Web3Modal from "web3modal";
 import "../assets/css/nft.css";
 import Market from '../abis/Marketplace.json';
 import NFT from '../abis/NFT.json';
-
 import { nftmarketaddress, nftaddress } from '../config'
-
-
+import HorizontalScroller from 'react-horizontal-scroll-container';
 
 
 function Nftslist() {
@@ -28,7 +20,7 @@ function Nftslist() {
     const provider = new ethers.providers.JsonRpcProvider()
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
-    const data = await marketContract.fetchMarketItems()
+    const data = await marketContract.fetchMyNFTs()
 
     const items = await Promise.all(data.map(async i => {
       const tokenUri = await tokenContract.tokenURI(i.tokenId)
@@ -45,6 +37,7 @@ function Nftslist() {
       }
       return item
     }))
+    console.log(items)
     setNfts(items)
     setLoadingState('loaded')
   }
@@ -69,8 +62,9 @@ function Nftslist() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {
             nfts.map((nft, i) => (
+              <HorizontalScroller>
               <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image} />
+                <img src={nft.image} alt="file" />
                 <div className="p-4">
                   <p style={{ height: '64px' }} className="text-2xl font-semibold">{nft.name}</p>
                   <div style={{ height: '70px', overflow: 'hidden' }}>
@@ -82,6 +76,7 @@ function Nftslist() {
                   <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
                 </div>
               </div>
+              </HorizontalScroller>
             ))
           }
         </div>

@@ -5,6 +5,7 @@ import pretty20 from "../assets/images/pretty image (20).jpg";
 import pretty23 from "../assets/images/pretty image (23).jpg";
 import Creatorcontainer from "./Creatorcontainer";
 import "../assets/css/creator.css";
+import "../assets/css/horizontalscroll.css";
 const Creatorslist = (props) => {
   const list = [
     {
@@ -23,10 +24,44 @@ const Creatorslist = (props) => {
       author: "KRSHNA",
       authorImg: pretty23,
     },
+    {
+      author: "LZY.LAD",
+      authorImg: pretty11,
+    },
+    {
+      author: "AMM.UL",
+      authorImg: pretty13,
+    },
+    {
+      author: "SMPRN",
+      authorImg: pretty20,
+    },
+    {
+      author: "KRSHNA",
+      authorImg: pretty23,
+    },
+    {
+      author: "LZY.LAD",
+      authorImg: pretty11,
+    },
+    {
+      author: "AMM.UL",
+      authorImg: pretty13,
+    },
+    {
+      author: "SMPRN",
+      authorImg: pretty20,
+    },
+    {
+      author: "KRSHNA",
+      authorImg: pretty23,
+    },
   ];
   return list.map((creator, i) => (
-    <div key={i} className="m-2 ">
+    <div key={i} className="m-2 row ">
+      <div className="row__posters">
       <Creatorcontainer {...creator}></Creatorcontainer>
+      </div>
     </div>
   ));
 };

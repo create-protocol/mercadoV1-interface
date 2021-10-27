@@ -12,6 +12,7 @@ import battle4 from "../assets/images/battle4.jpg";
 import battle2 from "../assets/images/battle2.jpg";
 import battle3 from "../assets/images/battle3.jpg";
 import Dropmenucontainer from "./DropmenuContainer";
+//import HorizontalScroller from 'react-horizontal-scroll-container';
 const Home = (props) => {
   return (
     <div>
@@ -39,7 +40,9 @@ const Home = (props) => {
       </div>
       <div>
         <Cardcontainer title={"CREATORS"} suffix={"DISCOVER"}>
+          {/* <HorizontalScroller invert> */}
           <Creatorslist></Creatorslist>
+          {/* </HorizontalScroller> */}
         </Cardcontainer>
       </div>
       <div>
