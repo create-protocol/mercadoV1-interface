@@ -49,6 +49,7 @@
 }
 
 .action-btn:hover{
+  cursor: pointer;
   background: #0f0f0f 0% 0% no-repeat padding-box;
   border: 1px solid #ffffff;
   opacity: 1;

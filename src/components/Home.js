@@ -39,12 +39,12 @@ const Home = (props) => {
         </Cardcontainer>
       </div>
       <div>
-        <Cardcontainer title={"CREATORS"} suffix={"DISCOVER"}>
+        {/* <Cardcontainer title={"CREATORS"} suffix={"DISCOVER"}> */}
           {/* <HorizontalScroller invert> */}
-          <Creatorslist></Creatorslist>
+          {/* <Creatorslist></Creatorslist> */}
           {/* </HorizontalScroller> */}
-        </Cardcontainer>
-      </div>
+        {/* </Cardcontainer> */}
+      </div>     
       <div>
         <Cardcontainer title={"COLLECTIONS"} suffix={"EXPLORE"}>
           <Nftslist sqr={four} cir={cir}></Nftslist>
@@ -60,7 +60,7 @@ const Home = (props) => {
       <div>
         <br />
       </div>
-      <div className=" my-4 ml-4 ">
+      {/* <div className=" my-4 ml-4 ">
         <div className="m-card-content ">
           <div className=" nft-card-container m-2">
             <div className="nft-img-container">
@@ -84,7 +84,7 @@ const Home = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
