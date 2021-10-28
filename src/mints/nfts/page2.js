@@ -8,16 +8,14 @@ import { ethers } from 'ethers';
 import { create as ipfsHttpClient } from 'ipfs-http-client';
 import Web3Modal from 'web3modal';
 
-import {
-  nftaddress, nftmarketaddress
-} from '../../config';
+import {  nftaddress, nftmarketaddress} from '../../config';
 
 import NFT from '../../abis/NFT.json';
 import Market from '../../abis/Marketplace.json';
 
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 
-function age2(props) {
+function Page2(props) {
   const [fileUrl, setFileUrl] = useState(null)
   const [formInput, updateFormInput] = useState({ price: '', name: '', description: '' })
   // const router = useRouter()
@@ -107,7 +105,8 @@ function age2(props) {
             <br /> OBJ. AVI. TXT. PDF. TIFF
           </text>
         </view>
-        <view className="clickhere uplod">
+        
+        <view className="clickhere uplod" onChange={e => updateFormInput({ ...formInput, price: e.target.value })}>
           <text>
             <br />
             CLICK HERE TO <br /> UPLOAD A FILE
@@ -134,7 +133,8 @@ function age2(props) {
             type="text"
             id="fname"
             name="fname"
-            value="LET'S START WITH GIVING A UNIQUE NAME TO YOUR WORK OF ART"
+            onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
+            // value="LET'S START WITH GIVING A UNIQUE NAME TO YOUR WORK OF ART"
           />
           <br />
           <label for="lname">ADD RELEVANT TAGS</label>
@@ -144,7 +144,8 @@ function age2(props) {
             type="text"
             id="lname"
             name="lname"
-            value="ADD # TAGS TO MAKE YOUR NFT MORE DISCOVERABLE"
+            onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
+            // value="ADD # TAGS TO MAKE YOUR NFT MORE DISCOVERABLE"
           />
           <br />
           <label for="lname">CHOOSE A CATEGORY FOR YOUR NFT</label>
@@ -154,31 +155,33 @@ function age2(props) {
             type="text"
             id="lname"
             name="lname"
-            value="LET'S START WITH GIVING A UNIQUE NAME TO YOUR WORK OF ART"
+            
           />
           <br />
-          <label for="lname">WRITE A DETAILED DESCRIPTION OF THE NFT</label>
+          <label for="lname">PRICE OF THE NFT</label>
           <br />
           <input
             className="formtxtfill docs"
             type="text"
             id="lname"
             name="lname"
-            value="WRITE YOUR STORY BEHIND THE NFT. WHY IT IS THE WAY IT CREATED"
+            // onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
+            // value="WRITE YOUR STORY BEHIND THE NFT. WHY IT IS THE WAY IT CREATED"
           />
           <br />
         </form>
       </view>
       {/* <Bot /> */}
-      {/* <button
+      <button
         className="cnetrbutton"
         type="button"
-        onClick={() => props.history.push("/page3")}
+        // onClick={() => props.history.push("/page3")}
+        onCLick={createMarket}
       >
-        NEXT PAGE
-      </button> */}
+        MINT NFT
+      </button>
     </div>
   );
 }
 
-export default page2;
+export default Page2;
