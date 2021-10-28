@@ -40,16 +40,16 @@ const Home = (props) => {
       </div>
       <div>
         {/* <Cardcontainer title={"CREATORS"} suffix={"DISCOVER"}> */}
-          {/* <HorizontalScroller invert> */}
-          {/* <Creatorslist></Creatorslist> */}
-          {/* </HorizontalScroller> */}
+        {/* <HorizontalScroller invert> */}
+        {/* <Creatorslist></Creatorslist> */}
+        {/* </HorizontalScroller> */}
         {/* </Cardcontainer> */}
-      </div>     
-      <div>
+      </div>
+      {/* <div>
         <Cardcontainer title={"COLLECTIONS"} suffix={"EXPLORE"}>
           <Nftslist sqr={four} cir={cir}></Nftslist>
         </Cardcontainer>
-      </div>
+      </div> */}
       <div>
         <br />
       </div>

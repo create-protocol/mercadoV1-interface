@@ -17,11 +17,10 @@ function Nftslist() {
     loadNFTs()
   }, [])
   async function loadNFTs() {
-    const provider = new ethers.providers.JsonRpcProvider()
+    const provider = new ethers.providers.JsonRpcProvider(`https://polygon-mumbai.g.alchemy.com/v2/klOlNm_rQCabx94IjAdS_ZBHzNCkRXFX`)
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
     const data = await marketContract.fetchMyNFTs()
-
     const items = await Promise.all(data.map(async i => {
       const tokenUri = await tokenContract.tokenURI(i.tokenId)
       const meta = await axios.get(tokenUri)
@@ -63,19 +62,19 @@ function Nftslist() {
           {
             nfts.map((nft, i) => (
               <HorizontalScroller>
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image} alt="file" />
-                <div className="p-4">
-                  <p style={{ height: '64px' }} className="text-2xl font-semibold">{nft.name}</p>
-                  <div style={{ height: '70px', overflow: 'hidden' }}>
-                    <p className="text-gray-400">{nft.description}</p>
+                <div key={i} className="border shadow rounded-xl overflow-hidden">
+                  <img src={nft.image} alt="file" />
+                  <div className="p-4">
+                    <p style={{ height: '64px' }} className="text-2xl font-semibold">{nft.name}</p>
+                    <div style={{ height: '70px', overflow: 'hidden' }}>
+                      <p className="text-gray-400">{nft.description}</p>
+                    </div>
+                  </div>
+                  <div className="p-4 bg-black">
+                    <p className="text-2xl mb-4 font-bold text-white">{nft.price} ETH</p>
+                    <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
                   </div>
                 </div>
-                <div className="p-4 bg-black">
-                  <p className="text-2xl mb-4 font-bold text-white">{nft.price} ETH</p>
-                  <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
-                </div>
-              </div>
               </HorizontalScroller>
             ))
           }

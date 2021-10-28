@@ -54,7 +54,7 @@ function Mintnft() {
   }
 
   async function createSale(url) {
-    const web3Modal = new Web3Modal()
+    const web3Modal = new Web3Modal({ network: `https://polygon-mumbai.g.alchemy.com/v2/klOlNm_rQCabx94IjAdS_ZBHzNCkRXFX` })
     const connection = await web3Modal.connect()
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
@@ -89,8 +89,8 @@ function Mintnft() {
       <div className="w-1/2 flex flex-col pb-12">
         <input placeholder="Asset Name" className="mt-8 border rounded p-4" onChange={e => updateFormInput({ ...formInput, name: e.target.value })} />
         <textarea placeholder="Asset Description" className="mt-2 border rounded p-4" onChange={e => updateFormInput({ ...formInput, description: e.target.value })} />
-        <input placeholder="Asset Price in Eth" className="mt-2 border rounded p-4" onChange={e => updateFormInput({ ...formInput, price: e.target.value })}/>
-        <input type="file" name="Asset" className="my-4" onChange={onChange}/>
+        <input placeholder="Asset Price in Eth" className="mt-2 border rounded p-4" onChange={e => updateFormInput({ ...formInput, price: e.target.value })} />
+        <input type="file" name="Asset" className="my-4" onChange={onChange} />
         {
           fileUrl && (
             <img className="rounded mt-4" alt="" width="350" src={fileUrl} />
