@@ -7,6 +7,7 @@ import "../assets/css/nft.css";
 import Market from '../abis/Marketplace.json';
 import NFT from '../abis/NFT.json';
 import { nftmarketaddress, nftaddress } from '../config'
+import { useHistory } from "react-router-dom";
 // import HorizontalScroller from 'react-horizontal-scroll-container';
 
 
@@ -40,9 +41,22 @@ function Nftslist() {
     setNfts(items)
     setLoadingState('loaded')
   }
+  const history = useHistory();
+
+  const routeChange = () =>{ 
+    let path = `/view-profile`; 
+    history.push(path);
+  }
+   function own(nft){
+    buyNft(nft);
+    routeChange();
+    console.log("MNT is commited.");
+   }
   async function buyNft(nft) {
     const web3Modal = new Web3Modal()
-    const connection = await web3Modal.connect()
+    const connection = await web3Modal.connect({
+      network: `https://polygon-mumbai.g.alchemy.com/v2/klOlNm_rQCabx94IjAdS_ZBHzNCkRXFX`
+    })
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
     const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
@@ -77,7 +91,7 @@ function Nftslist() {
                   </div> */}
                   <div className="action-btn">
                     {/* <p className="">{nft.price} ETH</p> */}
-                    <div className="" onClick={() => buyNft(nft)}>{nft.price} ETH</div>
+                    <div className="" onClick={() => own(nft)}>{nft.price} ETH</div>
                   </div>
                 </div>
                 </div>
