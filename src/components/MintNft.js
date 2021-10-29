@@ -4,6 +4,10 @@ import { ethers } from 'ethers';
 import { create as ipfsHttpClient } from 'ipfs-http-client';
 import Web3Modal from 'web3modal';
 
+//import Bot from "../../bottom/bot";
+import "../../src/mints/nfts/page2.css";
+import "../../src/mints/nfts/margi.css";
+
 import {
   nftaddress, nftmarketaddress
 } from '../config';
@@ -85,20 +89,131 @@ function Mintnft() {
   }
 
   return (
-    <div className="flex justify-center">
-      <div className="w-1/2 flex flex-col pb-12">
-        <input placeholder="Asset Name" className="mt-8 border rounded p-4" onChange={e => updateFormInput({ ...formInput, name: e.target.value })} />
-        <textarea placeholder="Asset Description" className="mt-2 border rounded p-4" onChange={e => updateFormInput({ ...formInput, description: e.target.value })} />
-        <input placeholder="Asset Price in Eth" className="mt-2 border rounded p-4" onChange={e => updateFormInput({ ...formInput, price: e.target.value })} />
-        <input type="file" name="Asset" className="my-4" onChange={onChange} />
-        {
-          fileUrl && (
-            <img className="rounded mt-4" alt="" width="350" src={fileUrl} />
-          )
-        }
-        <button onClick={createMarket} className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg">Create Digital Asset</button>
-      </div>
+    // <div className="flex justify-center">
+    //   <div className="w-1/2 flex flex-col pb-12">
+    //     <input placeholder="Asset Name" className="mt-8 border rounded p-4" onChange={e => updateFormInput({ ...formInput, name: e.target.value })} />
+    //     <textarea placeholder="Asset Description" className="mt-2 border rounded p-4" onChange={e => updateFormInput({ ...formInput, description: e.target.value })} />
+    //     <input placeholder="Asset Price in Eth" className="mt-2 border rounded p-4" onChange={e => updateFormInput({ ...formInput, price: e.target.value })} />
+    //     <input type="file" name="Asset" className="my-4" onChange={onChange} />
+    //     {
+    //       fileUrl && (
+    //         <img className="rounded mt-4" alt="" width="350" src={fileUrl} />
+    //       )
+    //     }
+    //     <button onClick={createMarket} className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg">Create Digital Asset</button>
+    //   </div>
+    // </div>
+    <div>
+    
+    <h2>CHOOSE A NFT Category</h2>
+      <form className="uploadoc" action="/action_page.php" style={{ display: "inline-block" }}>
+        <input type="radio" id="vehicle1" name="vehicle1" value="Bike" />
+        <label for="vehicle1"> IMAGE</label>
+        <input type="radio" id="vehicle2" name="vehicle2" value="Car" />
+        <label for="vehicle2"> Audio</label>
+        <input type="radio" id="vehicle3" name="vehicle3" value="Boat" />
+        <label for="vehicle3"> Video</label>
+        <input type="radio" id="vehicle4" name="vehicle2" value="Car" />
+        <label for="vehicle4"> 3D</label>
+        <input type="radio" id="vehicle5" name="vehicle2" value="Car" />
+        <label for="vehicle5"> PHYSICAL GOODS</label>
+      </form>
+      <br />
+      <view style={{ marginTop: 20 }}>
+        <view className="clickhere">
+          <text><br/>
+            ACCEPTABLE FORMATS: <br /> JPG. PNG. GIF. MP4.
+            <br /> OBJ. AVI. TXT. PDF. TIFF
+          </text>
+        </view>
+        <view className="clickhere uplod">
+          <text>
+            <br />
+            CLICK HERE TO <br /> UPLOAD A FILE
+            <br /> OR <br /> DROP A FILE HERE
+          </text>
+          <input type="file" placeholder="" name="Asset" className="" onChange={onChange} style={{ cursor: "pointer", width: 130}} />
+      {
+        fileUrl && (
+          <img className="rounded mt-4" alt="" width="200" src={fileUrl} />
+        )
+      }
+        </view>
+        <view className="clickhere">
+          <text>
+            <br />
+            VIEW OUR GUIDELINES <br /> FOR CREATING NFTS
+          </text>
+        </view>
+      </view>
+      <view></view>
+      
+
+    {/* <div className="flex justify-center">
+    <div className="w-1/2 flex flex-col pb-12">
+      <input placeholder="Asset Name" className="mt-8 border rounded p-4" onChange={e => updateFormInput({ ...formInput, name: e.target.value })} />
+      <textarea placeholder="Asset Description" className="mt-2 border rounded p-4" onChange={e => updateFormInput({ ...formInput, description: e.target.value })} />
+      <input placeholder="Asset Price in Eth" className="mt-2 border rounded p-4" onChange={e => updateFormInput({ ...formInput, price: e.target.value })} /> */}
+    {/* <input type="file" name="Asset" className="my-4" onChange={onChange} />
+      {
+        fileUrl && (
+          <img className="rounded mt-4" alt="" width="350" src={fileUrl} />
+        )
+      } 
+      <button onClick={createMarket} className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg">Create Digital Asset</button>
     </div>
+  </div> */}
+  <view>
+        <form
+          action="/action_page.php"
+          className="formfill"
+          style={{ color: "white" }}
+        >
+          <label for="fname">NAME YOUR NFT</label>
+          <br />
+          <input className="formtxtfill docs" type="text" id="fname" name="fname" onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
+            // value="LET'S START WITH GIVING A UNIQUE NAME TO YOUR WORK OF ART"
+          />
+          <br />
+          <label for="lname">ASSET DISCRIPTION</label>
+          <br />
+          <input
+            className="formtxtfill docs"
+            type="text"
+            id="lname"
+            name="lname"
+            onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
+            // value="ADD # TAGS TO MAKE YOUR NFT MORE DISCOVERABLE"
+          />
+          <br />
+          <label for="lname">CHOOSE A CATEGORY FOR YOUR NFT</label>
+          <br />
+          <input
+            className="formtxtfill docs"
+            type="text"
+            id="lname"
+            name="lname"
+            // value="LET'S START WITH GIVING A UNIQUE NAME TO YOUR WORK OF ART"
+          />
+          <br />
+          <label for="lname">PRICE OF NFT</label>
+          <br />
+          <input
+            className="formtxtfill docs"
+            type="text"
+            id="lname"
+            name="lname"
+            onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
+            // value="WRITE YOUR STORY BEHIND THE NFT. WHY IT IS THE WAY IT CREATED"
+          />
+          <br />
+        </form>
+      </view>
+  <button onClick={createMarket} className="action-btn" type="button"  >
+        MINT NFT
+      </button>
+  </div>
+
   )
 }
 

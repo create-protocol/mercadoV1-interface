@@ -6,12 +6,12 @@ import Nftslist from "./NFTsList";
 // import Creatorslist from "./CreatorsList";
 import sqr from "../assets/images/space1.png";
 import cir from "../assets/images/cir.jpg";
-import four from "../assets/images/four.png";
+// import four from "../assets/images/four.png";
 //import battle1 from "../assets/images/1.jpg";
 // import battle4 from "../assets/images/battle4.jpg";
 // import battle2 from "../assets/images/battle2.jpg";
 // import battle3 from "../assets/images/battle3.jpg";
-import Dropmenucontainer from "./DropmenuContainer";
+// import Dropmenucontainer from "./DropmenuContainer";
 //import HorizontalScroller from 'react-horizontal-scroll-container';
 const Home = (props) => {
   return (
@@ -23,12 +23,9 @@ const Home = (props) => {
         <div className="hero-sub-heading">
           BRINGING THE POWER BACK INTO THE HANDS OF CREATORS
         </div>
-        <div className="action-container my-4">
+        <div className="action-container">
           <div className="action-btn">SIGN UP</div>
-          <div
-            onClick={() => props.history.push("/mint-nft")}
-            className="action-btn"
-          >
+          <div onClick={() => props.history.push("/page5")} className="action-btn" >
             MINT NFT
           </div>
         </div>

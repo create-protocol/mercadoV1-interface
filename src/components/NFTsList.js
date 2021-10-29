@@ -7,7 +7,7 @@ import "../assets/css/nft.css";
 import Market from '../abis/Marketplace.json';
 import NFT from '../abis/NFT.json';
 import { nftmarketaddress, nftaddress } from '../config'
-import HorizontalScroller from 'react-horizontal-scroll-container';
+// import HorizontalScroller from 'react-horizontal-scroll-container';
 
 
 function Nftslist() {
@@ -56,28 +56,34 @@ function Nftslist() {
   }
   if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
   return (
-    <div className="flex justify-center">
-      <div className="px-4" style={{ maxWidth: '1600px' }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+    <div className="">
+      <div className="my-4 ml-4" >
+        <div className="m-card-content">
+          {/* <HorizontalScroller> */}
           {
             nfts.map((nft, i) => (
-              <HorizontalScroller>
-                <div key={i} className="border shadow rounded-xl overflow-hidden">
-                  <img src={nft.image} alt="file" />
-                  <div className="p-4">
-                    <p style={{ height: '64px' }} className="text-2xl font-semibold">{nft.name}</p>
-                    <div style={{ height: '70px', overflow: 'hidden' }}>
-                      <p className="text-gray-400">{nft.description}</p>
-                    </div>
-                  </div>
-                  <div className="p-4 bg-black">
-                    <p className="text-2xl mb-4 font-bold text-white">{nft.price} ETH</p>
-                    <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
+              <div>
+                <div key={i} className="nft-card-container m-2">
+                  <div className="nft-img-container">
+                  <img src={nft.image} className="nft-img" alt="file" />
                   </div>
                 </div>
-              </HorizontalScroller>
+                <div className="action-container">
+                  {/* <div className="action-btn">
+                    <p className="" style={{ maxWidth: 150}}>{nft.name}</p>
+                    <div>
+                      <p className="" style={{ maxWidth: 150}}>{nft.description}</p>
+                    </div>
+                  </div> */}
+                  <div className="action-btn">
+                    {/* <p className="">{nft.price} ETH</p> */}
+                    <div className="" onClick={() => buyNft(nft)}>{nft.price} ETH</div>
+                  </div>
+                </div>
+                </div>
             ))
           }
+          {/* </HorizontalScroller> */}
         </div>
       </div>
     </div>

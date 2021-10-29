@@ -1,5 +1,5 @@
 import Previewnft from "./components/PreviewNft";
-import Search from "./components/Search";
+// import Search from "./components/Search";
 import Viewprofile from "./components/ViewProfile";
 import page2 from "./mints/nfts/page2";
 

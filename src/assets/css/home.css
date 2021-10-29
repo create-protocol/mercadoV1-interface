@@ -28,7 +28,8 @@
 }
 
 .action-btn {
-  flex: 1 0 0;
+  /* flex: 1 0 0; */
+  word-break: break-all;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #ffffff;
   opacity: 1;
@@ -46,6 +47,7 @@
   padding-bottom: 8px;
   border-radius: 2px;
   white-space: nowrap;
+  text-transform: uppercase;
 }
 
 .action-btn:hover{
