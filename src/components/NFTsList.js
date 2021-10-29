@@ -43,15 +43,15 @@ function Nftslist() {
   }
   const history = useHistory();
 
-  const routeChange = () =>{ 
-    let path = `/view-profile`; 
+  const routeChange = () => {
+    let path = `/view-profile`;
     history.push(path);
   }
-   function own(nft){
+  function own(nft) {
     buyNft(nft);
     routeChange();
     console.log("MNT is commited.");
-   }
+  }
   async function buyNft(nft) {
     const web3Modal = new Web3Modal()
     const connection = await web3Modal.connect({
@@ -79,7 +79,7 @@ function Nftslist() {
               <div>
                 <div key={i} className="nft-card-container m-2">
                   <div className="nft-img-container">
-                  <img src={nft.image} className="nft-img" alt="file" />
+                    <img src={nft.image} className="nft-img" alt="file" />
                   </div>
                 </div>
                 <div className="action-container">
@@ -91,10 +91,11 @@ function Nftslist() {
                   </div> */}
                   <div className="action-btn">
                     {/* <p className="">{nft.price} ETH</p> */}
+                    <div className="">{nft.seller}</div>
                     <div className="" onClick={() => own(nft)}>{nft.price} ETH</div>
                   </div>
                 </div>
-                </div>
+              </div>
             ))
           }
           {/* </HorizontalScroller> */}
