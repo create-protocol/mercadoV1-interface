@@ -1,33 +1,32 @@
 
 import "../assets/css/profile.css";
-import bg from "../assets/images/bg.png";
-import cir from "../assets/images/cir.jpg";
-import Profileaudiolist from "./ProfileAudioList";
-
+// import bg from "../assets/images/bg.png";
+// import cir from "../assets/images/cir.jpg";
+// import Profileaudiolist from "./ProfileAudioList";
 
 import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
-
-import {
-  nftmarketaddress, nftaddress
-} from '../config'
-
+import { nftmarketaddress, nftaddress} from '../config'
 import Market from '../abis/Marketplace.json';
 import NFT from '../abis/NFT.json';
 
 const Viewprofile = () => {
   const [nfts, setNfts] = useState([])
   const [loadingState, setLoadingState] = useState('not-loaded')
-  useEffect(() => {
-    loadNFTs()
-  }, [])
+  useEffect(() => { loadNFTs() }, [])
   async function loadNFTs() {
     const web3Modal = new Web3Modal({
       network: "mainnet",
       cacheProvider: true,
+      myfunction
     })
+    
+    function myfunction(){
+      console.log("Wallet Connected");
+    }
+
     const connection = await web3Modal.connect()
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
@@ -37,6 +36,7 @@ const Viewprofile = () => {
     const data = await marketContract.fetchMyNFTs()
 
     const items = await Promise.all(data.map(async i => {
+      myfunction()
       const tokenUri = await tokenContract.tokenURI(i.tokenId)
       const meta = await axios.get(tokenUri)
       let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
@@ -51,8 +51,9 @@ const Viewprofile = () => {
     }))
     setNfts(items)
     setLoadingState('loaded')
+    console.log( );
   }
-  if (loadingState === 'loaded' && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets owned</h1>)
+  if (loadingState === 'loaded' && !nfts.length) return (<h1 className="textstyle">No assets owned</h1>)
   return (
     <div className="flex justify-center">
       <div className=" my-4 ml-4">
@@ -61,7 +62,7 @@ const Viewprofile = () => {
             nfts.map((nft, i) => (
               <div key={i} className="nft-card-container m-2">
                 <div className="nft-img-container">
-                <img src={nft.image} className="nft-img" />
+                <img src={nft.image} className="nft-img" alt="" />
                 </div>
                 <div className="p-4 bg-black">
                   <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>

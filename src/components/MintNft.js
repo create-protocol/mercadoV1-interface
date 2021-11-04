@@ -4,14 +4,10 @@ import { ethers } from 'ethers';
 import { create as ipfsHttpClient } from 'ipfs-http-client';
 import Web3Modal from 'web3modal';
 import { useHistory } from "react-router-dom";
-
 //import Bot from "../../bottom/bot";
 import "../../src/mints/nfts/page2.css";
 import "../../src/mints/nfts/margi.css";
-
-import {
-  nftaddress, nftmarketaddress
-} from '../config';
+import {  nftaddress, nftmarketaddress} from '../config';
 
 import NFT from '../abis/NFT.json';
 import Market from '../abis/Marketplace.json';
@@ -62,7 +58,9 @@ function Mintnft() {
   async function createSale(url) {
     const web3Modal = new Web3Modal({ network: `https://polygon-mumbai.g.alchemy.com/v2/klOlNm_rQCabx94IjAdS_ZBHzNCkRXFX` })
     const connection = await web3Modal.connect()
+    console.log('Wallet is connected')
     const provider = new ethers.providers.Web3Provider(connection)
+    
     const signer = provider.getSigner()
 
     /* next, create the item */
@@ -98,7 +96,7 @@ function Mintnft() {
    function price(){
     createMarket();
     routeChange();
-    console.log("MNT is commited.");
+    console.log("MINT is commited.");
    }
 
 
