@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   background: var(--unnamed-color-70707033) 0% 0% no-repeat padding-box;
   background: #70707033 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000029;
@@ -11,7 +11,7 @@
   max-width: 400px;
   transition: 0.5s;
   color: #fff;
-  margin: 30px;
+  margin: 15px;
 }
 
 .scroll {
@@ -19,9 +19,11 @@
 }
 .nft-card-container:hover {
   transform: scale(1.06);
-  background-color: white;
+  background-color: gray;
   border-radius: 25px;
+  
 }
+
 
 .nft-card-container:hover .nft-details-container .nft-details .clr {
   color: black;
@@ -32,11 +34,11 @@
 }
 
 .nft-img-container {
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .nft-img {
-  width: 100%;
+  width: 80%;
   border: 1px solid var(--unnamed-color-707070);
 
   opacity: 1;

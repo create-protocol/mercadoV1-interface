@@ -8,20 +8,20 @@ function page3(props) {
     <div>
       <view className="buttonwork" style={{ marginTop: 20 }}>
         <view className="clickhere">
-          <text>
+          <text style={{color:"white"}}>
             <br />
             ACCEPTABLE FORMATS: <br /> JPG. PNG. GIF. MP4.
             <br /> OBJ. AVI. TXT. PDF. TIFF
           </text>
         </view>
         <view className="clickhere uplod">
-          <text>
+          <text style={{color:"white"}}>
             <br />
             file uploaded <br /> successfully
           </text>
         </view>
         <view className="clickhere">
-          <text>
+          <text style={{color:"white"}}>
             <br />
             VIEW OUR GUIDELINES <br /> FOR CREATING NFTS
           </text>

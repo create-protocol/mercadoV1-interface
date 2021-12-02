@@ -13,14 +13,15 @@ const Search = (props) => {
   return (
     <div>
       <div className="search-input-container my-4">
-        <Input
+        <Input 
           className="search-input"
           placeholder="&#xF002;  SEARCH FOR NFTS, ARTISTS, COLLECTIONS, TRACKS AND MORE!"
-          style={{ fontFamily: "Arial 'Font Awesome 5 Free'" }}
+          style={{ fontFamily: "Arial 'Font Awesome 5 Free'",width:"100%",fontSize:"1rem"  }}
           size="large"
         ></Input>
       </div>
       <div className="search-drop-container">
+        <div style={{display:"flex",alignItems:"center",flexWrap:"wrap",width:`100%`}}>
         <div className="drop-item">
           <div className="drop-label">SEARCH</div>
           <div className="drop-select-container">
@@ -56,6 +57,7 @@ const Search = (props) => {
               ))}
             </Select>
           </div>
+        </div>
         </div>
       </div>
       <div>

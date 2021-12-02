@@ -13,7 +13,9 @@ import page6 from "./mints/nfts/page6";
 import page7 from "./mints/nfts/page7";
 import page8 from "./mints/nfts/page8";
 import Mintnft from "./components/MintNft";
-
+import DescPage from "./components/DescriptionPage"
+import Faq from './components/FAQ';
+import TeamPagefinal from './components/TeamPagefinal';
 const Routes = () => {
   return (
     <div>
@@ -29,6 +31,9 @@ const Routes = () => {
             <Route exact path="/page6" component={page6}></Route>
             <Route exact path="/page7" component={page7}></Route>
             <Route exact path="/page8" component={page8}></Route>
+            <Route exact path="/faq" component={Faq}    ></Route>
+            <Route exact path="/faq" component={Faq}    ></Route>
+            <Route exact path="/descpage" component={DescPage}    ></Route>
             {routes.map((route, i) => (
               <Route
                 key={i}

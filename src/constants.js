@@ -1,8 +1,8 @@
 import Previewnft from "./components/PreviewNft";
-// import Search from "./components/Search";
+import Search from "./components/Search";
 import Viewprofile from "./components/ViewProfile";
 import page2 from "./mints/nfts/page2";
-
+import faq from './components/FAQ';
 const routes = [
   {
     pathName: "HOME",
@@ -13,16 +13,16 @@ const routes = [
   //   path: "/SEARCH",
   //   component: Search,
   // },
-  {
-    pathName: "MINT NFT",
-    path: "/MINT NFT",
-    component: page2,
-  },
-  {
-    pathName: "VIEW MY COLLECTION",
-    path: "/VIEW PROFILE",
-    component: Viewprofile,
-  },
+  // {
+  //   pathName: "MINT NFT",
+  //   path: "/MINT NFT",
+  //   component: page2,
+  // },
+  // {
+  //   pathName: "VIEW PROFILE",
+  //   path: "/VIEW PROFILE",
+  //   component: Viewprofile,
+  // },
   // {
   //   pathName: "CONNECT WALLET",
   //   path: "/CONNECT WALLET",
@@ -31,10 +31,10 @@ const routes = [
     pathName: "DISCOVER CREATORS",
     path: "/DISCOVER CREATORS",
   },
-  // {
-  //   pathName: "DISCOVER COLLECTORS",
-  //   path: "/DISCOVER COLLECTORS",
-  // },
+  {
+    pathName: "DISCOVER COLLECTORS",
+    path: "/DISCOVER COLLECTORS",
+  },
   {
     pathName: "EXPLORE MARKETPLACE",
     path: "/EXPLORE MARKETPLACE",
@@ -42,6 +42,7 @@ const routes = [
   {
     pathName: "FAQ & HELP",
     path: "/FAQ & HELP",
+    component: faq,
   },
   {
     pathName: "ABOUT MUZIX",

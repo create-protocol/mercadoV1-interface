@@ -4,40 +4,44 @@ import "./page2.css"
 import "./margi.css"
 import Addcolab from "../headers/addcolab";
 
+
 function page4(props) {
   return (
-    <div>
-      <Addcolab />
+    <div style={{width:"100%"}}>
+      <Addcolab />  
       <br />
-      <view className="row creator">
-        <view className="centro">
-          <form>
+      <view className="row creator" >
+        <view className="centro" style={{display:"flex",width:"100%",flexWrap:"wrap",alignItems:"center",justifyContent:"center",marginLeft:"0"}}>
+          <form style={{textAlign:"center"}}>
             Name of the creator
             <br />
             <textarea
               className="txt_box"
               rows="1"
               value="start with @"
-              cols="20"
+              cols="30"
+              style={{marginLeft:"",width:""}}
             ></textarea>
           </form>
-          <form style={{ marginLeft: 20 }}>
+          <form style={{textAlign:"center"}}>
             Role
             <br />
             <textarea
               className="txt_box"
               rows="1"
               value="specify a role"
-              cols="20"
+              cols="30"
+              style={{marginLeft:""}}
             ></textarea>
           </form>
-          <form>
+          <form style={{textAlign:"center"}}>
             ROYALTY SPLIT %<br />
             <textarea
               className="txt_box"
               rows="1"
               value="enter a %"
-              cols="20"
+              cols="30"
+              style={{marginLeft:""}}
             ></textarea>
           </form>
         </view>

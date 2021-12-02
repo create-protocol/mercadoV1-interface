@@ -4,14 +4,14 @@ import './bot.css'
 function bot() {
     return (
         <div>
-            <view className="price">
-            <p className="bott">details   </p>
-            <p className="bott">&gt;</p>
-            <p className="bott">pricing</p>
-            <p className="bott">&gt;</p>
-            <p className="bott">colaborators </p>
-            <p className="bott">&gt;</p>
-            <p className="bott" style={{opacity: .9}}>MINT NFT </p>
+            <view className="price" style={{display:"flex",flexWrap:"wrap",lineHeight:"1rem",marginTop:"2rem"}}>
+            <p className="bott" style={{marginTop:"1rem"}}>details   </p>
+            <p className="bott"style={{marginTop:"1rem"}}>&gt;</p>
+            <p className="bott"style={{marginTop:"1rem"}}>pricing</p>
+            <p className="bott"style={{marginTop:"1rem"}}>&gt;</p>
+            <p className="bott"style={{marginTop:"1rem"}}>colaborators </p>
+            <p className="bott"style={{marginTop:"1rem"}}>&gt;</p>
+            <p className="bott"  style={{marginTop:"1rem"}}>MINT NFT </p>
             </view>
         </div>
     )
