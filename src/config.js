@@ -5,3 +5,7 @@
 export const nftmarketaddress = "0x5C18240A82d4760843c27F7293228371fAf57C12"
 export const nftaddress = "0x8A3AC4e52eC161014049648728D4D7A415BE8a20"
 
+// localhost 
+// export const nftmarketaddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+// export const nftaddress = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+

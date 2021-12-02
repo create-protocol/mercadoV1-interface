@@ -55,8 +55,10 @@ function Mintnft() {
     
   }
 
-  async function createSale(url) {
-    const web3Modal = new Web3Modal({ network: `https://polygon-mumbai.g.alchemy.com/v2/klOlNm_rQCabx94IjAdS_ZBHzNCkRXFX` })
+  async function createSale(url) { 
+    const web3Modal = new Web3Modal({ network: `https://eth-ropsten.alchemyapi.io/v2/77Wy8P0Ua9eWbtADqxk67t_anh5pHPAv` })
+    // const web3Modal = new Web3Modal({ network: `https://polygon-mumbai.g.alchemy.com/v2/klOlNm_rQCabx94IjAdS_ZBHzNCkRXFX` })
+    // const web3Modal = new Web3Modal()
     const connection = await web3Modal.connect()
     console.log('Wallet is connected')
     const provider = new ethers.providers.Web3Provider(connection)
