@@ -31,8 +31,20 @@ const NavBar = (props) => {
             : {}
         }
       >
-        <div className="header-ham" onClick={() => setShowDrawer(true)}>
-          <img className="menubutton" alt="ham" src={ham} style={{opacity:0.4}} ></img>
+        <div className="header-ham" style={{width:"100vw",display:"flex",justifyContent:"space-between",alignItems:"center"}} >
+          <div><img className="menubutton" alt="ham" src={ham} style={{opacity:0.4}} onClick={() => setShowDrawer(true)}></img></div>
+          <button 
+          style={{backgroundColor: "rgba(21, 61, 111, 0.44)",
+            border: "1px solid rgba(21, 61, 111, 0.44)",
+            color: "rgb(80, 144, 234)",
+            padding: "0 1rem",
+            alignItems:"center",
+            borderRadius: "12px",
+            cursor: "pointer",
+          fontSize:"1.2rem",
+          lineHeight:"2rem",
+        }}
+          >Connect Wallet</button>
         </div>
         <div
           className="header-title"
@@ -44,7 +56,8 @@ const NavBar = (props) => {
                     fontSize: isBrowser ? "3rem" : "1.5rem",
                   }
                 : { fontSize: isBrowser ? "3rem" : "1.5rem" }
-              : { fontSize: isBrowser ? "1.5rem" : "1.5rem" }
+              : { fontSize: isBrowser ? "1.3rem" : "1.3rem" }
+
           }
         >
           {name

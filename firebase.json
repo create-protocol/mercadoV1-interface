@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "muzix-multiverse",
     "public": "build",
     "ignore": [
       "firebase.json",

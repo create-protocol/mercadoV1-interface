@@ -20,20 +20,20 @@ function page2(props) {
         <label for="vehicle5"> PHYSICAL GOODS</label>
       </form>
       <br />
-      <view style={{ marginTop: 20 }}><view className="clickhere"><text><br/>
+      <view style={{ marginTop: 20 }}><view className="clickhere"><text style={{color:"white"}}><br/>
             ACCEPTABLE FORMATS: <br /> JPG. PNG. GIF. MP4.
             <br /> OBJ. AVI. TXT. PDF. TIFF
           </text>
         </view>
         <view className="clickhere uplod">
-          <text>
+          <text style={{color:"white"}}>
             <br />
             CLICK HERE TO <br /> UPLOAD A FILE
             <br /> OR <br /> DROP A FILE HERE
           </text>
         </view>
         <view className="clickhere">
-          <text>
+          <text style={{color:"white"}}>
             <br />
             VIEW OUR GUIDELINES <br /> FOR CREATING NFTS
           </text>

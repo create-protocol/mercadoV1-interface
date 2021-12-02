@@ -26,7 +26,7 @@ const Creatorslist = (props) => {
   ];
   return list.map((creator, i) => (
     <div key={i} className="m-2 ">
-      <Creatorcontainer {...creator}></Creatorcontainer>
+      <Creatorcontainer {...creator} ></Creatorcontainer>
     </div>
   ));
 };
