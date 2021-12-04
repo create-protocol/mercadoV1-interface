@@ -33,6 +33,7 @@ const Routes = () => {
             <Route exact path="/page8" component={page8}></Route>
             <Route exact path="/faq" component={Faq}    ></Route>
             <Route exact path="/faq" component={Faq}    ></Route>
+            <Route exact path="/teampage" component={TeamPagefinal}    ></Route>
             <Route exact path="/descpage" component={DescPage}    ></Route>
             {routes.map((route, i) => (
               <Route

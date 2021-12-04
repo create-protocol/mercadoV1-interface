@@ -8,8 +8,9 @@ display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background: black;
+background: #000000;
 padding-bottom:3rem;
+opacity:0.6;
 `
 
 export const ContainerInner= styled.div`

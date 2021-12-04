@@ -19,7 +19,7 @@
 }
 .nft-card-container:hover {
   transform: scale(1.06);
-  background-color: gray;
+  background-color: rgb(50, 102, 82);
   border-radius: 25px;
   
 }

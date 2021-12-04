@@ -43,22 +43,22 @@ const Footer = () => {
           <Heading>About Us</Heading>
 
           <FooterLink href="/teampage">Team</FooterLink>
-          <FooterLink href="#">Vision</FooterLink>
-          <FooterLink href="#">Testimonials</FooterLink>
+          {/* <FooterLink href="#">Vision</FooterLink>
+          <FooterLink href="#">Testimonials</FooterLink> */}
         </Row>
         <Row>
           <Heading>Useful Links</Heading>
           <FooterLink href="/faq">FAQ</FooterLink>
-          <FooterLink href="#">Affiliate program</FooterLink>
-          <FooterLink href="#">NFT artist accelerator program</FooterLink>
+          {/* <FooterLink href="#">Affiliate program</FooterLink>
+          <FooterLink href="#">NFT artist accelerator program</FooterLink> */}
         </Row>
-        <Row>
+        {/* <Row>
           <Heading>Company</Heading>
           <FooterLink href="/faq">Privacy Policy</FooterLink>
           <FooterLink href="#">Terms and Conditions</FooterLink>
           <FooterLink href="#">Community Guidelines</FooterLink>
           <FooterLink href="#">Help</FooterLink>
-        </Row>
+        </Row> */}
         <Row>
           <Heading>Contact Us</Heading>
           <div className="row" style={{display:"flex",flexDirection:"column"}}>

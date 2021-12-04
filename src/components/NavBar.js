@@ -47,7 +47,7 @@ const NavBar = (props) => {
           >Connect Wallet</button>
         </div>
         <div
-          className="header-title"
+          className="h21 header-title"
           style={
             name
               ? name === "VIEW PROFILE"
@@ -56,7 +56,7 @@ const NavBar = (props) => {
                     fontSize: isBrowser ? "3rem" : "1.5rem",
                   }
                 : { fontSize: isBrowser ? "3rem" : "1.5rem" }
-              : { fontSize: isBrowser ? "1.3rem" : "1.3rem" }
+              : { fontSize: isBrowser ? "1.6rem" : "1.9rem" }
 
           }
         >
@@ -64,7 +64,7 @@ const NavBar = (props) => {
             ? name === "VIEW PROFILE"
               ? "PROFILE"
               : name.includes("page")
-              ? "MINT NFT"
+              ? ""
               : name
             : "MUZIX.TECH"}
         </div>
