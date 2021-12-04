@@ -34,7 +34,8 @@
 }
 
 .nft-img-container {
-  padding: 0.5rem;
+  padding-top: 10px;
+  /* padding-left: -1px; */
 }
 
 .nft-img {

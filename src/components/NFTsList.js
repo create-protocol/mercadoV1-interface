@@ -82,7 +82,7 @@ const Nftslist = (props) => {
   return (
     <div>
       <div className="p-4">
-        <h2 className="text-2xl py-2">Items Created</h2>
+        {/* <h2 className="text-2xl py-2">Items Created</h2> */}
         {/* {
             nfts.map((nft, i) => (
               <div key={i} className="border shadow rounded-xl overflow-hidden">
