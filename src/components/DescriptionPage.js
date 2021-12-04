@@ -4,7 +4,7 @@ import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
 import Zoom from "react-medium-image-zoom";
 import 'react-medium-image-zoom/dist/styles.css'
-
+import Mintnft from "./MintNft";
 const Splitscreen = styled.div`
   display: flex;
   flex-direction: row;
@@ -92,9 +92,9 @@ const DescriptionPage = (props) => {
           Price:{props.location.state.price} Eth
         </h2>
         <h2 style={{ color: "white" }}>{props.location.state.desc}</h2>
-        <h2 style={{ color: "white", fontSize: "1rem", letterSpacing: "2px" }}>
+        {/* <h2 style={{ color: "white", fontSize: "1rem", letterSpacing: "2px" }}>
           owner:{props.location.state.name}
-        </h2>
+        </h2> */}
         <h2
           style={{
             color: "white",
