@@ -1,7 +1,7 @@
 import Previewnft from "./components/PreviewNft";
-import Search from "./components/Search";
-import Viewprofile from "./components/ViewProfile";
-import page2 from "./mints/nfts/page2";
+// import Search from "./components/Search";
+// import Viewprofile from "./components/ViewProfile";
+// import page2 from "./mints/nfts/page2";
 import faq from './components/FAQ';
 const routes = [
   {
@@ -27,14 +27,14 @@ const routes = [
   //   pathName: "CONNECT WALLET",
   //   path: "/CONNECT WALLET",
   // },
-  {
-    pathName: "DISCOVER CREATORS",
-    path: "/DISCOVER CREATORS",
-  },
-  {
-    pathName: "DISCOVER COLLECTORS",
-    path: "/DISCOVER COLLECTORS",
-  },
+  // {
+  //   pathName: "DISCOVER CREATORS",
+  //   path: "/DISCOVER CREATORS",
+  // },
+  // {
+  //   pathName: "DISCOVER COLLECTORS",
+  //   path: "/DISCOVER COLLECTORS",
+  // },
   {
     pathName: "EXPLORE MARKETPLACE",
     path: "/EXPLORE MARKETPLACE",

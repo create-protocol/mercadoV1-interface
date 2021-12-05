@@ -3,9 +3,9 @@ import logo from "../assets/images/Muzixlogo.svg";
 import 'font-awesome/css/font-awesome.min.css'
 
 import {
-  Box,
+ 
   Containertop,
-  Container,
+  
   Row,
   Column,
   FooterLink,
@@ -35,6 +35,7 @@ const Footer = () => {
         <Row>
           <Heading>Marketplace</Heading>
 
+          <FooterLink href="/">Home</FooterLink>
           <FooterLink href="/teampage">Create</FooterLink>
           <FooterLink href="#">Discover</FooterLink>
           <FooterLink href="#">Creators</FooterLink>

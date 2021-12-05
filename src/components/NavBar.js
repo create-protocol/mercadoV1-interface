@@ -3,7 +3,7 @@ import { Drawer } from "antd";
 //import { UnorderedListOutlined } from "@ant-design/icons";
 import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
-import ham from "../assets/images/menu.png";
+// import ham from "../assets/images/menu.png";
 import Drawerroutes from "./DrawerRoutes";
 const NavBar = (props) => {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -32,14 +32,14 @@ const NavBar = (props) => {
         }
       >
         <div className="header-ham" style={{width:"100vw",display:"flex",justifyContent:"space-between",alignItems:"center"}} >
-          <div><img className="menubutton" alt="ham" src={ham} style={{opacity:0.4}} onClick={() => setShowDrawer(true)}></img></div>
+          {/* <div>Powered by Muizx</div> */}
           <button 
           style={{backgroundColor: "rgba(21, 61, 111, 0.44)",
             border: "1px solid rgba(21, 61, 111, 0.44)",
             color: "rgb(80, 144, 234)",
             padding: "0 1rem",
             alignItems:"center",
-            borderRadius: "12px",
+            borderRadius: "6px",
             cursor: "pointer",
           fontSize:"1.2rem",
           lineHeight:"2rem",
@@ -66,7 +66,7 @@ const NavBar = (props) => {
               : name.includes("page")
               ? ""
               : name
-            : "MUZIX.TECH"}
+            : "MERCADO.STUDIO"}
         </div>
       </div>
       <Drawer

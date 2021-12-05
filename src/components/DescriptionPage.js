@@ -4,7 +4,7 @@ import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
 import Zoom from "react-medium-image-zoom";
 import 'react-medium-image-zoom/dist/styles.css'
-import Mintnft from "./MintNft";
+// import Mintnft from "./MintNft";
 const Splitscreen = styled.div`
   display: flex;
   flex-direction: row;
@@ -12,6 +12,8 @@ const Splitscreen = styled.div`
 
   @media (max-width: 1000px) {
     flex-direction: column;
+    overflow-y: hidden;
+
   }
 `;
 const Left = styled.div`
@@ -40,6 +42,7 @@ const Right = styled.div`
   @media (max-width: 1000px) {
     width:100%;
     height:60%;
+    overflow:hidden;
   }
 `;
 
@@ -66,13 +69,14 @@ const DescriptionPage = (props) => {
         <div
           style={{
             padding: "2rem",
-            height: "90%",
+            height: "100%",
             width: "80%",
             borderRadius: "10px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             paddingBottom: "0",
+            overflow:"hidden"
           }}
         >
           <Zoom>
@@ -80,7 +84,7 @@ const DescriptionPage = (props) => {
               src={props.location.state.image}
               // src="https://media.istockphoto.com/photos/code-programming-for-website-editors-view-picture-id1290492381?b=1&k=20&m=1290492381&s=170667a&w=0&h=NQSXJKhncCP1GLzDkD8KPZsCOh1wldDj5RZbPVJztxQ= "
               alt="nft"
-              style={{ width: "100%", borderRadius: "15px" }}
+              style={{ width: "100%", borderRadius: "15px",height:"500px"}}
             />
           </Zoom>
         </div>
@@ -88,14 +92,9 @@ const DescriptionPage = (props) => {
         {/* <h2 style={{color:"white"}}>{props.description}</h2> */}
       </Left>
       <Right>
-        <h2 style={{ color: "white" }}>
-          Price:{props.location.state.price} Eth
-        </h2>
-        <h2 style={{ color: "white" }}>{props.location.state.desc}</h2>
-        {/* <h2 style={{ color: "white", fontSize: "1rem", letterSpacing: "2px" }}>
-          owner:{props.location.state.name}
-        </h2> */}
-        <h2
+
+      <h2 style={{ color: "white" }}>{props.location.state.desc}</h2>
+      <h2
           style={{
             color: "white",
             textOverflow: "none",
@@ -105,6 +104,14 @@ const DescriptionPage = (props) => {
         >
           seller:{props.location.state.sellername}
         </h2>
+        <h2 style={{ color: "white" }}>
+          Price:{props.location.state.price} Eth
+        </h2>
+       
+        {/* <h2 style={{ color: "white", fontSize: "1rem", letterSpacing: "2px" }}>
+          owner:{props.location.state.name}
+        </h2> */}
+       
 
         <Signupbtn style={{ background: "white", color: "black" }}>
           BUY

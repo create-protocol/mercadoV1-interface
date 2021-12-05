@@ -32,19 +32,19 @@
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #ffffff;
   opacity: 1;
-  font-size: 16px;
+  font-size: 26px;
   font-weight: bold;
   letter-spacing: var(--unnamed-character-spacing-4-8);
   color: var(--unnamed-color-000000);
   text-align: center;
   letter-spacing: 4.2px;
   color: #000000;
-  margin: 3rem 3rem;
-  padding-left: 16px;
-  padding-right: 16px;
+  margin: 2px 2px;
+  /* padding-left: 6px;
+  padding-right: 6px;
   padding-top: 10px;
-  padding-bottom: 8px;
-  border-radius: 2px;
+  padding-bottom: 8px; */
+  border-radius: 6px;
   white-space: nowrap;
 }
 
@@ -53,13 +53,14 @@
   /* border: 1px solid #ffffff; */
   border:none;
   opacity: 1;
-  font-size: 16px;
+  font-size: 26px;
   font-weight: bold;
   letter-spacing: var(--unnamed-character-spacing-4-8);
   color: var(--unnamed-color-000000);
   text-align: center;
   letter-spacing: 4.2px;
   color: #ffffff;
+  
 
 
 }

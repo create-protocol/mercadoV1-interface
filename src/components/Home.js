@@ -1,18 +1,18 @@
 import React from "react";
-import hero from "../assets/images/hero.png";
+// import hero from "../assets/images/hero.png";
 import "../assets/css/home.css";
-import Cardcontainer from "../containers/CardContainer";
+// import Cardcontainer from "../containers/CardContainer";
 import Nftslist from "./NFTsList";
-import Creatorslist from "./CreatorsList";
+// import Creatorslist from "./CreatorsList";
 import sqr from "../assets/images/space1.png";
 import cir from "../assets/images/cir.jpg";
-import four from "../assets/images/four.png";
+// import four from "../assets/images/four.png";
 //import battle1 from "../assets/images/1.jpg";
-import battle4 from "../assets/images/battle4.jpg";
-import battle2 from "../assets/images/battle2.jpg";
-import battle3 from "../assets/images/battle3.jpg";
-import Dropmenucontainer from "./DropmenuContainer";
-import page5 from './MintNft'
+// import battle4 from "../assets/images/battle4.jpg";
+// import battle2 from "../assets/images/battle2.jpg";
+// import battle3 from "../assets/images/battle3.jpg";
+// import Dropmenucontainer from "./DropmenuContainer";
+// import page5 from './MintNft'
 import Footer  from "./Footer";
 const Home = (props) => {
   return (
@@ -26,31 +26,45 @@ const Home = (props) => {
         </div> */}
         <div className="action-container my-4" >
           
-          <div
-            onClick={() => props.history.push("/page5")}
-            className="action-btn"
-          >
-            Create Token
-          </div>
+        <button 
+          style={{backgroundColor:"white",
+            border: "1px solid rgba(21, 61, 111, 0.44)",
+            color: "black",
+            padding: "0 1.3rem",
+            alignItems:"center",
+            borderRadius: "6px",
+            cursor: "pointer",
+          fontSize:"1.6rem",
+          lineHeight:"2rem",
+          textAlign:"center"
+        }}
+        onClick={() => props.history.push("/page5")}
+          >create</button>
+          
         </div>
       </div>
-      <div>
-        <Cardcontainer  title={"NFTS"} suffix={"EXPLORE"}>
+      <div >
+
+        <br/>
+        <br/>
+      {/* <button><h1 style={{color:"grey",textAlign:"center",marginTop:"30px",width:"20px",height:"60px"}}>EXPLORE </h1></button>
+      <button><span style={{color:"white",marginLeft:"10px",fontSize:"5px"}}>MY ASSETS</span> </button>
+       */}
           <Nftslist sqr={sqr} cir={cir}></Nftslist>
-        </Cardcontainer>
+        
       </div>
       
-      <div>
+      {/* <div>
         <Cardcontainer style={{display:"flex",flexWrap:"wrap"}}title={"COLLECTIONS"} suffix={"EXPLORE"}>
           <Nftslist sqr={four} cir={cir}></Nftslist>
         </Cardcontainer>
-      </div>
+      </div> */}
       <div>
         <br />
       </div>
-      <div className="my-4">
+      {/* <div className="my-4">
         <Dropmenucontainer></Dropmenucontainer>
-      </div>
+      </div> */}
 
       <div>
         <br />
@@ -80,6 +94,10 @@ const Home = (props) => {
           </div>
         </div>
       </div> */}
+
+      <div style={{height:"250px"}}>
+
+      </div>
       <Footer/>
     </div>
   );

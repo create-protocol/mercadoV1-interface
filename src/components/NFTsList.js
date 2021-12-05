@@ -2,21 +2,23 @@ import React from "react";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import sqr from "../assets/images/space1.png";
-import Nftcontainer from "./NFTContainer";
-import amaz from "../assets/images/amazebox.jpg";
-import pretty5 from "../assets/images/pretty image (5).jpg";
-import battle4 from "../assets/images/battle4.jpg";
-import pretty1 from "../assets/images/pretty_image.jpg";
-import Web3Modal from "web3modal";
+// import sqr from "../assets/images/space1.png";
+// import Nftcontainer from "./NFTContainer";
+// import amaz from "../assets/images/amazebox.jpg";
+// import pretty5 from "../assets/images/pretty image (5).jpg";
+// import battle4 from "../assets/images/battle4.jpg";
+// import pretty1 from "../assets/images/pretty_image.jpg";
+// import Web3Modal from "web3modal";
 import "../assets/css/nft.css";
 import Market from "../abis/Marketplace.json";
 import NFT from "../abis/NFT.json";
 import { Link } from "react-router-dom";
-
+// import spinloader from './spinloader';
+// import Spinner from 'react-bootstrap/Spinner'
 import { useHistory } from "react-router";
 
 import { nftmarketaddress, nftaddress } from "../config";
+import Loader from "react-loader-spinner";
 
 const Nftslist = (props) => {
   const [nfts, setNfts] = useState([]);
@@ -75,9 +77,24 @@ const Nftslist = (props) => {
     setLoadingState("loaded");
   }
 
+  // if(my component) else if else 
   
+  if(loadingState!="loaded"){
 
-  if (loadingState === "loaded" && !nfts.length)
+    return  <div style={{height:"200px",alignContent:"center",marginTop:"60px"}}>
+
+<Loader
+        type="Puff"
+        color="#00BFFF"
+        height={100}
+        width={100}
+        // timeout={3000} //3 secs
+      />
+      
+      </div> ;
+  }
+
+  else if (loadingState === "loaded" && !nfts.length)
     return <h1 className="py-10 px-20 text-3xl">No assets created</h1>;
   return (
     <div>
@@ -116,15 +133,24 @@ const Nftslist = (props) => {
                 <div key={i} className="row nft-card-container m-2">
                   <div className="nft-img-container">
                     <img className="nft-img" src={nft.image} alt="logo"></img>
+
+
+
+                  
                     <p
                       style={{
                         fontWeight: "bold",
                         margin: "10px",
                         color: "white",
+                        // textAlign:"start"
                       }}
-                      className="author-details text-2xl font-bold text-white"
+                      
                     >
-                      Price - {nft.price} Eth
+                       {nft.price} Eth
+
+                       <span style={{padding:"20px",marginRight:"9rem",textAlign:"end",justifyContent:"end",textAlign:"end"}}>{nft.seller.substring(0,6) + "........."+nft.seller.slice(-3)}</span>
+
+
                     </p>
                     {/* <p style={{fontWeight:"bold",margin:"10px",color:"white"}} className="text-2xl font-bold text-white">Price - {nft.seller} Eth</p> */}
                   </div>
