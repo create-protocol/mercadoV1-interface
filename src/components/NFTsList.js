@@ -142,7 +142,7 @@ const Nftslist = (props) => {
                         fontWeight: "bold",
                         margin: "10px",
                         color: "white",
-                        // textAlign:"start"
+                        textAlign:"start"
                       }}
                       
                     >
