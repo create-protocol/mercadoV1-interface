@@ -17,22 +17,28 @@ import Footer from "./Footer";
 import styled from "styled-components";
 
 const ShadowBtn = styled.div`
-  background-color: green;
-  color: white;
-  padding: 0.3rem 1.2rem;
-  alignitems: center;
-  borderradius: 6px;
-  cursor: pointer;
-  border: 8px solid black;
-  border-radius:10px;
-  fontsize: 2.5rem;
-  lineheight: 2rem;
-  textalign: center;
-
+background-color: rgb(112, 215, 49);
+color: rgb(26, 24, 24);
+font-size: 20px;
+font-weight: 700;
+width: 200%;
+border: 10px solid rgb(48, 52, 57);
+border-radius: 20px;
+padding:6px 10px 6px 10px;
+cursor: pointer;
+margin-top: 0.625rem;
+max-width: 900px;
+transition: all 0.3s ease-in-out 0s;
+box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
+margin-top:40px;
+margin-right: 20px;
+margin-left: 20px;
+}
   &:hover{
     -webkit-box-shadow: 0 0 8px #fff;
         box-shadow: 0 0 8px #fff;
         transition:.5s;
+        border-radius:20px
   }
 `;
 const Home = (props) => {
@@ -40,14 +46,15 @@ const Home = (props) => {
     <div>
       <div className="hero-container my-2">
         <div className="hero my-4">
-          <img src={hero} style={{ width: "100%" }} alt="blockchain"></img>
+          <h1 style={{color:"#cccccc"}}>mercado.studio</h1>
+          {/* <img src={hero} style={{ width: "100%" }} alt="blockchain"></img> */}
         </div>
         {/* <div className="hero-sub-heading">
           BRINGING THE POWER BACK INTO THE HANDS OF CREATORS
         </div> */}
         <div className="action-container my-4">
           <ShadowBtn
-            style={{fonstSize:"3rem"}}
+            style={{fonstSize:"3rem",width:"150px"}}
             onClick={() => props.history.push("/page5")}
           >
             CREATE

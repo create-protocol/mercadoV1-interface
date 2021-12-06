@@ -1,15 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
+import { ethers } from "ethers";
+
 //import { UnorderedListOutlined } from "@ant-design/icons";
 import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
 // import ham from "../assets/images/menu.png";
+import Web3Modal from "web3modal";
 import Drawerroutes from "./DrawerRoutes";
 import Home from '../assets/images/home.png'
-const NavBar = (props) => {
+const NavBar =  (props) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
+  
+  useEffect( async function connectWallet() {
+    const web3Modal = new Web3Modal({
+      network: "mainnet",
+      cacheProvider: true,
+    })
+    const connection = await web3Modal.connect()
+    const provider = new ethers.providers.Web3Provider(connection)
+    const signer = provider.getSigner()
+
+    console.log(signer);
+  
+  });
+
+  // const web3Modal = new Web3Modal({
+  //   network: "mainnet",
+  //   cacheProvider: true,
+  // })
+  // const connection = await web3Modal.connect()
+  // const provider = new ethers.providers.Web3Provider(connection)
+  // const signer = provider.getSigner()
+
   return (
     <div style={{}}>
       <div
@@ -35,20 +60,10 @@ const NavBar = (props) => {
       >
         <div className="header-ham" style={{width:"100vw",display:"flex",justifyContent:"space-between",alignItems:"end",marginLeft:"auto"}} >
           <Link to='/'>
-          <img style={{width:"2.5rem",height:"2.5rem",objectFit:"contain"}} src={Home} alt="homepage"/>
+          <img style={{width:"2.5rem",height:"2.5rem",objectFit:"contain",marginTop:"-1rem",marginLeft:"40px"}} src={Home} alt="homepage"/>
           </Link>
-          <button 
-          style={{backgroundColor: "rgba(21, 61, 111, 0.44)",
-            border: "1px solid rgba(21, 61, 111, 0.44)",
-            color: "rgb(80, 144, 234)",
-            padding: "0 1rem",
-            alignItems:"center",
-            borderRadius: "6px",
-            cursor: "pointer",
-          fontSize:"1.2rem",
-          lineHeight:"2rem",
-        }}
-          >Connect Wallet</button>
+          <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1>
+          {/* <button className="connect-wallet2">Connect Wallet</button> */}
         </div>
         <div
           className="h21 header-title"
