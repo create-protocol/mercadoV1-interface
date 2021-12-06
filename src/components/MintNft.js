@@ -229,7 +229,7 @@ function Mintnft() {
               width="350"
               src={fileUrl}
             />)
-          :(<h2 style={{color:"white"}}>Preview Here</h2>)}
+          :(<h2 style={{color:"white",fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"}}>Preview Here</h2>)}
           </div>
       </view>
 
