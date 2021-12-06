@@ -9,6 +9,7 @@ import "../assets/css/home.css";
 import NFT from "../abis/NFT.json";
 import Market from "../abis/Marketplace.json";
 import styled from "styled-components";
+import Home from '../assets/images/home.png'
 
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
@@ -39,6 +40,7 @@ function Mintnft() {
     price: "",
     name: "",
     description: "",
+    creator:"Lzy Lad"
   });
   // const router = useRouter()
 
@@ -55,13 +57,14 @@ function Mintnft() {
     }
   }
   async function createMarket() {
-    const { name, description, price } = formInput;
-    if (!name || !description || !price || !fileUrl) return;
+    const { name, description, price,creator } = formInput;
+    if (!name || !description || !price || !fileUrl ||creator) return;
     /* first, upload to IPFS */
     const data = JSON.stringify({
       name,
       description,
       image: fileUrl,
+      creator
     });
     try {
       const added = await client.add(data);
@@ -159,43 +162,50 @@ function Mintnft() {
           style={{
             display: "flex",
             flexDirection: "column",
-            width:"80%",
+            width:"50%",
             // alignItems: "center",
           }}
         >
+          <div style={{backgroundColor:"grey",padding:"2rem",borderRadius:".5rem"}}>
           <label for="fname">ASSET NAME</label>
           <br />
           <input
             className="formtxtfill docs"
             type="text"
-            id="fname"
-            name="fname"
+            // id="fname"
+            // name="fname"
             style={{width:"100%"}}
             // value="LET'S START WITH GIVING A UNIQUE NAME TO YOUR WORK OF ART"
           />
+          </div>
           <br />
+          <div style={{backgroundColor:"grey",padding:"2rem",borderRadius:".5rem"}}>
           <label for="lname">ASSET DESCRIPTION</label>
           <br />
           <input
             className="formtxtfill docs"
             type="text"
-            id="lname"
-            name="lname"
-            value=""
+            // id="lname"
+            // name="lname"
+            
             style={{width:"100%"}}
           />
+          </div>
           <br />
+          <div style={{backgroundColor:"grey",padding:"2rem",borderRadius:".5rem"}}>
           <label for="lname">ASSET PRICE IN ETHERIUM</label>
           <br />
           <input
             className="formtxtfill docs"
             type="text"
-            id="lname"
-            name="lname"
-            value=""
+            // id="lname"
+            // name="lname"
+            
             style={{width:"100%"}}
           />
+          </div>
           <br />
+          <div style={{backgroundColor:"grey",padding:"2rem",borderRadius:".5rem"}}>
           <input
             className="formtxtfill docs"
             type="file"
@@ -203,17 +213,24 @@ function Mintnft() {
             onChange={onChange}
             style={{width:"100%"}}
           />
-          {fileUrl && (
+          </div>
+          
+          
+          <br />
+        </form>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"center",width:"50%"}}>
+          {/* <img style={{height:"20rem",width:"20rem"}}src={Home} alt="image hrer"/> */}
+        {fileUrl
+         ?(
             <img
               className="docs"
-              style={{ opcaity: "0.5" }}
+              style={{ opcaity: "0.7", height:"30rem",width:"30rem"}}
               alt=""
               width="350"
               src={fileUrl}
-            />
-          )}
-          <br />
-        </form>
+            />)
+          :(<h2 style={{color:"white"}}>Preview Here</h2>)}
+          </div>
       </view>
 
       {/* <Bot /> */}
