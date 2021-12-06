@@ -16,7 +16,7 @@ const NavBar = (props) => {
         className="header-container"
         style={
           name
-            ? name === "VIEW PROFILE"
+            ? name === ""
               ? {
                   background: "transparent",
                   position: "absolute",
@@ -54,7 +54,7 @@ const NavBar = (props) => {
           className="h21 header-title"
           style={
             name
-              ? name === "VIEW PROFILE"
+              ? name === ""
                 ? {
                     color: "#fff",
                     fontSize: isBrowser ? "3rem" : "1.5rem",
@@ -66,7 +66,7 @@ const NavBar = (props) => {
           }
         >
           {name
-            ? name === "VIEW PROFILE"
+            ? name === ""
               ? "PROFILE"
               : name.includes("page")
               ? ""

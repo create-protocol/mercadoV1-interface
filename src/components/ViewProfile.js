@@ -3,6 +3,10 @@ import "../assets/css/profile.css";
 import bg from "../assets/images/bg.png";
 import cir from "../assets/images/cir.jpg";
 import Profileaudiolist from "./ProfileAudioList";
+import Nftslist from "./NFTsList";
+// import Creatorslist from "./CreatorsList";
+import sqr from "../assets/images/space1.png";
+// import cir from "../assets/images/cir.jpg";
 const Viewprofile = (props) => {
   //   const pairs = {
   //     numPairL: [
@@ -115,20 +119,20 @@ const Viewprofile = (props) => {
                 <div className="value">19</div>
               </div>
             </div>
-            <div className="stats-container">
+            {/* <div className="stats-container">
               <div className="view-stat">VIEW STATS</div>
-            </div>
+            </div> */}
           </div>
-          <div className="key-value-pair">
+          {/* <div className="key-value-pair">
             <div className="follow-count" style={{ marginLeft: "10rem" }}>
               693 FOLLOWERS
             </div>
             <div className="follow-btn" style={{ marginLeft: "10rem" }}>
               FOLLOW
             </div>
-          </div>
+          </div> */}
         </div>
-        <div className="pair-container">
+        {/* <div className="pair-container">
           <div className="key-value-pair">
             <div className="follow-count" style={{ marginRight: "10rem" }}>
               123 FOLLOWING
@@ -152,7 +156,7 @@ const Viewprofile = (props) => {
               <div className="view-stat">VIEW STATS</div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       {/* <div className="profile-details-container">
         {Object.values(pairs).map((arr, i) => (
@@ -192,12 +196,7 @@ const Viewprofile = (props) => {
         >
           CREATIONS
         </div>
-        <div
-          className={tabKey === 1 ? "tab-btn-active" : "tab-btn-inactive"}
-          onClick={() => setTabKey(1)}
-        >
-          COLLECTIONS
-        </div>
+        
       </div>
 
       {/* <div className="profile-options-container">
@@ -223,7 +222,17 @@ const Viewprofile = (props) => {
           </div>
         ))}
       </div> */}
-      <div className="option-comp-container">{optionComponent}</div>
+
+
+      
+      <div>
+        
+        
+        <Nftslist sqr={sqr} cir={cir}></Nftslist>
+      </div>
+
+
+      {/* <div className="option-comp-container">{optionComponent}</div> */}
     </div>
   );
 };
