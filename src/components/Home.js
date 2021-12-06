@@ -1,5 +1,5 @@
 import React from "react";
-// import hero from "../assets/images/hero.png";
+import hero from "../assets/images/mercado.png";
 import "../assets/css/home.css";
 // import Cardcontainer from "../containers/CardContainer";
 import Nftslist from "./NFTsList";
@@ -39,9 +39,9 @@ const Home = (props) => {
   return (
     <div>
       <div className="hero-container my-2">
-        {/* <div className="hero my-4">
+        <div className="hero my-4">
           <img src={hero} style={{ width: "100%" }} alt="blockchain"></img>
-        </div> */}
+        </div>
         {/* <div className="hero-sub-heading">
           BRINGING THE POWER BACK INTO THE HANDS OF CREATORS
         </div> */}

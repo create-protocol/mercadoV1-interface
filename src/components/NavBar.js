@@ -71,7 +71,7 @@ const NavBar = (props) => {
               : name.includes("page")
               ? ""
               : name
-            : "MERCADO.STUDIO"}
+            : ""}
         </div>
       </div>
       <Drawer
