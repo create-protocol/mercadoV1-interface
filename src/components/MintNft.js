@@ -224,12 +224,12 @@ function Mintnft() {
          ?(
             <img
               className="docs"
-              style={{ opcaity: "0.7", height:"30rem",width:"30rem"}}
-              alt=""
+              style={{ opcaity: "0.7", height:"30rem",width:"30rem",backgroundSize:"cover"}}
+              alt="Preview  "
               width="350"
               src={fileUrl}
             />)
-          :(<h2 style={{color:"white"}}>Preview Here</h2>)}
+          :(<h2 style={{color:"white",fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"}}>Preview Here</h2>)}
           </div>
       </view>
 
