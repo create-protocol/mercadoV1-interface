@@ -6,6 +6,7 @@ import Profileaudiolist from "./ProfileAudioList";
 import Nftslist from "./NFTsList";
 // import Creatorslist from "./CreatorsList";
 import sqr from "../assets/images/space1.png";
+import Footer from './Footer'
 // import cir from "../assets/images/cir.jpg";
 const Viewprofile = (props) => {
   //   const pairs = {
@@ -233,6 +234,8 @@ const Viewprofile = (props) => {
 
 
       {/* <div className="option-comp-container">{optionComponent}</div> */}
+      <Footer/>
+      
     </div>
   );
 };

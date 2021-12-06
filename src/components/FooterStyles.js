@@ -14,7 +14,7 @@ opacity:0.6;
 `
 
 export const ContainerInner= styled.div`
-width:80%;
+width:55%;
 display:flex;
 align-items:space-between;
 justify-content:space-between;

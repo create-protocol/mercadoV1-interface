@@ -20,7 +20,7 @@ const routes = [
   // },
   {
     pathName: "VIEW PROFILE",
-    path: "/VIEW PROFILE",
+    path: "/creater/lazylad",
     component: Viewprofile,
   },
   // {

@@ -1,5 +1,5 @@
 .profile-banner {
-  height: 407px;
+  height: 447px;
   /* transform: matrix(-1, 0, 0, -1, 0, 0); */
   /* background: transparent linear-gradient(180deg, #04040400 0%, #000000B3 100%) 0% 0% no-repeat padding-box; */
   /* opacity: 0.6; */
@@ -10,6 +10,8 @@
   flex-wrap: wrap;
   position: relative;
   flex-direction: row;
+  margin-top: -149px;
+  z-index: -0.2;
 }
 
 .profile-banner-mask {

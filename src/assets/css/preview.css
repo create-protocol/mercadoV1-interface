@@ -94,7 +94,7 @@
 }
 
 .preview-action-container {
-    display: flex;
+    display:none;
     align-items: center;
     justify-content: space-around;
 }
