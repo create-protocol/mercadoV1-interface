@@ -224,8 +224,8 @@ function Mintnft() {
          ?(
             <img
               className="docs"
-              style={{ opcaity: "0.7", height:"30rem",width:"30rem"}}
-              alt=""
+              style={{ opcaity: "0.7", height:"30rem",width:"30rem",backgroundSize:"cover"}}
+              alt="Preview  "
               width="350"
               src={fileUrl}
             />)
