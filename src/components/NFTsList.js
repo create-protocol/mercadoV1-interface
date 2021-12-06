@@ -111,7 +111,7 @@ const Nftslist = (props) => {
             ))
           } */}
         <div className=" my-4 ml-4 ">
-          <div className="m-card-content ">
+          <div className="m-card-content" style={{justifyContent:"center"}}>
             {nfts.map((nft, i) => (
               // <div
               //   onClick={(e) => {
@@ -142,13 +142,17 @@ const Nftslist = (props) => {
                         fontWeight: "bold",
                         margin: "10px",
                         color: "white",
-                        textAlign:"start"
+                        textAlign:"start",
+                        display:"flex",
+                        justifyContent:"space-between"
                       }}
                       
                     >
-                       {nft.price} Eth
+                       <div>{nft.price} Eth</div>
 
-                       <span style={{padding:"20px",marginRight:"9rem",textAlign:"end",justifyContent:"end",textAlign:"end"}}>{nft.seller.substring(0,6) + "........."+nft.seller.slice(-3)}</span>
+                       <div><span 
+                      //  style={{padding:"20px",marginRight:"9rem",textAlign:"end",justifyContent:"end",textAlign:"end"}}
+                       >{nft.seller.substring(0,6) + "........."+nft.seller.slice(-3)}</span></div>
 
 
                     </p>
@@ -171,7 +175,7 @@ const Nftslist = (props) => {
                   key={i}
                   className="border shadow rounded-xl overflow-hidden"
                 >
-                  <img src={nft.image} className="rounded" alt="" />
+                  <img style={{width:"20rem",height:"20rem",objectFit:"contain"}} src={nft.image} className="rounded" alt="" />
                   <div className="p-4 bg-black">
                     <p className="text-2xl font-bold text-red">
                       Price - {nft.price} Eth

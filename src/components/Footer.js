@@ -18,9 +18,9 @@ const Footer = () => {
     <Containertop>
 
         {/* Heading-logo of muzix */}
-      <div style={{ width: "100%", paddingBottom: "1rem" }}>
+      {/* <div style={{ width: "100%", paddingBottom: "1rem" }}>
         <img src={logo} alt="logo-present" />
-      </div>
+      </div> */}
 
       {/* horizontal-line */}
       <hr

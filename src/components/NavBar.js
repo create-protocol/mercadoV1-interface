@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Drawer } from "antd";
+import { Link } from "react-router-dom";
 //import { UnorderedListOutlined } from "@ant-design/icons";
 import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
 // import ham from "../assets/images/menu.png";
 import Drawerroutes from "./DrawerRoutes";
+import Home from '../assets/images/home.png'
 const NavBar = (props) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
@@ -32,7 +34,9 @@ const NavBar = (props) => {
         }
       >
         <div className="header-ham" style={{width:"100vw",display:"flex",justifyContent:"space-between",alignItems:"end",marginLeft:"auto"}} >
-          {/* <div>m</div> */}
+          <Link to='/'>
+          <img style={{width:"2.5rem",height:"2.5rem",objectFit:"contain"}} src={Home} alt="homepage"/>
+          </Link>
           <button 
           style={{backgroundColor: "rgba(21, 61, 111, 0.44)",
             border: "1px solid rgba(21, 61, 111, 0.44)",
@@ -54,9 +58,10 @@ const NavBar = (props) => {
                 ? {
                     color: "#fff",
                     fontSize: isBrowser ? "3rem" : "1.5rem",
+                    font:"Inter"
                   }
-                : { fontSize: isBrowser ? "3rem" : "1.5rem" }
-              : { fontSize: isBrowser ? "1.6rem" : "1.9rem" }
+                : { fontSize: isBrowser ? "3rem" : "1.5rem",font:"Inter" }
+              : { fontSize: isBrowser ? "1.6rem" : "1.9rem",font:"Inter" }
 
           }
         >

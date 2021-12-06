@@ -13,7 +13,28 @@ import cir from "../assets/images/cir.jpg";
 // import battle3 from "../assets/images/battle3.jpg";
 // import Dropmenucontainer from "./DropmenuContainer";
 // import page5 from './MintNft'
-import Footer  from "./Footer";
+import Footer from "./Footer";
+import styled from "styled-components";
+
+const ShadowBtn = styled.div`
+  background-color: green;
+  color: white;
+  padding: 0.3rem 1.2rem;
+  alignitems: center;
+  borderradius: 6px;
+  cursor: pointer;
+  border: 8px solid black;
+  border-radius:10px;
+  fontsize: 2.5rem;
+  lineheight: 2rem;
+  textalign: center;
+
+  &:hover{
+    -webkit-box-shadow: 0 0 8px #fff;
+        box-shadow: 0 0 8px #fff;
+        transition:.5s;
+  }
+`;
 const Home = (props) => {
   return (
     <div>
@@ -24,36 +45,24 @@ const Home = (props) => {
         {/* <div className="hero-sub-heading">
           BRINGING THE POWER BACK INTO THE HANDS OF CREATORS
         </div> */}
-        <div className="action-container my-4" >
-          
-        <button 
-          style={{backgroundColor:"white",
-            border: "1px solid rgba(21, 61, 111, 0.44)",
-            color: "black",
-            padding: "0 1.3rem",
-            alignItems:"center",
-            borderRadius: "6px",
-            cursor: "pointer",
-          fontSize:"1.6rem",
-          lineHeight:"2rem",
-          textAlign:"center"
-        }}
-        onClick={() => props.history.push("/page5")}
-          >create</button>
-          
+        <div className="action-container my-4">
+          <ShadowBtn
+            style={{fonstSize:"3rem"}}
+            onClick={() => props.history.push("/page5")}
+          >
+            CREATE
+          </ShadowBtn>
         </div>
       </div>
-      <div >
-
-        <br/>
-        <br/>
-      {/* <button><h1 style={{color:"grey",textAlign:"center",marginTop:"30px",width:"20px",height:"60px"}}>EXPLORE </h1></button>
+      <div>
+        <br />
+        <br />
+        {/* <button><h1 style={{color:"grey",textAlign:"center",marginTop:"30px",width:"20px",height:"60px"}}>EXPLORE </h1></button>
       <button><span style={{color:"white",marginLeft:"10px",fontSize:"5px"}}>MY ASSETS</span> </button>
        */}
-          <Nftslist sqr={sqr} cir={cir}></Nftslist>
-        
+        <Nftslist sqr={sqr} cir={cir}></Nftslist>
       </div>
-      
+
       {/* <div>
         <Cardcontainer style={{display:"flex",flexWrap:"wrap"}}title={"COLLECTIONS"} suffix={"EXPLORE"}>
           <Nftslist sqr={four} cir={cir}></Nftslist>
@@ -95,10 +104,8 @@ const Home = (props) => {
         </div>
       </div> */}
 
-      <div style={{height:"250px"}}>
-
-      </div>
-      <Footer/>
+      <div style={{ height: "250px" }}></div>
+      <Footer />
     </div>
   );
 };

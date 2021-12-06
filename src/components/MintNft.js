@@ -8,11 +8,31 @@ import { nftaddress, nftmarketaddress } from "../config";
 import "../assets/css/home.css";
 import NFT from "../abis/NFT.json";
 import Market from "../abis/Marketplace.json";
+import styled from "styled-components";
 
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
 // import fire from "../assets/images/fire.png";
+const ShadowBtn = styled.div`
+  background-color: green;
+  color: white;
+  padding: 0.3rem 1.2rem;
+  alignitems: center;
+  
+  cursor: pointer;
+  border: 8px solid black;
+  
+  fontsize: 2.5rem;
+  lineheight: 2rem;
+  textalign: center;
+  
 
+  &:hover {
+    -webkit-box-shadow: 0 0 8px #fff;
+    box-shadow: 0 0 8px #fff;
+    transition: 0.5s;
+  }
+`;
 function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
   const [formInput, updateFormInput] = useState({
@@ -91,7 +111,7 @@ function Mintnft() {
 
   return (
     <div>
-      <h2>CHOOSE A NFT Category</h2>
+      {/* <h2>CHOOSE A NFT Category</h2>
       <form
         className="uploadoc"
         action="/action_page.php"
@@ -130,13 +150,18 @@ function Mintnft() {
             VIEW OUR GUIDELINES <br /> FOR CREATING NFTS
           </text>
         </view>
-      </view>
-      
-      <view style={{}}>
+      </view> */}
+
+      <view style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <form
           // action="/action_page.php"
           className="formfill"
-          style={{ }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width:"80%",
+            // alignItems: "center",
+          }}
         >
           <label for="fname">ASSET NAME</label>
           <br />
@@ -145,7 +170,8 @@ function Mintnft() {
             type="text"
             id="fname"
             name="fname"
-            value="LET'S START WITH GIVING A UNIQUE NAME TO YOUR WORK OF ART"
+            style={{width:"100%"}}
+            // value="LET'S START WITH GIVING A UNIQUE NAME TO YOUR WORK OF ART"
           />
           <br />
           <label for="lname">ASSET DESCRIPTION</label>
@@ -156,6 +182,7 @@ function Mintnft() {
             id="lname"
             name="lname"
             value=""
+            style={{width:"100%"}}
           />
           <br />
           <label for="lname">ASSET PRICE IN ETHERIUM</label>
@@ -166,32 +193,52 @@ function Mintnft() {
             id="lname"
             name="lname"
             value=""
+            style={{width:"100%"}}
           />
           <br />
           <input
             className="formtxtfill docs"
             type="file"
-            name="Asset"           
-            
+            name="Asset"
             onChange={onChange}
+            style={{width:"100%"}}
           />
           {fileUrl && (
-            <img className="docs" style={{opcaity:"0.5"}} alt="" width="350" src={fileUrl} />
+            <img
+              className="docs"
+              style={{ opcaity: "0.5" }}
+              alt=""
+              width="350"
+              src={fileUrl}
+            />
           )}
           <br />
         </form>
       </view>
-      
-      <Bot />
+
+      {/* <Bot /> */}
       {/* <button
         className="cnetrbutton"
         type="button"
         
       > */}
-      <div style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"center",flexWrap:"wrap"}}>
-      <div className="action-container my-4"style={{width:"max-content"}} >
-        <div className="action-btn" >CREATE DIGITAL ASSET</div>
-      </div>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        {/* <div className="action-container my-4"style={{width:"max-content"}} > */}
+        <ShadowBtn>
+          <div style={{fontSize:"1.5rem"}} 
+          // className="action-btn"
+          >CREATE DIGITAL ASSET</div>
+        </ShadowBtn>
+
+        {/* </div> */}
       </div>
     </div>
     // <div className="flex justify-center">
