@@ -1,6 +1,6 @@
 import Previewnft from "./components/PreviewNft";
 // import Search from "./components/Search";
-// import Viewprofile from "./components/ViewProfile";
+import Viewprofile from "./components/ViewProfile";
 // import page2 from "./mints/nfts/page2";
 import faq from './components/FAQ';
 const routes = [
@@ -18,11 +18,11 @@ const routes = [
   //   path: "/MINT NFT",
   //   component: page2,
   // },
-  // {
-  //   pathName: "VIEW PROFILE",
-  //   path: "/VIEW PROFILE",
-  //   component: Viewprofile,
-  // },
+  {
+    pathName: "VIEW PROFILE",
+    path: "/VIEW PROFILE",
+    component: Viewprofile,
+  },
   // {
   //   pathName: "CONNECT WALLET",
   //   path: "/CONNECT WALLET",
