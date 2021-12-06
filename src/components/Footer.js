@@ -18,9 +18,9 @@ const Footer = () => {
     <Containertop>
 
         {/* Heading-logo of muzix */}
-      <div style={{ width: "100%", paddingBottom: "1rem" }}>
+      {/* <div style={{ width: "100%", paddingBottom: "1rem" }}>
         <img src={logo} alt="logo-present" />
-      </div>
+      </div> */}
 
       {/* horizontal-line */}
       <hr
@@ -104,7 +104,7 @@ const Footer = () => {
           border: "none",
         }}
       />
-      <h4 style={{ color: "white" }}>© 2021 MUZIX. All rights reserved</h4>
+      <h4 style={{ color: "white" }}>© 2021 mercado.studio. All rights reserved</h4>
     </Containertop>
   );
 };

@@ -3,7 +3,7 @@ import { Drawer } from "antd";
 //import { UnorderedListOutlined } from "@ant-design/icons";
 import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
-// import ham from "../assets/images/menu.png";
+import ham from "../assets/images/menu.png";
 import Drawerroutes from "./DrawerRoutes";
 const NavBar = (props) => {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -33,6 +33,7 @@ const NavBar = (props) => {
       >
         <div className="header-ham" style={{width:"100vw",display:"flex",justifyContent:"space-between",alignItems:"end",marginLeft:"auto"}} >
           {/* <div>m</div> */}
+          
           <button 
           style={{backgroundColor: "rgba(21, 61, 111, 0.44)",
             border: "1px solid rgba(21, 61, 111, 0.44)",
@@ -66,7 +67,7 @@ const NavBar = (props) => {
               : name.includes("page")
               ? ""
               : name
-            : "MERCADO.STUDIO"}
+            : ""}
         </div>
       </div>
       <Drawer
