@@ -3,10 +3,14 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
+import window from 'global'
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+
+   {window.innerWidth <500 ? (
+       <h1 style={{color:"white",textAlign:"center"}}>open on desktop</h1>
+      ) : <App/>}
+    
   </React.StrictMode>,
   document.getElementById("root")
 );

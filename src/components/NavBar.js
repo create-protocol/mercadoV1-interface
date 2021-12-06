@@ -31,8 +31,8 @@ const NavBar = (props) => {
             : {}
         }
       >
-        <div className="header-ham" style={{width:"100vw",display:"flex",justifyContent:"space-between",alignItems:"center"}} >
-          <div>Powered by Muizx</div>
+        <div className="header-ham" style={{width:"100vw",display:"flex",justifyContent:"space-between",alignItems:"end",marginLeft:"auto"}} >
+          {/* <div>m</div> */}
           <button 
           style={{backgroundColor: "rgba(21, 61, 111, 0.44)",
             border: "1px solid rgba(21, 61, 111, 0.44)",

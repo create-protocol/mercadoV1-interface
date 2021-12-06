@@ -4,9 +4,18 @@ import "antd/dist/antd.css";
 
 import Routes from "./Routes";
 import { Helmet } from "react-helmet";
+import { render } from "react-dom";
 function App() {
   return (
+
+
+
+      
+
     <div className="App">
+
+
+
       <Helmet>
         <title>MuzixTech</title>
         <meta name="description" content="A marketplace for artist" />
