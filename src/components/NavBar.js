@@ -10,6 +10,35 @@ import "../assets/css/Navbar.css";
 import Web3Modal from "web3modal";
 import Drawerroutes from "./DrawerRoutes";
 import Home from '../assets/images/home.png'
+import styled from "styled-components";
+
+const ShadowBtn = styled.div`
+background-color: rgb(112, 215, 49);
+color: rgb(26, 24, 24);
+font-size: 20px;
+font-weight: 700;
+width: 300%;
+height:80px;
+border: 10px solid rgb(48, 52, 57);
+border-radius: 20px;
+padding:-6px 20px 16px 20px;
+cursor: pointer;
+margin-top: 0.5rem;
+max-width: 900px;
+transition: all 0.3s ease-in-out 0s;
+box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
+margin-top:20px;
+margin-right: 20px;
+margin-left: 20px;
+}
+  &:hover{
+    -webkit-box-shadow: 0 0 8px #fff;
+        box-shadow: 0 0 8px #fff;
+        transition:.5s;
+        border-radius:20px
+  }
+`;
+
 const NavBar =  (props) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [curAddress, serCurAddress] = useState(null);
@@ -94,9 +123,14 @@ const NavBar =  (props) => {
 
           {curAddress!=null ?  (
        <h1 style={{color:"white",textAlign:"center",fontSize:"30px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1>
-      ) : <button className="connect-wallet2" onClick={connectWallet}>Connect Wallet</button>}
+      ) : <ShadowBtn
+            style={{fonstSize:"1rem",width:"180px"}}
+            onClick={connectWallet}
+          >
+            Connect Wallet
+          </ShadowBtn>
 
-          {/* <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1> */}
+          /* <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1> */}
           
         </div>
         <div
