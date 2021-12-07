@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect  } from "react";
+import React, { useState, useEffect, useLayoutEffect,useRef  } from "react";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
 import { ethers } from "ethers";
@@ -10,8 +10,9 @@ import "../assets/css/Navbar.css";
 import Web3Modal from "web3modal";
 import Drawerroutes from "./DrawerRoutes";
 import Home from '../assets/images/home.png'
+import copy from '../assets/images/icons8-copy-24.png'
 import styled from "styled-components";
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 const ShadowBtn = styled.div`
 background-color: rgb(112, 215, 49);
 color: rgb(26, 24, 24);
@@ -84,6 +85,35 @@ const NavBar =  (props) => {
 
 
 
+  const [copySuccess, setCopySuccess] = useState('');
+  const textAreaRef = useRef(null);
+
+  function copyToClipboard(e) {
+    textAreaRef.current.select();
+    document.execCommand('copy');
+    // This is just personal preference.
+    // I prefer to not show the whole text area selected.
+    e.target.focus();
+    setCopySuccess('Copied!');
+  };
+
+
+
+  // function myFunction() {
+  //   /* Get the text field */
+  //   var copyText = document.getElementById("myInput");
+  
+  //   /* Select the text field */
+  //   copyText.select();
+  //   copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  
+  //   /* Copy the text inside the text field */
+  //   navigator.clipboard.writeText(copyText.value);
+    
+  //   /* Alert the copied text */
+  //   alert("Copied the text: " + copyText.value);
+  // }
+
 
   // const web3Modal = new Web3Modal({
   //   network: "mainnet",
@@ -92,6 +122,8 @@ const NavBar =  (props) => {
   // const connection = await web3Modal.connect()
   // const provider = new ethers.providers.Web3Provider(connection)
   // const signer = provider.getSigner()
+
+  
 
   return (
     <div style={{}}>
@@ -122,7 +154,15 @@ const NavBar =  (props) => {
           </Link>
 
           {curAddress!=null ?  (
-       <h1 style={{color:"white",textAlign:"center",fontSize:"30px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1>
+
+            <div className="row">
+                     {/* <h1  ref={textAreaRef} id="tokenaddress" style={{color:"white",textAlign:"center",fontSize:"30px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}  </h1> */}
+                    {/* <button onClick={copyToClipboard}><img src={copy} style={{width:"20px",height:"20px"}}></img></button>  */}
+                    <CopyToClipboard text={window.ethereum.selectedAddress} style={{color:"black",textAlign:"center",fontSize:"30px",marginRight:"50px",height:"55px"}}>
+                        <button>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</button>
+                    </CopyToClipboard>
+            </div>
+       
       ) : <ShadowBtn
             style={{fonstSize:"1rem",width:"180px"}}
             onClick={connectWallet}
