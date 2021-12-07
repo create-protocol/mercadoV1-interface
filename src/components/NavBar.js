@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect  } from "react";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
 import { ethers } from "ethers";
@@ -12,6 +12,7 @@ import Drawerroutes from "./DrawerRoutes";
 import Home from '../assets/images/home.png'
 const NavBar =  (props) => {
   const [showDrawer, setShowDrawer] = useState(false);
+  const [curAddress, serCurAddress] = useState(null);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
   
   useEffect( async function connectWallet() {
@@ -24,8 +25,24 @@ const NavBar =  (props) => {
     const signer = provider.getSigner()
 
     console.log(signer);
+    
+    setTimeout(
+      function(){
+        serCurAddress(window.ethereum.selectedAddress)
+
+      }, 0
+    )
   
   });
+
+  useLayoutEffect(() => {
+    window.ethereum.on('accountsChanged', function(accounts) {
+      serCurAddress(window.ethereum.selectedAddress)
+    })
+  }, []);
+
+
+
 
   // const web3Modal = new Web3Modal({
   //   network: "mainnet",
@@ -62,8 +79,13 @@ const NavBar =  (props) => {
           <Link to='/'>
           <img style={{width:"2.5rem",height:"2.5rem",objectFit:"contain",marginTop:"-1rem",marginLeft:"40px"}} src={Home} alt="homepage"/>
           </Link>
-          <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1>
-          {/* <button className="connect-wallet2">Connect Wallet</button> */}
+
+          {curAddress!=null ?  (
+       <h1 style={{color:"white",textAlign:"center"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1>
+      ) : <button className="connect-wallet2">Connect Wallet</button>}
+
+          {/* <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1> */}
+          
         </div>
         <div
           className="h21 header-title"
