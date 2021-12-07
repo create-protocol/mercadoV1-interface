@@ -16,6 +16,28 @@ const NavBar =  (props) => {
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
   
   useEffect( async function connectWallet() {
+    // const web3Modal = new Web3Modal({
+    //   network: "mainnet",
+    //   cacheProvider: true,
+    // })
+    // const connection = await web3Modal.connect()
+    // const provider = new ethers.providers.Web3Provider(connection)
+    // const signer = provider.getSigner()
+
+    // console.log(signer);
+    
+    setTimeout(
+      function(){
+        serCurAddress(window.ethereum.selectedAddress)
+
+      }, 100
+    )
+  
+  });
+  async function connectWallet(){
+    console.log(
+      "here"
+    )
     const web3Modal = new Web3Modal({
       network: "mainnet",
       cacheProvider: true,
@@ -23,17 +45,7 @@ const NavBar =  (props) => {
     const connection = await web3Modal.connect()
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
-
-    console.log(signer);
-    
-    setTimeout(
-      function(){
-        serCurAddress(window.ethereum.selectedAddress)
-
-      }, 0
-    )
-  
-  });
+  }
 
   useLayoutEffect(() => {
     window.ethereum.on('accountsChanged', function(accounts) {
@@ -81,8 +93,8 @@ const NavBar =  (props) => {
           </Link>
 
           {curAddress!=null ?  (
-       <h1 style={{color:"white",textAlign:"center"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1>
-      ) : <button className="connect-wallet2">Connect Wallet</button>}
+       <h1 style={{color:"white",textAlign:"center",fontSize:"30px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1>
+      ) : <button className="connect-wallet2" onClick={connectWallet}>Connect Wallet</button>}
 
           {/* <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1> */}
           
