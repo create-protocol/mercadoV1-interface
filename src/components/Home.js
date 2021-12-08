@@ -13,7 +13,7 @@ import cir from "../assets/images/cir.jpg";
 // import battle3 from "../assets/images/battle3.jpg";
 // import Dropmenucontainer from "./DropmenuContainer";
 // import page5 from './MintNft'
-import Footer2 from "./Footer2";
+import Footer from "./Footer";
 import styled from "styled-components";
 
 const ShadowBtn = styled.div`
@@ -112,7 +112,7 @@ const Home = (props) => {
       </div> */}
 
       <div style={{ height: "250px" }}></div>
-      <Footer2 />
+      <Footer />
     </div>
   );
 };

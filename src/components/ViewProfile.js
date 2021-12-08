@@ -184,7 +184,7 @@ const Viewprofile = (props) => {
         </div>
       </div> */}
       <div className="intro-contianer">
-        <div className="profile-name">LZY LAD</div>
+        <div className="profile-name">Bharat Thakur</div>
         <div className="profile-desc">
           A TWO LINE SIMPLE BIO ABOUT THE ARTIST, AND THEIR STYLE AND
           INSPIRATIONS & MOTIVATIONS

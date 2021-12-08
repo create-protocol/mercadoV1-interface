@@ -20,7 +20,7 @@ const routes = [
   // },
   {
     pathName: "VIEW PROFILE",
-    path: "/creator/lazylad",
+    path: "/creator/bharat-thakur",
     component: Viewprofile,
   },
   // {
