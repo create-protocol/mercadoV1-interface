@@ -8,6 +8,8 @@ import Nftslist from "./NFTsList";
 import sqr from "../assets/images/space1.png";
 import bharatt from '../assets/images/bharatt.png'
 import Footer from './Footer'
+import Loader from "react-loader-spinner";
+
 // import cir from "../assets/images/cir.jpg";
 const Viewprofile = (props) => {
   //   const pairs = {
@@ -227,12 +229,12 @@ const Viewprofile = (props) => {
 
 
       
-      <div>
-        
-        
-        <Nftslist sqr={sqr} cir={cir}></Nftslist>
-      </div>
-
+if({window.ethereum}){
+          <Nftslist sqr={sqr} cir={cir}></Nftslist>
+        }
+        else{
+          
+        }
 
       {/* <div className="option-comp-container">{optionComponent}</div> */}
       <Footer/>
