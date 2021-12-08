@@ -1,9 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
 import hero from "../assets/images/A6 - 3.svg";
-=======
-import hero from "../assets/images/mercado.png";
->>>>>>> v3
 import "../assets/css/home.css";
 // import Cardcontainer from "../containers/CardContainer";
 import Nftslist from "./NFTsList";

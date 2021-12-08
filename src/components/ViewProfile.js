@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../assets/css/profile.css";
 import bg from "../assets/images/bg.png";
-import cir from "../assets/images/cir.jpg";
+import cir from "../assets/images/bharat.jpeg";
 import Profileaudiolist from "./ProfileAudioList";
 import Nftslist from "./NFTsList";
 // import Creatorslist from "./CreatorsList";
@@ -111,14 +111,14 @@ const Viewprofile = (props) => {
         <div className="pair-container">
           <div>
             <div className="pair-container">
-              <div className="key-value-pair">
+              {/* <div className="key-value-pair">
                 <div className="key">MINTED</div>
                 <div className="value">21</div>
               </div>
               <div className="key-value-pair">
                 <div className="key">SOLD</div>
                 <div className="value">19</div>
-              </div>
+              </div> */}
             </div>
             {/* <div className="stats-container">
               <div className="view-stat">VIEW STATS</div>
@@ -184,7 +184,7 @@ const Viewprofile = (props) => {
         </div>
       </div> */}
       <div className="intro-contianer">
-        <div className="profile-name">Bharat Thakur</div>
+        <div className="profile-name" style={{marginTop:"90px"}}>Bharat Thakur</div>
         <div className="profile-desc">
           A TWO LINE SIMPLE BIO ABOUT THE ARTIST, AND THEIR STYLE AND
           INSPIRATIONS & MOTIVATIONS

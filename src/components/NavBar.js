@@ -2,6 +2,7 @@ import React, { useState, useEffect, useLayoutEffect,useRef  } from "react";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
 import { ethers } from "ethers";
+import Web3Modal from "web3modal";
 
 //import { UnorderedListOutlined } from "@ant-design/icons";
 import { isBrowser } from "react-device-detect";
