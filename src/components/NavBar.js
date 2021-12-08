@@ -2,12 +2,12 @@ import React, { useState, useEffect, useLayoutEffect,useRef  } from "react";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
 import { ethers } from "ethers";
-import Web3Modal from "web3modal";
 
 //import { UnorderedListOutlined } from "@ant-design/icons";
 import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
-import ham from "../assets/images/menu.png";
+// import ham from "../assets/images/menu.png";
+import Web3Modal from "web3modal";
 import Drawerroutes from "./DrawerRoutes";
 import Home from '../assets/images/home.png'
 import copy from '../assets/images/icons8-copy-24.png'
@@ -149,20 +149,29 @@ const NavBar =  (props) => {
         }
       >
         <div className="header-ham" style={{width:"100vw",display:"flex",justifyContent:"space-between",alignItems:"end",marginLeft:"auto"}} >
-          {/* <div>m</div> */}
+          <Link to='/'>
+          <img style={{width:"2.5rem",height:"2.5rem",objectFit:"contain",marginTop:"-1rem",marginLeft:"40px"}} src={Home} alt="homepage"/>
+          </Link>
+
+          {curAddress!=null ?  (
+
+            <div className="row">
+                     {/* <h1  ref={textAreaRef} id="tokenaddress" style={{color:"white",textAlign:"center",fontSize:"30px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}  </h1> */}
+                    {/* <button onClick={copyToClipboard}><img src={copy} style={{width:"20px",height:"20px"}}></img></button>  */}
+                    <CopyToClipboard text={window.ethereum.selectedAddress} style={{color:"black",textAlign:"center",fontSize:"30px",marginRight:"50px",height:"55px"}}>
+                        <button>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</button>
+                    </CopyToClipboard>
+            </div>
+       
+      ) : <ShadowBtn
+            style={{fonstSize:"1rem",width:"180px"}}
+            onClick={connectWallet}
+          >
+            Connect Wallet
+          </ShadowBtn>
+
+          /* <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1> */}
           
-          <button 
-          style={{backgroundColor: "rgba(21, 61, 111, 0.44)",
-            border: "1px solid rgba(21, 61, 111, 0.44)",
-            color: "rgb(80, 144, 234)",
-            padding: "0 1rem",
-            alignItems:"center",
-            borderRadius: "6px",
-            cursor: "pointer",
-          fontSize:"1.2rem",
-          lineHeight:"2rem",
-        }}
-          >Connect Wallet</button>
         </div>
         <div
           className="h21 header-title"
