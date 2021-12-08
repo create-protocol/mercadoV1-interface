@@ -10,6 +10,7 @@ import "../assets/css/Navbar.css";
 import Web3Modal from "web3modal";
 import Drawerroutes from "./DrawerRoutes";
 import Home from '../assets/images/home.png'
+import Footer from "./Footer";
 import copy from '../assets/images/icons8-copy-24.png'
 import styled from "styled-components";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
@@ -41,24 +42,22 @@ margin-left: 20px;
 `;
 
 const NavBar =  (props) => {
+
   const [showDrawer, setShowDrawer] = useState(false);
   const [curAddress, serCurAddress] = useState(null);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
   
   useEffect( async function connectWallet() {
-    // const web3Modal = new Web3Modal({
-    //   network: "mainnet",
-    //   cacheProvider: true,
-    // })
-    // const connection = await web3Modal.connect()
-    // const provider = new ethers.providers.Web3Provider(connection)
-    // const signer = provider.getSigner()
-
-    // console.log(signer);
     
     setTimeout(
       function(){
-        serCurAddress(window.ethereum.selectedAddress)
+        if(window.ethereum){
+          serCurAddress(window.ethereum.selectedAddress)
+        }
+        else{
+          <h1>Please Install metamask extension from <a href="https://metamask.io/">Here</a> </h1>
+        }
+        
 
       }, 100
     )
@@ -68,22 +67,32 @@ const NavBar =  (props) => {
     console.log(
       "here"
     )
-    const web3Modal = new Web3Modal({
-      network: "mainnet",
-      cacheProvider: true,
-    })
-    const connection = await web3Modal.connect()
-    const provider = new ethers.providers.Web3Provider(connection)
-    const signer = provider.getSigner()
+    if(window.ethereum){
+      const web3Modal = new Web3Modal({
+        network: "mainnet",
+        cacheProvider: true,
+      })
+      const connection = await web3Modal.connect()
+      const provider = new ethers.providers.Web3Provider(connection)
+      const signer = provider.getSigner()
+    }
+    else{
+      alert("Please Install Metamask extension from ",<a href="metamask.io">here</a>)
+    }
+   
   }
 
   useLayoutEffect(() => {
-    window.ethereum.on('accountsChanged', function(accounts) {
-      serCurAddress(window.ethereum.selectedAddress)
-    })
+    if(window.ethereum){
+      window.ethereum.on('accountsChanged', function(accounts) {
+        serCurAddress(window.ethereum.selectedAddress)
+      })
+    }
+    else{
+      <h1>Please Install metamask extension from <a href="https://metamask.io/">Here</a> </h1>
+    }
+   
   }, []);
-
-
 
   const [copySuccess, setCopySuccess] = useState('');
   const textAreaRef = useRef(null);

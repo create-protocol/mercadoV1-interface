@@ -14,13 +14,15 @@ function App() {
 
     <div className="App">
 
-
+    
 
       <Helmet>
         <title>MuzixTech</title>
         <meta name="description" content="A marketplace for artist" />
         <meta name="keywords" content="Muzix,NFT,Create protocall,Marketplace"/>
       </Helmet>
+
+      
       <Routes></Routes>
     </div>
   );

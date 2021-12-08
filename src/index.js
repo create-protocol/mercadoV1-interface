@@ -7,6 +7,7 @@ import window from 'global'
 ReactDOM.render(
   <React.StrictMode>
 
+
    {window.innerWidth <500 ? (
        <h1 style={{color:"white",textAlign:"center"}}>open on desktop</h1>
       ) : <App/>}
