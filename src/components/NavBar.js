@@ -13,6 +13,7 @@ import Home from '../assets/images/home.png'
 import Footer from "./Footer";
 import copy from '../assets/images/icons8-copy-24.png'
 import styled from "styled-components";
+// import { Alert } from 'styled-alert-component';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 const ShadowBtn = styled.div`
 background-color: rgb(112, 215, 49);
@@ -77,7 +78,7 @@ const NavBar =  (props) => {
       const signer = provider.getSigner()
     }
     else{
-      alert("Please Install Metamask extension from ",<a href="metamask.io">here</a>)
+      alert("Please Install metamask extension from metamask.io")
     }
    
   }
@@ -89,7 +90,7 @@ const NavBar =  (props) => {
       })
     }
     else{
-      <h1>Please Install metamask extension from <a href="https://metamask.io/">Here</a> </h1>
+      <h1>Please Install metamask extension from metamask.io<a href="https://metamask.io/">Here</a> </h1>
     }
    
   }, []);
