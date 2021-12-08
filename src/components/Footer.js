@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/images/Muzixlogo.svg";
+// import logo from "../assets/images/Muzixlogo.svg";
 import 'font-awesome/css/font-awesome.min.css'
 
 import {
@@ -7,7 +7,6 @@ import {
   Containertop,
   
   Row,
-  Column,
   FooterLink,
   Heading,
   ContainerInner,
@@ -36,9 +35,9 @@ const Footer = () => {
           <Heading>Marketplace</Heading>
 
           <FooterLink href="/">Home</FooterLink>
-          <FooterLink href="/teampage">Create</FooterLink>
+          <FooterLink href="/creator/bharat-thakur">Creator</FooterLink>
           <FooterLink href="#">Discover</FooterLink>
-          <FooterLink href="#">Creators</FooterLink>
+          {/* <FooterLink href="/creator">Creators</FooterLink> */}
         </Row>
         <Row>
           <Heading>About Us</Heading>

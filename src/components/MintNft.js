@@ -8,17 +8,39 @@ import { nftaddress, nftmarketaddress } from "../config";
 import "../assets/css/home.css";
 import NFT from "../abis/NFT.json";
 import Market from "../abis/Marketplace.json";
+import styled from "styled-components";
+import Home from '../assets/images/home.png'
 
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
 // import fire from "../assets/images/fire.png";
+const ShadowBtn = styled.div`
+  background-color: green;
+  color: white;
+  padding: 0.3rem 1.2rem;
+  alignitems: center;
+  
+  cursor: pointer;
+  border: 8px solid black;
+  
+  fontsize: 2.5rem;
+  lineheight: 2rem;
+  textalign: center;
+  
 
+  &:hover {
+    -webkit-box-shadow: 0 0 8px #fff;
+    box-shadow: 0 0 8px #fff;
+    transition: 0.5s;
+  }
+`;
 function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
     description: "",
+    creator:"Lzy Lad"
   });
   // const router = useRouter()
 
@@ -35,13 +57,14 @@ function Mintnft() {
     }
   }
   async function createMarket() {
-    const { name, description, price } = formInput;
-    if (!name || !description || !price || !fileUrl) return;
+    const { name, description, price,creator } = formInput;
+    if (!name || !description || !price || !fileUrl ||creator) return;
     /* first, upload to IPFS */
     const data = JSON.stringify({
       name,
       description,
       image: fileUrl,
+      creator
     });
     try {
       const added = await client.add(data);
@@ -91,7 +114,7 @@ function Mintnft() {
 
   return (
     <div>
-      <h2>CHOOSE A NFT Category</h2>
+      {/* <h2>CHOOSE A NFT Category</h2>
       <form
         className="uploadoc"
         action="/action_page.php"
@@ -130,68 +153,109 @@ function Mintnft() {
             VIEW OUR GUIDELINES <br /> FOR CREATING NFTS
           </text>
         </view>
-      </view>
-      
-      <view style={{}}>
+      </view> */}
+
+      <view style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <form
           // action="/action_page.php"
           className="formfill"
-          style={{ }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width:"50%",
+            // alignItems: "center",
+          }}
         >
+          <div style={{backgroundColor:"grey",padding:"2rem",borderRadius:".5rem"}}>
           <label for="fname">ASSET NAME</label>
           <br />
           <input
             className="formtxtfill docs"
             type="text"
-            id="fname"
-            name="fname"
-            value="LET'S START WITH GIVING A UNIQUE NAME TO YOUR WORK OF ART"
+            // id="fname"
+            // name="fname"
+            style={{width:"100%"}}
+            // value="LET'S START WITH GIVING A UNIQUE NAME TO YOUR WORK OF ART"
           />
+          </div>
           <br />
+          <div style={{backgroundColor:"grey",padding:"2rem",borderRadius:".5rem"}}>
           <label for="lname">ASSET DESCRIPTION</label>
           <br />
           <input
             className="formtxtfill docs"
             type="text"
-            id="lname"
-            name="lname"
-            value=""
+            // id="lname"
+            // name="lname"
+            
+            style={{width:"100%"}}
           />
+          </div>
           <br />
+          <div style={{backgroundColor:"grey",padding:"2rem",borderRadius:".5rem"}}>
           <label for="lname">ASSET PRICE IN ETHERIUM</label>
           <br />
           <input
             className="formtxtfill docs"
             type="text"
-            id="lname"
-            name="lname"
-            value=""
+            // id="lname"
+            // name="lname"
+            
+            style={{width:"100%"}}
           />
+          </div>
           <br />
+          <div style={{backgroundColor:"grey",padding:"2rem",borderRadius:".5rem"}}>
           <input
             className="formtxtfill docs"
             type="file"
-            name="Asset"           
-            
+            name="Asset"
             onChange={onChange}
+            style={{width:"100%"}}
           />
-          {fileUrl && (
-            <img className="docs" style={{opcaity:"0.5"}} alt="" width="350" src={fileUrl} />
-          )}
+          </div>
+          
+          
           <br />
         </form>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"center",width:"50%"}}>
+          {/* <img style={{height:"20rem",width:"20rem"}}src={Home} alt="image hrer"/> */}
+        {fileUrl
+         ?(
+            <img
+              className="docs"
+              style={{ opcaity: "0.7", height:"30rem",width:"30rem",backgroundSize:"cover"}}
+              alt="Preview  "
+              width="350"
+              src={fileUrl}
+            />)
+          :(<h2 style={{color:"white",fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"}}>Preview Here</h2>)}
+          </div>
       </view>
-      
-      <Bot />
+
+      {/* <Bot /> */}
       {/* <button
         className="cnetrbutton"
         type="button"
         
       > */}
-      <div style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"center",flexWrap:"wrap"}}>
-      <div className="action-container my-4"style={{width:"max-content"}} >
-        <div className="action-btn" >CREATE DIGITAL ASSET</div>
-      </div>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        {/* <div className="action-container my-4"style={{width:"max-content"}} > */}
+        <ShadowBtn>
+          <div style={{fontSize:"1.5rem"}} 
+          // className="action-btn"
+          >CREATE DIGITAL ASSET</div>
+        </ShadowBtn>
+
+        {/* </div> */}
       </div>
     </div>
     // <div className="flex justify-center">

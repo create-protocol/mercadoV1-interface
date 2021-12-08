@@ -1,20 +1,136 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useLayoutEffect,useRef  } from "react";
 import { Drawer } from "antd";
+import { Link } from "react-router-dom";
+import { ethers } from "ethers";
+
 //import { UnorderedListOutlined } from "@ant-design/icons";
 import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
 import ham from "../assets/images/menu.png";
 import Drawerroutes from "./DrawerRoutes";
-const NavBar = (props) => {
+import Home from '../assets/images/home.png'
+import copy from '../assets/images/icons8-copy-24.png'
+import styled from "styled-components";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+const ShadowBtn = styled.div`
+background-color: rgb(112, 215, 49);
+color: rgb(26, 24, 24);
+font-size: 20px;
+font-weight: 700;
+width: 300%;
+height:80px;
+border: 10px solid rgb(48, 52, 57);
+border-radius: 20px;
+padding:-6px 20px 16px 20px;
+cursor: pointer;
+margin-top: 0.5rem;
+max-width: 900px;
+transition: all 0.3s ease-in-out 0s;
+box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
+margin-top:20px;
+margin-right: 20px;
+margin-left: 20px;
+}
+  &:hover{
+    -webkit-box-shadow: 0 0 8px #fff;
+        box-shadow: 0 0 8px #fff;
+        transition:.5s;
+        border-radius:20px
+  }
+`;
+
+const NavBar =  (props) => {
   const [showDrawer, setShowDrawer] = useState(false);
+  const [curAddress, serCurAddress] = useState(null);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
+  
+  useEffect( async function connectWallet() {
+    // const web3Modal = new Web3Modal({
+    //   network: "mainnet",
+    //   cacheProvider: true,
+    // })
+    // const connection = await web3Modal.connect()
+    // const provider = new ethers.providers.Web3Provider(connection)
+    // const signer = provider.getSigner()
+
+    // console.log(signer);
+    
+    setTimeout(
+      function(){
+        serCurAddress(window.ethereum.selectedAddress)
+
+      }, 100
+    )
+  
+  });
+  async function connectWallet(){
+    console.log(
+      "here"
+    )
+    const web3Modal = new Web3Modal({
+      network: "mainnet",
+      cacheProvider: true,
+    })
+    const connection = await web3Modal.connect()
+    const provider = new ethers.providers.Web3Provider(connection)
+    const signer = provider.getSigner()
+  }
+
+  useLayoutEffect(() => {
+    window.ethereum.on('accountsChanged', function(accounts) {
+      serCurAddress(window.ethereum.selectedAddress)
+    })
+  }, []);
+
+
+
+  const [copySuccess, setCopySuccess] = useState('');
+  const textAreaRef = useRef(null);
+
+  function copyToClipboard(e) {
+    textAreaRef.current.select();
+    document.execCommand('copy');
+    // This is just personal preference.
+    // I prefer to not show the whole text area selected.
+    e.target.focus();
+    setCopySuccess('Copied!');
+  };
+
+
+
+  // function myFunction() {
+  //   /* Get the text field */
+  //   var copyText = document.getElementById("myInput");
+  
+  //   /* Select the text field */
+  //   copyText.select();
+  //   copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  
+  //   /* Copy the text inside the text field */
+  //   navigator.clipboard.writeText(copyText.value);
+    
+  //   /* Alert the copied text */
+  //   alert("Copied the text: " + copyText.value);
+  // }
+
+
+  // const web3Modal = new Web3Modal({
+  //   network: "mainnet",
+  //   cacheProvider: true,
+  // })
+  // const connection = await web3Modal.connect()
+  // const provider = new ethers.providers.Web3Provider(connection)
+  // const signer = provider.getSigner()
+
+  
+
   return (
     <div style={{}}>
       <div
         className="header-container"
         style={
           name
-            ? name === "VIEW PROFILE"
+            ? name === ""
               ? {
                   background: "transparent",
                   position: "absolute",
@@ -51,18 +167,19 @@ const NavBar = (props) => {
           className="h21 header-title"
           style={
             name
-              ? name === "VIEW PROFILE"
+              ? name === ""
                 ? {
                     color: "#fff",
                     fontSize: isBrowser ? "3rem" : "1.5rem",
+                    font:"Inter"
                   }
-                : { fontSize: isBrowser ? "3rem" : "1.5rem" }
-              : { fontSize: isBrowser ? "1.6rem" : "1.9rem" }
+                : { fontSize: isBrowser ? "3rem" : "1.5rem",font:"Inter" }
+              : { fontSize: isBrowser ? "1.6rem" : "1.9rem",font:"Inter" }
 
           }
         >
           {name
-            ? name === "VIEW PROFILE"
+            ? name === ""
               ? "PROFILE"
               : name.includes("page")
               ? ""

@@ -63,7 +63,7 @@ const Nftslist = (props) => {
           owner: i.owner,
           sold: i.sold,
           image: meta.data.image,
-          desc:meta.data.description
+          desc: meta.data.description
         };
         return item;
       })
@@ -78,20 +78,20 @@ const Nftslist = (props) => {
   }
 
   // if(my component) else if else 
-  
-  if(loadingState!="loaded"){
 
-    return  <div style={{height:"200px",alignContent:"center",marginTop:"60px"}}>
+  if (loadingState != "loaded") {
 
-<Loader
+    return <div style={{ height: "200px", alignContent: "center", marginTop: "60px" }}>
+
+      <Loader
         type="Puff"
         color="#00BFFF"
         height={100}
         width={100}
-        // timeout={3000} //3 secs
+      // timeout={3000} //3 secs
       />
-      
-      </div> ;
+
+    </div>;
   }
 
   else if (loadingState === "loaded" && !nfts.length)
@@ -111,7 +111,7 @@ const Nftslist = (props) => {
             ))
           } */}
         <div className=" my-4 ml-4 ">
-          <div className="m-card-content ">
+          <div className="m-card-content" style={{ justifyContent: "center" }}>
             {nfts.map((nft, i) => (
               // <div
               //   onClick={(e) => {
@@ -126,7 +126,7 @@ const Nftslist = (props) => {
                     name: nft.owner,
                     price: nft.price,
                     sellername: nft.seller,
-                    desc:nft.desc
+                    desc: nft.desc
                   },
                 }}
               >
@@ -136,19 +136,23 @@ const Nftslist = (props) => {
 
 
 
-                  
+
                     <p
                       style={{
                         fontWeight: "bold",
                         margin: "10px",
                         color: "white",
-                        textAlign:"start"
+                        textAlign: "start",
+                        display: "flex",
+                        justifyContent: "space-between"
                       }}
-                      
-                    >
-                       {nft.price} Eth
 
-                       <span style={{padding:"20px",marginRight:"9rem",textAlign:"end",justifyContent:"end",textAlign:"end"}}>{nft.seller.substring(0,6) + "........."+nft.seller.slice(-3)}</span>
+                    >
+                      <div>{nft.price} Eth</div>
+
+                      <div><span
+                      //  style={{padding:"20px",marginRight:"9rem",textAlign:"end",justifyContent:"end",textAlign:"end"}}
+                      >{nft.seller.substring(0, 6) + "........." + nft.seller.slice(-3)}</span></div>
 
 
                     </p>
@@ -171,7 +175,7 @@ const Nftslist = (props) => {
                   key={i}
                   className="border shadow rounded-xl overflow-hidden"
                 >
-                  <img src={nft.image} className="rounded" alt="" />
+                  <img style={{ width: "20rem", height: "20rem", objectFit: "contain" }} src={nft.image} className="rounded" alt="" />
                   <div className="p-4 bg-black">
                     <p className="text-2xl font-bold text-red">
                       Price - {nft.price} Eth
