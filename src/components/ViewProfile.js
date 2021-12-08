@@ -6,6 +6,7 @@ import Profileaudiolist from "./ProfileAudioList";
 import Nftslist from "./NFTsList";
 // import Creatorslist from "./CreatorsList";
 import sqr from "../assets/images/space1.png";
+import bharatt from '../assets/images/bharatt.png'
 import Footer from './Footer'
 // import cir from "../assets/images/cir.jpg";
 const Viewprofile = (props) => {
@@ -101,7 +102,7 @@ const Viewprofile = (props) => {
   );
   return (
     <div>
-      <div className="profile-banner" style={{ backgroundImage: `url(${bg})` }}>
+      <div className="profile-banner" style={{ backgroundImage: `url(${bharatt})` }}>
         <div className="profile-banner-mask"></div>
         <div className="profile-container-circle">
           <img src={cir} alt="pro" className="profile-img"></img>
