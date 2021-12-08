@@ -15,7 +15,6 @@ import cir from "../assets/images/cir.jpg";
 // import page5 from './MintNft'
 import Footer from "./Footer";
 import styled from "styled-components";
-import Loader from "react-loader-spinner";
 
 const ShadowBtn = styled.div`
 background-color: rgb(112, 215, 49);
@@ -68,24 +67,7 @@ const Home = (props) => {
         {/* <button><h1 style={{color:"grey",textAlign:"center",marginTop:"30px",width:"20px",height:"60px"}}>EXPLORE </h1></button>
       <button><span style={{color:"white",marginLeft:"10px",fontSize:"5px"}}>MY ASSETS</span> </button>
        */}
-        if({window.ethereum}){
-          <Nftslist sqr={sqr} cir={cir}></Nftslist>
-        }
-        else{
-        //   <div style={{ height: "200px", alignContent: "center", marginTop: "60px" }}>
-
-        //   <Loader
-        //     type="Puff"
-        //     color="#00BFFF"
-        //     height={100}
-        //     width={100}
-        //   // timeout={3000} //3 secs
-        //   />
-    
-        // </div>
-        }
-
-        
+        <Nftslist sqr={sqr} cir={cir}></Nftslist>
       </div>
 
       {/* <div>
