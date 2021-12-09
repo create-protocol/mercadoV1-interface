@@ -36,7 +36,7 @@ h2{
     height: 200px;
     background-color: #363636 0% 0% no-repeat padding-box;
     border-radius: 6px;
-    opacity: 0.4;
+    /* opacity: 0.4; */
 }
 .uplod{
     background: #363636 0% 0% no-repeat padding-box;
@@ -113,7 +113,9 @@ h2{
     letter-spacing: 4.8px;
     color: #FFFFFF;
     text-transform: uppercase;
-    opacity: 0.1;
+    border: 2px solid white;
+    border-radius: 2px solid red;
+    /* opacity: 0.1; */
 }
 
 .butto{

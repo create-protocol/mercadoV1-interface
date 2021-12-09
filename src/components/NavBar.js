@@ -183,7 +183,7 @@ const NavBar =  (props) => {
           /* <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1> */}
           
         </div>
-        <div
+        {/* <div
           className="h21 header-title"
           style={
             name
@@ -205,7 +205,7 @@ const NavBar =  (props) => {
               ? ""
               : name
             : ""}
-        </div>
+        </div> */}
       </div>
       <Drawer
         placement="left"

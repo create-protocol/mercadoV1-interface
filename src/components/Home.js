@@ -6,6 +6,8 @@ import Nftslist from "./NFTsList";
 // import Creatorslist from "./CreatorsList";
 import sqr from "../assets/images/space1.png";
 import cir from "../assets/images/cir.jpg";
+import { Player } from 'video-react';
+
 // import four from "../assets/images/four.png";
 //import battle1 from "../assets/images/1.jpg";
 // import battle4 from "../assets/images/battle4.jpg";
@@ -43,10 +45,23 @@ margin-left: 20px;
 `;
 const Home = (props) => {
   return (
+
+
+
+
     <div>
+
+    
+
+
       <div className="hero-container my-2">
         <div className="hero my-4">
-          <h1 style={{color:"#cccccc"}}>mercado.studio</h1>
+          <h1 style={{ color: "#cccccc" }}>mercado.studio</h1>
+
+         
+
+
+
           {/* <img src={hero} style={{ width: "100%" }} alt="blockchain"></img> */}
         </div>
         {/* <div className="hero-sub-heading">
@@ -54,8 +69,8 @@ const Home = (props) => {
         </div> */}
         <div className="action-container my-4">
           <ShadowBtn
-            style={{fonstSize:"3rem",width:"150px"}}
-            onClick={() => props.history.push("/page5")}
+            style={{ fonstSize: "3rem", width: "150px" }}
+            onClick={() => props.history.push("/asset/create")}
           >
             CREATE
           </ShadowBtn>

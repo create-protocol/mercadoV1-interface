@@ -2,13 +2,7 @@ import React from "react";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import sqr from "../assets/images/space1.png";
-// import Nftcontainer from "./NFTContainer";
-// import amaz from "../assets/images/amazebox.jpg";
-// import pretty5 from "../assets/images/pretty image (5).jpg";
-// import battle4 from "../assets/images/battle4.jpg";
-// import pretty1 from "../assets/images/pretty_image.jpg";
-// import Web3Modal from "web3modal";
+import Web3Modal from "web3modal"
 import "../assets/css/nft.css";
 import Market from "../abis/Marketplace.json";
 import NFT from "../abis/NFT.json";
@@ -29,17 +23,9 @@ const Nftslist = (props) => {
   }, []);
   const history = useHistory();
   async function loadNFTs() {
-    // const web3Modal = new Web3Modal({
-    //   network: "mainnet",
-    //   cacheProvider: true,
-    // })
-    // const connection = await web3Modal.connect(  )
-    // const provider = new ethers.providers.Web3Provider(connection)
-    // const signer = provider.getSigner()
-    // const provider = new ethers.providers.JsonRpcProvider(`https://eth-ropsten.alchemyapi.io/v2/77Wy8P0Ua9eWbtADqxk67t_anh5pHPAv%60`)
-    // const provider = new ethers.providers.JsonRpcProvider(`https://polygon-mumbai.g.alchemy.com/v2/klOlNm_rQCabx94IjAdS_ZBHzNCkRXFX`)
+   
     const provider = new ethers.providers.JsonRpcProvider(
-      `https://eth-ropsten.alchemyapi.io/v2/77Wy8P0Ua9eWbtADqxk67t_anh5pHPAv`
+      `https://eth-kovan.alchemyapi.io/v2/-rsx-HZE8Py7I7mOMIRCHckg3ab-xKnU`
     );
 
     const marketContract = new ethers.Contract(
@@ -63,7 +49,8 @@ const Nftslist = (props) => {
           owner: i.owner,
           sold: i.sold,
           image: meta.data.image,
-          desc: meta.data.description
+          desc: meta.data.description,
+          collection:meta.data.collection
         };
         return item;
       })
@@ -75,6 +62,22 @@ const Nftslist = (props) => {
     setSold(soldItems);
     setNfts(items);
     setLoadingState("loaded");
+  }
+
+
+  async function buyNft(nft) {
+    const web3Modal = new Web3Modal()
+    const connection = await web3Modal.connect()
+    const provider = new ethers.providers.Web3Provider(connection)
+    const signer = provider.getSigner()
+    const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
+
+    const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
+    const transaction = await contract.createMarketSale(nftaddress, nft.itemId, {
+      value: price
+    })
+    await transaction.wait()
+    loadNFTs()
   }
 
   // if(my component) else if else 
@@ -95,21 +98,10 @@ const Nftslist = (props) => {
   }
 
   else if (loadingState === "loaded" && !nfts.length)
-    return <h1 className="py-10 px-20 text-3xl">No assets created</h1>;
+    return <h1 className="py-10 px-20 text-3xl" style={{color:"white"}}>No assets created</h1>;
   return (
     <div>
       <div className="p-4">
-        {/* <h2 className="text-2xl py-2">Items Created</h2> */}
-        {/* {
-            nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image} className="rounded" alt="" style={{width: 500, height: 70}} />
-                <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
-                </div>
-              </div>
-            ))
-          } */}
         <div className=" my-4 ml-4 ">
           <div className="m-card-content" style={{ justifyContent: "center" }}>
             {nfts.map((nft, i) => (
@@ -126,7 +118,8 @@ const Nftslist = (props) => {
                     name: nft.owner,
                     price: nft.price,
                     sellername: nft.seller,
-                    desc: nft.desc
+                    desc: nft.desc,
+                    collection:nft.collection
                   },
                 }}
               >
@@ -149,6 +142,7 @@ const Nftslist = (props) => {
 
                     >
                       <div>{nft.price} Eth</div>
+                      <div>{nft.collection}</div>
 
                       <div><span
                       //  style={{padding:"20px",marginRight:"9rem",textAlign:"end",justifyContent:"end",textAlign:"end"}}
@@ -221,7 +215,7 @@ const Nftslist = (props) => {
   // ));
 };
 
-export default Nftslist;
+export default Nftslist
 
 // import React from "react";
 // import { ethers } from 'ethers'

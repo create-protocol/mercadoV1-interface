@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { AppContext } from './context';
 import NavBar from "./components/NavBar";
 // import Footer from "./components/Footer/Footer";
 import Home from "./components/Home";
@@ -28,7 +29,7 @@ const Routes = () => {
             <Route exact path="/page2" component={page2}></Route>
             <Route exact path="/page3" component={page3}></Route>
             <Route exact path="/page4" component={page4}></Route>
-            <Route exact path="/page5" component={Mintnft}></Route>
+            <Route exact path="/asset/create" component={Mintnft}></Route>
             <Route exact path="/page6" component={page6}></Route>
             <Route exact path="/page7" component={page7}></Route>
             <Route exact path="/page8" component={page8}></Route>

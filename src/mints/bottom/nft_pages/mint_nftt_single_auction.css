@@ -219,7 +219,7 @@ body{
      letter-spacing: 4.8px;
      color: #FFFFFF;
      text-transform: uppercase;
-     opacity: 0.1;
+     /* opacity: 0.1; */
  }
  
  .butto{

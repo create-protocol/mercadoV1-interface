@@ -1,7 +1,6 @@
 import "./App.css";
 import "./assets/css/muzix.css";
 import "antd/dist/antd.css";
-
 import Routes from "./Routes";
 import { Helmet } from "react-helmet";
 import { render } from "react-dom";
@@ -21,6 +20,7 @@ function App() {
         <meta name="description" content="A marketplace for artist" />
         <meta name="keywords" content="Muzix,NFT,Create protocall,Marketplace"/>
       </Helmet>
+      
 
       
       <Routes></Routes>

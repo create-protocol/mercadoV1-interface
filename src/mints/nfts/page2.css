@@ -124,7 +124,9 @@ body{
      letter-spacing: 4.8px;
      color: #FFFFFF;
      text-transform: uppercase;
-     opacity: 0.4;
+     border-radius: 2px;
+     border: 2px solid black;
+     /* opacity: 0.4; */
  }
  
  .butto{
