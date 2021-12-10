@@ -10,7 +10,32 @@ import { Link } from "react-router-dom";
 // import spinloader from './spinloader';
 // import Spinner from 'react-bootstrap/Spinner'
 import { useHistory } from "react-router";
-
+import styled from "styled-components";
+const ShadowBtn = styled.div`
+background-color: rgb(112, 215, 49);
+color: rgb(26, 24, 24);
+font-size: 20px;
+font-weight: 700;
+width:40%;
+border: 10px solid rgb(48, 52, 57);
+border-radius: 20px;
+padding:6px 10px 6px 10px;
+cursor: pointer;
+margin-top: 0.625rem;
+max-width: 900px;
+transition: all 0.3s ease-in-out 0s;
+box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
+margin-top:40px;
+margin-right: 20px;
+margin-left: 20px;
+}
+  &:hover{
+    -webkit-box-shadow: 0 0 8px #fff;
+        box-shadow: 0 0 8px #fff;
+        transition:.5s;
+        border-radius:20px
+  }
+`;
 import { nftmarketaddress, nftaddress } from "../config";
 import Loader from "react-loader-spinner";
 
@@ -62,6 +87,7 @@ const Nftslist = (props) => {
     setSold(soldItems);
     setNfts(items);
     setLoadingState("loaded");
+    console.log(items)
   }
 
 
@@ -71,11 +97,13 @@ const Nftslist = (props) => {
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
     const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
-
-    const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
-    const transaction = await contract.createMarketSale(nftaddress, nft.itemId, {
-      value: price
-    })
+    console.log(nft)
+    const price = ethers.utils.parseUnits("100", 'ether')
+    console.log(nftaddress)
+    console.log(nft.itemId)
+    const transaction = await contract.createMarketSale(nftaddress, nft.tokenId
+      , {value: price}
+      )
     await transaction.wait()
     loadNFTs()
   }
@@ -110,7 +138,9 @@ const Nftslist = (props) => {
               //     descpage(nft);
               //   }}
               // >
-              <Link
+              
+                <div key={i} className="row nft-card-container m-2" style={{display:"flex",flexDirection:"column"}}>
+                  <Link
                 to={{
                   pathname: "/descpage",
                   state: {
@@ -123,8 +153,8 @@ const Nftslist = (props) => {
                   },
                 }}
               >
-                <div key={i} className="row nft-card-container m-2">
                   <div className="nft-img-container">
+                  
                     <img className="nft-img" src={nft.image} alt="logo"></img>
 
 
@@ -150,10 +180,13 @@ const Nftslist = (props) => {
 
 
                     </p>
+                    
                     {/* <p style={{fontWeight:"bold",margin:"10px",color:"white"}} className="text-2xl font-bold text-white">Price - {nft.seller} Eth</p> */}
                   </div>
+                  </Link>
+                  <ShadowBtn onClick={()=>buyNft(nft)}>Buy</ShadowBtn>
                 </div>
-              </Link>
+              
               // </div>
             ))}
           </div>
