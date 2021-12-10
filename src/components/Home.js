@@ -35,7 +35,7 @@ box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
 margin-top:40px;
 margin-right: 20px;
 margin-left: 20px;
-}
+
   &:hover{
     -webkit-box-shadow: 0 0 8px #fff;
         box-shadow: 0 0 8px #fff;
