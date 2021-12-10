@@ -55,13 +55,13 @@ const Footer = () => {
         <Row>
           <Heading>Contact Us</Heading>
           <div className="row" style={{display:"flex",flexDirection:"column"}}>
-            {/* <a
-              href="#"
+            <a
+              href="mailto:info@muzix.tech"
               class="text-white me-6"
               style={{ margin: "8px", fontSize: "30px",color:"white" }}
             >
-              <i class="fa fa-facebook"></i>
-            </a> */}
+              <i class="fa fa-envelope"></i>
+            </a>
 
             <a
               href="https://twitter.com/MuzixNFT"
@@ -85,6 +85,7 @@ const Footer = () => {
             >
               <i class="fa fa-instagram"></i>
             </a>
+
           </div>
         </Row>
       </ContainerInner>

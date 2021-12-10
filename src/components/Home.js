@@ -9,7 +9,7 @@ import ReactPlayer from 'react-player/youtube'
 import Footer from "./Footer";
 import styled from "styled-components";
 import { height } from "dom-helpers";
-
+import FetchMyNFT from "./fetchmyNFT";
 const ShadowBtn = styled.div`
 background-color: rgb(112, 215, 49);
 color: rgb(26, 24, 24);
@@ -111,6 +111,8 @@ const Home = (props) => {
       </div> */}
 
       <div style={{ height: "250px" }}></div>
+
+      <FetchMyNFT/>
       <Footer />
     </div>
   );
