@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Faq from "react-faq-component";
 
-
 const data = {
   rows: [
     {
