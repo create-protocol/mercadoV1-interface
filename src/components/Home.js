@@ -45,14 +45,7 @@ const Home = (props) => {
         <div className="hero my-4">
 
         <div style={{width:"100%",height:"100%",objectFit:"contain"}}>
-        <div className='player-wrapper'>
-        <ReactPlayer
-          className='react-player'
-          url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
-          width='100%'
-          height='100%'
-        />
-      </div>
+        
         </div>
         
           <h1 style={{ color: "#cccccc" }}>mercado.studio</h1>

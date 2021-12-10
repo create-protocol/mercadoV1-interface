@@ -7,8 +7,6 @@ import "../assets/css/nft.css";
 import Market from "../abis/Marketplace.json";
 import NFT from "../abis/NFT.json";
 import { Link } from "react-router-dom";
-// import spinloader from './spinloader';
-// import Spinner from 'react-bootstrap/Spinner'
 import { useHistory } from "react-router";
 import styled from "styled-components";
 import { nftmarketaddress, nftaddress } from "../config";
@@ -134,12 +132,7 @@ const Nftslist = (props) => {
         <div className=" my-4 ml-4 ">
           <div className="m-card-content" style={{ justifyContent: "center" }}>
             {nfts.map((nft, i) => (
-              // <div
-              //   onClick={(e) => {
-              //     descpage(nft);
-              //   }}
-              // >
-              
+
                 <div key={i} className="row nft-card-container m-2" style={{display:"flex",flexDirection:"column"}}>
                   <Link
                 to={{
@@ -157,10 +150,6 @@ const Nftslist = (props) => {
                   <div className="nft-img-container">
                   
                     <img className="nft-img" src={nft.image} alt="logo"></img>
-
-
-
-
                     <p
                       style={{
                         fontWeight: "bold",
@@ -182,7 +171,7 @@ const Nftslist = (props) => {
 
                     </p>
                     
-                    {/* <p style={{fontWeight:"bold",margin:"10px",color:"white"}} className="text-2xl font-bold text-white">Price - {nft.seller} Eth</p> */}
+        
                   </div>
                   </Link>
                   <ShadowBtn onClick={()=>buyNft(nft)}>Buy</ShadowBtn>
@@ -218,35 +207,6 @@ const Nftslist = (props) => {
     </div>
   );
 
-  // const { sqr, cir } = props;
-  // const list = [
-  //   {
-  //     title: "GREEN MANDALA",
-  //     logo: sqr,
-  //     rating: "3.33Ξ",
-  //     author: "LZY.LAD",
-  //     authorImg: cir,
-  //   },
-  //   {
-  //     title: "JOSH WEIDE",
-  //     logo: amaz,
-  //     rating: "1.27Ξ",
-  //     author: "SMRPN",
-  //     authorImg: pretty5,
-  //   },
-  //   {
-  //     title: "ROBERT CARRY",
-  //     logo: battle4,
-  //     rating: "0.25Ξ",
-  //     author: "GITE",
-  //     authorImg: pretty1,
-  //   },
-  // ];
-  // return list.map((nft, i) => (
-  //   <div key={i} className=" m-4">
-  //     <Nftcontainer {...nft}></Nftcontainer>
-  //   </div>
-  // ));
 };
 
 export default Nftslist

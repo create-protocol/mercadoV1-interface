@@ -36,7 +36,7 @@ const Footer = () => {
 
           <FooterLink href="/">Home</FooterLink>
           <FooterLink href="/creator/bharat-thakur">Creator</FooterLink>
-          <FooterLink href="#">Discover</FooterLink>
+          {/* <FooterLink href="#">Discover</FooterLink> */}
           {/* <FooterLink href="/creator">Creators</FooterLink> */}
         </Row>
         <Row>
@@ -49,16 +49,9 @@ const Footer = () => {
         <Row>
           <Heading>Useful Links</Heading>
           <FooterLink href="/faq">FAQ</FooterLink>
-          {/* <FooterLink href="#">Affiliate program</FooterLink>
-          <FooterLink href="#">NFT artist accelerator program</FooterLink> */}
+      
         </Row>
-        {/* <Row>
-          <Heading>Company</Heading>
-          <FooterLink href="/faq">Privacy Policy</FooterLink>
-          <FooterLink href="#">Terms and Conditions</FooterLink>
-          <FooterLink href="#">Community Guidelines</FooterLink>
-          <FooterLink href="#">Help</FooterLink>
-        </Row> */}
+
         <Row>
           <Heading>Contact Us</Heading>
           <div className="row" style={{display:"flex",flexDirection:"column"}}>
