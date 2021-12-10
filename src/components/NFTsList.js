@@ -28,7 +28,7 @@ box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
 margin-top:40px;
 margin-right: 20px;
 margin-left: 20px;
-}
+
   &:hover{
     -webkit-box-shadow: 0 0 8px #fff;
         box-shadow: 0 0 8px #fff;
@@ -60,7 +60,7 @@ const Nftslist = (props) => {
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
 
     const data = await marketContract.fetchMarketItems();
-    console.log(data);
+    // console.log(data);
     const items = await Promise.all(
       data.map(async (i) => {
         const tokenUri = await tokenContract.tokenURI(i.tokenId);
@@ -79,14 +79,14 @@ const Nftslist = (props) => {
         return item;
       })
     );
-    console.log("Token listed for sale.");
+    // console.log("Token listed for sale.");
     // console.log(items);
     /* create a filtered array of items that have been sold */
     const soldItems = items.filter((i) => i.sold);
     setSold(soldItems);
     setNfts(items);
     setLoadingState("loaded");
-    console.log(items)
+    // console.log(items)
   }
 
 
