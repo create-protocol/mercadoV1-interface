@@ -6,24 +6,19 @@ import Web3Modal from "web3modal"
 import Market from "../abis/Marketplace.json";
 import NFT from "../abis/NFT.json";
 import { nftmarketaddress, nftaddress } from "../config";
-// import './Desc.css'
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
 import Zoom from "react-medium-image-zoom";
 import 'react-medium-image-zoom/dist/styles.css'
-import buyNFT from './NFTsList';
 
 import { useHistory } from "react-router";
-// import Mintnft from "./MintNft";
 const Splitscreen = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-
   @media (max-width: 1000px) {
     flex-direction: column;
     overflow-y: hidden;
-
   }
 `;
 const Left = styled.div`
@@ -80,9 +75,6 @@ useEffect(() => {
 }, []);
 const history = useHistory();
 async function load2() {
-
-  
- 
   const provider = new ethers.providers.JsonRpcProvider(
     `https://eth-kovan.alchemyapi.io/v2/-rsx-HZE8Py7I7mOMIRCHckg3ab-xKnU`
   );
@@ -101,6 +93,7 @@ async function load2() {
       const tokenUri = await tokenContract.tokenURI(i.tokenId);
       const meta = await axios.get(tokenUri);
       let price = ethers.utils.formatUnits(i.price.toString(), "ether");
+      // console.log(price);
       let item = {
         price,
         tokenId: i.tokenId.toNumber(),
@@ -115,31 +108,29 @@ async function load2() {
     })
   );
   console.log("Token listed for sale.");
-  // console.log(items);
-  /* create a filtered array of items that have been sold */
   const soldItems = items.filter((i) => i.sold);
   setSold(soldItems);
   setNfts(items);
   setLoadingState("loaded");
 }
   async function buy2(nft) {
-
-    console.log(nft);
-    const web3Modal = new Web3Modal()
-    const connection = await web3Modal.connect()
+    // console.log("here");
+    // console.log(nft.pr);
+    const web3Modal = new Web3Modal();
+    const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
     const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
-
-    const price = ethers.utils.parseUnits(nft.price.toString(), 'ether');
-    // const price = ethers.toWei(amount)
+    console.log(nft);
+    const price = ethers.utils.formatEther(nft.price.toString())
+    // console.log(price);
     const transaction = await contract.createMarketSale(nftaddress, nft.itemId, {
-      value: price
+      value: nft
     })
-    await transaction.wait()
-    load2()
+    await transaction.wait();
+    load2();
   }
-  console.log(props.location);
+  // console.log(props.location);
   return (
     <Splitscreen>
       <Left>
@@ -165,8 +156,6 @@ async function load2() {
             />
           </Zoom>
         </div>
-        {/* <h2 style={{color:"white"}}>{props.location.state.owner}</h2> */}
-        {/* <h2 style={{color:"white"}}>{props.description}</h2> */}
       </Left>
       <Right>
 
@@ -184,13 +173,7 @@ async function load2() {
         <h2 style={{ color: "white" }}>
           Price:{props.location.state.price} Eth
         </h2>
-       
-        {/* <h2 style={{ color: "white", fontSize: "1rem", letterSpacing: "2px" }}>
-          owner:{props.location.state.name}
-        </h2> */}
-       
-
-        <Signupbtn style={{ background: "white", color: "black" }} onClick={() => buy2(nfts[0])}>
+        <Signupbtn style={{ background: "white", color: "black" }} onClick={() => buy2(nfts)}>
           BUY
         </Signupbtn>
       </Right>
