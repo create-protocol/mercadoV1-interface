@@ -41,7 +41,9 @@ const Nftslist = (props) => {
       data.map(async (i) => {
         const tokenUri = await tokenContract.tokenURI(i.tokenId);
         const meta = await axios.get(tokenUri);
+        console.log("here");
         let price = ethers.utils.formatUnits(i.price.toString(), "ether");
+        // console.log(price);
         let item = {
           price,
           tokenId: i.tokenId.toNumber(),
@@ -70,30 +72,23 @@ const Nftslist = (props) => {
     const connection = await web3Modal.connect()
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
-    const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
-
+    const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
     const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
-    const transaction = await contract.createMarketSale(nftaddress, nft.itemId, {
-      value: price
-    })
-    await transaction.wait()
-    loadNFTs()
+    // const transaction = await contract.createMarketSale(nftaddress, nft.itemId, {
+    //   value: price
+    // })
+    // await transaction.wait();
+    // loadNFTs();
   }
 
-  // if(my component) else if else 
-
   if (loadingState != "loaded") {
-
     return <div style={{ height: "200px", alignContent: "center", marginTop: "60px" }}>
-
       <Loader
         type="Puff"
         color="#00BFFF"
         height={100}
         width={100}
-      // timeout={3000} //3 secs
       />
-
     </div>;
   }
 

@@ -1,22 +1,14 @@
 import React from "react";
 import hero from "../assets/images/mercado.png";
 import "../assets/css/home.css";
-// import Cardcontainer from "../containers/CardContainer";
 import Nftslist from "./NFTsList";
-// import Creatorslist from "./CreatorsList";
 import sqr from "../assets/images/space1.png";
 import cir from "../assets/images/cir.jpg";
 import { Player } from 'video-react';
-
-// import four from "../assets/images/four.png";
-//import battle1 from "../assets/images/1.jpg";
-// import battle4 from "../assets/images/battle4.jpg";
-// import battle2 from "../assets/images/battle2.jpg";
-// import battle3 from "../assets/images/battle3.jpg";
-// import Dropmenucontainer from "./DropmenuContainer";
-// import page5 from './MintNft'
+import ReactPlayer from 'react-player/youtube'
 import Footer from "./Footer";
 import styled from "styled-components";
+import { height } from "dom-helpers";
 
 const ShadowBtn = styled.div`
 background-color: rgb(112, 215, 49);
@@ -45,28 +37,27 @@ margin-left: 20px;
 `;
 const Home = (props) => {
   return (
-
-
-
-
     <div>
 
-    
-
+      
 
       <div className="hero-container my-2">
         <div className="hero my-4">
-          <h1 style={{ color: "#cccccc" }}>mercado.studio</h1>
 
-         
-
-
-
-          {/* <img src={hero} style={{ width: "100%" }} alt="blockchain"></img> */}
+        <div style={{width:"100%",height:"100%",objectFit:"contain"}}>
+        <div className='player-wrapper'>
+        <ReactPlayer
+          className='react-player'
+          url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
+          width='100%'
+          height='100%'
+        />
+      </div>
         </div>
-        {/* <div className="hero-sub-heading">
-          BRINGING THE POWER BACK INTO THE HANDS OF CREATORS
-        </div> */}
+        
+          <h1 style={{ color: "#cccccc" }}>mercado.studio</h1>
+        </div>
+       
         <div className="action-container my-4">
           <ShadowBtn
             style={{ fonstSize: "3rem", width: "150px" }}
