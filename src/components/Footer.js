@@ -36,7 +36,7 @@ const Footer = () => {
 
           <FooterLink href="/">Home</FooterLink>
           <FooterLink href="/creator/bharat-thakur">Creator</FooterLink>
-          <FooterLink href="#">Discover</FooterLink>
+          {/* <FooterLink href="#">Discover</FooterLink> */}
           {/* <FooterLink href="/creator">Creators</FooterLink> */}
         </Row>
         <Row>
@@ -62,13 +62,13 @@ const Footer = () => {
         <Row>
           <Heading>Contact Us</Heading>
           <div className="row" style={{display:"flex",flexDirection:"column"}}>
-            <a
+            {/* <a
               href="#"
               class="text-white me-6"
               style={{ margin: "8px", fontSize: "30px",color:"white" }}
             >
               <i class="fa fa-facebook"></i>
-            </a>
+            </a> */}
 
             <a
               href="https://twitter.com/MuzixNFT"

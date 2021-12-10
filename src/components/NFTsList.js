@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 // import Spinner from 'react-bootstrap/Spinner'
 import { useHistory } from "react-router";
 import styled from "styled-components";
+import { nftmarketaddress, nftaddress } from "../config";
+import Loader from "react-loader-spinner";
 const ShadowBtn = styled.div`
 background-color: rgb(112, 215, 49);
 color: rgb(26, 24, 24);
@@ -28,7 +30,7 @@ box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
 margin-top:40px;
 margin-right: 20px;
 margin-left: 20px;
-}
+
   &:hover{
     -webkit-box-shadow: 0 0 8px #fff;
         box-shadow: 0 0 8px #fff;
@@ -36,8 +38,7 @@ margin-left: 20px;
         border-radius:20px
   }
 `;
-import { nftmarketaddress, nftaddress } from "../config";
-import Loader from "react-loader-spinner";
+
 
 const Nftslist = (props) => {
   const [nfts, setNfts] = useState([]);
@@ -61,7 +62,7 @@ const Nftslist = (props) => {
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
 
     const data = await marketContract.fetchMarketItems();
-    console.log(data);
+    // console.log(data);
     const items = await Promise.all(
       data.map(async (i) => {
         const tokenUri = await tokenContract.tokenURI(i.tokenId);
@@ -80,14 +81,14 @@ const Nftslist = (props) => {
         return item;
       })
     );
-    console.log("Token listed for sale.");
+    // console.log("Token listed for sale.");
     // console.log(items);
     /* create a filtered array of items that have been sold */
     const soldItems = items.filter((i) => i.sold);
     setSold(soldItems);
     setNfts(items);
     setLoadingState("loaded");
-    console.log(items)
+    // console.log(items)
   }
 
 
@@ -97,10 +98,10 @@ const Nftslist = (props) => {
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
     const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
-    console.log(nft)
+    // console.log(nft)
     const price = ethers.utils.parseUnits("100", 'ether')
-    console.log(nftaddress)
-    console.log(nft.itemId)
+    // console.log(nftaddress)
+    // console.log(nft.itemId)
     const transaction = await contract.createMarketSale(nftaddress, nft.tokenId
       , {value: price}
       )
