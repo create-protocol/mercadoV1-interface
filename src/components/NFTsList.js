@@ -30,7 +30,6 @@ box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
 margin-top:40px;
 margin-right: 20px;
 margin-left: 20px;
-
   &:hover{
     -webkit-box-shadow: 0 0 8px #fff;
         box-shadow: 0 0 8px #fff;
@@ -49,7 +48,7 @@ const Nftslist = (props) => {
   }, []);
   const history = useHistory();
   async function loadNFTs() {
-
+   
     const provider = new ethers.providers.JsonRpcProvider(
       `https://eth-kovan.alchemyapi.io/v2/-rsx-HZE8Py7I7mOMIRCHckg3ab-xKnU`
     );
@@ -76,7 +75,7 @@ const Nftslist = (props) => {
           sold: i.sold,
           image: meta.data.image,
           desc: meta.data.description,
-          collection: meta.data.collection
+          collection:meta.data.collection
         };
         return item;
       })
@@ -104,8 +103,8 @@ const Nftslist = (props) => {
     console.log(nftaddress)
     console.log(nft.itemId)
     const transaction = await contract.createMarketSale(nftaddress, nft.tokenId
-      , { value: price }
-    )
+      , {value: price}
+      )
     await transaction.wait()
     loadNFTs()
   }
@@ -128,30 +127,30 @@ const Nftslist = (props) => {
   }
 
   else if (loadingState === "loaded" && !nfts.length)
-    return <h1 className="py-10 px-20 text-3xl" style={{ color: "white" }}>No assets created</h1>;
+    return <h1 className="py-10 px-20 text-3xl" style={{color:"white"}}>No assets created</h1>;
   return (
     <div>
-      <div className="p-4" style={{color:"green"}}>
-        <div className=" my-4 ml-4 " style={{color:"green"}}>
-          <div className="m-card-content" style={{ justifyContent: "center",color:"green" }}>
+      <div className="p-4">
+        <div className=" my-4 ml-4 ">
+          <div className="m-card-content" style={{ justifyContent: "center" }}>
             {nfts.map((nft, i) => (
 
-              <div key={i} className="row nft-card-container m-2" style={{ display: "flex", flexDirection: "column", }}>
-                <Link
-                  to={{
-                    pathname: "/descpage",
-                    state: {
-                      image: nft.image,
-                      name: nft.owner,
-                      price: nft.price,
-                      sellername: nft.seller,
-                      desc: nft.desc,
-                      collection: nft.collection
-                    },
-                  }}
-                >
-                  <div className="nft-img-container" style={{color:"green"}}>
-
+                <div key={i} className="row nft-card-container m-2" style={{display:"flex",flexDirection:"column",background:"grey",paddingBottom:"10px"}}>
+                  <Link
+                to={{
+                  pathname: "/descpage",
+                  state: {
+                    image: nft.image,
+                    name: nft.owner,
+                    price: nft.price,
+                    sellername: nft.seller,
+                    desc: nft.desc,
+                    collection:nft.collection
+                  },
+                }}
+              >
+                  <div className="nft-img-container">
+                  
                     <img className="nft-img" src={nft.image} alt="logo"></img>
                     <p
                       style={{
@@ -171,15 +170,15 @@ const Nftslist = (props) => {
                       //  style={{padding:"20px",marginRight:"9rem",textAlign:"end",justifyContent:"end",textAlign:"end"}}
                       >{nft.seller.substring(0, 6) + "........." + nft.seller.slice(-3)}</span></div>
 
-                      
+
                     </p>
-                    <ShadowBtn  style={{alignItems:"center",justifyContent:"center",margin:"auto",}} onClick={() => buyNft(nft)}>Buy</ShadowBtn>
- 
+                    
+        
                   </div>
-                </Link>
-
-              </div>
-
+                  </Link>
+                  <ShadowBtn style={{marginTop:"0"}} onClick={()=>buyNft(nft)}>Buy</ShadowBtn>
+                </div>
+              
               // </div>
             ))}
           </div>
@@ -214,4 +213,3 @@ const Nftslist = (props) => {
 };
 
 export default Nftslist
-
