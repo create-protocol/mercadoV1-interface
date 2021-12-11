@@ -140,13 +140,13 @@ const NavBar =  (props) => {
             <div className="row">
                      {/* <h1  ref={textAreaRef} id="tokenaddress" style={{color:"white",textAlign:"center",fontSize:"30px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}  </h1> */}
                     {/* <button onClick={copyToClipboard}><img src={copy} style={{width:"20px",height:"20px"}}></img></button>  */}
-                    <CopyToClipboard text={window.ethereum.selectedAddress} style={{color:"black",textAlign:"center",fontSize:"30px",marginRight:"50px",height:"55px"}}>
+                    <CopyToClipboard text={window.ethereum.selectedAddress} style={{color:"black",textAlign:"center",fontSize:"30px",marginRight:"50px",height:"55px",borderRadius:"12px"}}>
                         <button>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</button>
                     </CopyToClipboard>
             </div>
        
       ) : <ShadowBtn
-            style={{fonstSize:"1rem",width:"180px"}}
+            style={{fonstSize:"1rem",width:"180px",borderRadius:"10px"}}
             onClick={connectWallet}
           >
             Connect Wallet
