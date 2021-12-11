@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import hero from "../assets/images/mercado.png";
 import "../assets/css/home.css";
 import Nftslist from "./NFTsList";
@@ -10,6 +10,9 @@ import Footer from "./Footer";
 import styled from "styled-components";
 import { height } from "dom-helpers";
 import FetchMyNFT from "./fetchmyNFT";
+
+
+
 const ShadowBtn = styled.div`
 background-color: rgb(112, 215, 49);
 color: rgb(26, 24, 24);
@@ -35,19 +38,20 @@ margin-left: 20px;
         border-radius:20px
   }
 `;
+
+
+
 const Home = (props) => {
+
+  
+  const [tabKey, setTabKey] = useState(0);
+  // const [optionComponent] = useState(options.comPairL[0].component);
   return (
     <div>
-
-      
-
       <div className="hero-container my-2">
         <div className="hero my-4">
-
         <div style={{width:"100%",height:"100%",objectFit:"contain"}}>
-        
         </div>
-        
           <h1 style={{ color: "#cccccc" }}>mercado.studio</h1>
         </div>
        
@@ -63,56 +67,33 @@ const Home = (props) => {
       <div>
         <br />
         <br />
-        {/* <button><h1 style={{color:"grey",textAlign:"center",marginTop:"30px",width:"20px",height:"60px"}}>EXPLORE </h1></button>
-      <button><span style={{color:"white",marginLeft:"10px",fontSize:"5px"}}>MY ASSETS</span> </button>
-       */}
-        <Nftslist sqr={sqr} cir={cir}></Nftslist>
-      </div>
 
-      {/* <div>
-        <Cardcontainer style={{display:"flex",flexWrap:"wrap"}}title={"COLLECTIONS"} suffix={"EXPLORE"}>
-          <Nftslist sqr={four} cir={cir}></Nftslist>
-        </Cardcontainer>
-      </div> */}
-      <div>
-        <br />
-      </div>
-      {/* <div className="my-4">
-        <Dropmenucontainer></Dropmenucontainer>
-      </div> */}
 
-      <div>
-        <br />
-      </div>
-      {/* <div className=" my-4 ml-4 ">
-        <div className="m-card-content ">
-          <div className=" nft-card-container m-2">
-            <div className="nft-img-container">
-              <img className="nft-img" src={sqr} alt="logo"></img>
-            </div>
-          </div>
-          <div className=" nft-card-container m-2">
-            <div className="nft-img-container">
-              <img className="nft-img" src={battle2} alt="logo"></img>
-            </div>
-          </div>
-          <div className=" nft-card-container m-2">
-            <div className="nft-img-container">
-              <img className="nft-img" src={battle3} alt="logo"></img>
-            </div>
-          </div>
 
-          <div className=" nft-card-container m-2">
-            <div className="nft-img-container">
-              <img className="nft-img" src={battle4} alt="logo"></img>
-            </div>
-          </div>
+        <div className="profile-tab-container">
+        <div
+          className={tabKey === 0 ? "tab-btn-active" : "tab-btn-inactive"}
+          onClick={() => setTabKey(0)}
+        >
+          ALL NFT
         </div>
-      </div> */}
+        <div
+          className={tabKey === 1 ? "tab-btn-active" : "tab-btn-inactive"}
+          onClick={() => setTabKey(1)}
+        >
+          MY NFT
+        </div>
+      </div>
 
+        <Nftslist  sqr={sqr} cir={cir}></Nftslist>
+      </div>
+      <div>
+        <br />
+      </div>
+      <div>
+        <br />
+      </div>
       <div style={{ height: "250px" }}></div>
-
-      <FetchMyNFT/>
       <Footer />
     </div>
   );
