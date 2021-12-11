@@ -4,6 +4,7 @@ import bg from "../assets/images/bg.png";
 import cir from "../assets/images/bharat.jpeg";
 import Profileaudiolist from "./ProfileAudioList";
 import Nftslist from "./NFTsList";
+import FetchMyNft from './fetchmyNFT'
 // import Creatorslist from "./CreatorsList";
 import sqr from "../assets/images/space1.png";
 import bharatt from '../assets/images/bharatt.png'
@@ -198,6 +199,12 @@ const Viewprofile = (props) => {
         >
           CREATIONS
         </div>
+        <div
+          className={tabKey === 1 ? "tab-btn-active" : "tab-btn-inactive"}
+          onClick={() => setTabKey(1)}
+        >
+          COLLECTIONS
+        </div>
         
       </div>
 
@@ -230,11 +237,12 @@ const Viewprofile = (props) => {
       <div>
         
         
-        <Nftslist sqr={sqr} cir={cir}></Nftslist>
+        {tabKey===0&&<Nftslist sqr={sqr} cir={cir}></Nftslist>}
+        {tabKey===1&&<Nftslist sqr={sqr} cir={cir}></Nftslist>}
       </div>
 
 
-      {/* <div className="option-comp-container">{optionComponent}</div> */}
+      {/* <div className="option-comp-container">{optionComponent}</div>   */}
       <Footer/>
       
     </div>
