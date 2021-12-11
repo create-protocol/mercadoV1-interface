@@ -112,7 +112,7 @@ const Home = (props) => {
 
       <div style={{ height: "250px" }}></div>
 
-      <FetchMyNFT/>
+      {/* <FetchMyNFT/> */}
       <Footer />
     </div>
   );

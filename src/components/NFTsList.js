@@ -30,7 +30,7 @@ box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
 margin-top:40px;
 margin-right: 20px;
 margin-left: 20px;
-}
+
   &:hover{
     -webkit-box-shadow: 0 0 8px #fff;
         box-shadow: 0 0 8px #fff;
@@ -95,6 +95,7 @@ const Nftslist = (props) => {
   async function buyNft(nft) {
     const web3Modal = new Web3Modal()
     const connection = await web3Modal.connect()
+    
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
     const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
@@ -135,7 +136,7 @@ const Nftslist = (props) => {
           <div className="m-card-content" style={{ justifyContent: "center" }}>
             {nfts.map((nft, i) => (
 
-                <div key={i} className="row nft-card-container m-2" style={{display:"flex",flexDirection:"column"}}>
+                <div key={i} className="row nft-card-container m-2" style={{display:"flex",flexDirection:"column",background:"grey",paddingBottom:"10px"}}>
                   <Link
                 to={{
                   pathname: "/descpage",
@@ -176,7 +177,7 @@ const Nftslist = (props) => {
         
                   </div>
                   </Link>
-                  <ShadowBtn onClick={()=>buyNft(nft)}>Buy</ShadowBtn>
+                  <ShadowBtn style={{marginTop:"0"}} onClick={()=>buyNft(nft)}>Buy</ShadowBtn>
                 </div>
               
               // </div>
