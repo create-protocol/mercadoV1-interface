@@ -2,16 +2,13 @@ import React, { useState, useEffect, useLayoutEffect,useRef  } from "react";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
 import { ethers } from "ethers";
-
-//import { UnorderedListOutlined } from "@ant-design/icons";
+// import Web3 from 'web3';
 import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
-// import ham from "../assets/images/menu.png";
 import Web3Modal from "web3modal";
 import Drawerroutes from "./DrawerRoutes";
 import Home from '../assets/images/home.png'
 import Footer from "./Footer";
-import copy from '../assets/images/icons8-copy-24.png'
 import styled from "styled-components";
 // import { Alert } from 'styled-alert-component';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
@@ -107,34 +104,6 @@ const NavBar =  (props) => {
     setCopySuccess('Copied!');
   };
 
-
-
-  // function myFunction() {
-  //   /* Get the text field */
-  //   var copyText = document.getElementById("myInput");
-  
-  //   /* Select the text field */
-  //   copyText.select();
-  //   copyText.setSelectionRange(0, 99999); /* For mobile devices */
-  
-  //   /* Copy the text inside the text field */
-  //   navigator.clipboard.writeText(copyText.value);
-    
-  //   /* Alert the copied text */
-  //   alert("Copied the text: " + copyText.value);
-  // }
-
-
-  // const web3Modal = new Web3Modal({
-  //   network: "mainnet",
-  //   cacheProvider: true,
-  // })
-  // const connection = await web3Modal.connect()
-  // const provider = new ethers.providers.Web3Provider(connection)
-  // const signer = provider.getSigner()
-
-  
-
   return (
     <div style={{}}>
       <div
@@ -183,29 +152,7 @@ const NavBar =  (props) => {
           /* <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1> */}
           
         </div>
-        {/* <div
-          className="h21 header-title"
-          style={
-            name
-              ? name === ""
-                ? {
-                    color: "#fff",
-                    fontSize: isBrowser ? "3rem" : "1.5rem",
-                    font:"Inter"
-                  }
-                : { fontSize: isBrowser ? "3rem" : "1.5rem",font:"Inter" }
-              : { fontSize: isBrowser ? "1.6rem" : "1.9rem",font:"Inter" }
-
-          }
-        >
-          {name
-            ? name === ""
-              ? "PROFILE"
-              : name.includes("page")
-              ? ""
-              : name
-            : ""}
-        </div> */}
+       
       </div>
       <Drawer
         placement="left"

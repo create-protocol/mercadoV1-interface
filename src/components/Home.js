@@ -27,7 +27,6 @@ box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
 margin-top:40px;
 margin-right: 20px;
 margin-left: 20px;
-
   &:hover{
     -webkit-box-shadow: 0 0 8px #fff;
         box-shadow: 0 0 8px #fff;
@@ -101,7 +100,6 @@ const Home = (props) => {
               <img className="nft-img" src={battle3} alt="logo"></img>
             </div>
           </div>
-
           <div className=" nft-card-container m-2">
             <div className="nft-img-container">
               <img className="nft-img" src={battle4} alt="logo"></img>
