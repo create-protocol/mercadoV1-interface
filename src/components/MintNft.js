@@ -10,6 +10,7 @@ import NFT from "../abis/NFT.json";
 import Market from "../abis/Marketplace.json";
 import styled from "styled-components";
 import Home from '../assets/images/home.png'
+import useHistory from 'react'
 
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
@@ -43,7 +44,7 @@ function Mintnft() {
     collections:""
   });
   // const router = useRouter()
-
+  const history=useHistory()
   async function onChange(e) {
     const file = e.target.files[0];
     try {
@@ -74,6 +75,7 @@ function Mintnft() {
       console.log("File url", url);
       /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
       createSale(url);
+      history.push('/')
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
