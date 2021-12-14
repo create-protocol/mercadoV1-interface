@@ -42,7 +42,7 @@ const Footer = () => {
         <Row>
           <Heading>About Us</Heading>
 
-          <FooterLink href="/teampage">Team</FooterLink>
+          {/* <FooterLink href="/teampage">Team</FooterLink> */}
           {/* <FooterLink href="#">Vision</FooterLink>
           <FooterLink href="#">Testimonials</FooterLink> */}
         </Row>
