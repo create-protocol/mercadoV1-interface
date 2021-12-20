@@ -3,13 +3,14 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import Mobilepage from './components/MobilePage'
 import window from 'global'
 ReactDOM.render(
   <React.StrictMode>
 
 
    {window.innerWidth <500 ? (
-       <h1 style={{color:"white",textAlign:"center"}}>open on desktop</h1>
+       <Mobilepage/>
       ) : <App/>}
     
   </React.StrictMode>,
