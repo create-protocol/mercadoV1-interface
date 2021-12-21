@@ -12,6 +12,7 @@ import styled from "styled-components";
 import { nftmarketaddress, nftaddress } from "../config";
 import Loader from "react-loader-spinner";
 import { useParams } from "react-router-dom";
+import { id } from "ethers/lib/utils";
 const ShadowBtn = styled.div`
   background-color: rgb(112, 215, 49);
   color: rgb(26, 24, 24);
@@ -40,7 +41,7 @@ const ShadowBtn = styled.div`
 const Nftslist = (props) => {
   const [nfts, setNfts] = useState([]);
   const [sold, setSold] = useState([]);
-  const {id} =useParams()
+  // const { id } = useParams();
   const [loadingState, setLoadingState] = useState("not-loaded");
   useEffect(() => {
     loadNFTs();
@@ -136,10 +137,7 @@ const Nftslist = (props) => {
                   paddingBottom: "10px",
                 }}
               >
-                <Link
-                    to={`/desc/${id}`}
-                  
-                >
+                <Link to={`/desc/${nft.tokenId}`}>
                   <div className="nft-img-container">
                     <img className="nft-img" src={nft.image} alt="logo"></img>
                     <p
