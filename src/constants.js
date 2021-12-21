@@ -3,6 +3,7 @@ import Previewnft from "./components/PreviewNft";
 import Viewprofile from "./components/ViewProfile";
 // import page2 from "./mints/nfts/page2";
 import faq from './components/FAQ';
+import DescriptionPage from "./components/DescriptionPage";
 const routes = [
   {
     pathName: "HOME",
@@ -38,6 +39,11 @@ const routes = [
   {
     pathName: "EXPLORE MARKETPLACE",
     path: "/EXPLORE MARKETPLACE",
+  },
+  {
+    pathName: "Description Page",
+    path: "/desc/:id",
+    component:DescriptionPage,
   },
   {
     pathName: "FAQ & HELP",

@@ -11,6 +11,7 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import { nftmarketaddress, nftaddress } from "../config";
 import Loader from "react-loader-spinner";
+import { useParams } from "react-router-dom";
 const ShadowBtn = styled.div`
   background-color: rgb(112, 215, 49);
   color: rgb(26, 24, 24);
@@ -39,6 +40,7 @@ const ShadowBtn = styled.div`
 const Nftslist = (props) => {
   const [nfts, setNfts] = useState([]);
   const [sold, setSold] = useState([]);
+  const {id} =useParams()
   const [loadingState, setLoadingState] = useState("not-loaded");
   useEffect(() => {
     loadNFTs();
@@ -135,17 +137,8 @@ const Nftslist = (props) => {
                 }}
               >
                 <Link
-                  to={{
-                    pathname: "/descpage",
-                    state: {
-                      image: nft.image,
-                      name: nft.owner,
-                      price: nft.price,
-                      sellername: nft.seller,
-                      desc: nft.desc,
-                      collection: nft.collection,
-                    },
-                  }}
+                    to={`/desc/${id}`}
+                  
                 >
                   <div className="nft-img-container">
                     <img className="nft-img" src={nft.image} alt="logo"></img>
