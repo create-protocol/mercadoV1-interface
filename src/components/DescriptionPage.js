@@ -149,7 +149,7 @@ async function load2() {
         >
           <Zoom>
             <img
-              src={props.location.state.image}
+              // src={props.location.state.image}
               // src="https://media.istockphoto.com/photos/code-programming-for-website-editors-view-picture-id1290492381?b=1&k=20&m=1290492381&s=170667a&w=0&h=NQSXJKhncCP1GLzDkD8KPZsCOh1wldDj5RZbPVJztxQ= "
               alt="nft"
               style={{ width: "100%", borderRadius: "15px",height:"500px"}}
@@ -159,7 +159,9 @@ async function load2() {
       </Left>
       <Right>
 
-      <h2 style={{ color: "white" }}>{props.location.state.desc}</h2>
+      <h2 style={{ color: "white" }}>
+        {/* {props.location.state.desc} */}
+        </h2>
       <h2
           style={{
             color: "white",
@@ -168,10 +170,10 @@ async function load2() {
             letterSpacing: "2px",
           }}
         >
-          seller:{props.location.state.sellername}
+          {/* seller:{props.location.state.sellername} */}
         </h2>
         <h2 style={{ color: "white" }}>
-          Price:{props.location.state.price} Eth
+          {/* Price:{props.location.state.price} Eth */}
         </h2>
         <Signupbtn style={{ background: "white", color: "black" }} onClick={() => buy2(nfts)}>
           BUY
