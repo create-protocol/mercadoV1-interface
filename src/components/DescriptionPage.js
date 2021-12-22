@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
 
 import { useHistory } from "react-router";
+import { sendTransaction } from "./sendTransaction";
 // import { id } from "ethers/lib/utils";
 const Splitscreen = styled.div`
   display: flex;
@@ -72,6 +73,7 @@ const Signupbtn = styled.div`
 const DescriptionPage = (props) => {
   const [nfts, setNfts] = useState([]);
   const [sold, setSold] = useState([]);
+  const [allowance, setAllowance] = useState(false);
   const [obj, setobj] = useState({});
   const [loadingState, setLoadingState] = useState("not-loaded");
   const { itemid } = useParams();
@@ -103,7 +105,7 @@ const DescriptionPage = (props) => {
       nftContract: data.nftContract,
       tokenId: data.tokenId,
       seller: data.seller,
-      price: data.price.toNumber(), // price in wei
+      price: ethers.utils.formatEther(data.price), // price in wei
       image: meta.data.imageCID,
       name: meta.data.name,
       desc: meta.data.description,
@@ -132,25 +134,45 @@ const DescriptionPage = (props) => {
     // ); 
     setLoadingState("loaded");
   }
-  async function buy2(nft) {
-    // console.log("here");
-    // console.log(nft.pr);
+  const isEnoughAllowance = async () => {
+    const owner = await window.wallet.getAddress()
+    const amt = await window.ercInst.allowance(owner,'0xCCa142335a0A7C30c757004A883ac74b7c5a4843');
+    console.log(amt >= ethers.utils.parseEther(obj.price));
+    setAllowance(amt >= ethers.utils.parseEther(obj.price));
+  }
+
+  const buyNFT = async () => {
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
-    const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
-    const price = ethers.utils.formatEther(nft.price.toString());
-    // console.log(price);
-    const transaction = await contract.createMarketSale(
-      nftaddress,
-      nft.itemId,
-      {
-        value: nft,
-      }
-    );
-    await transaction.wait();
-    load2();
+    window.wallet = signer;
+    console.log(ethers.utils.parseEther(obj.price));
+    if(!allowance){
+      await sendTransaction(
+        window.ercInst,
+        "approve",
+        ["0xCCa142335a0A7C30c757004A883ac74b7c5a4843",
+        ethers.utils.parseEther(obj.price)],
+        "You give allowance to MarketPlace of required WETH"
+      );
+      await isEnoughAllowance();   
+      
+    }else {
+      await sendTransaction(
+        window.marketInst,
+        "buyNFT",
+        [itemId],
+        "You have successfully Purchase This Token"
+    )
+    }
+
+
+    
+
+    // await ;
+    // load2()
+
   }
 
   console.log(obj);
@@ -198,13 +220,13 @@ const DescriptionPage = (props) => {
           seller:{obj.seller}
         </h2>
         <h2 style={{ color: "white" }}>
-          Price:{obj.price} Wei
+          Price:{obj.price} WETH
         </h2>
         <Signupbtn
           style={{ background: "white", color: "black" }}
-          onClick={() => buy2(nfts)}
+          onClick={buyNFT}
         >
-          BUY
+          {allowance ? 'BUY' : 'Set Allownace'}
         </Signupbtn>
       </Right></>}
     </Splitscreen>
