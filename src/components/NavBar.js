@@ -50,7 +50,7 @@ const NavBar =  (props) => {
 
   useEffect( async function connectWallet() {
 
-    console.log("jhandu");
+    // console.log("jhandu");
     
     setTimeout(
       function(){
