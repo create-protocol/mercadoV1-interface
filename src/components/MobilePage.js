@@ -38,7 +38,7 @@ const Mobilepage = () => {
         Open on desktop for a better view
       </h3>
       <h3 style={{ color: "white", marginTop: ".05rem", textAlign: "center" }}>
-        or checkout <a href="https://createprotocol.org/">our token website</a>
+        or find out more about <a href="https://createprotocol.org/">CREATE PROTOCOL</a>
       </h3>
       <h2 style={{ color: "white", marginTop: "1.2rem", textAlign: "center" }}>
         Contact Us

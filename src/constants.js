@@ -42,7 +42,7 @@ const routes = [
   },
   {
     pathName: "Description Page",
-    path: "/asset/:id",
+    path: "/asset/:itemid",
     component:DescriptionPage,
   },
   {

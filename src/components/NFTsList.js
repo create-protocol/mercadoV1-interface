@@ -74,6 +74,7 @@ const Nftslist = (props) => {
           image: meta.data.imageCID,
           desc: meta.data.description,
           collection: meta.data.collection,
+          nftContract:i.nftContract
         };
         console.log(item);
         return item;
@@ -137,7 +138,7 @@ const Nftslist = (props) => {
                   paddingBottom: "10px",
                 }}
               >
-                <Link to={`/desc/${nft.tokenId}`}>
+                <Link to={`/asset/${nft.itemId}`}>
                   <div className="nft-img-container">
                     <img className="nft-img" src={nft.image} alt="logo"></img>
                     <p
