@@ -3,7 +3,7 @@ import "./assets/css/muzix.css";
 import "antd/dist/antd.css";
 import Routes from "./Routes";
 import { Helmet } from "react-helmet";
-import newsletter from './components/newsletter';
+// import newsletter from './components/newsletter';
 function App() {
   return (
     <div className="App">

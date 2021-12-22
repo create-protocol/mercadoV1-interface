@@ -12,6 +12,7 @@ import Zoom from "react-medium-image-zoom";
 import 'react-medium-image-zoom/dist/styles.css'
 
 import { useHistory } from "react-router";
+import { id } from "ethers/lib/utils";
 const Splitscreen = styled.div`
   display: flex;
   flex-direction: row;
@@ -86,7 +87,7 @@ async function load2() {
   );
   const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
 
-  const data = await marketContract.fetchMarketItems();
+  const data = await marketContract.fetchIndividualNFT(id);
   console.log(data);
   const items = await Promise.all(
     data.map(async (i) => {
