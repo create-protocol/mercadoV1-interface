@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect,useRef  } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
 import { ethers } from "ethers";
@@ -7,11 +7,11 @@ import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
 import Web3Modal from "web3modal";
 import Drawerroutes from "./DrawerRoutes";
-import Home from '../assets/images/home.png'
+import Home from "../assets/images/home.png";
 import Footer from "./Footer";
 import styled from "styled-components";
 // import { Alert } from 'styled-alert-component';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from "react-copy-to-clipboard";
 const ShadowBtn = styled.div`
 background-color: rgb(112, 215, 49);
 color: rgb(26, 24, 24);
@@ -39,71 +39,71 @@ margin-left: 20px;
   }
 `;
 
-const NavBar =  (props) => {
-
+const NavBar = (props) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [curAddress, serCurAddress] = useState(null);
+  const [isConnected, setIsConnected] = useState(false);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
-  
-  useEffect( async function connectWallet() {
-    
-    setTimeout(
-      function(){
-        if(window.ethereum){
-          serCurAddress(window.ethereum.selectedAddress)
-        }
-        else{
-          <h1>Please Install metamask extension from <a href="https://metamask.io/">Here</a> </h1>
-        }
-        
 
-      }, 100
-    )
-  
+  useEffect(async function connectWallet() {
+    console.log("jhandu");
+
+    setTimeout(function () {
+      if (window.ethereum && isConnected) {
+        serCurAddress(window.ethereum.selectedAddress);
+      } else {
+        <h1>
+          Please Install metamask extension from{" "}
+          <a href="https://metamask.io/">Here</a>{" "}
+        </h1>;
+      }
+    }, 100);
   });
-  async function connectWallet(){
-    console.log(
-      "here"
-    )
-    if(window.ethereum){
+  async function connectWallet() {
+    console.log("here");
+    if (window.ethereum) {
       const web3Modal = new Web3Modal({
         network: "mainnet",
         cacheProvider: true,
-      })
-      const connection = await web3Modal.connect()
-      const provider = new ethers.providers.Web3Provider(connection)
-      const signer = provider.getSigner()
+      });
+      const connection = await web3Modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
+      const signer = provider.getSigner();
+      setIsConnected(true);
+    } else {
+      alert("Please Install metamask extension from metamask.io");
     }
-    else{
-      alert("Please Install metamask extension from metamask.io")
-    }
-   
+  }
+
+  async function disconnect() {
+    setIsConnected(false);
+    serCurAddress(null);
   }
 
   useLayoutEffect(() => {
-    if(window.ethereum){
-      window.ethereum.on('accountsChanged', function(accounts) {
-        serCurAddress(window.ethereum.selectedAddress)
-      })
+    if (window.ethereum && isConnected) {
+      window.ethereum.on("accountsChanged", function (accounts) {
+        serCurAddress(window.ethereum.selectedAddress);
+      });
+    } else {
+      <h1>
+        Please Install metamask extension from metamask.io
+        <a href="https://metamask.io/">Here</a>{" "}
+      </h1>;
     }
-    else{
-      <h1>Please Install metamask extension from metamask.io<a href="https://metamask.io/">Here</a> </h1>
-    }
-   
   }, []);
 
-  const [copySuccess, setCopySuccess] = useState('');
+  const [copySuccess, setCopySuccess] = useState("");
   const textAreaRef = useRef(null);
 
   function copyToClipboard(e) {
     textAreaRef.current.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     // This is just personal preference.
     // I prefer to not show the whole text area selected.
     e.target.focus();
-    setCopySuccess('Copied!');
-  };
-
+    setCopySuccess("Copied!");
+  }
   return (
     <div style={{}}>
       <div
@@ -127,32 +127,87 @@ const NavBar =  (props) => {
             : {}
         }
       >
-        <div className="header-ham" style={{width:"100vw",display:"flex",justifyContent:"space-between",alignItems:"end",marginLeft:"auto"}} >
-          <Link to='/'>
-          <img style={{width:"2.5rem",height:"2.5rem",objectFit:"contain",marginTop:"-1rem",marginLeft:"40px"}} src={Home} alt="homepage"/>
+        <div
+          className="header-ham"
+          style={{
+            width: "100vw",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "end",
+            marginLeft: "auto",
+          }}
+        >
+          <Link to="/">
+            <img
+              style={{
+                width: "2.5rem",
+                height: "2.5rem",
+                objectFit: "contain",
+                marginTop: "-1rem",
+                marginLeft: "40px",
+              }}
+              src={Home}
+              alt="homepage"
+            />
           </Link>
-
-          {curAddress!=null ?  (
-
-            <div className="row">
-                     {/* <h1  ref={textAreaRef} id="tokenaddress" style={{color:"white",textAlign:"center",fontSize:"30px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}  </h1> */}
+          <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
+            <div>
+              {
+                curAddress != null ? (
+                  <div className="row">
+                    {/* <h1  ref={textAreaRef} id="tokenaddress" style={{color:"white",textAlign:"center",fontSize:"30px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}  </h1> */}
                     {/* <button onClick={copyToClipboard}><img src={copy} style={{width:"20px",height:"20px"}}></img></button>  */}
-                    <CopyToClipboard text={window.ethereum.selectedAddress} style={{color:"black",textAlign:"center",fontSize:"30px",marginRight:"50px",height:"55px",borderRadius:"12px"}}>
-                        <button>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</button>
+                    <CopyToClipboard
+                      text={window.ethereum.selectedAddress}
+                      style={{
+                        color: "black",
+                        textAlign: "center",
+                        fontSize: "30px",
+                        marginRight: "50px",
+                        height: "55px",
+                        borderRadius: "12px",
+                      }}
+                    >
+                      <button>
+                        {window.ethereum.selectedAddress.substring(0, 5) +
+                          "..." +
+                          window.ethereum.selectedAddress.slice(-4)}
+                      </button>
                     </CopyToClipboard>
-            </div>
-       
-      ) : <ShadowBtn
-            style={{fonstSize:"1rem",width:"180px",borderRadius:"10px"}}
-            onClick={connectWallet}
-          >
-            Connect Wallet
-          </ShadowBtn>
+                  </div>
+                ) : (
+                  <ShadowBtn
+                    style={{
+                      fonstSize: "1rem",
+                      width: "180px",
+                      borderRadius: "10px",
+                      margin:"0"
+                    }}
+                    onClick={connectWallet}
+                  >
+                    Connect Wallet
+                  </ShadowBtn>
+                )
 
-          /* <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1> */}
-          
+                /* <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1> */
+              }
+            </div>
+
+            {isConnected && (
+              <ShadowBtn
+                style={{
+                  fonstSize: "1rem",
+                  width: "10rem",
+                  borderRadius: "10px",
+                  margin:"0"
+                }}
+                onClick={disconnect}
+              >
+                Disconnect
+              </ShadowBtn>
+            )}
+          </div>
         </div>
-       
       </div>
       <Drawer
         placement="left"
