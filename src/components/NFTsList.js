@@ -70,7 +70,7 @@ const Nftslist = (props) => {
           price,
           tokenId: i.tokenId.toNumber(),
           seller: i.seller,
-          sold: i.sold,
+          itemId:i.itemId.toNumber(),
           image: meta.data.imageCID,
           desc: meta.data.description,
           collection: meta.data.collection,
