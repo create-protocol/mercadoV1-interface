@@ -73,8 +73,7 @@ const Nftslist = (props) => {
           seller: i.seller,
           itemId:i.itemId.toNumber(),
           image: meta.data.imageCID,
-          desc: meta.data.description,
-          collection: meta.data.collection,
+          desc: meta.data.description, 
           nftContract:i.nftContract
         };
         console.log(item);
