@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useLayoutEffect,useRef  } from "react";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
@@ -31,7 +30,7 @@ box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
 margin-top:20px;
 margin-right: 20px;
 margin-left: 20px;
-}
+
   &:hover{
     -webkit-box-shadow: 0 0 8px #fff;
         box-shadow: 0 0 8px #fff;
@@ -138,11 +137,13 @@ return (
             : {}
         }
       >
+
+        
         <div className="header-ham" style={{width:"100vw",display:"flex",justifyContent:"space-between",alignItems:"end",marginLeft:"auto"}} >
           <Link to='/'>
           <img style={{width:"2.5rem",height:"2.5rem",objectFit:"contain",marginTop:"-1rem",marginLeft:"40px"}} src={Home} alt="homepage"/>
           </Link>
-
+          <div>
           {curAddress!=null ?  (
 
             <div className="row">
@@ -159,25 +160,16 @@ return (
           >
             Connect Wallet
           </ShadowBtn>
-
-          
-
           /* <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1> */}
           
         </div>
-
-         
-            {isConnected && <ShadowBtn
+        {isConnected && <ShadowBtn
             style={{fonstSize:"1rem",width:"180px",borderRadius:"10px"}}
             onClick={disconnect}
           >
             Disconnect Wallet
           </ShadowBtn>}
-            
-          
-      
-        
-       
+          </div>
       </div>
       <Drawer
         placement="left"
