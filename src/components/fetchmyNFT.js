@@ -35,9 +35,6 @@ margin-left: 20px;
 const FetchMyNFT = (props) => {
   return (
     <div>
-
-      
-
       <div className="hero-container my-2">
         <div className="hero my-4">
 

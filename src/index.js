@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Mobilepage from './components/MobilePage'
 import window from 'global'
+import './abis/instance';
+
 ReactDOM.render(
   <React.StrictMode>
 

@@ -11,6 +11,7 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import { nftmarketaddress, nftaddress } from "../config";
 import Loader from "react-loader-spinner";
+import { sendTransaction } from './sendTransaction';
 import { useParams } from "react-router-dom";
 import { id } from "ethers/lib/utils";
 const ShadowBtn = styled.div`
@@ -89,23 +90,31 @@ const Nftslist = (props) => {
   }
 
   async function buyNft(nft) {
-    const web3Modal = new Web3Modal();
-    const connection = await web3Modal.connect();
+    try{
+      const web3Modal = new Web3Modal();
+      const connection = await web3Modal.connect();
 
-    const provider = new ethers.providers.Web3Provider(connection);
-    const signer = provider.getSigner();
-    const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
-    console.log(nft);
-    const price = ethers.utils.parseUnits(nft.price, "ether");
-    console.log(nftaddress);
-    console.log(nft.itemId);
-    const transaction = await contract.createMarketSale(
-      nftaddress,
-      nft.tokenId,
-      { value: price }
-    );
-    await transaction.wait();
-    loadNFTs();
+      const provider = new ethers.providers.Web3Provider(connection);
+      const signer = provider.getSigner();
+      window.wallet = signer;
+      window.provider = provider;
+      const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
+      console.log(nft);
+      const price = ethers.utils.parseUnits(nft.price, "ether");
+      console.log(nftaddress);
+      console.log(nft.itemId);
+      await sendTransaction(
+        contract,
+        "buyNFT",
+        [nft.itemId],
+        "You have Purchse Token Successfully"
+      );
+      loadNFTs();
+
+    }catch(e){
+      console.log(e);
+    }
+    
   }
 
   if (loadingState != "loaded") {
