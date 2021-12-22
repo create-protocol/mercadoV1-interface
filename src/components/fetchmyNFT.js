@@ -4,7 +4,6 @@ import "../assets/css/home.css";
 import Nftslist from "./NFTsList";
 import sqr from "../assets/images/space1.png";
 import cir from "../assets/images/cir.jpg";
-import Footer from "./Footer";
 import styled from "styled-components";
 
 

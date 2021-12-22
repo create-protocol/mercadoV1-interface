@@ -42,7 +42,7 @@ function Mintnft() {
     royaltyinweth: "",
   });
   // const router = useRouter()
-  const history=useHistory()
+  // const history=useHistory()
   async function onChange(e) {
     const file = e.target.files[0];
     try {
@@ -71,8 +71,7 @@ function Mintnft() {
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
       console.log("tokenURI", url);
       /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
-      createSale(url);
-      history.push('/')
+      createSale(url,royaltyinweth);
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
@@ -90,13 +89,14 @@ function Mintnft() {
 
     /* next, create the item */
     let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
-    // console.log(typeof nftaddress);
-    const royaltyAmt=ethers.utils.parseUnits(royaltyAmount,"ether");
+    console.log(typeof royaltyAmount);
+    const royaltyAmt=ethers.utils.parseEther(royaltyAmount);
     let transaction = await contract.createToken(
       url,
       polygonweth,
       royaltyAmt
     );
+    console.log(transaction)
     let tx = await transaction.wait();
     let event = tx.events[0];
     let value = event.args[2];
@@ -113,7 +113,7 @@ function Mintnft() {
 
     console.log("Token listet");
 
-    transaction = await contract.createMarketItem(nftaddress, tokenId, price);
+    transaction = await contract.list(nftaddress, tokenId, price);
     await transaction.wait();
     // redirect to the homepage
     // router.push('/')

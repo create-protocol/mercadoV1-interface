@@ -10,6 +10,7 @@ import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
 import Zoom from "react-medium-image-zoom";
 import 'react-medium-image-zoom/dist/styles.css'
+import { useParams } from "react-router-dom";
 
 import { useHistory } from "react-router";
 import { id } from "ethers/lib/utils";
@@ -71,6 +72,7 @@ const DescriptionPage = (props) => {
   const [nfts, setNfts] = useState([]);
   const [sold, setSold] = useState([]);
   const [loadingState, setLoadingState] = useState("not-loaded");
+  const {id}=useParams()
 useEffect(() => {
   load2();
 }, []);
@@ -131,6 +133,10 @@ async function load2() {
     await transaction.wait();
     load2();
   }
+
+  
+
+
   // console.log(props.location);
   return (
     <Splitscreen>
