@@ -12,6 +12,10 @@ import Footer from "./Footer";
 import styled from "styled-components";
 // import { Alert } from 'styled-alert-component';
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Dropdown } from "react-bootstrap";
+
+import "../assets/css/dropdown.css";
 const ShadowBtn = styled.div`
 background-color: rgb(112, 215, 49);
 color: rgb(26, 24, 24);
@@ -150,38 +154,45 @@ const NavBar = (props) => {
               alt="homepage"
             />
           </Link>
-          <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
             <div>
               {
-                curAddress != null ? (
-                  <div className="row">
-                    {/* <h1  ref={textAreaRef} id="tokenaddress" style={{color:"white",textAlign:"center",fontSize:"30px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}  </h1> */}
-                    {/* <button onClick={copyToClipboard}><img src={copy} style={{width:"20px",height:"20px"}}></img></button>  */}
-                    <CopyToClipboard
-                      text={window.ethereum.selectedAddress}
-                      style={{
-                        color: "black",
-                        textAlign: "center",
-                        fontSize: "30px",
-                        marginRight: "50px",
-                        height: "55px",
-                        borderRadius: "12px",
-                      }}
-                    >
-                      <button>
-                        {window.ethereum.selectedAddress.substring(0, 5) +
-                          "..." +
-                          window.ethereum.selectedAddress.slice(-4)}
-                      </button>
-                    </CopyToClipboard>
-                  </div>
-                ) : (
+                curAddress == null && (
+                //   <div className="row">
+                //     {/* <h1  ref={textAreaRef} id="tokenaddress" style={{color:"white",textAlign:"center",fontSize:"30px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}  </h1> */}
+                //     {/* <button onClick={copyToClipboard}><img src={copy} style={{width:"20px",height:"20px"}}></img></button>  */}
+                //     <CopyToClipboard
+                //       text={window.ethereum.selectedAddress}
+                //       style={{
+                //         color: "black",
+                //         textAlign: "center",
+                //         fontSize: "30px",
+                //         marginRight: "50px",
+                //         height: "55px",
+                //         borderRadius: "12px",
+                //       }}
+                //     >
+                      
+                //       <button>
+                //         {window.ethereum.selectedAddress.substring(0, 5) +
+                //           "..." +
+                //           window.ethereum.selectedAddress.slice(-4)}
+                //       </button>
+                //     </CopyToClipboard>
+                //   </div>
+                // ) : (
                   <ShadowBtn
                     style={{
                       fonstSize: "1rem",
                       width: "180px",
                       borderRadius: "10px",
-                      margin:"0"
+                      margin: "0",
                     }}
                     onClick={connectWallet}
                   >
@@ -194,17 +205,29 @@ const NavBar = (props) => {
             </div>
 
             {isConnected && (
-              <ShadowBtn
-                style={{
-                  fonstSize: "1rem",
-                  width: "10rem",
-                  borderRadius: "10px",
-                  margin:"0"
-                }}
-                onClick={disconnect}
-              >
-                Disconnect
-              </ShadowBtn>
+              <Dropdown className="d-inline mx-2" autoClose="outside">
+              <Dropdown.Toggle id="dropdown-autoclose-outside" style={{backgroundColor:"rgb(112, 215, 49)"}}>
+              {window.ethereum.selectedAddress.substring(0, 5) +
+                          "..." +
+                          window.ethereum.selectedAddress.slice(-4)}
+              </Dropdown.Toggle>
+          
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={disconnect}>Disconnect</Dropdown.Item>
+                <Dropdown.Item href="#">My profile</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+              // <ShadowBtn
+              //   style={{
+              //     fonstSize: "1rem",
+              //     width: "10rem",
+              //     borderRadius: "10px",
+              //     margin: "0",
+              //   }}
+              //   onClick={disconnect}
+              // >
+              //   Disconnect
+              // </ShadowBtn>
             )}
           </div>
         </div>
