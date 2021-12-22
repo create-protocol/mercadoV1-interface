@@ -163,7 +163,7 @@ const Nftslist = (props) => {
                       <div>{nft.collection}</div>
 
                       <div>
-                        <span>
+                        <span style={{background:"none",padding:"0"}}>
                           {nft.seller.substring(0, 6) +
                             "........." +
                             nft.seller.slice(-3)}
