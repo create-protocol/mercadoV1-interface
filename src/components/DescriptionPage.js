@@ -10,6 +10,7 @@ import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
 import Zoom from "react-medium-image-zoom";
 import 'react-medium-image-zoom/dist/styles.css'
+import { useParams } from "react-router-dom";
 
 import { useHistory } from "react-router";
 const Splitscreen = styled.div`
@@ -70,6 +71,7 @@ const DescriptionPage = (props) => {
   const [nfts, setNfts] = useState([]);
   const [sold, setSold] = useState([]);
   const [loadingState, setLoadingState] = useState("not-loaded");
+  const {id}=useParams()
 useEffect(() => {
   load2();
 }, []);
@@ -86,7 +88,7 @@ async function load2() {
   );
   const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
 
-  const data = await marketContract.fetchMarketItems();
+  const data = await marketContract.fetchIndividualNFT(id);
   console.log(data);
   const items = await Promise.all(
     data.map(async (i) => {
@@ -130,6 +132,10 @@ async function load2() {
     await transaction.wait();
     load2();
   }
+
+  
+
+
   // console.log(props.location);
   return (
     <Splitscreen>
