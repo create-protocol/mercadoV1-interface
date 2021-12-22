@@ -34,9 +34,9 @@ const Mobilepage = () => {
           alt="coming"
         />
       </div>
-      <h3 style={{ color: "white", marginTop: "2rem", textAlign: "center" }}>
+      <h4 style={{ color: "white", marginTop: "2rem", textAlign: "center" }}>
         Open on desktop for a better view
-      </h3>
+      </h4>
       <h3 style={{ color: "white", marginTop: ".05rem", textAlign: "center" }}>
         or find out more about <a href="https://createprotocol.org/">CREATE PROTOCOL</a>
       </h3>
