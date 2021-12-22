@@ -70,12 +70,12 @@ const Nftslist = (props) => {
           price,
           tokenId: i.tokenId.toNumber(),
           seller: i.seller,
-          owner: i.owner,
           sold: i.sold,
-          image: meta.data.image,
+          image: meta.data.imageCID,
           desc: meta.data.description,
           collection: meta.data.collection,
         };
+        console.log(item);
         return item;
       })
     );
