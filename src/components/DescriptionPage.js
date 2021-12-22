@@ -73,7 +73,10 @@ const DescriptionPage = (props) => {
   const [sold, setSold] = useState([]);
   const [loadingState, setLoadingState] = useState("not-loaded");
   const { itemid } = useParams();
-  console.log(itemid);
+  //itemid = itemid.toNumber();
+  var itemId = ethers.utils.parseUnits(itemid, 'ethers');
+  console.log(typeof itemid);
+
   useEffect(() => {
     load2();
   }, []);   

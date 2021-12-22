@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useLayoutEffect,useRef  } from "react";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
@@ -43,23 +44,26 @@ const NavBar =  (props) => {
 
   const [showDrawer, setShowDrawer] = useState(false);
   const [curAddress, serCurAddress] = useState(null);
+  const [isConnected, setIsConnected] = useState(true);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
   
+
+
   useEffect( async function connectWallet() {
+
+    console.log("jhandu");
     
     setTimeout(
       function(){
-        if(window.ethereum){
+        if(window.ethereum && isConnected){
           serCurAddress(window.ethereum.selectedAddress)
         }
         else{
           <h1>Please Install metamask extension from <a href="https://metamask.io/">Here</a> </h1>
         }
-        
-
       }, 100
     )
-  
+      
   });
   async function connectWallet(){
     console.log(
@@ -72,16 +76,24 @@ const NavBar =  (props) => {
       })
       const connection = await web3Modal.connect()
       const provider = new ethers.providers.Web3Provider(connection)
-      const signer = provider.getSigner()
+      const signer = provider.getSigner();
+      setIsConnected(true);
     }
     else{
       alert("Please Install metamask extension from metamask.io")
     }
-   
+  
+  }
+  
+  
+  async function disconnect() {
+    setIsConnected(false);
+   serCurAddress(null);
   }
 
+
   useLayoutEffect(() => {
-    if(window.ethereum){
+    if(window.ethereum && isConnected){
       window.ethereum.on('accountsChanged', function(accounts) {
         serCurAddress(window.ethereum.selectedAddress)
       })
@@ -103,8 +115,7 @@ const NavBar =  (props) => {
     e.target.focus();
     setCopySuccess('Copied!');
   };
-
-  return (
+return (
     <div style={{}}>
       <div
         className="header-container"
@@ -149,9 +160,23 @@ const NavBar =  (props) => {
             Connect Wallet
           </ShadowBtn>
 
+          
+
           /* <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1> */}
           
         </div>
+
+         
+            {isConnected && <ShadowBtn
+            style={{fonstSize:"1rem",width:"180px",borderRadius:"10px"}}
+            onClick={disconnect}
+          >
+            Disconnect Wallet
+          </ShadowBtn>}
+            
+          
+      
+        
        
       </div>
       <Drawer
