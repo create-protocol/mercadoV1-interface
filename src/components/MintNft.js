@@ -99,6 +99,7 @@ function Mintnft() {
     console.log(transaction)
     let tx = await transaction.wait();
     let event = tx.events[0];
+    
     let value = event.args[2];
     let tokenId = value.toNumber();
 

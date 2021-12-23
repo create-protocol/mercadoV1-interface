@@ -11,56 +11,6 @@ import bharatt from '../assets/images/bharatt.png'
 import Footer from './Footer'
 // import cir from "../assets/images/cir.jpg";
 const Viewprofile = (props) => {
-  //   const pairs = {
-  //     numPairL: [
-  //       {
-  //         key: "MINTED",
-  //         value: "21",
-  //       },
-  //       {
-  //         key: "SOLD",
-  //         value: "19",
-  //       },
-
-  //       {
-  //         isDiv: true,
-  //         key: (
-  //           <div className="follow-count" style={{ marginLeft: "10rem" }}>
-  //             693 FOLLOWERS
-  //           </div>
-  //         ),
-  //         value: (
-  //           <div className="follow-btn" style={{ marginLeft: "10rem" }}>
-  //             FOLLOW
-  //           </div>
-  //         ),
-  //       },
-  //     ],
-
-  //     numPairR: [
-  //       {
-  //         isDiv: true,
-  //         key: (
-  //           <div className="follow-count" style={{ marginRight: "10rem" }}>
-  //             123 FOLLOWING
-  //           </div>
-  //         ),
-  //         value: (
-  //           <div className="follow-btn" style={{ marginRight: "10rem" }}>
-  //             TIP
-  //           </div>
-  //         ),
-  //       },
-  //       {
-  //         key: "Total",
-  //         value: "21",
-  //       },
-  //       {
-  //         key: "HIGHEST",
-  //         value: "19",
-  //       },
-  //     ],
-  //   };
   const options = {
     comPairL: [
       {
@@ -96,8 +46,6 @@ const Viewprofile = (props) => {
     ],
   };
   const [tabKey, setTabKey] = useState(0);
-//  const [optionKey, setOptionKey] = useState(0);
-//  const [optionComponent, setOptionComponent] = useState(
   const [optionComponent] = useState(  
     options.comPairL[0].component
   );
@@ -231,11 +179,7 @@ const Viewprofile = (props) => {
           </div>
         ))}
       </div> */}
-
-
-      
       <div>
-        
         
         {tabKey===0&&<Nftslist sqr={sqr} cir={cir}></Nftslist>}
         {tabKey===1&&<Nftslist sqr={sqr} cir={cir}></Nftslist>}

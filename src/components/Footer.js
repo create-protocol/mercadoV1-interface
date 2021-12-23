@@ -35,7 +35,7 @@ const Footer = () => {
           <Heading>Marketplace</Heading>
 
           <FooterLink href="/">Home</FooterLink>
-          <FooterLink href="/creator/bharat-thakur">Creator</FooterLink>
+          {/* <FooterLink href="/creator/bharat-thakur">Creator</FooterLink> */}
           {/* <FooterLink href="#">Discover</FooterLink> */}
           {/* <FooterLink href="/creator">Creators</FooterLink> */}
         </Row>
