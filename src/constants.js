@@ -4,6 +4,7 @@ import Viewprofile from "./components/ViewProfile";
 // import page2 from "./mints/nfts/page2";
 import faq from './components/FAQ';
 import DescriptionPage from "./components/DescriptionPage";
+import Profile from './components/Profile'
 const routes = [
   {
     pathName: "HOME",
@@ -54,6 +55,11 @@ const routes = [
     pathName: "ABOUT MUZIX",
     path: "/ABOUT MUZIX",
     component: Previewnft,
+  },
+  {
+    pathName: "profile",
+    path: "/profile/:addr",
+    component: Profile,
   },
   // {
   //   pathName: "LOG OUT",

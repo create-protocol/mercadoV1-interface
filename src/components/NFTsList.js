@@ -39,6 +39,9 @@ const ShadowBtn = styled.div`
   }
 `;
 
+const Span1=styled.div`
+text-decoration:none;`
+
 const Nftslist = (props) => {
   const [nfts, setNfts] = useState([]);
   const [sold, setSold] = useState([]);
@@ -163,11 +166,11 @@ const Nftslist = (props) => {
                       <div>{nft.collection}</div>
 
                       <div>
-                        <span>
+                        <Span1 style={{background:"none",padding:"0"}}>
                           {nft.seller.substring(0, 6) +
                             "........." +
                             nft.seller.slice(-3)}
-                        </span>
+                        </Span1>
                       </div>
                     </p>
                   </div>
