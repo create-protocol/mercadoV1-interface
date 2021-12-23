@@ -39,7 +39,7 @@ const ShadowBtn = styled.div`
   }
 `;
 
-const Span1=styled.div`
+const Span1 = styled.div`
 text-decoration:none;`
 
 const Nftslist = (props) => {
@@ -53,7 +53,7 @@ const Nftslist = (props) => {
   const history = useHistory();
   async function loadNFTs() {
     const provider = new ethers.providers.JsonRpcProvider(
-      `https://polygon-mumbai.g.alchemy.com/v2/T-sMRF2J8t9nSNy7dBwBFNijlNhhk1ij`
+      `https://polygon-mainnet.g.alchemy.com/v2/bv51--wKZGYGrXlqxnqJ_rRdz6cR5t-4`
     );
 
     const marketContract = new ethers.Contract(
@@ -74,12 +74,12 @@ const Nftslist = (props) => {
           price,
           tokenId: i.tokenId.toNumber(),
           seller: i.seller,
-          itemId:i.itemId,
+          itemId: i.itemId,
           image: meta.data.imageCID,
-          desc: meta.data.description, 
-          nftContract:i.nftContract
+          desc: meta.data.description,
+          nftContract: i.nftContract
         };
-        console.log(item);     
+        console.log(item);
         return item;
       })
     );
@@ -92,7 +92,7 @@ const Nftslist = (props) => {
   }
 
   async function buyNft(nft) {
-    try{
+    try {
       const web3Modal = new Web3Modal();
       const connection = await web3Modal.connect();
 
@@ -113,10 +113,10 @@ const Nftslist = (props) => {
       );
       loadNFTs();
 
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
-    
+
   }
 
   if (loadingState != "loaded") {
@@ -166,7 +166,7 @@ const Nftslist = (props) => {
                       <div>{nft.collection}</div>
 
                       <div>
-                        <Span1 style={{background:"none",padding:"0"}}>
+                        <Span1 style={{ background: "none", padding: "0" }}>
                           {nft.seller.substring(0, 6) +
                             "........." +
                             nft.seller.slice(-3)}

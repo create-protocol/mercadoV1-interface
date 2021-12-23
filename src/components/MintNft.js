@@ -71,7 +71,7 @@ function Mintnft() {
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
       console.log("tokenURI", url);
       /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
-      createSale(url,royaltyinweth);
+      createSale(url, royaltyinweth);
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
@@ -81,7 +81,7 @@ function Mintnft() {
     // const web3Modal = new Web3Modal({network:`https://eth-ropsten.alchemyapi.io/v2/77Wy8P0Ua9eWbtADqxk67t_anh5pHPAv%60`})
     // const web3Modal = new Web3Modal({network:`https://polygon-mumbai.g.alchemy.com/v2/klOlNm_rQCabx94IjAdS_ZBHzNCkRXFX`})
     const web3Modal = new Web3Modal({
-      network: `https://polygon-mumbai.g.alchemy.com/v2/T-sMRF2J8t9nSNy7dBwBFNijlNhhk1ij`,
+      network: `https://polygon-mainnet.g.alchemy.com/v2/bv51--wKZGYGrXlqxnqJ_rRdz6cR5t-4`,
     });
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
@@ -90,7 +90,7 @@ function Mintnft() {
     /* next, create the item */
     let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
     console.log(typeof royaltyAmount);
-    const royaltyAmt=ethers.utils.parseEther(royaltyAmount);
+    const royaltyAmt = ethers.utils.parseEther(royaltyAmount);
     let transaction = await contract.createToken(
       url,
       polygonweth,
@@ -99,14 +99,14 @@ function Mintnft() {
     console.log(transaction)
     let tx = await transaction.wait();
     let event = tx.events[0];
-    
+
     let value = event.args[2];
     let tokenId = value.toNumber();
 
     console.log("NFT minted");
 
     const price = ethers.utils.parseUnits(formInput.price, "ether");
-    
+
     /* then list the item for sale on the marketplace */
     contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
     // let listingPrice = await contract.getListingPrice()
