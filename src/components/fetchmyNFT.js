@@ -4,34 +4,7 @@ import "../assets/css/home.css";
 import Nftslist from "./NFTsList";
 import sqr from "../assets/images/space1.png";
 import cir from "../assets/images/cir.jpg";
-import styled from "styled-components";
 
-
-const ShadowBtn = styled.div`
-background-color: rgb(112, 215, 49);
-color: rgb(26, 24, 24);
-font-size: 20px;
-font-weight: 700;
-width: 200%;
-border: 10px solid rgb(48, 52, 57);
-border-radius: 20px;
-padding:6px 10px 6px 10px;
-cursor: pointer;
-margin-top: 0.625rem;
-max-width: 900px;
-transition: all 0.3s ease-in-out 0s;
-box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
-margin-top:40px;
-margin-right: 20px;
-margin-left: 20px;
-}
-  &:hover{
-    -webkit-box-shadow: 0 0 8px #fff;
-        box-shadow: 0 0 8px #fff;
-        transition:.5s;
-        border-radius:20px
-  }
-`;
 const FetchMyNFT = (props) => {
   return (
     <div>

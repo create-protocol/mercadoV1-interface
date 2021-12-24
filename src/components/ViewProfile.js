@@ -1,54 +1,14 @@
 import React, { useState } from "react";
 import "../assets/css/profile.css";
 import cir from "../assets/images/bharat.jpeg";
-import Profileaudiolist from "./ProfileAudioList";
 import Nftslist from "./NFTsList";
 // import Creatorslist from "./CreatorsList";
 import sqr from "../assets/images/space1.png";
 import bharatt from '../assets/images/bharatt.png'
 import Footer from './Footer'
-// import cir from "../assets/images/cir.jpg";
 const Viewprofile = (props) => {
-  const options = {
-    comPairL: [
-      {
-        key: "AUDIO",
-        component: Profileaudiolist,
-      },
-      {
-        key: "VIDEO",
-        component: Profileaudiolist,
-      },
-      {
-        key: "IMAGE",
-        component: Profileaudiolist,
-      },
-      {
-        key: "3D",
-        component: Profileaudiolist,
-      },
-    ],
-    comPairR: [
-      {
-        key: "RECENT",
-        component: Profileaudiolist,
-      },
-      {
-        key: "POPULAR",
-        component: Profileaudiolist,
-      },
-      {
-        key: "MOST LIKED",
-        component: Profileaudiolist,
-      },
-    ],
-  };
+
   const [tabKey, setTabKey] = useState(0);
-//  const [optionKey, setOptionKey] = useState(0);
-//  const [optionComponent, setOptionComponent] = useState(
-  const [optionComponent] = useState(  
-    options.comPairL[0].component
-  );
   return (
     <div>
       <div className="profile-banner" style={{ backgroundImage: `url(${bharatt})` }}>

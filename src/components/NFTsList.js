@@ -12,8 +12,6 @@ import styled from "styled-components";
 import { nftmarketaddress, nftaddress } from "../config";
 import Loader from "react-loader-spinner";
 import { sendTransaction } from './sendTransaction';
-import { useParams } from "react-router-dom";
-import { id } from "ethers/lib/utils";
 const ShadowBtn = styled.div`
   background-color: rgb(112, 215, 49);
   color: rgb(26, 24, 24);
@@ -39,21 +37,20 @@ const ShadowBtn = styled.div`
   }
 `;
 
-const Span1=styled.div`
+const Span1 = styled.div`
 text-decoration:none;`
 
 const Nftslist = (props) => {
   const [nfts, setNfts] = useState([]);
   const [sold, setSold] = useState([]);
-  // const { id } = useParams();
   const [loadingState, setLoadingState] = useState("not-loaded");
   useEffect(() => {
     loadNFTs();
   }, []);
-  const history = useHistory();
+  
   async function loadNFTs() {
     const provider = new ethers.providers.JsonRpcProvider(
-      `https://polygon-mumbai.g.alchemy.com/v2/T-sMRF2J8t9nSNy7dBwBFNijlNhhk1ij`
+      `https://polygon-mainnet.g.alchemy.com/v2/bv51--wKZGYGrXlqxnqJ_rRdz6cR5t-4`
     );
 
     const marketContract = new ethers.Contract(
@@ -64,22 +61,22 @@ const Nftslist = (props) => {
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
 
     const data = await marketContract.fetchAllNFTs();
-    console.log(data);
+    // console.log(data);
     const items = await Promise.all(
       data.map(async (i) => {
         const tokenUri = await tokenContract.tokenURI(i.tokenId);
         const meta = await axios.get(tokenUri);
-        let price = ethers.utils.formatUnits(i.price.toString(), "ether");
+        let price = ethers.utils.formatUnits(i.price, "ether");
         let item = {
           price,
           tokenId: i.tokenId.toNumber(),
           seller: i.seller,
-          itemId:i.itemId.toNumber(),
+          itemId: i.itemId,
           image: meta.data.imageCID,
-          desc: meta.data.description, 
-          nftContract:i.nftContract
+          desc: meta.data.description,
+          nftContract: i.nftContract
         };
-        console.log(item);
+        // console.log(item);
         return item;
       })
     );
@@ -88,11 +85,11 @@ const Nftslist = (props) => {
     setSold(soldItems);
     setNfts(items);
     setLoadingState("loaded");
-    console.log(items);
+    // console.log(items);
   }
 
   async function buyNft(nft) {
-    try{
+    try {
       const web3Modal = new Web3Modal();
       const connection = await web3Modal.connect();
 
@@ -101,10 +98,10 @@ const Nftslist = (props) => {
       window.wallet = signer;
       window.provider = provider;
       const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
-      console.log(nft);
+      // console.log(nft);
       const price = ethers.utils.parseUnits(nft.price, "ether");
-      console.log(nftaddress);
-      console.log(nft.itemId);
+      // console.log(nftaddress);
+      // console.log(nft.itemId);
       await sendTransaction(
         contract,
         "buyNFT",
@@ -113,10 +110,10 @@ const Nftslist = (props) => {
       );
       loadNFTs();
 
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
-    
+
   }
 
   if (loadingState != "loaded") {
@@ -149,6 +146,7 @@ const Nftslist = (props) => {
                   paddingBottom: "10px",
                 }}
               >
+                
                 <Link to={`/asset/${nft.itemId}`}>
                   <div className="nft-img-container">
                     <img className="nft-img" src={nft.image} alt="logo"></img>
@@ -166,7 +164,7 @@ const Nftslist = (props) => {
                       <div>{nft.collection}</div>
 
                       <div>
-                        <Span1 style={{background:"none",padding:"0"}}>
+                        <Span1 style={{ background: "none", padding: "0" }}>
                           {nft.seller.substring(0, 6) +
                             "........." +
                             nft.seller.slice(-3)}
@@ -176,12 +174,12 @@ const Nftslist = (props) => {
                   </div>
                 </Link>
 
-                {/* <ShadowBtn
+                <ShadowBtn
                   style={{ marginTop: "0" }}
                   onClick={() => buyNft(nft)}
                 >
                   Buy
-                </ShadowBtn> */}
+                </ShadowBtn>
               </div>
 
               // </div>

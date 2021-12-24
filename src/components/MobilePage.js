@@ -1,13 +1,6 @@
 import React from "react";
 import "font-awesome/css/font-awesome.min.css";
 
-import {
-  Containertop,
-  Row,
-  FooterLink,
-  Heading,
-  ContainerInner,
-} from "./FooterStyles";
 
 import mobile from "../assets/images/comingsoon.jpg";
 const Mobilepage = () => {

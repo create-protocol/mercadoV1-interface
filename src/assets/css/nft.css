@@ -19,7 +19,7 @@
   display: table-cell;
 }
 .nft-card-container:hover {
-  /* transform: scale(1.06); */
+  transform: scale(1.06);
   /* background-color: rgb(50, 102, 82); */
   border-radius: 25px;
   
@@ -42,9 +42,9 @@
 }
 
 .nft-img {
+  height: 280px;
   width: 95%;
   border: 1px solid var(--unnamed-color-707070);
-
   opacity: 1;
 }
 

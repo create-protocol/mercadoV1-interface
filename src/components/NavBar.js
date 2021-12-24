@@ -8,10 +8,7 @@ import "../assets/css/Navbar.css";
 import Web3Modal from "web3modal";
 import Drawerroutes from "./DrawerRoutes";
 import Home from "../assets/images/home.png";
-import Footer from "./Footer";
 import styled from "styled-components";
-// import { Alert } from 'styled-alert-component';
-import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const ShadowBtn = styled.div`
 background-color: rgb(112, 215, 49);
@@ -40,7 +37,7 @@ margin-left: 20px;
   }
 `;
 
-const Div1 = styled.div``;
+// const Div1 = styled.div``;
 
 const NavBar = (props) => {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -49,7 +46,7 @@ const NavBar = (props) => {
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
 
   useEffect(async function connectWallet() {
-    console.log("jhandu");
+    // console.log("jhandu");
 
     setTimeout(function () {
       if (window.ethereum && isConnected) {

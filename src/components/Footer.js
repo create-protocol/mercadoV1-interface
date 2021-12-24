@@ -16,6 +16,15 @@ const Footer = () => {
   return (
     <Containertop>
 
+<<<<<<< HEAD
+=======
+
+
+
+      <div>
+        
+      </div>
+>>>>>>> e46907061673e2fb70b07ec506032095ad6e5985
       <hr
         style={{
           width: "80%",
@@ -29,7 +38,7 @@ const Footer = () => {
           <Heading>Marketplace</Heading>
 
           <FooterLink href="/">Home</FooterLink>
-          <FooterLink href="/creator/bharat-thakur">Creator</FooterLink>
+          {/* <FooterLink href="/creator/bharat-thakur">Creator</FooterLink> */}
           {/* <FooterLink href="#">Discover</FooterLink> */}
           {/* <FooterLink href="/creator">Creators</FooterLink> */}
         </Row>

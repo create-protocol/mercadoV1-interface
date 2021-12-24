@@ -8,9 +8,9 @@ function App() {
   return (
     <div className="App">
       <Helmet>
-        <title>MuzixTech</title>
+        <title>mercado.studio</title>
         <meta name="description" content="A marketplace for artist" />
-        <meta name="keywords" content="Muzix,NFT,Create protocall,Marketplace"/>
+        <meta name="keywords" content="Muzix,NFT,Create protocall,Marketplace" />
       </Helmet>
       <Routes></Routes>
     </div>
