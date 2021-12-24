@@ -1,15 +1,10 @@
 import React from "react";
-import hero from "../assets/images/mercado.png";
 import "../assets/css/home.css";
 import Nftslist from "./NFTsList";
 import sqr from "../assets/images/space1.png";
 import cir from "../assets/images/cir.jpg";
-import { Player } from 'video-react';
-import ReactPlayer from 'react-player/youtube'
 import Footer from "./Footer";
 import styled from "styled-components";
-import { height } from "dom-helpers";
-import FetchMyNFT from "./fetchmyNFT";
 const ShadowBtn = styled.div`
 background-color: rgb(112, 215, 49);
 color: rgb(26, 24, 24);

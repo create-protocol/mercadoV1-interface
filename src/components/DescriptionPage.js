@@ -12,10 +12,7 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
-
-import { useHistory } from "react-router";
 import { sendTransaction } from "./sendTransaction";
-// import { id } from "ethers/lib/utils";
 const Splitscreen = styled.div`
   display: flex;
   flex-direction: row;
@@ -71,13 +68,10 @@ const Signupbtn = styled.div`
 `;
 
 const DescriptionPage = (props) => {
-  const [nfts, setNfts] = useState([]);
-  const [sold, setSold] = useState([]);
   const [allowance, setAllowance] = useState(false);
   const [obj, setobj] = useState({});
   const [loadingState, setLoadingState] = useState("not-loaded");
   const { itemid } = useParams();
-  //itemid = itemid.toNumber();
   var itemId = ethers.utils.parseUnits(itemid, 'ethers');
   console.log(typeof itemid);
 
@@ -150,11 +144,6 @@ const DescriptionPage = (props) => {
       )
     }
 
-
-
-
-    // await ;
-    // load2()
 
   }
 

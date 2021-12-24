@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { AppContext } from './context';
 import NavBar from "./components/NavBar";
-// import Footer from "./components/Footer/Footer";
 import Home from "./components/Home";
 import ScrollToTop from "./ScrollToTop";
 import { routes } from "./constants";
