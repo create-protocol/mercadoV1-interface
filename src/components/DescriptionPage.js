@@ -77,7 +77,7 @@ const DescriptionPage = (props) => {
   //itemid = itemid.toNumber();
   var itemId = ethers.BigNumber.from(itemid);
   //var itemId = ethers.utils.parseUnits(itemid, 'ethers');
-  console.log(typeof itemid);
+  // console.log(typeof itemid);
 
   useEffect(() => {
     load2(itemId);
