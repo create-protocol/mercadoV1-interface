@@ -78,7 +78,8 @@ const DescriptionPage = (props) => {
   const [loadingState, setLoadingState] = useState("not-loaded");
   const { itemid } = useParams();
   //itemid = itemid.toNumber();
-  var itemId = ethers.utils.parseUnits(itemid, 'ethers');
+  var itemId = ethers.BigNumber.from(itemid);
+  //var itemId = ethers.utils.parseUnits(itemid, 'ethers');
   console.log(typeof itemid);
 
   useEffect(() => {
@@ -95,8 +96,6 @@ const DescriptionPage = (props) => {
       Market.abi,
       provider
     );
-
-
     itemId = ethers.BigNumber.from(itemId);
     const data = await marketContract.fetchIndividualNFT(itemId);
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
@@ -119,7 +118,7 @@ const DescriptionPage = (props) => {
   }
   const isEnoughAllowance = async () => {
     const owner = await window.wallet.getAddress()
-    const amt = await window.ercInst.allowance(owner, '0xCCa142335a0A7C30c757004A883ac74b7c5a4843');
+    const amt = await window.ercInst.allowance(owner, window.marketInst.address);
     console.log(amt >= ethers.utils.parseEther(obj.price));
     setAllowance(amt >= ethers.utils.parseEther(obj.price));
   }
@@ -135,8 +134,8 @@ const DescriptionPage = (props) => {
       await sendTransaction(
         window.ercInst,
         "approve",
-        ["0xCCa142335a0A7C30c757004A883ac74b7c5a4843",
-          ethers.utils.parseEther(obj.price)],
+        [window.marketInst.address,
+        ethers.utils.parseEther(obj.price)],
         "You give allowance to MarketPlace of required WETH"
       );
       await isEnoughAllowance();
