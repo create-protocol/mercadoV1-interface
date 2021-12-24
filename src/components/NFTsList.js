@@ -146,7 +146,7 @@ const Nftslist = (props) => {
                   paddingBottom: "10px",
                 }}
               >
-                <h1>hel</h1>
+                
                 <Link to={`/asset/${nft.itemId}`}>
                   <div className="nft-img-container">
                     <img className="nft-img" src={nft.image} alt="logo"></img>
