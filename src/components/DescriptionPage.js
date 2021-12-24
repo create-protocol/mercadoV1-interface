@@ -83,11 +83,11 @@ const DescriptionPage = (props) => {
 
   useEffect(() => {
     load2(itemId);
-  }, []);   
-  
+  }, []);
+
   async function load2(itemId) {
     const provider = new ethers.providers.JsonRpcProvider(
-      `https://polygon-mumbai.g.alchemy.com/v2/T-sMRF2J8t9nSNy7dBwBFNijlNhhk1ij`
+      `https://polygon-mainnet.g.alchemy.com/v2/bv51--wKZGYGrXlqxnqJ_rRdz6cR5t-4`
     );
 
     const marketContract = new ethers.Contract(
@@ -95,13 +95,13 @@ const DescriptionPage = (props) => {
       Market.abi,
       provider
     );
-    
-    
+
+
     itemId = ethers.BigNumber.from(itemId);
     const data = await marketContract.fetchIndividualNFT(itemId);
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
     const tokenUri = await tokenContract.tokenURI(data.tokenId.toNumber());
-        const meta = await axios.get(tokenUri);
+    const meta = await axios.get(tokenUri);
     var item = {
       itemId: data.itemId,
       nftContract: data.nftContract,
@@ -119,7 +119,7 @@ const DescriptionPage = (props) => {
   }
   const isEnoughAllowance = async () => {
     const owner = await window.wallet.getAddress()
-    const amt = await window.ercInst.allowance(owner,'0xCCa142335a0A7C30c757004A883ac74b7c5a4843');
+    const amt = await window.ercInst.allowance(owner, '0xCCa142335a0A7C30c757004A883ac74b7c5a4843');
     console.log(amt >= ethers.utils.parseEther(obj.price));
     setAllowance(amt >= ethers.utils.parseEther(obj.price));
   }
@@ -131,27 +131,27 @@ const DescriptionPage = (props) => {
     const signer = provider.getSigner();
     window.wallet = signer;
     console.log(ethers.utils.parseEther(obj.price));
-    if(!allowance){
+    if (!allowance) {
       await sendTransaction(
         window.ercInst,
         "approve",
         ["0xCCa142335a0A7C30c757004A883ac74b7c5a4843",
-        ethers.utils.parseEther(obj.price)],
+          ethers.utils.parseEther(obj.price)],
         "You give allowance to MarketPlace of required WETH"
       );
-      await isEnoughAllowance();   
-      
-    }else {
+      await isEnoughAllowance();
+
+    } else {
       await sendTransaction(
         window.marketInst,
         "buyNFT",
         [itemId],
         "You have successfully Purchase This Token"
-    )
+      )
     }
 
 
-    
+
 
     // await ;
     // load2()
@@ -161,57 +161,57 @@ const DescriptionPage = (props) => {
   console.log(obj);
   return (
     <Splitscreen>
-      {!obj.image?<div style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"center"}}><Loader type="Puff" color="#00BFFF" height={100} width={100} /></div>:
-      <>
-      <Left>
-        
-        <div
-          style={{
-            padding: "2rem",
-            height: "100%",
-            width: "80%",
-            borderRadius: "10px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            paddingBottom: "0",
-            overflow: "hidden",
-          }}
-        >
-          <Zoom>
-            <img
-              src={obj.image}
-              // src="https://media.istockphoto.com/photos/code-programming-for-website-editors-view-picture-id1290492381?b=1&k=20&m=1290492381&s=170667a&w=0&h=NQSXJKhncCP1GLzDkD8KPZsCOh1wldDj5RZbPVJztxQ= "
-              alt="nft"
-              style={{ width: "100%", borderRadius: "15px", height: "500px" }}
-            />
-          </Zoom>
-        </div>
-      </Left>
-      <Right>
+      {!obj.image ? <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}><Loader type="Puff" color="#00BFFF" height={100} width={100} /></div> :
+        <>
+          <Left>
 
-        <h2 style={{ color: "white" }}> Name: {obj.name}</h2>
-        <h2 style={{ color: "white" }}> {obj.desc}</h2>
-        <h2
-          style={{
-            color: "white",
-            textOverflow: "none",
-            fontSize: "1rem",
-            letterSpacing: "2px",
-          }}
-        >
-          seller:{obj.seller}
-        </h2>
-        <h2 style={{ color: "white" }}>
-          Price:{obj.price} WETH
-        </h2>
-        <Signupbtn
-          style={{ background: "white", color: "black" }}
-          onClick={buyNFT}
-        >
-          {allowance ? 'BUY' : 'Set Allownace'}
-        </Signupbtn>
-      </Right></>}
+            <div
+              style={{
+                padding: "2rem",
+                height: "100%",
+                width: "80%",
+                borderRadius: "10px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                paddingBottom: "0",
+                overflow: "hidden",
+              }}
+            >
+              <Zoom>
+                <img
+                  src={obj.image}
+                  // src="https://media.istockphoto.com/photos/code-programming-for-website-editors-view-picture-id1290492381?b=1&k=20&m=1290492381&s=170667a&w=0&h=NQSXJKhncCP1GLzDkD8KPZsCOh1wldDj5RZbPVJztxQ= "
+                  alt="nft"
+                  style={{ width: "100%", borderRadius: "15px", height: "500px" }}
+                />
+              </Zoom>
+            </div>
+          </Left>
+          <Right>
+
+            <h2 style={{ color: "white" }}> Name: {obj.name}</h2>
+            <h2 style={{ color: "white" }}> {obj.desc}</h2>
+            <h2
+              style={{
+                color: "white",
+                textOverflow: "none",
+                fontSize: "1rem",
+                letterSpacing: "2px",
+              }}
+            >
+              seller:{obj.seller}
+            </h2>
+            <h2 style={{ color: "white" }}>
+              Price:{obj.price} WETH
+            </h2>
+            <Signupbtn
+              style={{ background: "white", color: "black" }}
+              onClick={buyNFT}
+            >
+              {allowance ? 'BUY' : 'Set Allownace'}
+            </Signupbtn>
+          </Right></>}
     </Splitscreen>
   );
 };

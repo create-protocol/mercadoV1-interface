@@ -1,11 +1,11 @@
-import {ethers} from 'ethers';
+import { ethers } from 'ethers';
 import Marketplace from './Marketplace.json';
 import NFT from './NFT.json';
 import MockERC20 from './MockERC20.json';
 
 // window.provider = new ethers.providers.InfuraProvider("rinkeby", "b81341e3ab894360a84f3fa640ab985e")
 window.provider = new ethers.providers.JsonRpcProvider(
-  `https://polygon-mumbai.g.alchemy.com/v2/T-sMRF2J8t9nSNy7dBwBFNijlNhhk1ij`
+  `https://polygon-mainnet.g.alchemy.com/v2/bv51--wKZGYGrXlqxnqJ_rRdz6cR5t-4`
 );
 
 window.marketInst = new ethers.Contract('0xCCa142335a0A7C30c757004A883ac74b7c5a4843', Marketplace.abi, window.provider);
