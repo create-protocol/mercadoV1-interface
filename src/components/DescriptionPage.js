@@ -104,7 +104,7 @@ const DescriptionPage = (props) => {
       tokenId: data.tokenId,
       seller: data.seller,
       price: ethers.utils.formatEther(data.price), // price in wei
-      image: meta.data.imageCID,
+      image: meta.data.image,
       name: meta.data.name,
       desc: meta.data.description,
     };

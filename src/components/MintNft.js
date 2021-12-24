@@ -53,11 +53,10 @@ function Mintnft() {
   async function createMarket() {
     const { name, description, price, royaltyinweth } = formInput;
     if (!name || !description || !price || !fileUrl || !royaltyinweth) return;
-    /* first, upload to IPFS */
     const data = JSON.stringify({
       name,
       description,
-      imageCID: fileUrl,
+      image: fileUrl,
     });
     try {
       const added = await client.add(data);
@@ -85,9 +84,9 @@ function Mintnft() {
     let transaction = await contract.createToken(
       url,
       polygonweth,
-      royaltyAmt
+      royaltyAmt,
     );
-    console.log(transaction)
+    console.log(transaction);
     let tx = await transaction.wait();
     let event = tx.events[0];
 
@@ -214,11 +213,14 @@ function Mintnft() {
           >
             <input
               className="formtxtfill docs"
+              accept="audio/*,video/*,image/*"
               type="file"
               name="Asset"
               onChange={onChange}
               style={{ width: "100%" }}
             />
+
+
           </div>
 
           <br />
