@@ -8,6 +8,6 @@ window.provider = new ethers.providers.JsonRpcProvider(
   `https://polygon-mainnet.g.alchemy.com/v2/bv51--wKZGYGrXlqxnqJ_rRdz6cR5t-4`
 );
 
-window.marketInst = new ethers.Contract('0xCCa142335a0A7C30c757004A883ac74b7c5a4843', Marketplace.abi, window.provider);
-window.nftInst = new ethers.Contract('0x639056d4b2fAdAce0aB8392775F5627C5387E7b2', NFT.abi, window.provider);
-window.ercInst = new ethers.Contract('0xA8590470d7E7Cf0a1E860c2d30Fa299aE6bd864f', MockERC20.abi, window.provider);
+window.marketInst = new ethers.Contract('0xed7ffF856756cd27fee101D486f23553e8e24EaA', Marketplace.abi, window.provider);
+window.nftInst = new ethers.Contract('0x5d10fD561A8Ff2fb1ad67dC209fFB49838EBD63B', NFT.abi, window.provider);
+window.ercInst = new ethers.Contract('0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619', MockERC20.abi, window.provider);
