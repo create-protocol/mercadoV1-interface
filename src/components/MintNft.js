@@ -81,11 +81,7 @@ function Mintnft() {
     let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
     console.log(typeof royaltyAmount);
     const royaltyAmt = ethers.utils.parseEther(royaltyAmount);
-    let transaction = await contract.createToken(
-      url,
-      polygonweth,
-      royaltyAmt,
-    );
+    let transaction = await contract.createToken(url, polygonweth, royaltyAmt);
     console.log(transaction);
     let tx = await transaction.wait();
     let event = tx.events[0];
@@ -107,7 +103,11 @@ function Mintnft() {
     // redirect to the homepage
     // router.push('/')
   }
+  const [checked, setChecked] = useState(false);
 
+  const handleChange = () => {
+    setChecked(!checked);
+  };
   return (
     <div>
       <view
@@ -145,7 +145,6 @@ function Mintnft() {
           </div>
           <br />
 
-         
           <div
             style={{
               backgroundColor: "grey",
@@ -219,8 +218,14 @@ function Mintnft() {
               onChange={onChange}
               style={{ width: "100%" }}
             />
-
-
+            <label>
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={handleChange}
+              />
+              Video
+            </label>
           </div>
 
           <br />
