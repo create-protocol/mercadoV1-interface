@@ -106,11 +106,11 @@ function Mintnft() {
     // redirect to the homepage
     // router.push('/')
   }
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
 
-  const handleChange = () => {
-    setChecked(!checked);
-  };
+  // const handleChange = () => {
+  //   setChecked(!checked);
+  // };
   return (
     <div>
       <view
@@ -221,14 +221,14 @@ function Mintnft() {
               onChange={onChange}
               style={{ width: "100%" }}
             />
-            <label>
+            {/* <label>
               <input
                 type="checkbox"
                 checked={checked}
                 onChange={handleChange}
               />
               Video
-            </label>
+            </label> */}
           </div>
 
           <br />
