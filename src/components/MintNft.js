@@ -9,6 +9,7 @@ import NFT from "../abis/NFT.json";
 import Market from "../abis/Marketplace.json";
 import styled from "styled-components";
 
+
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
 const ShadowBtn = styled.div`
@@ -32,12 +33,14 @@ const ShadowBtn = styled.div`
 `;
 function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
+  
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
     description: "",
     royaltyinweth: "",
   });
+
   async function onChange(e) {
     const file = e.target.files[0];
     try {
