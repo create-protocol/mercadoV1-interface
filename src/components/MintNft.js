@@ -9,6 +9,7 @@ import NFT from "../abis/NFT.json";
 import Market from "../abis/Marketplace.json";
 import styled from "styled-components";
 
+
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
 const ShadowBtn = styled.div`
@@ -32,12 +33,14 @@ const ShadowBtn = styled.div`
 `;
 function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
+  
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
     description: "",
     royaltyinweth: "",
   });
+
   async function onChange(e) {
     const file = e.target.files[0];
     try {
@@ -81,11 +84,7 @@ function Mintnft() {
     let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
     console.log(typeof royaltyAmount);
     const royaltyAmt = ethers.utils.parseEther(royaltyAmount);
-    let transaction = await contract.createToken(
-      url,
-      polygonweth,
-      royaltyAmt,
-    );
+    let transaction = await contract.createToken(url, polygonweth, royaltyAmt);
     console.log(transaction);
     let tx = await transaction.wait();
     let event = tx.events[0];
@@ -107,7 +106,11 @@ function Mintnft() {
     // redirect to the homepage
     // router.push('/')
   }
+  // const [checked, setChecked] = useState(false);
 
+  // const handleChange = () => {
+  //   setChecked(!checked);
+  // };
   return (
     <div>
       <view
@@ -145,7 +148,6 @@ function Mintnft() {
           </div>
           <br />
 
-         
           <div
             style={{
               backgroundColor: "grey",
@@ -219,8 +221,14 @@ function Mintnft() {
               onChange={onChange}
               style={{ width: "100%" }}
             />
-
-
+            {/* <label>
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={handleChange}
+              />
+              Video
+            </label> */}
           </div>
 
           <br />

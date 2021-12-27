@@ -11,6 +11,9 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import { nftmarketaddress, nftaddress } from "../config";
 import Loader from "react-loader-spinner";
+
+
+
 import { sendTransaction } from './sendTransaction';
 const ShadowBtn = styled.div`
   background-color: rgb(112, 215, 49);
@@ -174,12 +177,12 @@ const Nftslist = (props) => {
                   </div>
                 </Link>
 
-                <ShadowBtn
+                {/* <ShadowBtn
                   style={{ marginTop: "0" }}
                   onClick={() => buyNft(nft)}
                 >
                   Buy
-                </ShadowBtn>
+                </ShadowBtn> */}
               </div>
 
               // </div>
