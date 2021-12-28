@@ -136,10 +136,10 @@ const Nftslist = (props) => {
     console.log(nfts[0].price);
   return (
     <div>
-      <div className="p-4 maindiv">
+      <div className="p-4">
         <div className=" my-4 ml-4 ">
           <div className="m-card-content" style={{ justifyContent: "center" }}>
-            {nfts.reverse().map((nft, i) => (
+            {nfts.map((nft, i) => (
               <div
                 key={i}
                 className="row nft-card-container m-2"

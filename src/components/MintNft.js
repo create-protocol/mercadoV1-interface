@@ -9,7 +9,7 @@ import NFT from "../abis/NFT.json";
 import Market from "../abis/Marketplace.json";
 import styled from "styled-components";
 import { Player } from "video-react";
-import fs from 'fs';
+// import fs from 'fs';
 import axios from "axios";
 // using pinata
 const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
