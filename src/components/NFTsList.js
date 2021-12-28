@@ -132,12 +132,14 @@ const Nftslist = (props) => {
         No assets created
       </h1>
     );
+    // nfts.reverse();
+    console.log(nfts[0].price);
   return (
     <div>
       <div className="p-4">
         <div className=" my-4 ml-4 ">
           <div className="m-card-content" style={{ justifyContent: "center" }}>
-            {nfts.map((nft, i) => (
+            {nfts.reverse().map((nft, i) => (
               <div
                 key={i}
                 className="row nft-card-container m-2"
@@ -150,21 +152,8 @@ const Nftslist = (props) => {
               >
                 <Link to={`/asset/${nft.itemId}`}>
                   <div className="nft-img-container">
-                    try {
-                        <img className="nft-img" src={nft.image} alt="logo"></img>
-                    } catch (error) {
-                      console.log("error")
-                    }
+                    <img className="nft-img" src={nft.image} alt="logo"></img>
 
-                    try {
-                      <Player>
-                      <source src={nft.image} />
-                    </Player>
-                    } catch (error) {
-                      console.log("error")
-                    }
-                    
-                    
                     <p
                       style={{
                         fontWeight: "bold",
@@ -189,12 +178,12 @@ const Nftslist = (props) => {
                   </div>
                 </Link>
 
-                <ShadowBtn
+                {/* <ShadowBtn
                   style={{ marginTop: "0" }}
                   onClick={() => buyNft(nft)}
                 >
                   Buy
-                </ShadowBtn>
+                </ShadowBtn> */}
               </div>
 
               // </div>

@@ -191,7 +191,7 @@ function Mintnft() {
               onChange={(e) =>
                 updateFormInput({ ...formInput, description: e.target.value })
               }
-              style={{ width: "100%" }}
+              style={{ width: "100%",textTransform:"lowercase" }}
             />
           </div>
           <br />
