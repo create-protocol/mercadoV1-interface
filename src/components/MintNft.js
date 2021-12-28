@@ -14,6 +14,7 @@ import axios from "axios";
 // using pinata
 const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
 
+
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
 const ShadowBtn = styled.div`
@@ -64,12 +65,14 @@ const ShadowBtn = styled.div`
 
 function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
+  
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
     description: "",
     royaltyinweth: "",
   });
+
   async function onChange(e) {
     const file = e.target.files[0];
     var filePath = file.value;
@@ -138,7 +141,11 @@ function Mintnft() {
     // redirect to the homepage
     // router.push('/')
   }
+  // const [checked, setChecked] = useState(false);
 
+  // const handleChange = () => {
+  //   setChecked(!checked);
+  // };
   return (
     <div>
       <view

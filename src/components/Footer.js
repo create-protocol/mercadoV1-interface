@@ -16,12 +16,6 @@ const Footer = () => {
   return (
     <Containertop>
 
-
-
-
-      <div>
-        
-      </div>
       <hr
         style={{
           width: "80%",
