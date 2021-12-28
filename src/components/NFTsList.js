@@ -132,6 +132,7 @@ const Nftslist = (props) => {
         No assets created
       </h1>
     );
+    
     var nftsreverse = [...nfts].reverse();
     // nfts.reverse();
     // console.log(nfts);

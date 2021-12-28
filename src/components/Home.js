@@ -44,6 +44,7 @@ const Home = (props) => {
         
           <h1 style={{ color: "#cccccc" }}>mercado.studio</h1>
         </div>
+        
        
         <div className="action-container my-4">
           <ShadowBtn
