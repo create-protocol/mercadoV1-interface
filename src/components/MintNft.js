@@ -8,6 +8,11 @@ import "../assets/css/home.css";
 import NFT from "../abis/NFT.json";
 import Market from "../abis/Marketplace.json";
 import styled from "styled-components";
+import { Player } from "video-react";
+import fs from 'fs';
+import axios from "axios";
+// using pinata
+const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
 
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
@@ -30,6 +35,33 @@ const ShadowBtn = styled.div`
     transition: 0.5s;
   }
 `;
+
+
+// export const pinFileToIPFS = (pinataApiKey, pinataSecretApiKey) => {
+//   const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
+
+//   //we gather a local file for this example, but any valid readStream source will work here.
+//   let data = new FormData();
+//   data.append('file', fs.createReadStream('./yourfile.png'));
+
+//   return axios.post(url,
+//       data,
+//       {
+//           maxContentLength: 'Infinity', //this is needed to prevent axios from erroring out with large files
+//           headers: {
+//               'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+//               'pinata_api_key': pinataApiKey,
+//               'pinata_secret_api_key': pinataSecretApiKey
+//           }
+//       }
+//   ).then(function (response) {
+//       //handle response here
+//   }).catch(function (error) {
+//       //handle error here
+//   });
+// };
+
+
 function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
   const [formInput, updateFormInput] = useState({
@@ -40,6 +72,8 @@ function Mintnft() {
   });
   async function onChange(e) {
     const file = e.target.files[0];
+    var filePath = file.value;
+    console.log(filePath);
     try {
       const added = await client.add(file, {
         progress: (prog) => console.log(`received: ${prog}`),
@@ -58,6 +92,7 @@ function Mintnft() {
       description,
       image: fileUrl,
     });
+    console.log(fileUrl);
     try {
       const added = await client.add(data);
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
@@ -81,11 +116,7 @@ function Mintnft() {
     let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
     console.log(typeof royaltyAmount);
     const royaltyAmt = ethers.utils.parseEther(royaltyAmount);
-    let transaction = await contract.createToken(
-      url,
-      polygonweth,
-      royaltyAmt,
-    );
+    let transaction = await contract.createToken(url, polygonweth, royaltyAmt);
     console.log(transaction);
     let tx = await transaction.wait();
     let event = tx.events[0];
@@ -145,7 +176,6 @@ function Mintnft() {
           </div>
           <br />
 
-         
           <div
             style={{
               backgroundColor: "grey",
@@ -219,8 +249,6 @@ function Mintnft() {
               onChange={onChange}
               style={{ width: "100%" }}
             />
-
-
           </div>
 
           <br />
@@ -234,18 +262,9 @@ function Mintnft() {
           }}
         >
           {fileUrl ? (
-            <img
-              className="docs"
-              style={{
-                opcaity: "0.7",
-                height: "30rem",
-                width: "30rem",
-                backgroundSize: "cover",
-              }}
-              alt="Preview  "
-              width="350"
-              src={fileUrl}
-            />
+            <Player>
+              <source src={fileUrl} />
+            </Player>
           ) : (
             <h2
               style={{

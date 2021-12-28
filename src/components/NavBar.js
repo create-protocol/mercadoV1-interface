@@ -9,7 +9,6 @@ import Web3Modal from "web3modal";
 import Drawerroutes from "./DrawerRoutes";
 import Home from "../assets/images/home.png";
 import styled from "styled-components";
-
 const ShadowBtn = styled.div`
 background-color: rgb(112, 215, 49);
 color: rgb(26, 24, 24);

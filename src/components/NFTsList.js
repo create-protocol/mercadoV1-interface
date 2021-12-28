@@ -7,11 +7,11 @@ import "../assets/css/nft.css";
 import Market from "../abis/Marketplace.json";
 import NFT from "../abis/NFT.json";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
 import styled from "styled-components";
 import { nftmarketaddress, nftaddress } from "../config";
 import Loader from "react-loader-spinner";
-import { sendTransaction } from './sendTransaction';
+import { sendTransaction } from "./sendTransaction";
+import { Player } from "video-react";
 const ShadowBtn = styled.div`
   background-color: rgb(112, 215, 49);
   color: rgb(26, 24, 24);
@@ -38,7 +38,8 @@ const ShadowBtn = styled.div`
 `;
 
 const Span1 = styled.div`
-text-decoration:none;`
+  text-decoration: none;
+`;
 
 const Nftslist = (props) => {
   const [nfts, setNfts] = useState([]);
@@ -47,7 +48,7 @@ const Nftslist = (props) => {
   useEffect(() => {
     loadNFTs();
   }, []);
-  
+
   async function loadNFTs() {
     const provider = new ethers.providers.JsonRpcProvider(
       `https://polygon-mainnet.g.alchemy.com/v2/bv51--wKZGYGrXlqxnqJ_rRdz6cR5t-4`
@@ -74,7 +75,7 @@ const Nftslist = (props) => {
           itemId: i.itemId,
           image: meta.data.image || meta.data.imageCID,
           desc: meta.data.description,
-          nftContract: i.nftContract
+          nftContract: i.nftContract,
         };
         // console.log(item);
         return item;
@@ -84,20 +85,23 @@ const Nftslist = (props) => {
     const soldItems = items.filter((i) => i.sold);
     setSold(soldItems);
     setNfts(items);
+
     setLoadingState("loaded");
-    // console.log(items);
   }
 
   async function buyNft(nft) {
     try {
       const web3Modal = new Web3Modal();
       const connection = await web3Modal.connect();
-
       const provider = new ethers.providers.Web3Provider(connection);
       const signer = provider.getSigner();
       window.wallet = signer;
       window.provider = provider;
-      const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
+      const contract = new ethers.Contract(
+        nftmarketaddress,
+        Market.abi,
+        signer
+      );
       // console.log(nft);
       const price = ethers.utils.parseUnits(nft.price, "ether");
       // console.log(nftaddress);
@@ -109,11 +113,9 @@ const Nftslist = (props) => {
         "You have Purchse Token Successfully"
       );
       loadNFTs();
-
     } catch (e) {
       console.log(e);
     }
-
   }
 
   if (loadingState != "loaded") {
@@ -146,10 +148,23 @@ const Nftslist = (props) => {
                   paddingBottom: "10px",
                 }}
               >
-                
                 <Link to={`/asset/${nft.itemId}`}>
                   <div className="nft-img-container">
-                    <img className="nft-img" src={nft.image} alt="logo"></img>
+                    try {
+                        <img className="nft-img" src={nft.image} alt="logo"></img>
+                    } catch (error) {
+                      console.log("error")
+                    }
+
+                    try {
+                      <Player>
+                      <source src={nft.image} />
+                    </Player>
+                    } catch (error) {
+                      console.log("error")
+                    }
+                    
+                    
                     <p
                       style={{
                         fontWeight: "bold",
