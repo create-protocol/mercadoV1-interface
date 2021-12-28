@@ -132,14 +132,16 @@ const Nftslist = (props) => {
         No assets created
       </h1>
     );
+    var nftsreverse = [...nfts].reverse();
     // nfts.reverse();
-    console.log(nfts[0].price);
+    // console.log(nfts);
+    // console.log(nftsreverse);
   return (
     <div>
       <div className="p-4">
         <div className=" my-4 ml-4 ">
           <div className="m-card-content" style={{ justifyContent: "center" }}>
-            {nfts.map((nft, i) => (
+            {nftsreverse.map((nft, i) => (
               <div
                 key={i}
                 className="row nft-card-container m-2"
