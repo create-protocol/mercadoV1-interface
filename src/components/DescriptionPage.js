@@ -187,7 +187,7 @@ const DescriptionPage = (props) => {
           </Left>
           <Right>
 
-            <p style={{ color: "white",fontSize:"26px",letterSpacing:"2px" ,marginTop:"10px",marginRight:"180px"}}> Name: {obj.name}</p>
+            <p style={{ color: "white",fontSize:"26px",letterSpacing:"2px" ,marginTop:"10px"}}> Name: {obj.name}</p>
             <div style={{overflow:"auto",maxHeight:"70vh",marginTop:"38px"}}>
                <p style={{ color: "white",fontSize:"22px",letterSpacing:"2px"}}> {obj.desc}</p>
             </div>
