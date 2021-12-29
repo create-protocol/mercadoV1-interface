@@ -174,6 +174,7 @@ const DescriptionPage = (props) => {
                 overflow: "hidden",
               }}
             >
+              
               <Zoom>
                 <img
                   src={obj.image}
@@ -187,9 +188,8 @@ const DescriptionPage = (props) => {
           <Right>
 
             <h2 style={{ color: "white" }}> Name: {obj.name}</h2>
-            <div style={{overflow:"auto",maxHeight:"70vh",marginTop:"52px"}}>
-               <h2 style={{ color: "white" }}> {obj.desc}</h2>
-
+            <div style={{overflow:"auto",maxHeight:"70vh",marginTop:"38px"}}>
+               <p style={{ color: "white",fontSize:"22px",letterSpacing:"2px"}}> {obj.desc}</p>
             </div>
            <br/>
             <h2

@@ -11,7 +11,7 @@ import styled from "styled-components";
 import { nftmarketaddress, nftaddress } from "../config";
 import Loader from "react-loader-spinner";
 import { sendTransaction } from "./sendTransaction";
-import { Player } from "video-react";
+// import { Player } from "video-react";
 const ShadowBtn = styled.div`
   background-color: rgb(112, 215, 49);
   color: rgb(26, 24, 24);
