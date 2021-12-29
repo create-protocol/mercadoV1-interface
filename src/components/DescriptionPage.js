@@ -187,7 +187,7 @@ const DescriptionPage = (props) => {
           </Left>
           <Right>
 
-            <h2 style={{ color: "white" }}> Name: {obj.name}</h2>
+            <p style={{ color: "white",fontSize:"26px",letterSpacing:"2px" ,marginTop:"10px",marginRight:"180px"}}> Name: {obj.name}</p>
             <div style={{overflow:"auto",maxHeight:"70vh",marginTop:"38px"}}>
                <p style={{ color: "white",fontSize:"22px",letterSpacing:"2px"}}> {obj.desc}</p>
             </div>
@@ -196,15 +196,15 @@ const DescriptionPage = (props) => {
               style={{
                 color: "white",
                 textOverflow: "none",
-                fontSize: "1rem",
+                fontSize: "1.2rem",
                 letterSpacing: "2px",
               }}
             >
-              seller:{obj.seller}
+              seller :{ " "+obj.seller}
             </h2>
-            <h2 style={{ color: "white" }}>
-              Price:{obj.price} WETH
-            </h2>
+            <p style={{ color: "white",fontSize:"26px",letterSpacing:"2px" }}>
+              Price:{" "+obj.price} WETH
+            </p>
             <Signupbtn
               style={{ background: "white", color: "black" }}
               onClick={buyNFT}
