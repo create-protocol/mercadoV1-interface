@@ -209,7 +209,7 @@ const DescriptionPage = (props) => {
               style={{ background: "white", color: "black" }}
               onClick={buyNFT}
             >
-              {allowance ? 'BUY' : 'Set Allownace'}
+              {allowance ? 'BUY' : 'Set Allowance'}
             </Signupbtn>
             <br/>
           </Right></>}
