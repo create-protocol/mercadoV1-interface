@@ -12,7 +12,7 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
-
+import Footer from './Footer.js';
 import { useHistory } from "react-router";
 import { sendTransaction } from "./sendTransaction";
 // import { id } from "ethers/lib/utils";
@@ -20,6 +20,7 @@ const Splitscreen = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  
   @media (max-width: 1000px) {
     flex-direction: column;
     overflow-y: hidden;
@@ -31,6 +32,7 @@ const Left = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-left:auto;
   height: 100vh;
   @media (max-width: 1000px) {
     width: 100%;
@@ -42,6 +44,7 @@ const Right = styled.div`
   flex-direction:column;
   justify-content: center;
   align-items: center;
+  margin-right:100px;
   width: 100%;
   height:100vh;
   border:1px solid black
@@ -145,18 +148,13 @@ const DescriptionPage = (props) => {
         "You have successfully Purchase This Token"
       )
     }
-
-
-
-
-    // await ;
-    // load2()
-
   }
 
   console.log(obj);
   return (
-    <Splitscreen>
+
+    <>
+    <Splitscreen style={{marginRight:"20px"}}>
       {!obj.image ? <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}><Loader type="Puff" color="#00BFFF" height={100} width={100} /></div> :
         <>
           <Left>
@@ -185,9 +183,9 @@ const DescriptionPage = (props) => {
               </Zoom>
             </div>
           </Left>
-          <Right>
+          <Right >
 
-            <p style={{ color: "white",fontSize:"26px",letterSpacing:"2px" ,marginTop:"10px"}}> Name: {obj.name}</p>
+            <p style={{ color: "white",fontSize:"26px",letterSpacing:"2px" ,marginTop:"10px"}}> {obj.name}</p>
             <div style={{overflow:"auto",maxHeight:"70vh",marginTop:"38px"}}>
                <p style={{ color: "white",fontSize:"22px",letterSpacing:"2px"}}> {obj.desc}</p>
             </div>
@@ -214,6 +212,13 @@ const DescriptionPage = (props) => {
             <br/>
           </Right></>}
     </Splitscreen>
+
+    <Footer/>
+    </>
+
+    
+
+    
   );
 };
 

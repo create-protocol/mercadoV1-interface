@@ -2,41 +2,25 @@ import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
 import { ethers } from "ethers";
-// import Web3 from 'web3';
 import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
 import Web3Modal from "web3modal";
 import Drawerroutes from "./DrawerRoutes";
-import Home from "../assets/images/home.png";
+import Home from "../assets/images/image 8.svg";
 import styled from "styled-components";
 const ShadowBtn = styled.div`
-background-color: rgb(112, 215, 49);
-color: rgb(26, 24, 24);
-font-size: 20px;
-font-weight: 700;
-width: 300%;
-height:80px;
-border: 10px solid rgb(48, 52, 57);
-border-radius: 20px;
-padding:-6px 20px 16px 20px;
-cursor: pointer;
-margin-top: 0.5rem;
-max-width: 900px;
-transition: all 0.3s ease-in-out 0s;
-box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px;
-margin-top:20px;
-margin-right: 20px;
-margin-left: 20px;
-}
-  &:hover{
-    -webkit-box-shadow: 0 0 8px #fff;
-        box-shadow: 0 0 8px #fff;
-        transition:.5s;
-        border-radius:20px
-  }
+  cursor: pointer;
+  border: 1px solid #3498db;
+  background-color: transparent;
+  height: 50px;
+  width: 200px;
+  color: #3498db;
+  font-size: 1.5em;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
 `;
 
-// const Div1 = styled.div``;
+
+
 
 const NavBar = (props) => {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -45,8 +29,6 @@ const NavBar = (props) => {
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
 
   useEffect(async function connectWallet() {
-    // console.log("jhandu");
-
     setTimeout(function () {
       if (window.ethereum && isConnected) {
         serCurAddress(window.ethereum.selectedAddress);
@@ -115,9 +97,7 @@ const NavBar = (props) => {
                   position: "absolute",
                   zIndex: 2,
                   width: "100%",
-                  // background:
-                  //   "transparent linear-gradient(180deg, #04040400 0%, #000000B3 100%) 0% 0% no-repeat padding-box",
-                  // opacity: "0.5",
+
                   color: "#FFFFFF",
                   fontSize: isBrowser ? "3rem" : "1.5rem",
                   keyboard: true,
@@ -137,17 +117,14 @@ const NavBar = (props) => {
           }}
         >
           <Link to="/">
+            <div style={{width:"10px"}}>
             <img
-              style={{
-                width: "2.5rem",
-                height: "2.5rem",
-                objectFit: "contain",
-                marginTop: "-1rem",
-                marginLeft: "40px",
-              }}
+              style={{width:"300px",marginTop:"20px",marginLeft:"20px"}}
               src={Home}
               alt="homepage"
             />
+            </div>
+           
           </Link>
           <div
             style={{
@@ -157,100 +134,33 @@ const NavBar = (props) => {
             }}
           >
             <div>
-              {
-                curAddress == null && (
-
-
-
-                  //   <div className="row">
-                  //     {/* <h1  ref={textAreaRef} id="tokenaddress" style={{color:"white",textAlign:"center",fontSize:"30px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}  </h1> */}
-                  //     {/* <button onClick={copyToClipboard}><img src={copy} style={{width:"20px",height:"20px"}}></img></button>  */}
-                  //     <CopyToClipboard
-                  //       text={window.ethereum.selectedAddress}
-                  //       style={{
-                  //         color: "black",
-                  //         textAlign: "center",
-                  //         fontSize: "30px",
-                  //         marginRight: "50px",
-                  //         height: "55px",
-                  //         borderRadius: "12px",
-                  //       }}
-                  //     >
-
-                  //       <button>
-                  //         {window.ethereum.selectedAddress.substring(0, 5) +
-                  //           "..." +
-                  //           window.ethereum.selectedAddress.slice(-4)}
-                  //       </button>
-                  //     </CopyToClipboard>
-                  //   </div>
-                  // ) : (
-                  <ShadowBtn
-                    style={{
-                      fonstSize: "1rem",
-                      width: "180px",
-                      borderRadius: "10px",
-                      margin: "0",
-                    }}
-                    onClick={connectWallet}
-                  >
+              {curAddress == null && (
+                <div class="on-dark" style={{marginTop:"10px"}}>
+                  <button class="border-gradient border-gradient-purple" onClick={connectWallet} style={{borderRadius:"5px"}}>
                     Connect Wallet
-                  </ShadowBtn>
-                  
-                )
-
-                /* <h1 id="connectw" style={{color:"white",fontSize:"20px",marginRight:"50px"}}>{window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}</h1> */
-              }
+                  </button>
+                </div>
+              )}
             </div>
 
             {isConnected && (
-              
-              
-
-
-              // <Dropdown className="d-inline mx-2" autoClose="outside">
-              //   <Dropdown.Toggle
-              //     id="dropdown-autoclose-outside"
-              //     style={{ backgroundColor: "rgb(112, 215, 49)" }}
-              //   >
-              //     {window.ethereum.selectedAddress.substring(0, 5) +
-              //       "..." +
-              //       window.ethereum.selectedAddress.slice(-4)}
-              //   </Dropdown.Toggle>
-
-              //   <Dropdown.Menu>
-              //     <Dropdown.Item onClick={disconnect}>Disconnect</Dropdown.Item>
-              //     <Dropdown.Item href="#">My profile</Dropdown.Item>
-              //   </Dropdown.Menu>
-              // </Dropdown>
-              <div style={{display:"flex"}}>
-              <ShadowBtn
-                style={{
-                  fonstSize: "1rem",
-                  width: "10rem",
-                  borderRadius: "10px",
-                  margin: "0",
-                }}
-                onClick={disconnect}
-              >
-                Disconnect
-              </ShadowBtn>
-              <Link to={`profile/${window.ethereum.selectedAddress}`}>
-              <ShadowBtn
-                style={{
-                  fonstSize: "1rem",
-                  width: "10rem",
-                  borderRadius: "10px",
-                  margin: "0",
-                }}
-  
-              >
-                {window.ethereum.selectedAddress.substring(0, 5) + "..." + window.ethereum.selectedAddress.slice(-4)}
-              </ShadowBtn>
-              </Link>
+              <div style={{ display: "flex" }}>
+               <div class="on-dark">
+                  <button class="border-gradient border-gradient-purple" onClick={disconnect}>
+                    Disconnect
+                  </button>
+                </div>
+                <Link to={`profile/${window.ethereum.selectedAddress}`}>
+                <div class="on-dark">
+                  <button class="border-gradient border-gradient-purple">
+                  {window.ethereum.selectedAddress.substring(0, 5) +
+                      "..." +
+                      window.ethereum.selectedAddress.slice(-4)}
+                  </button>
+                </div>
+                 
+                </Link>
               </div>
-
-              
             )}
           </div>
         </div>

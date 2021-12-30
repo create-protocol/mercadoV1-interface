@@ -3,17 +3,13 @@
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  /* background: var(--unnamed-color-70707033) 0% 0% no-repeat padding-box; */
-  /* background: #70707033 0% 0% no-repeat padding-box; */
-  box-shadow: 0px 3px 6px #00000029;
   border-radius: 12px;
   opacity: 1;
-  max-width: 400px;
-  /* max-width: 400px; */
-  transition: 0.5s;
+  width: 300px;
   color: #fff;
   margin-left: 20px;
   margin-top: 18px;
+  opacity: 0.9;
 }
 .maindiv{
   max-width: 1500px;
@@ -23,10 +19,7 @@
   display: table-cell;
 }
 .nft-card-container:hover {
-  transform: scale(1.06);
-  /* background-color: rgb(50, 102, 82); */
-  border-radius: 25px;
-  
+  opacity: 0.8;
 }
 
 
@@ -39,10 +32,8 @@
 }
 
 .nft-img-container {
-  
-  /* padding-top: 10px; */
+  /* border: solid; */
   padding: 10px;
-  /* padding-left: -1px; */
 }
 
 .nft-img {

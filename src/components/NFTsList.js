@@ -149,7 +149,6 @@ const Nftslist = (props) => {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  background: "grey",
                   paddingBottom: "10px",
                 }}
               >
