@@ -30,11 +30,11 @@ const NavBar = (props) => {
   
   setInterval(function(){
     if(window.ethereum.selectedAddress!=null){
-      console.log("connected");
+      // console.log("connected");
       console.log(window.ethereum.selectedAddress);
     }
     else{
-      console.log("not connected");
+      // console.log("not connected");
       setIsConnected(false);
       serCurAddress(null);
     }
