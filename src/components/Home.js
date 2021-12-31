@@ -61,10 +61,7 @@ const Home = (props) => {
         </div>
 
         <div className="action-container my-4">
-          <GradientButton
-           
-            onClick={() => props.history.push("/asset/create")}
-          >
+          <GradientButton onClick={() => props.history.push("/asset/create")}>
             CREATE
           </GradientButton>
         </div>
@@ -79,6 +76,7 @@ const Home = (props) => {
       <div style={{ height: "250px" }}></div>
 
       <Footer />
+      
     </div>
   );
 };

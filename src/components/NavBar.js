@@ -27,7 +27,18 @@ const NavBar = (props) => {
   const [curAddress, serCurAddress] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
-
+  
+  setInterval(function(){
+    if(window.ethereum.selectedAddress!=null){
+      console.log("connected");
+      console.log(window.ethereum.selectedAddress);
+    }
+    else{
+      console.log("not connected");
+      setIsConnected(false);
+      serCurAddress(null);
+    }
+  }, 500)
   useEffect(async function connectWallet() {
     setTimeout(function () {
       if (window.ethereum && isConnected) {
@@ -55,7 +66,7 @@ const NavBar = (props) => {
       alert("Please Install metamask extension from metamask.io");
     }
   }
-
+ 
   async function disconnect() {
     setIsConnected(false);
     serCurAddress(null);
@@ -73,6 +84,8 @@ const NavBar = (props) => {
       </h1>;
     }
   }, []);
+
+ 
 
   const [copySuccess, setCopySuccess] = useState("");
   const textAreaRef = useRef(null);

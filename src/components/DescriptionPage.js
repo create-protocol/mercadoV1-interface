@@ -8,19 +8,28 @@ import NFT from "../abis/NFT.json";
 import { nftmarketaddress, nftaddress } from "../config";
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
+
+import "font-awesome/css/font-awesome.min.css";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { useParams } from "react-router-dom";
 import Loader from "react-loader-spinner";
-import Footer from './Footer.js';
+import Footer from "./Footer.js";
 import { useHistory } from "react-router";
 import { sendTransaction } from "./sendTransaction";
-// import { id } from "ethers/lib/utils";
+import reactshare from "./nftshare";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  TelegramShareButton,
+} from "react-share";
+import { FacebookIcon, TwitterIcon, TelegramIcon } from "react-share";
+import Share from "./nftshare";
 const Splitscreen = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  
+
   @media (max-width: 1000px) {
     flex-direction: column;
     overflow-y: hidden;
@@ -32,7 +41,7 @@ const Left = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-left:auto;
+  margin-left: auto;
   height: 100vh;
   @media (max-width: 1000px) {
     width: 100%;
@@ -72,15 +81,12 @@ const Signupbtn = styled.div`
 `;
 
 const DescriptionPage = (props) => {
- 
   const [allowance, setAllowance] = useState(false);
   const [obj, setobj] = useState({});
   const [loadingState, setLoadingState] = useState("not-loaded");
   const { itemid } = useParams();
   //itemid = itemid.toNumber();
   var itemId = ethers.BigNumber.from(itemid);
-  //var itemId = ethers.utils.parseUnits(itemid, 'ethers');
-  // console.log(typeof itemid);
 
   useEffect(() => {
     load2(itemId);
@@ -117,11 +123,14 @@ const DescriptionPage = (props) => {
     setLoadingState("loaded");
   }
   const isEnoughAllowance = async () => {
-    const owner = await window.wallet.getAddress()
-    const amt = await window.ercInst.allowance(owner, window.marketInst.address);
+    const owner = await window.wallet.getAddress();
+    const amt = await window.ercInst.allowance(
+      owner,
+      window.marketInst.address
+    );
     console.log(amt >= ethers.utils.parseEther(obj.price));
     setAllowance(amt >= ethers.utils.parseEther(obj.price));
-  }
+  };
 
   const buyNFT = async () => {
     const web3Modal = new Web3Modal();
@@ -134,91 +143,129 @@ const DescriptionPage = (props) => {
       await sendTransaction(
         window.ercInst,
         "approve",
-        [window.marketInst.address,
-        ethers.utils.parseEther(obj.price)],
+        [window.marketInst.address, ethers.utils.parseEther(obj.price)],
         "You give allowance to MarketPlace of required WETH"
       );
       await isEnoughAllowance();
-
     } else {
       await sendTransaction(
         window.marketInst,
         "buyNFT",
         [itemId],
         "You have successfully Purchase This Token"
-      )
+      );
     }
-  }
+  };
 
   console.log(obj);
   return (
-
     <>
-    <Splitscreen style={{marginRight:"20px"}}>
-      {!obj.image ? <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}><Loader type="Puff" color="#00BFFF" height={100} width={100} /></div> :
-        <>
-          <Left>
-
-            <div
-              style={{
-                padding: "2rem",
-                height: "100%",
-                width: "80%",
-                borderRadius: "10px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                paddingBottom: "0",
-                overflow: "hidden",
-              }}
-            >
-              
-              <Zoom>
-                <img
-                  src={obj.image}
-                  // src="https://media.istockphoto.com/photos/code-programming-for-website-editors-view-picture-id1290492381?b=1&k=20&m=1290492381&s=170667a&w=0&h=NQSXJKhncCP1GLzDkD8KPZsCOh1wldDj5RZbPVJztxQ= "
-                  alt="nft"
-                  style={{ width: "100%", borderRadius: "15px", height: "500px" }}
-                />
-              </Zoom>
-            </div>
-          </Left>
-          <Right >
-
-            <p style={{ color: "white",fontSize:"26px",letterSpacing:"2px" ,marginTop:"10px"}}> {obj.name}</p>
-            <div style={{overflow:"auto",maxHeight:"70vh",marginTop:"38px"}}>
-               <p style={{ color: "white",fontSize:"22px",letterSpacing:"2px"}}> {obj.desc}</p>
-            </div>
-           <br/>
-            <h2
-              style={{
-                color: "white",
-                textOverflow: "none",
-                fontSize: "1.2rem",
-                letterSpacing: "2px",
-              }}
-            >
-              seller :{ " "+obj.seller}
-            </h2>
-            <p style={{ color: "white",fontSize:"26px",letterSpacing:"2px" }}>
-              Price:{" "+obj.price} WETH
-            </p>
-            <Signupbtn
-              style={{ background: "white", color: "black" }}
-              onClick={buyNFT}
-            >
-              {allowance ? 'BUY' : 'Set Allowance'}
-            </Signupbtn>
-            <br/>
-          </Right></>}
-    </Splitscreen>
-
-    <Footer/>
+      <Splitscreen style={{ marginRight: "20px" }}>
+        {!obj.image ? (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+          </div>
+        ) : (
+          <>
+            <Left>
+              <div
+                style={{
+                  padding: "2rem",
+                  height: "100%",
+                  width: "80%",
+                  borderRadius: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  paddingBottom: "0",
+                  overflow: "hidden",
+                }}
+              >
+                <Zoom>
+                  <img
+                    src={obj.image}
+                    alt="nft"
+                    style={{
+                      width: "100%",
+                      borderRadius: "15px",
+                      height: "500px",
+                    }}
+                  />
+                </Zoom>
+              </div>
+              <Share/>
+             
+            </Left>
+            <Right>
+              <p
+                style={{
+                  color: "white",
+                  fontSize: "26px",
+                  letterSpacing: "2px",
+                  marginTop: "10px",
+                }}
+              >
+                {" "}
+                {obj.name}
+              </p>
+              <div
+                style={{
+                  overflow: "auto",
+                  maxHeight: "70vh",
+                  marginTop: "38px",
+                }}
+              >
+                <p
+                  style={{
+                    color: "white",
+                    fontSize: "22px",
+                    letterSpacing: "2px",
+                  }}
+                >
+                  {" "}
+                  {obj.desc}
+                </p>
+              </div>
+              <br />
+              <h2
+                style={{
+                  color: "white",
+                  textOverflow: "none",
+                  fontSize: "1.2rem",
+                  letterSpacing: "2px",
+                }}
+              >
+                seller :{" " + obj.seller}
+              </h2>
+              <p
+                style={{
+                  color: "white",
+                  fontSize: "26px",
+                  letterSpacing: "2px",
+                }}
+              >
+                Price:{" " + obj.price} WETH
+              </p>
+              <Signupbtn
+                style={{ background: "white", color: "black" }}
+                onClick={buyNFT}
+              >
+                {allowance ? "BUY" : "Set Allowance"}
+              </Signupbtn>
+              <br />
+            </Right>
+          </>
+        )}
+      </Splitscreen>
+      <Footer />
     </>
-
-    
-
-    
   );
 };
 
