@@ -70,7 +70,6 @@ button {
   margin: 5px;
   height: 65px;
   text-align: center;
-  border-radius: 5px;
   /* height: 60px; */
 }
 
@@ -80,6 +79,8 @@ button {
   border-width: 6px;
   color: white;
   font-size: 24px;
+  border-radius: 5px;
+
 }
 .border-gradient-purple {
   border-image-source: linear-gradient(to left, #F2274E, #333095

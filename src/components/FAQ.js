@@ -1,89 +1,102 @@
+
 import React, { Component } from "react";
 import Faq from "react-faq-component";
+import "../assets/css/faq.css";
+import { Helmet } from "react-helmet";
+import Safe from "react-safe"
 
 const data = {
   rows: [
     {
-      title: "What is Muzix About?",
+      title: "What is Mercado About?",
       content:
-        "Muzix marketplace is the first product of the CREATE ecosystem that we’ll be launching. It is a hub of high quality art, talented artists and art collectors."
+        "Mercado marketplace is the first product of the CREATE ecosystem that we’ll be launching. It is a hub of high quality art, talented artists and art collectors.",
     },
     {
-      title: "What are Muzix’s future plans?",
+      title: "What are Mercado future plans?",
       content:
-        "Muzix is currently focused on building a digital community of genuine artists and art lovers and NFT Marketplace will be launched in a few weeks! In coming months, the Create Ecosystem will take shape as the ecosystem grows and other solutions for creators get launched. For more information on this, check out our #whitepaper channel"
+        "Mercado is currently focused on building a digital community of genuine artists and art lovers and NFT Marketplace will be launched in a few weeks! In coming months, the Create Ecosystem will take shape as the ecosystem grows and other solutions for creators get launched. For more information on this, check out our #whitepaper channel",
     },
     {
-      title: "What is Muzix’s Mission & Vision?",
+      title: "What is Mercado Mission & Vision?",
       content:
-        "Muzix is a decentralised platform owned by artists.We believe in a world where artists own not just their creation/art/music but also the platform which facilitates the interaction with the artwork with the fans, listeners, viewers and brands. At the same time their creation gives them access to premium financial services, not only the privileged few."
+        "Mercado is a decentralised platform owned by artists.We believe in a world where artists own not just their creation/art/music but also the platform which facilitates the interaction with the artwork with the fans, listeners, viewers and brands. At the same time their creation gives them access to premium financial services, not only the privileged few.",
     },
     {
       title: "What will the Features of NFT Marketplace be?",
       content:
-        "As an artist, you will be able to: <br> 1. mint your art as NFT <br>2. display it <br>3. share it <br>4. sell it and also <br>5. auction it. <br>As a collector or fan, you can also make art collections, albums, and a lot more on our platform.The aim of the marketplace will be to prioritise creators and help them to get the deserved value for their art as well as help them collaborate with other art. The end goal is for an artist to earn through his or her artwork"
+        "As an artist, you will be able to: <br> 1. mint your art as NFT <br>2. display it <br>3. share it <br>4. sell it and also <br>5. auction it. <br>As a collector or fan, you can also make art collections, albums, and a lot more on our platform.The aim of the marketplace will be to prioritise creators and help them to get the deserved value for their art as well as help them collaborate with other art. The end goal is for an artist to earn through his or her artwork",
     },
     {
-      title: "When is Muzix NFT Marketplace Launching?",
+      title: "When is Mercado NFT Marketplace Launching?",
       content:
-        "Muzix Marketplace will be launched in January, 2022. Which is super close!"
+        "Mercado Marketplace will be launched in January, 2022. Which is super close!",
     },
     {
-      title: "What can I post as NFTs on Muzix?",
+      title: "What can I post as NFTs on Mercado?",
       content:
-        "Any digital artwork in the form of audio, visual or both can be uploaded here."
+        "Any digital artwork in the form of audio, visual or both can be uploaded here.",
     },
     {
       title:
-        "I want to create an account on Muzix. Are there any prerequisites for that?",
+        "I want to create an account on Mercado. Are there any prerequisites for that?",
       content:
-        "Any person wanting to showcase their art work and earn from it can put their content as NFT on the marketplace. Basically, you need to have a Metamask wallet and art to mint NFTs."
+        "Any person wanting to showcase their art work and earn from it can put their content as NFT on the marketplace. Basically, you need to have a Metamask wallet and art to mint NFTs.",
     },
     {
       title: "How do I create a Metamask wallet?",
       content:
-        "For creating Metamask Wallet, here is a helpful video: https://www.youtube.com/watch?v=WAStJtjYI_c  <br>If any issue arises, feel free to DM any Muzix Mod or Post on our support channel."
+        "For creating Metamask Wallet, here is a helpful video: https://www.youtube.com/watch?v=WAStJtjYI_c  <br>If any issue arises, feel free to DM any Mercado Mod or Post on our support channel.",
     },
     {
-      title: "I want to support Muzix project! what do I do?",
+      title: "I want to support Mercado project! what do I do?",
       content:
-        "Spreading the word about our mission on Discord and Twitter is already a lot. If you want to do more, feel free to reach out to us in DM or by email"
-    }
-  ]
+        "Spreading the word about our mission on Discord and Twitter is already a lot. If you want to do more, feel free to reach out to us in DM or by email",
+    },
+  ],
 };
 
-const styles = {
- bgColor: 'black',
- titleTextColor: 'white',
- // titleTextSize: '48px',
- rowTitleColor: 'white',
- // rowTitleTextSize: 'medium',
- rowContentColor: 'grey',
- rowContentTextSize: '16px',
- // rowContentPaddingTop: '10px',
- rowContentPaddingBottom: '10px',
- rowContentPaddingLeft: '-10px',
- // rowContentPaddingRight: '150px',
- arrowColor: "red",
- transitionDuration: "1s",
- timingFunc: "ease",
- 
-};
 
-const config = {
-  animate: true,
-  // arrowIcon: "V",
-  tabFocus: true
-};
+
+
 
 export default class App extends Component {
-  render() {
-    return (
-      <div style={{textAlign:"left"}}>
-       
-       <br/>
-        <Faq data={data} styles={styles} config={config} />
+  constructor(props) {
+    super(props);
+    this.toggleView = this.toggleView.bind(this);
+  }
+  toggleView = (e) => {
+    e.target.nextElementSibling.classList.toggle('active');
+    let labelIcon=e.target.lastElementChild;
+   let icons=labelIcon.lastElementChild;
+   icons.classList.toggle('rotate');
+  }
+
+render() {
+    let faq = data.rows.map((item, idx) => {
+      return <div className="faq-container">
+      <div className="faq-label" onClick= {(e)=>this.toggleView(e)}>
+        <div className="faq-label-text">{item.title}</div>
+        <div className="faq-label-icon">
+          <span className="material-icons">expand_more</span>
+        </div>
       </div>
+      <div className="faq-answer ">
+        <div className="faq-answer-content">
+          {item.content}
+        </div>
+      </div>
+    </div>
+    })
+    return (
+      <>
+        <div className="faq">
+          <div className="global-label">
+            
+          </div>
+          {faq}
+        </div>
+      </>
     );
   }
 }

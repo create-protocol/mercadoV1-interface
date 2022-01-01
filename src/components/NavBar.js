@@ -148,8 +148,8 @@ const NavBar = (props) => {
           >
             <div>
               {curAddress == null && (
-                <div class="on-dark" style={{marginTop:"10px"}}>
-                  <button class="border-gradient border-gradient-purple" onClick={connectWallet} style={{borderRadius:"5px"}}>
+                <div class="on-dark" style={{marginTop:"10px",borderRadius:"5px",outline:"none"}}>
+                  <button class="border-gradient border-gradient-purple" onClick={connectWallet} >
                     Connect Wallet
                   </button>
                 </div>
@@ -158,11 +158,11 @@ const NavBar = (props) => {
 
             {isConnected && (
               <div style={{ display: "flex" }}>
-               <div class="on-dark">
+               {/* <div class="on-dark">
                   <button class="border-gradient border-gradient-purple" onClick={disconnect}>
                     Disconnect
                   </button>
-                </div>
+                </div> */}
                 <Link to={`profile/${window.ethereum.selectedAddress}`}>
                 <div class="on-dark">
                   <button class="border-gradient border-gradient-purple">
@@ -171,7 +171,6 @@ const NavBar = (props) => {
                       window.ethereum.selectedAddress.slice(-4)}
                   </button>
                 </div>
-                 
                 </Link>
               </div>
             )}
