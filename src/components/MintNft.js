@@ -9,6 +9,7 @@ import NFT from "../abis/NFT.json";
 import Market from "../abis/Marketplace.json";
 import styled from "styled-components";
 import { Player } from "video-react";
+import Footer from './Footer';
 // import fs from 'fs';
 import axios from "axios";
 // using pinata
@@ -303,6 +304,7 @@ function Mintnft() {
 
         {/* </div> */}
       </div>
+      <Footer/>
     </div>
   );
 }
