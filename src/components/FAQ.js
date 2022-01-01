@@ -25,7 +25,7 @@ const data = {
     {
       title: "What will the Features of NFT Marketplace be?",
       content:
-        "As an artist, you will be able to: <br> 1. mint your art as NFT <br>2. display it <br>3. share it <br>4. sell it and also <br>5. auction it. <br>As a collector or fan, you can also make art collections, albums, and a lot more on our platform.The aim of the marketplace will be to prioritise creators and help them to get the deserved value for their art as well as help them collaborate with other art. The end goal is for an artist to earn through his or her artwork",
+        "As an artist, you will be able to:  1. mint your art as NFT 2. display it 3. share it 4. sell it and also 5. auction it. <br>As a collector or fan, you can also make art collections, albums, and a lot more on our platform.The aim of the marketplace will be to prioritise creators and help them to get the deserved value for their art as well as help them collaborate with other art. The end goal is for an artist to earn through his or her artwork",
     },
     {
       title: "When is Mercado NFT Marketplace Launching?",
