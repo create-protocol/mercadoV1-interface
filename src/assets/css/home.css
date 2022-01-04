@@ -5,7 +5,10 @@
   flex-direction: column;
   flex-wrap: wrap;
 }
+/* .mains{
+  background-image: url('../images/infopage.png');
 
+} */
 .hero {
   max-width: 500px;
   margin: 1rem;

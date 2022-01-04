@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 1rem;
+  background-image: url('../images/infopage.png');
 
   width: 100%;
 }
@@ -62,30 +63,27 @@ margin-left: 20px;
 }
 
 button {
-  background: none;
-  text-decoration: inherit;
-  font-family: Rubik;
-  font-size: 1rem;
-  width: 204px;
+
+  width: 221px;
   margin: 5px;
-  height: 65px;
+  height: 60px;
   text-align: center;
   /* height: 60px; */
 }
 
 .border-gradient {
-  border: 16px solid;
+  border: 2px solid;
   border-image-slice: 1;
-  border-width: 6px;
-  color: white;
+  border-width: 2px;
+  background-color: white;
+  color: black;
+  font-weight: 600;
+  font-family: 'Century Gothic';
   font-size: 24px;
-  border-radius: 5px;
+  border-radius: 15px;
 
 }
-.border-gradient-purple {
-  border-image-source: linear-gradient(to left, #F2274E, #333095
-  );
-}
+
 
 
 

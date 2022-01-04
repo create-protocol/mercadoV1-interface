@@ -50,7 +50,7 @@ export const GradientButton = styled.div`
 `;
 const Home = (props) => {
   return (
-    <div style={{marginTop:"10rem"}}>
+    <div className="mains" style={{marginTop:"10rem"}}>
       <div className="hero-container my-2">
         <div className="hero my-4">
           <div

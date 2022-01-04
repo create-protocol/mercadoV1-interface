@@ -19,26 +19,22 @@ const ShadowBtn = styled.div`
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
 `;
 
-
-
-
 const NavBar = (props) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [curAddress, serCurAddress] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
-  
-  setInterval(function(){
-    if(window.ethereum.selectedAddress!=null){
+
+  setInterval(function () {
+    if (window.ethereum.selectedAddress != null) {
       // console.log("connected");
       console.log(window.ethereum.selectedAddress);
-    }
-    else{
+    } else {
       // console.log("not connected");
       setIsConnected(false);
       serCurAddress(null);
     }
-  }, 500)
+  }, 500);
   useEffect(async function connectWallet() {
     setTimeout(function () {
       if (window.ethereum && isConnected) {
@@ -66,7 +62,7 @@ const NavBar = (props) => {
       alert("Please Install metamask extension from metamask.io");
     }
   }
- 
+
   async function disconnect() {
     setIsConnected(false);
     serCurAddress(null);
@@ -85,8 +81,6 @@ const NavBar = (props) => {
     }
   }, []);
 
- 
-
   const [copySuccess, setCopySuccess] = useState("");
   const textAreaRef = useRef(null);
 
@@ -99,13 +93,15 @@ const NavBar = (props) => {
     setCopySuccess("Copied!");
   }
   return (
-    <div style={{
-      position: "fixed",
-      top: "0",
-      width:"100%",
-      zIndex:"1000",
-      background:"black"
-      }}>
+    <div
+      style={{
+        position: "fixed",
+        top: "0",
+        width: "100%",
+        zIndex: "1000",
+        background: "black",
+      }}
+    >
       <div
         className="header-container"
         style={
@@ -136,15 +132,32 @@ const NavBar = (props) => {
           }}
         >
           <Link to="/">
-            <div style={{width:"10px"}}>
-            <img
-              style={{width:"300px",marginTop:"20px",marginLeft:"20px"}}
-              src={Home}
-              alt="homepage"
-            />
+            <div style={{ width: "10px" }}>
+              <img
+                style={{
+                  width: "300px",
+                  marginTop: "20px",
+                  marginLeft: "20px",
+                }}
+                src={Home}
+                alt="homepage"
+              />
             </div>
-           
           </Link>
+          {/* <div> 
+            <a
+              style={{
+                color: "white",
+                fontSize: "20px",
+                lineHeight: "32px",
+                fontFamily: "Century Gothic",
+                fontWeight: "700",
+              }}
+            >
+              About
+            </a>
+          </div> */}
+          
           <div
             style={{
               display: "flex",
@@ -154,8 +167,17 @@ const NavBar = (props) => {
           >
             <div>
               {curAddress == null && (
-                <div class="on-dark" style={{marginTop:"10px",borderRadius:"5px",outline:"none"}}>
-                  <button class="border-gradient border-gradient-purple" onClick={connectWallet} >
+                <div
+                  style={{
+                    marginTop: "10px",
+                    borderRadius: "5px",
+                    outline: "none",
+                  }}
+                >
+                  <button
+                    class="border-gradient border-gradient-purple"
+                    onClick={connectWallet}
+                  >
                     Connect Wallet
                   </button>
                 </div>
@@ -164,19 +186,19 @@ const NavBar = (props) => {
 
             {isConnected && (
               <div style={{ display: "flex" }}>
-               {/* <div class="on-dark">
+                {/* <div class="on-dark">
                   <button class="border-gradient border-gradient-purple" onClick={disconnect}>
                     Disconnect
                   </button>
                 </div> */}
                 <Link to={`profile/${window.ethereum.selectedAddress}`}>
-                <div class="on-dark">
-                  <button class="border-gradient border-gradient-purple">
-                  {window.ethereum.selectedAddress.substring(0, 5) +
-                      "..." +
-                      window.ethereum.selectedAddress.slice(-4)}
-                  </button>
-                </div>
+                  <div class="on-dark">
+                    <button class="border-gradient border-gradient-purple">
+                      {window.ethereum.selectedAddress.substring(0, 5) +
+                        "..." +
+                        window.ethereum.selectedAddress.slice(-4)}
+                    </button>
+                  </div>
                 </Link>
               </div>
             )}
