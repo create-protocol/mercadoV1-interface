@@ -12,6 +12,9 @@ import { nftmarketaddress, nftaddress } from "../config";
 import Loader from "react-loader-spinner";
 import { sendTransaction } from "./sendTransaction";
 // import { Player } from "video-react";
+
+
+
 const ShadowBtn = styled.div`
   background-color: rgb(112, 215, 49);
   color: rgb(26, 24, 24);
@@ -41,6 +44,15 @@ const Span1 = styled.div`
   text-decoration: none;
 `;
 
+
+const ImgHover=styled.div`
+border-radius:1rem;
+&:hover {
+  border-radius:1rem;
+  box-shadow: 0 5px 15px grey;
+  transition:0.5s;
+}
+`
 const Nftslist = (props) => {
   const [nfts, setNfts] = useState([]);
   const [sold, setSold] = useState([]);
@@ -150,11 +162,13 @@ const Nftslist = (props) => {
                   display: "flex",
                   flexDirection: "column",
                   paddingBottom: "10px",
+                  
                 }}
               >
                 <Link to={`/asset/${nft.itemId}`}>
-                  <div className="nft-img-container">
-                    <img className="nft-img" src={nft.image} alt="logo"></img>
+                  <ImgHover>
+                  <div className="nft-img-container" style={{}}>
+                    <img className="nft-img" style={{border:"none",borderRadius:"1rem"}} src={nft.image} alt="logo"></img>
 
                     <p
                       style={{
@@ -178,6 +192,7 @@ const Nftslist = (props) => {
                       </div>
                     </p>
                   </div>
+                  </ImgHover>
                 </Link>
 
                 {/* <ShadowBtn
@@ -202,6 +217,7 @@ const Nftslist = (props) => {
                 <div
                   key={i}
                   className="border shadow rounded-xl overflow-hidden"
+                  
                 >
                   <img
                     style={{

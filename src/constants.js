@@ -5,6 +5,7 @@ import Viewprofile from "./components/ViewProfile";
 import faq from './components/FAQ';
 import DescriptionPage from "./components/DescriptionPage";
 import Profile from './components/Profile'
+import Infopage from './components/Infopage'
 const routes = [
   {
     pathName: "HOME",
@@ -60,6 +61,11 @@ const routes = [
     pathName: "profile",
     path: "/profile/:addr",
     component: Profile,
+  },
+  {
+    pathName: "profile",
+    path: "/info_page",
+    component: Infopage,
   },
   // {
   //   pathName: "LOG OUT",

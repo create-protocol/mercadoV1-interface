@@ -210,6 +210,8 @@ const DescriptionPage = (props) => {
                   fontSize: "26px",
                   letterSpacing: "2px",
                   marginTop: "10px",
+                  width:"100%",
+                  textAlign:"left"
                 }}
               >
                 {" "}
@@ -220,13 +222,16 @@ const DescriptionPage = (props) => {
                   overflow: "auto",
                   maxHeight: "70vh",
                   marginTop: "38px",
+                  width:"100%"
                 }}
               >
                 <p
                   style={{
                     color: "white",
-                    fontSize: "22px",
+                    fontSize: "18px",
                     letterSpacing: "2px",
+                    
+                    textAlign:"left"
                   }}
                 >
                   {" "}
@@ -240,6 +245,8 @@ const DescriptionPage = (props) => {
                   textOverflow: "none",
                   fontSize: "1.2rem",
                   letterSpacing: "2px",
+                  textAlign:"left",
+                  width:"100%"
                 }}
               >
                 seller :{" " + obj.seller}
@@ -249,16 +256,21 @@ const DescriptionPage = (props) => {
                   color: "white",
                   fontSize: "26px",
                   letterSpacing: "2px",
+                  textAlign:"left",
+                  width:"100%"
                 }}
               >
                 Price:{" " + obj.price} WETH
               </p>
+              <div style={{width:"100%"}}>
               <Signupbtn
                 style={{ background: "white", color: "black" }}
                 onClick={buyNFT}
               >
                 {allowance ? "BUY" : "Set Allowance"}
               </Signupbtn>
+              </div>
+              
               <br />
             </Right>
           </>
