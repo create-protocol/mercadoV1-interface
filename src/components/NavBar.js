@@ -99,7 +99,13 @@ const NavBar = (props) => {
     setCopySuccess("Copied!");
   }
   return (
-    <div style={{}}>
+    <div style={{
+      position: "fixed",
+      top: "0",
+      width:"100%",
+      zIndex:"1000",
+      background:"black"
+      }}>
       <div
         className="header-container"
         style={

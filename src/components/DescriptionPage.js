@@ -51,8 +51,8 @@ const Left = styled.div`
 const Right = styled.div`
   display: flex;
   flex-direction:column;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
   margin-right:100px;
   width: 100%;
   height:100vh;
@@ -166,7 +166,7 @@ const DescriptionPage = (props) => {
             style={{
               width: "100%",
               display: "flex",
-              alignItems: "center",
+              alignItems: "centesa",
               justifyContent: "center",
             }}
           >
@@ -182,8 +182,8 @@ const DescriptionPage = (props) => {
                   width: "80%",
                   borderRadius: "10px",
                   display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  alignItems: "start",
+                  justifyContent: "start",
                   paddingBottom: "0",
                   overflow: "hidden",
                 }}

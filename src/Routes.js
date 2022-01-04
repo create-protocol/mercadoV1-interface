@@ -21,6 +21,7 @@ const Routes = () => {
     <div>
       <Router>
         <Route path="/" component={NavBar}></Route>
+        <div style={{marginTop:"10rem"}}></div>
         <ScrollToTop>
           <Switch>
             <Route exact path="/" component={Home}></Route>

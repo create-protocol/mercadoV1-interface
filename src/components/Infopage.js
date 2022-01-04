@@ -34,7 +34,7 @@ const Infopage = () => {
     <Maindiv>
       
       {/* section1 */}
-      <div style={{ textAlign: "left", marginTop: "10rem" }}>
+      <div style={{ textAlign: "left", marginTop: "16rem" }}>
         <div
           style={{
             // fontFamily: "Open Sans",
