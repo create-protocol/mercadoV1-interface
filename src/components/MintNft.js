@@ -9,12 +9,9 @@ import NFT from "../abis/NFT.json";
 import Market from "../abis/Marketplace.json";
 import styled from "styled-components";
 import { Player } from "video-react";
-import Footer from './Footer';
-// import fs from 'fs';
+import Footer from "./Footer";
 import axios from "axios";
-// using pinata
 const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
-
 
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
@@ -39,34 +36,9 @@ const ShadowBtn = styled.div`
 `;
 
 
-// export const pinFileToIPFS = (pinataApiKey, pinataSecretApiKey) => {
-//   const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
-
-//   //we gather a local file for this example, but any valid readStream source will work here.
-//   let data = new FormData();
-//   data.append('file', fs.createReadStream('./yourfile.png'));
-
-//   return axios.post(url,
-//       data,
-//       {
-//           maxContentLength: 'Infinity', //this is needed to prevent axios from erroring out with large files
-//           headers: {
-//               'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-//               'pinata_api_key': pinataApiKey,
-//               'pinata_secret_api_key': pinataSecretApiKey
-//           }
-//       }
-//   ).then(function (response) {
-//       //handle response here
-//   }).catch(function (error) {
-//       //handle error here
-//   });
-// };
-
-
 function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
-  
+
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
@@ -199,7 +171,7 @@ function Mintnft() {
               onChange={(e) =>
                 updateFormInput({ ...formInput, description: e.target.value })
               }
-              style={{ width: "100%",textTransform:"lowercase" }}
+              style={{ width: "100%", textTransform: "lowercase" }}
             />
           </div>
           <br />
@@ -304,7 +276,7 @@ function Mintnft() {
 
         {/* </div> */}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

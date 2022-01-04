@@ -57,7 +57,7 @@ const Home = (props) => {
             style={{ width: "100%", height: "100%", objectFit: "contain" }}
           ></div>
 
-          <h1 style={{ color: "#cccccc" }}>mercado.studio</h1>
+          {/* <h1 style={{ color: "#cccccc" }}>mercado.studio</h1> */}
         </div>
 
         <div className="action-container my-4">

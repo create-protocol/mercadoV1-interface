@@ -16,6 +16,7 @@ import DescPage from "./components/DescriptionPage"
 import Faq from './components/FAQ';
 import TeamPagefinal from './components/TeamPagefinal';
 import Viewprofile from "./components/ViewProfile";
+import About from './components/Infopage';
 const Routes = () => {
   return (
     <div>
@@ -37,6 +38,7 @@ const Routes = () => {
             <Route exact path="/teampage" component={TeamPagefinal}    ></Route>
             <Route exact path="/descpage" component={DescPage}></Route>
             <Route exact path="/creator/bharat-thakur" component={Viewprofile}    ></Route>
+            <Route exact path="/about" component={About}    ></Route>
             {routes.map((route, i) => (
               <Route
                 key={i}

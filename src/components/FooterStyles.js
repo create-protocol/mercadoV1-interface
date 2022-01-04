@@ -8,7 +8,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background:  #1a1a1a;
+background:  #1a1a1ac;
 padding-bottom:3rem;
 opacity:0.6;
 `
@@ -31,6 +31,7 @@ flex-direction:column;
 export const Row=styled.div`
 display:flex;
 flex-direction:column;
+text-align:start;
 `
 
 
@@ -80,7 +81,7 @@ flex-direction:column;
 // `;
 
 export const FooterLink = styled.a`
-color: #fff;
+color: #FFFFFF;
 margin-bottom: 10px;
 font-size: 15px;
 text-decoration: none;
@@ -93,7 +94,7 @@ text-decoration: none;
 
 export const Heading = styled.p`
 font-size: 20px;
-color: #fff;
+color: #FFFFFF;
 margin-bottom: 2rem;
 font-weight: bold;
 `;

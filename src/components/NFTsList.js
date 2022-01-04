@@ -195,12 +195,7 @@ const Nftslist = (props) => {
                   </ImgHover>
                 </Link>
 
-                {/* <ShadowBtn
-                  style={{ marginTop: "0" }}
-                  onClick={() => buyNft(nft)}
-                >
-                  Buy
-                </ShadowBtn> */}
+                
               </div>
 
               // </div>
