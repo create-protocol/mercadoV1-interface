@@ -75,7 +75,7 @@ const Home = (props) => {
 
       <div style={{ height: "250px" }}></div>
 
-      <Footer />
+      {/* <Footer /> */}
       
     </div>
   );

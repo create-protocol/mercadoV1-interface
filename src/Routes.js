@@ -17,6 +17,7 @@ import Faq from './components/FAQ';
 import TeamPagefinal from './components/TeamPagefinal';
 import Viewprofile from "./components/ViewProfile";
 import About from './components/Infopage';
+import Footer from "./components/Footer";
 const Routes = () => {
   return (
     <div>
@@ -48,9 +49,12 @@ const Routes = () => {
               ></Route>
             ))}
             <Route exact path={"/preview-nft"} component={Previewnft}></Route>
+            
           </Switch>
+
         </ScrollToTop>
-        {/* <Route path="/" component={Footer}></Route> */}
+        <Route path="/" component={Footer}></Route>
+        
       </Router>
     </div>
   );
