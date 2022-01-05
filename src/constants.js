@@ -6,6 +6,7 @@ import faq from './components/FAQ';
 import DescriptionPage from "./components/DescriptionPage";
 import Profile from './components/Profile'
 import Infopage from './components/Infopage'
+import ContactUs from "./components/ContactUs";
 const routes = [
   {
     pathName: "HOME",
@@ -66,6 +67,11 @@ const routes = [
     pathName: "profile",
     path: "/info_page",
     component: Infopage,
+  },
+  {
+    pathName: "contactus",
+    path: "/contactus",
+    component: ContactUs,
   },
   // {
   //   pathName: "LOG OUT",
