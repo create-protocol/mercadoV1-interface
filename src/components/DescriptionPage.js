@@ -276,7 +276,7 @@ const DescriptionPage = (props) => {
           </>
         )}
       </Splitscreen>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

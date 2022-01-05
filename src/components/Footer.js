@@ -32,10 +32,14 @@ const Footer = () => {
             style={{ opacity: "0.99" }}
           ></img>
           <div style={{color:"wheat",display:"flex",alignItems:"center",justifyContent:"space-evenly",marginTop:"10.4rem"}}>
-            <div>LINKEDIN</div>
-            <div>REDDIT</div>
-            <div>FACEBOOK</div>
-            <div>TWITTER</div>
+            
+           <a href="https://www.linkedin.com/company/muzixtech/" style={{color:"white",margin:"5px"}}><div>LINKEDIN</div></a>
+           <a style={{color:"white",margin:"5px"}}><div>REDDIT</div></a>
+           <a style={{color:"white",margin:"5px"}}><div>FACEBOOK</div></a>
+           <a href="https://twitter.com/MuzixNFT" style={{color:"white",margin:"5px"}}><div>TWITTER</div></a>
+           <a href="https://instagram.com/muzix.nft?utm_medium=copy_link" style={{color:"white",margin:"5px"}}><div>INSTAGRAM</div></a>
+
+  
             </div>
           {/* <Heading>Marketplace</Heading> */}
 
@@ -62,7 +66,8 @@ const Footer = () => {
           >
             <p>Phone : +91 8178382149</p>
             {/* <br></br> */}
-            <p>Email : Info@createprotocol.org</p>
+            <a style={{color:"white"}} href="mailto:Info@createprotocol.org"><p>Email : Info@createprotocol.org</p></a>
+            
             <div style={{marginTop:"7rem"}}>COOKIES POLICY</div>
             {/* <a
               href="mailto:info@muzix.tech"
@@ -73,7 +78,7 @@ const Footer = () => {
             </a>
 
             <a
-              href="https://twitter.com/MuzixNFT"
+              
               class="text-white me-4"
               style={{ margin: "8px", fontSize: "30px" ,color:"white"}}
             >
@@ -88,7 +93,7 @@ const Footer = () => {
             </a>
 
             <a
-              href="https://instagram.com/muzix.nft?utm_medium=copy_link"
+              
               class="text-white me-4"
               style={{ margin: "8px", fontSize: "30px",color:"white" }}
             >
