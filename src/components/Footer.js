@@ -66,7 +66,8 @@ const Footer = () => {
           >
             <p>Phone : +91 8178382149</p>
             {/* <br></br> */}
-            <p>Email : Info@createprotocol.org</p>
+            <a style={{color:"white"}} href="mailto:Info@createprotocol.org"><p>Email : Info@createprotocol.org</p></a>
+            
             <div style={{marginTop:"7rem"}}>COOKIES POLICY</div>
             {/* <a
               href="mailto:info@muzix.tech"
