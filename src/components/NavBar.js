@@ -129,6 +129,7 @@ const NavBar = (props) => {
             justifyContent: "space-between",
             alignItems: "end",
             marginLeft: "auto",
+            
           }}
         >
           <Link to="/">
@@ -157,14 +158,24 @@ const NavBar = (props) => {
               About
             </a>
           </div> */}
-          
+
           <div
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              width: "60%",
+              fontFamily: "Century Gothic",
+              fontStyle: "normal",
+              fontWeight: "bold",
+              fontSize: "20px",
+              color: "#FFFFFF",
+              textDecoration:"none", 
             }}
           >
+            <Link to='/' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Home</div></Link>
+            <Link to='/faq' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>FAQ</div></Link>
+            <Link to='/contactus' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Contact Us</div></Link>
             <div>
               {curAddress == null && (
                 <div
