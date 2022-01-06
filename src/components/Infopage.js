@@ -14,6 +14,7 @@ import i6 from "../assets/images/6.png";
 import sepline from "../assets/images/sep line.png";
 import bell from '../assets/images/bell_front.png'
 import envelope from '../assets/images/envelope_front.png'
+import { Link } from "react-router-dom";
 
 const Maindiv = styled.div`
   color: white;
@@ -416,20 +417,30 @@ const Infopage = () => {
               justifyContent: "center",
             }}
           >
+
+            <Link to='/'>
             <button
               style={{
                 background:
-                  "linear-gradient(90deg, #50C4F4 -3.26%, #5F52D6 27.39%, #C342A6 62.89%, #FB7443 100%)",
+                  "#EEFAFF",
+                  boxShadow: "1px 5px 40px rgba(255, 255, 255, 0.15)",
                 borderRadius: "1rem",
                 border: "none",
-                width: "max-content",
+                width: "12rem",
+                padding:"1rem",
                 height: "max-content",
                 margin: "1rem",
+                color:"black",
+                fontFamily: "Century Gothic",
+                fontSize:"1rem",
+                fontWeight:"600"
               }}
             >
               Click & register to make your creation an NFT
             </button>
+            </Link>
           </div>
+          
         </div>
       </div>
     </Maindiv>

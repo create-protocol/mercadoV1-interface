@@ -7,6 +7,7 @@ import DescriptionPage from "./components/DescriptionPage";
 import Profile from './components/Profile'
 import Infopage from './components/Infopage'
 import ContactUs from "./components/ContactUs";
+import Mintnft from "./components/MintNft";
 const routes = [
   {
     pathName: "HOME",
@@ -72,6 +73,11 @@ const routes = [
     pathName: "contactus",
     path: "/contactus",
     component: ContactUs,
+  },
+  {
+    pathName: "mintnft",
+    path: "/asset/create",
+    component: Mintnft,
   },
   // {
   //   pathName: "LOG OUT",
