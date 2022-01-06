@@ -174,8 +174,10 @@ const NavBar = (props) => {
             }}
           >
             <Link to='/' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Home</div></Link>
-            <Link to='/faq' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>FAQ</div></Link>
-            <Link to='/contactus' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Contact Us</div></Link>
+            <Link to='/asset/create' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Create</div></Link>
+            <Link to='/about' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Home</div></Link>
+            <Link to='/faq' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>FAQs</div></Link>
+            <Link to='/contactus' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Contact us</div></Link>
             <div>
               {curAddress == null && (
                 <div
