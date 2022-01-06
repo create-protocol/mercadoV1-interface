@@ -418,7 +418,7 @@ const Infopage = () => {
             }}
           >
 
-            <Link to='/'>
+            <Link to='/asset/create'>
             <button
               style={{
                 background:
