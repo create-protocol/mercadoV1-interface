@@ -60,11 +60,6 @@ const Home = (props) => {
           {/* <h1 style={{ color: "#cccccc" }}>mercado.studio</h1> */}
         </div>
 
-        {/* <div className="action-container my-4">
-          <GradientButton onClick={() => props.history.push("/asset/create")}>
-            CREATE
-          </GradientButton>
-        </div> */}
       </div>
       <div>
         <br />
