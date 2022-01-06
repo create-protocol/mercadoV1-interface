@@ -9,7 +9,7 @@ import NFT from "../abis/NFT.json";
 import Market from "../abis/Marketplace.json";
 import styled from "styled-components";
 import { Player } from "video-react";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import axios from "axios";
 const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
 
@@ -276,7 +276,7 @@ function Mintnft() {
 
         {/* </div> */}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
