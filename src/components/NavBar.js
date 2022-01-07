@@ -8,6 +8,7 @@ import Web3Modal from "web3modal";
 import Drawerroutes from "./DrawerRoutes";
 import Home from "../assets/images/image 8.svg";
 import styled from "styled-components";
+import BlogPage from "./BlogPage";
 const ShadowBtn = styled.div`
   cursor: pointer;
   border: 1px solid #3498db;
@@ -178,6 +179,7 @@ const NavBar = (props) => {
             <Link to='/about' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>About</div></Link>
             <Link to='/faq' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>FAQs</div></Link>
             <Link to='/contactus' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Contact us</div></Link>
+            <Link to='/blog' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Blog</div></Link>
             <div>
               {curAddress == null && (
                 <div

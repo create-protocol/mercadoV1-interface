@@ -4,7 +4,7 @@ import Faq from "react-faq-component";
 import "../assets/css/faq.css";
 import { Helmet } from "react-helmet";
 import Safe from "react-safe"
-
+import FaqPage from './faqfinal';
 const data = {
   rows: [
     {
@@ -73,28 +73,10 @@ export default class App extends Component {
   }
 
 render() {
-    let faq = data.rows.map((item, idx) => {
-      return <div className="faq-container">
-      <div className="faq-label" onClick= {(e)=>this.toggleView(e)}>
-        <div className="faq-label-text">{item.title}</div>
-        <div className="faq-label-icon">
-          <span className="material-icons">expand_more</span>
-        </div>
-      </div>
-      <div className="faq-answer ">
-        <div className="faq-answer-content">
-          {item.content}
-        </div>
-      </div>
-    </div>
-    })
     return (
       <>
         <div className="faq">
-          <div className="global-label">
-            
-          </div>
-          {faq}
+          <FaqPage/>
         </div>
       </>
     );
