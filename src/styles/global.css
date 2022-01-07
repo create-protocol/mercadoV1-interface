@@ -12,13 +12,7 @@
   --primary-text-color: #fff;
 }
 
-/* body {
-  background-color: var(--main-bg-color);
-  color: var(--primary-text-color);
-  font-size: 16px;
-} */
-
-.container {
+.generic__container {
   width: 90%;
   margin: 0 auto;
 }
@@ -37,7 +31,7 @@
 
 .page__header {
   position: relative;
-  background-image: url(/banner.png);
+  background-image: url('../assets/images/banner.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -48,8 +42,13 @@
   margin-top: 5rem;
 }
 
+.page__header h3 {
+  color: white;
+}
+
 .page__title {
   font-size: 3rem;
+  color: var(--primary-title-color);
 }
 
 /* FAQ Page styles */
@@ -71,6 +70,7 @@
 .faq .faq__title .faq__title--text {
   font-size: 1.6875rem;
   color: var(--primary-title-color);
+  text-align: left;
 }
 
 .faq .faq__text {
@@ -140,12 +140,14 @@
 .blog .blog__date {
   font-size: 1.25rem;
   font-weight: 700;
+  color: #fff;
 }
 
 .blog .blog__title {
   font-size: 1.6875rem;
   font-weight: 700;
   margin: 0.75rem 0;
+  color: var(--primary-title-color);
 }
 
 .blog .blog_description {
@@ -216,10 +218,12 @@
   align-items: center;
   justify-content: space-between;
   width: fit-content;
+  color: white;
 }
 .profile .profile__info .profile__name > h4 {
   font-size: 1.25rem;
   font-weight: 500;
+  color: white;
 }
 
 .profile .profile__info .profile__username {
@@ -247,11 +251,13 @@
   font-size: 3rem;
   font-weight: 700;
   margin-top: 0.5rem;
+  color: white;
 }
 
 .blogDetail .blogDetail__date {
   font-size: 1.25rem;
   font-weight: 700;
+  color: white;
 }
 
 .blogDetail__image {
@@ -308,7 +314,7 @@
   .blog {
     grid-column: span 12 / span 12;
   }
-  .container {
+  .generic__container {
     width: 80%;
   }
 }

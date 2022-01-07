@@ -1,4 +1,3 @@
-import React from 'react'
 import { useHistory } from 'react-router-dom'
 import blog_image from '../assets/images/blog_image.png'
 const Blog = () => {
