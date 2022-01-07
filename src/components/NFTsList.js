@@ -168,7 +168,7 @@ const Nftslist = (props) => {
                 <Link to={`/asset/${nft.itemId}`}>
                   <ImgHover>
                   <div className="nft-img-container" style={{}}>
-                    <img className="nft-img" style={{border:"none",borderRadius:"1rem"}} src={nft.image} alt="logo"></img>
+                    <img className="nft-img" style={{border:"none",borderRadius:"1rem"}} src={nft.image} alt="text"></img>
 
                     <p
                       style={{
