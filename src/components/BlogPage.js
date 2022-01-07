@@ -22,7 +22,7 @@ const data = {
     {
       title: 'What will the Features of NFT Marketplace be?',
       content:
-        'As an artist, you will be able to: 1. mint your art as NFT 2. display it 3. share it 4. sell it and also 5. auction it. <br>As a collector or fan, you can also make art collections, albums, and a lot more on our platform.The aim of the marketplace will be to prioritise creators and help them to get the deserved value for their art as well as help them collaborate with other art. The end goal is for an artist to earn through his or her artwork',
+        'As an artist, you will be able to: 1. mint your art as NFT 2. display it 3. share it 4. sell it and also 5. auction it. As a collector or fan, you can also make art collections, albums, and a lot more on our platform.The aim of the marketplace will be to prioritise creators and help them to get the deserved value for their art as well as help them collaborate with other art. The end goal is for an artist to earn through his or her artwork',
     },
     {
       title: 'When is Mercado NFT Marketplace Launching?',
@@ -43,7 +43,7 @@ const data = {
     {
       title: 'How do I create a Metamask wallet?',
       content:
-        'For creating Metamask Wallet, here is a helpful video: https://www.youtube.com/watch?v=WAStJtjYI_c <br>If any issue arises, feel free to DM any Mercado Mod or Post on our support channel.',
+        'For creating Metamask Wallet, here is a helpful video: https://www.youtube.com/watch?v=WAStJtjYI_c If any issue arises, feel free to DM any Mercado Mod or Post on our support channel.',
     },
     {
       title: 'I want to support Mercado project! what do I do?',
