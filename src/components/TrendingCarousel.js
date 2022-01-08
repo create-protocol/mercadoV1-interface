@@ -1,53 +1,45 @@
-import React,{useState} from 'react'
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import Carousel from "react-elastic-carousel";
 import styled from 'styled-components'
+import Item from "./TrendingCard";
+
+
+
 import LandingCard from './LandingCard'
 import Landingimage from '../assets/images/landingimg.png'
+import '../assets/css/carousel.css'
 
-import Carousel from 'react-bootstrap/Carousel';
+// import Carousel from 'react-bootstrap/Carousel';
+const breakPoints = [
+  { width: 1, itemsToShow: 4 },
+  { width: 550, itemsToShow: 4},
+  { width: 768, itemsToShow: 4 },
+  { width: 1200, itemsToShow: 4 }
+];  
 
-const data = [
-    {
-     image:Landingimage, 
-     caption:"Caption",
-     description:"Description Here"
-    },
-    {
-      image:Landingimage, 
-      caption:"Caption",
-      description:"Description Here"
-     },
-     {
-      image:Landingimage, 
-      caption:"Caption",
-      description:"Description Here"
-     } 
-  ]
+
 
 const TrendingCarousel=()=>{
-    const [index, setIndex] = useState(0);
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
+  const [items, setItems] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
+
+  
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
-       {data.map((slide, i) => {
-        return (
-          <Carousel.Item>        
-        <img
-          className="d-block w-100"
-          src={slide.image}
-          alt="slider image"
-        />
-        <Carousel.Caption>
-          {/* <h3>{slide.caption}</h3> */}
-          {/* <p>{slide.description}</p> */}
-        </Carousel.Caption>
-      </Carousel.Item>
-        )
-      })}
-      
-    </Carousel>
+    <div className="App">
+      <div className="controls-wrapper">
+        {/* <button onClick={removeItem}>Remove Item</button> */}
+        {/* <button onClick={addItem}>Add Item</button> */}
+      </div>
+      <hr className="seperator" />
+      <div className="carousel-wrapper">
+        <Carousel breakPoints={breakPoints}>
+          {items.map((item) => (
+            <Item key={item}>{item}</Item>
+          ))}
+        </Carousel>
+      </div>
+    </div>
   );
 }
 

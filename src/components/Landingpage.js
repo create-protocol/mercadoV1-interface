@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Landingimg from "../assets/images/landingpage.png";
 import Landingcardimg from "../assets/images/landingimg.png";
 import Landingowner from "../assets/images/landingowner.png";
-import Eth from '../assets/images/Ethereum (ETH).png'
-import Heart from '../assets/images/cil_heart.png'
+import Eth from "../assets/images/Ethereum (ETH).png";
+import Heart from "../assets/images/cil_heart.png";
 import LandingCard from "./LandingCard";
-import Sellerimg from '../assets/images/sellerimg.png'
+import Sellerimg from "../assets/images/sellerimg.png";
 import Seller from "./Seller";
 import TrendingCarousel from "./TrendingCarousel";
 
@@ -87,15 +87,12 @@ const Landingpage = () => {
         </ImageContainer>
       </div>
 
-
       {/* Trending Carousel */}
-
 
       <div
         style={{
           width: "100%",
-          paddingLeft: "12rem",
-          paddingRight: "12rem",
+
           paddingTop: "9rem",
         }}
       >
@@ -104,19 +101,21 @@ const Landingpage = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            paddingLeft: "12rem",
+            paddingRight: "12rem",
           }}
         >
           <HeadingText>Trending Creations</HeadingText>
           {/* <Transparentbtn>Explore more artists</Transparentbtn> */}
+        </div>  
+        <div
+          style={{ width: "100%", paddingLeft: "5rem", paddingRight: "5rem" }}
+        >
+          <TrendingCarousel />
         </div>
-        <div>
-          {/* <TrendingCarousel/> */}
-        </div>
-        </div>
-
+      </div>
 
       {/* Featured Assets */}
-
 
       <div
         style={{
@@ -142,31 +141,25 @@ const Landingpage = () => {
             alignItems: "center",
             justifyContent: "space-between",
             flexWrap: "wrap",
-            marginTop:"2rem"
+            marginTop: "2rem",
           }}
         >
-          <LandingCard/>
-          <LandingCard/>
-          <LandingCard/>
-          <LandingCard/>
-          <LandingCard/>
-          <LandingCard/>
-          <LandingCard/>
-          <LandingCard/>
-          <LandingCard/>
-          <LandingCard/>
-          <LandingCard/>
-          <LandingCard/>
+          <LandingCard />
+          <LandingCard />
+          <LandingCard />
+          <LandingCard />
+          <LandingCard />
+          <LandingCard />
+          <LandingCard />
+          <LandingCard />
+          <LandingCard />
+          <LandingCard />
+          <LandingCard />
+          <LandingCard />
         </div>
       </div>
 
-
-
-
       {/* Top Seller */}
-
-
-
 
       <div
         style={{
@@ -192,61 +185,132 @@ const Landingpage = () => {
             alignItems: "center",
             justifyContent: "space-between",
             flexWrap: "wrap",
-            marginTop:"2rem",
-            width:"100%"
+            marginTop: "2rem",
+            width: "100%",
           }}
         >
-          <div style={{display:"flex",marginTop:"1rem",alignItems:"start"}}>
-            <div style={{fontWeight:"bold",color:"#BA68C8",fontSize:"1rem"}}>1.</div>
-          <Seller/>
+          <div
+            style={{ display: "flex", marginTop: "1rem", alignItems: "start" }}
+          >
+            <div
+              style={{ fontWeight: "bold", color: "#BA68C8", fontSize: "1rem" }}
+            >
+              1.
+            </div>
+            <Seller />
           </div>
-          <div style={{display:"flex",marginTop:"1rem",alignItems:"start"}}>
-            <div style={{fontWeight:"bold",color:"#BA68C8",fontSize:"1rem"}}>1.</div>
-          <Seller/>
+          <div
+            style={{ display: "flex", marginTop: "1rem", alignItems: "start" }}
+          >
+            <div
+              style={{ fontWeight: "bold", color: "#BA68C8", fontSize: "1rem" }}
+            >
+              1.
+            </div>
+            <Seller />
           </div>
-          <div style={{display:"flex",marginTop:"1rem",alignItems:"start"}}>
-            <div style={{fontWeight:"bold",color:"#BA68C8",fontSize:"1rem"}}>1.</div>
-          <Seller/>
+          <div
+            style={{ display: "flex", marginTop: "1rem", alignItems: "start" }}
+          >
+            <div
+              style={{ fontWeight: "bold", color: "#BA68C8", fontSize: "1rem" }}
+            >
+              1.
+            </div>
+            <Seller />
           </div>
-          <div style={{display:"flex",marginTop:"1rem",alignItems:"start"}}>
-            <div style={{fontWeight:"bold",color:"#BA68C8",fontSize:"1rem"}}>1.</div>
-          <Seller/>
+          <div
+            style={{ display: "flex", marginTop: "1rem", alignItems: "start" }}
+          >
+            <div
+              style={{ fontWeight: "bold", color: "#BA68C8", fontSize: "1rem" }}
+            >
+              1.
+            </div>
+            <Seller />
           </div>
-          <div style={{display:"flex",marginTop:"1rem",alignItems:"start"}}>
-            <div style={{fontWeight:"bold",color:"#BA68C8",fontSize:"1rem"}}>1.</div>
-          <Seller/>
+          <div
+            style={{ display: "flex", marginTop: "1rem", alignItems: "start" }}
+          >
+            <div
+              style={{ fontWeight: "bold", color: "#BA68C8", fontSize: "1rem" }}
+            >
+              1.
+            </div>
+            <Seller />
           </div>
-          <div style={{display:"flex",marginTop:"1rem",alignItems:"start"}}>
-            <div style={{fontWeight:"bold",color:"#BA68C8",fontSize:"1rem"}}>1.</div>
-          <Seller/>
+          <div
+            style={{ display: "flex", marginTop: "1rem", alignItems: "start" }}
+          >
+            <div
+              style={{ fontWeight: "bold", color: "#BA68C8", fontSize: "1rem" }}
+            >
+              1.
+            </div>
+            <Seller />
           </div>
-          <div style={{display:"flex",marginTop:"1rem",alignItems:"start"}}>
-            <div style={{fontWeight:"bold",color:"#BA68C8",fontSize:"1rem"}}>1.</div>
-          <Seller/>
+          <div
+            style={{ display: "flex", marginTop: "1rem", alignItems: "start" }}
+          >
+            <div
+              style={{ fontWeight: "bold", color: "#BA68C8", fontSize: "1rem" }}
+            >
+              1.
+            </div>
+            <Seller />
           </div>
-          <div style={{display:"flex",marginTop:"1rem",alignItems:"start"}}>
-            <div style={{fontWeight:"bold",color:"#BA68C8",fontSize:"1rem"}}>1.</div>
-          <Seller/>
+          <div
+            style={{ display: "flex", marginTop: "1rem", alignItems: "start" }}
+          >
+            <div
+              style={{ fontWeight: "bold", color: "#BA68C8", fontSize: "1rem" }}
+            >
+              1.
+            </div>
+            <Seller />
           </div>
-          <div style={{display:"flex",marginTop:"1rem",alignItems:"start"}}>
-            <div style={{fontWeight:"bold",color:"#BA68C8",fontSize:"1rem"}}>1.</div>
-          <Seller/>
+          <div
+            style={{ display: "flex", marginTop: "1rem", alignItems: "start" }}
+          >
+            <div
+              style={{ fontWeight: "bold", color: "#BA68C8", fontSize: "1rem" }}
+            >
+              1.
+            </div>
+            <Seller />
           </div>
-          <div style={{display:"flex",marginTop:"1rem",alignItems:"start"}}>
-            <div style={{fontWeight:"bold",color:"#BA68C8",fontSize:"1rem"}}>1.</div>
-          <Seller/>
+          <div
+            style={{ display: "flex", marginTop: "1rem", alignItems: "start" }}
+          >
+            <div
+              style={{ fontWeight: "bold", color: "#BA68C8", fontSize: "1rem" }}
+            >
+              1.
+            </div>
+            <Seller />
           </div>
-          <div style={{display:"flex",marginTop:"1rem",alignItems:"start"}}>
-            <div style={{fontWeight:"bold",color:"#BA68C8",fontSize:"1rem"}}>1.</div>
-          <Seller/>
+          <div
+            style={{ display: "flex", marginTop: "1rem", alignItems: "start" }}
+          >
+            <div
+              style={{ fontWeight: "bold", color: "#BA68C8", fontSize: "1rem" }}
+            >
+              1.
+            </div>
+            <Seller />
           </div>
-          <div style={{display:"flex",marginTop:"1rem",alignItems:"start"}}>
-            <div style={{fontWeight:"bold",color:"#BA68C8",fontSize:"1rem"}}>1.</div>
-          <Seller/>
+          <div
+            style={{ display: "flex", marginTop: "1rem", alignItems: "start" }}
+          >
+            <div
+              style={{ fontWeight: "bold", color: "#BA68C8", fontSize: "1rem" }}
+            >
+              1.
+            </div>
+            <Seller />
           </div>
-          
         </div>
-        </div>
+      </div>
     </div>
   );
 };
