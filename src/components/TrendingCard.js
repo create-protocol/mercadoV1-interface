@@ -33,9 +33,7 @@ const Imagecont = styled.div`
   border-radius: 0.5rem;
   background: url(${Landingcardimg});
   height:15rem;
-  // -webkit-box-shadow: 0 8px 6px 10px black;
-	  //  -moz-box-shadow: 0 8px 6px 10px black;
-	        // box-shadow: 5px 8px 6px 10px black inset;
+  
    &:hover{
 
    }
