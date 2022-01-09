@@ -29,7 +29,7 @@ const NavBar = (props) => {
   setInterval(function () {
     if (window.ethereum.selectedAddress != null) {
       // console.log("connected");
-      console.log(window.ethereum.selectedAddress);
+      // console.log(window.ethereum.selectedAddress);
     } else {
       // console.log("not connected");
       setIsConnected(false);
@@ -206,7 +206,7 @@ const NavBar = (props) => {
                     Disconnect
                   </button>
                 </div> */}
-                <Link to={`profile/${window.ethereum.selectedAddress}`}>
+                
                   <div class="on-dark">
                     <button class="border-gradient border-gradient-purple">
                       {window.ethereum.selectedAddress.substring(0, 5) +
@@ -214,7 +214,7 @@ const NavBar = (props) => {
                         window.ethereum.selectedAddress.slice(-4)}
                     </button>
                   </div>
-                </Link>
+                
               </div>
             )}
           </div>
