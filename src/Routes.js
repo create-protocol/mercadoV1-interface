@@ -20,7 +20,7 @@ import About from './components/Infopage'
 import Footer from './components/Footer'
 import BlogPage from './components/BlogPage'
 import BlogDetailPage from './components/BlogDetailPage'
-
+import Landingpage from './components/Landingpage'
 const Routes = () => {
   return (
     <div>
@@ -40,6 +40,7 @@ const Routes = () => {
             <Route exact path="/faq" component={Faq}></Route>
             <Route exact path="/teampage" component={TeamPagefinal}></Route>
             <Route exact path="/descpage" component={DescPage}></Route>
+            {/* <Route exact path="/landing" component={Landingpage}></Route> */}
             <Route
               exact
               path="/creator/bharat-thakur"
