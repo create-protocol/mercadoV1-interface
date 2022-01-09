@@ -9,7 +9,9 @@ import NFT from "../abis/NFT.json";
 import Market from "../abis/Marketplace.json";
 import styled from "styled-components";
 import { Player } from "video-react";
-// import Footer from "./Footer";
+import "../../node_modules/video-react/dist/video-react.css"; // import css
+
+import Footer from "./Footer";
 import axios from "axios";
 const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
 
@@ -20,14 +22,11 @@ const ShadowBtn = styled.div`
   color: white;
   padding: 0.3rem 1.2rem;
   alignitems: center;
-
   cursor: pointer;
   border: 8px solid black;
-
   fontsize: 2.5rem;
   lineheight: 2rem;
   textalign: center;
-
   &:hover {
     -webkit-box-shadow: 0 0 8px #fff;
     box-shadow: 0 0 8px #fff;
@@ -38,7 +37,7 @@ const ShadowBtn = styled.div`
 
 function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
-
+  const [filetype,setFileType]=useState(null);
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
@@ -47,9 +46,11 @@ function Mintnft() {
   });
 
   async function onChange(e) {
-    const file = e.target.files[0];
-    var filePath = file.value;
-    console.log(filePath);
+    console.log( e.target.files[0]);
+    const filetype= e.target.files[0].type;
+    const filetypefinal=filetype.substring(filetype.lastIndexOf('.') + 1);
+    setFileType(filetype.substring(filetype.lastIndexOf('/') + 1))
+     const file = e.target.files[0];
     try {
       const added = await client.add(file, {
         progress: (prog) => console.log(`received: ${prog}`),
@@ -65,9 +66,11 @@ function Mintnft() {
     if (!name || !description || !price || !fileUrl || !royaltyinweth) return;
     const data = JSON.stringify({
       name,
+      file:filetype,
       description,
       image: fileUrl,
     });
+    console.log(filetype);
     console.log(fileUrl);
     try {
       const added = await client.add(data);
@@ -242,9 +245,8 @@ function Mintnft() {
           }}
         >
           {fileUrl ? (
-            <Player>
-              <source src={fileUrl} />
-            </Player>
+            filetype=="mp4"?<Player src={fileUrl}></Player>:
+            <img src={fileUrl}></img>
           ) : (
             <h2
               style={{
@@ -276,7 +278,7 @@ function Mintnft() {
 
         {/* </div> */}
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

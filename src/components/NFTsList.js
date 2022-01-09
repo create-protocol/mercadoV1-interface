@@ -11,9 +11,9 @@ import styled from "styled-components";
 import { nftmarketaddress, nftaddress } from "../config";
 import Loader from "react-loader-spinner";
 import { sendTransaction } from "./sendTransaction";
-// import { Player } from "video-react";
-
-
+import { Player } from "video-react";
+// import VideoPlayer from "react-video-js-player";
+import "../../node_modules/video-react/dist/video-react.css"; // import css
 
 const ShadowBtn = styled.div`
   background-color: rgb(112, 215, 49);
@@ -44,15 +44,14 @@ const Span1 = styled.div`
   text-decoration: none;
 `;
 
-
-const ImgHover=styled.div`
-border-radius:1rem;
-&:hover {
-  border-radius:1rem;
-  box-shadow: 0 5px 15px grey;
-  transition:0.5s;
-}
-`
+const ImgHover = styled.div`
+  border-radius: 1rem;
+  &:hover {
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px grey;
+    transition: 0.5s;
+  }
+`;
 const Nftslist = (props) => {
   const [nfts, setNfts] = useState([]);
   const [sold, setSold] = useState([]);
@@ -88,6 +87,7 @@ const Nftslist = (props) => {
           image: meta.data.image || meta.data.imageCID,
           desc: meta.data.description,
           nftContract: i.nftContract,
+          file: meta.data.file,
         };
         // console.log(item);
         return item;
@@ -144,11 +144,11 @@ const Nftslist = (props) => {
         No assets created
       </h1>
     );
-    
-    var nftsreverse = [...nfts].reverse();
-    // nfts.reverse();
-    // console.log(nfts);
-    // console.log(nftsreverse);
+
+  var nftsreverse = [...nfts].reverse();
+  // nfts.reverse();
+  // console.log(nfts);
+  // console.log(nftsreverse);
   return (
     <div>
       <div className="p-4">
@@ -162,40 +162,83 @@ const Nftslist = (props) => {
                   display: "flex",
                   flexDirection: "column",
                   paddingBottom: "10px",
-                  
                 }}
               >
                 <Link to={`/asset/${nft.itemId}`}>
                   <ImgHover>
-                  <div className="nft-img-container" style={{}}>
-                    <img className="nft-img" style={{border:"none",borderRadius:"1rem"}} src={nft.image} alt="text"></img>
+                    {nft.file == "mp4" ? (
+                      <div className="videomint">
+                        <div
+                        className="videomint"
+                          
+                          style={{
+                            width: "340px",
+                            height: "270px",
+                            marginRight:"30px",
+                            padding:"4px"
+                          }}
+                        >
+                          <div style={{alignItems:"center",marginTop:"20px"}}>
+                          <Player  src={nft.image} ></Player>
+                          </div>
+                          
+                        </div>
 
-                    <p
-                      style={{
-                        fontWeight: "bold",
-                        margin: "10px",
-                        color: "white",
-                        textAlign: "start",
-                        display: "flex",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <div>{nft.price} Eth</div>
-                      <div>{nft.collection}</div>
+                        <p
+                          style={{
+                            fontWeight: "bold",
+                            margin: "10px",
+                            color: "white",
+                            textAlign: "start",
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <div id="videomintprice" style={{marginTop:"-10px",padding: "10px"}}>{nft.price} Eth</div>
+                          <div>{nft.collection}</div>
 
-                      <div>
-                        <Span1 style={{ background: "none", padding: "0" }}>
-                          {nft.seller.substring(0, 6) +
-                            "........." +
-                            nft.seller.slice(-3)}
-                        </Span1>
+                          <div id="videomintadd" style={{marginTop:"-10px"}}>
+                            <Span1 style={{ background: "none", padding: "10px" }}>
+                              {nft.seller.substring(0, 6) +
+                                "........." +
+                                nft.seller.slice(-3)}
+                            </Span1>
+                          </div>
+                        </p>
                       </div>
-                    </p>
-                  </div>
+                    ) : (
+                      <div className="nft-img-container " style={{marginLeft:"10px"}}>
+                        <img
+                          className="nft-img"
+                          src={nft.image}
+                          alt="text"
+                        ></img>
+
+                        <p
+                          style={{
+                            fontWeight: "bold",
+                            margin: "10px",
+                            color: "white",
+                            textAlign: "start",
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <div id="videomintprice">{nft.price} Eth</div>
+                          <div>{nft.collection}</div>
+
+                          <div id="videomintadd">
+                            <Span1 style={{ background: "none", padding: "0" }}>
+                              {nft.seller.substring(0, 6) +
+                                "........." +
+                                nft.seller.slice(-3)}
+                            </Span1>
+                          </div>
+                        </p>
+                      </div>
+                    )}
                   </ImgHover>
                 </Link>
-
-                
               </div>
 
               // </div>
@@ -212,7 +255,6 @@ const Nftslist = (props) => {
                 <div
                   key={i}
                   className="border shadow rounded-xl overflow-hidden"
-                  
                 >
                   <img
                     style={{
