@@ -8,12 +8,12 @@ import './styles/global.css'
 function App() {
   return (
     <div className="App">
-      <Helmet>
+      {/* <Helmet>
         <title>mercado.studio</title>
         <meta name="description" content="A marketplace for artist" />
-        <meta name="keywords" content="Mercado,Muzix,NFT,Create protocall,Marketplace" />
+        <meta name="keywords" content="mercado studio,Muzix,NFT,Create protocall,Marketplace " />
         
-      </Helmet>
+      </Helmet> */}
       <Routes></Routes>
       
     </div>
