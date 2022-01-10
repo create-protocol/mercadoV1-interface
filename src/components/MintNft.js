@@ -10,7 +10,7 @@ import Market from "../abis/Marketplace.json";
 import styled from "styled-components";
 import { Player } from "video-react";
 import "../../node_modules/video-react/dist/video-react.css"; // import css
-import PageHeader from '../components/PageHeader'
+import PageHeader from "../components/PageHeader";
 
 import Footer from "./Footer";
 import axios from "axios";
@@ -35,10 +35,9 @@ const ShadowBtn = styled.div`
   }
 `;
 
-
 function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
-  const [filetype,setFileType]=useState(null);
+  const [filetype, setFileType] = useState(null);
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
@@ -47,11 +46,11 @@ function Mintnft() {
   });
 
   async function onChange(e) {
-    console.log( e.target.files[0]);
-    const filetype= e.target.files[0].type;
-    const filetypefinal=filetype.substring(filetype.lastIndexOf('.') + 1);
-    setFileType(filetype.substring(filetype.lastIndexOf('/') + 1))
-     const file = e.target.files[0];
+    console.log(e.target.files[0]);
+    const filetype = e.target.files[0].type;
+    const filetypefinal = filetype.substring(filetype.lastIndexOf(".") + 1);
+    setFileType(filetype.substring(filetype.lastIndexOf("/") + 1));
+    const file = e.target.files[0];
     try {
       const added = await client.add(file, {
         progress: (prog) => console.log(`received: ${prog}`),
@@ -67,7 +66,7 @@ function Mintnft() {
     if (!name || !description || !price || !fileUrl || !royaltyinweth) return;
     const data = JSON.stringify({
       name,
-      file:filetype,
+      file: filetype,
       description,
       image: fileUrl,
     });
@@ -123,7 +122,6 @@ function Mintnft() {
   //   setChecked(!checked);
   // };
   return (
-    
     <div>
       <PageHeader title="Create" />
       <view
@@ -141,66 +139,58 @@ function Mintnft() {
             width: "50%",
           }}
         >
-          
-            <input
-              className="formtxtfill docs"
-              type="text"
-              placeholder="_NFT name"
-              onChange={(e) =>
-                updateFormInput({ ...formInput, name: e.target.value })
-              }
-              style={{ width: "100%" }}
-            />
-         
-            <input
-              className="formtxtfill docs"
-              type="text"
-              placeholder="_Description"
-              onChange={(e) =>
-                updateFormInput({ ...formInput, description: e.target.value })
-              }
-              style={{ width: "100%" }}
-            />
-          
-         
-            <input
-              className="formtxtfill docs"
-              type="text"
-              placeholder="_Price in WETH"
-              onChange={(e) =>
-                updateFormInput({ ...formInput, price: e.target.value })
-              }
-              style={{ width: "100%" }}
-            />
-         
-        
+          <input
+            className="formtxtfill docs"
+            type="text"
+            placeholder="_NFT name"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, name: e.target.value })
+            }
+            style={{ width: "100%" }}
+          />
 
-          
-            
-            <input
-              className="formtxtfill docs"
-              type="text"
-              placeholder="_Creator royalty (in WETH)"
-              onChange={(e) =>
-                updateFormInput({ ...formInput, royaltyinweth: e.target.value })
-              }
-              style={{ width: "100%" }}
-            />
-          
-          <br />
-       
-            <input
-              className="formtxtfill docs"
-              accept="audio/*,video/*,image/*"
-              type="file"
-              name="Asset"
-              onChange={onChange}
-              style={{ width: "100%" }}
-            />
-          
+          <input
+            className="formtxtfill docs"
+            type="text"
+            placeholder="_Description"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, description: e.target.value })
+            }
+            style={{ width: "100%" }}
+          />  
+
+          <input
+            className="formtxtfill docs"
+            type="text"
+            placeholder="_Price in WETH"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, price: e.target.value })
+            }
+            style={{ width: "100%" }}
+          />
+
+          <input
+            className="formtxtfill docs"
+            type="text"
+            placeholder="_Creator royalty (in WETH)"
+            onChange={(e) =>
+              updateFormInput({ ...formInput, royaltyinweth: e.target.value })
+            }
+            style={{ width: "100%" }}
+          />
 
           <br />
-         
+
+          <input
+            className="formtxtfill docs"
+            accept="audio/*,video/*,image/*"
+            type="file"
+            name="Asset"
+            onChange={onChange}
+            style={{ width: "100%" }}
+          />
+
+          <br />
         </form>
         <div
           style={{
@@ -211,30 +201,36 @@ function Mintnft() {
           }}
         >
           {fileUrl ? (
-            filetype=="mp4"?<Player src={fileUrl}></Player>:
-            <img src={fileUrl}></img>
+            filetype == "mp4" ? (
+              <Player src={fileUrl}></Player>
+            ) : (
+              <img src={fileUrl}></img>
+            )
           ) : (
-            <div style={{width:"576px",height:"500px",border:"2px solid",borderColor:"#5999ad #5aa6b2"}}>
-               <h2
+            <div
               style={{
-                color: "white",
-                textAlign:"center",
-                justifyContent:"center"
+                width: "576px",
+                height: "500px",
+                border: "2px solid",
+                borderColor: "#5999ad #5aa6b2",
               }}
             >
-              Preview Here
-            </h2>
+              <h2
+                style={{
+                  color: "white",
+                  textAlign: "center",
+                  justifyContent: "center",
+                }}
+              >
+                Preview Here
+              </h2>
             </div>
-           
           )}
         </div>
       </view>
       <button className="digitalbutton" onClick={createMarket}>
-          <div style={{color:"white"}}>
-            Create Digital Asset
-          </div>
-        </button>
-
+        <div style={{ color: "white" }}>Create Digital Asset</div>
+      </button>
     </div>
   );
 }
