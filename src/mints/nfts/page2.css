@@ -13,13 +13,11 @@ body {
 .formfill {
   margin: 18px;
   margin-left: 50px;
-  
-  text-transform: uppercase;
   font: var(--unnamed-font-style-normal) normal
     var(--unnamed-font-weight-normal) var(--unnamed-font-size-32) /
     var(--unnamed-line-spacing-44) var(--unnamed-font-family-bahnschrift);
   letter-spacing: var(--unnamed-character-spacing-6-4);
- 
+
   text-align: left;
   font: normal normal normal 24px Bahnschrift;
   letter-spacing: 6.4px;
@@ -44,6 +42,24 @@ body {
   padding: 18px;
   /* margin: 10px; */
 }
+.getstarted {
+  /* Header 2 */
+
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 27px;
+  line-height: 140%;
+  /* display: inline; */
+  margin-left: 40px;
+  /* identical to box height, or 38px */
+
+  display: flex;
+  align-items: flex-end;
+  text-align: right;
+
+  color: #0070ff;
+}
 .digitalbutton {
   width: 221px;
   height: 47px;
@@ -58,5 +74,5 @@ body {
   font-weight: bold;
   font-size: 20px;
   line-height: 160%;
- margin-right: 75rem;
+  margin-right: 75rem;
 }

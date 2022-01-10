@@ -124,6 +124,7 @@ function Mintnft() {
   return (
     <div>
       <PageHeader title="Create" />
+      <h3 className="getstarted">GET STARTED -</h3>
       <view
         style={{
           display: "flex",
@@ -131,6 +132,7 @@ function Mintnft() {
           justifyContent: "center",
         }}
       >
+       
         <form
           className="formfill"
           style={{

@@ -44,11 +44,14 @@
 
 .page__header h3 {
   color: white;
+
 }
 
 .page__title {
   font-size: 3rem;
   color: var(--primary-title-color);
+  /* justify-content: left; */
+  text-align: left;
 }
 
 /* FAQ Page styles */
