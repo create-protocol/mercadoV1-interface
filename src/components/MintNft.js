@@ -132,7 +132,6 @@ function Mintnft() {
           justifyContent: "center",
         }}
       >
-       
         <form
           className="formfill"
           style={{
@@ -141,6 +140,15 @@ function Mintnft() {
             width: "50%",
           }}
         >
+          <input
+            className="formtxtfill docs"
+            accept="audio/*,video/*,image/*"
+            type="file"
+            name="Asset"
+            onChange={onChange}
+            style={{ width: "100%" }}
+          />
+
           <input
             className="formtxtfill docs"
             type="text"
@@ -159,7 +167,7 @@ function Mintnft() {
               updateFormInput({ ...formInput, description: e.target.value })
             }
             style={{ width: "100%" }}
-          />  
+          />
 
           <input
             className="formtxtfill docs"
@@ -180,19 +188,7 @@ function Mintnft() {
             }
             style={{ width: "100%" }}
           />
-
-          <br />
-
-          <input
-            className="formtxtfill docs"
-            accept="audio/*,video/*,image/*"
-            type="file"
-            name="Asset"
-            onChange={onChange}
-            style={{ width: "100%" }}
-          />
-
-          <br />
+          {/* <br /> */}
         </form>
         <div
           style={{
@@ -204,9 +200,25 @@ function Mintnft() {
         >
           {fileUrl ? (
             filetype == "mp4" ? (
-              <Player src={fileUrl}></Player>
+              <div
+                style={{
+                  objectFit: "contain",
+                  width: "576px",
+                  height: "400px",
+                }}
+              >
+                <Player src={fileUrl}></Player>
+              </div>
             ) : (
-              <img src={fileUrl}></img>
+              <img
+                style={{
+                  objectFit: "contain",
+                  width: "576px",
+                  height: "500px",
+                }}
+                src={fileUrl}
+                alt="pre"
+              />
             )
           ) : (
             <div
@@ -222,6 +234,8 @@ function Mintnft() {
                   color: "white",
                   textAlign: "center",
                   justifyContent: "center",
+
+                  objectFit: "contain",
                 }}
               >
                 Preview Here
