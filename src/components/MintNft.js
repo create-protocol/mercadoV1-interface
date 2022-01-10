@@ -10,6 +10,7 @@ import Market from "../abis/Marketplace.json";
 import styled from "styled-components";
 import { Player } from "video-react";
 import "../../node_modules/video-react/dist/video-react.css"; // import css
+import PageHeader from '../components/PageHeader'
 
 import Footer from "./Footer";
 import axios from "axios";
@@ -113,9 +114,8 @@ function Mintnft() {
     console.log("Token listet");
 
     transaction = await contract.list(nftaddress, tokenId, price);
+    // contract.unlistItem("0x25");
     await transaction.wait();
-    // redirect to the homepage
-    // router.push('/')
   }
   // const [checked, setChecked] = useState(false);
 
@@ -123,7 +123,9 @@ function Mintnft() {
   //   setChecked(!checked);
   // };
   return (
+    
     <div>
+      <PageHeader title="Create" />
       <view
         style={{
           display: "flex",
@@ -139,91 +141,54 @@ function Mintnft() {
             width: "50%",
           }}
         >
-          <div
-            style={{
-              backgroundColor: "grey",
-              padding: "2rem",
-              borderRadius: ".5rem",
-            }}
-          >
-            <label for="fname">Item Name</label>
-            <br />
+          
             <input
               className="formtxtfill docs"
               type="text"
+              placeholder="_NFT name"
               onChange={(e) =>
                 updateFormInput({ ...formInput, name: e.target.value })
               }
               style={{ width: "100%" }}
             />
-          </div>
-          <br />
-
-          <div
-            style={{
-              backgroundColor: "grey",
-              padding: "2rem",
-              borderRadius: ".5rem",
-            }}
-          >
-            <label for="lname">DESCRIPTION</label>
-            <br />
+         
             <input
               className="formtxtfill docs"
               type="text"
+              placeholder="_Description"
               onChange={(e) =>
                 updateFormInput({ ...formInput, description: e.target.value })
               }
-              style={{ width: "100%", textTransform: "lowercase" }}
+              style={{ width: "100%" }}
             />
-          </div>
-          <br />
-          <div
-            style={{
-              backgroundColor: "grey",
-              padding: "2rem",
-              borderRadius: ".5rem",
-            }}
-          >
-            <label for="lname">price in WETH</label>
-            <br />
+          
+         
             <input
               className="formtxtfill docs"
               type="text"
+              placeholder="_Price in WETH"
               onChange={(e) =>
                 updateFormInput({ ...formInput, price: e.target.value })
               }
               style={{ width: "100%" }}
             />
-          </div>
-          <br />
+         
+        
 
-          <div
-            style={{
-              backgroundColor: "grey",
-              padding: "2rem",
-              borderRadius: ".5rem",
-            }}
-          >
-            <label for="fname">How much royality do you want (in WETH) </label>
-            <br />
+          
+            
             <input
               className="formtxtfill docs"
               type="text"
+              placeholder="_Creator royalty (in WETH)"
               onChange={(e) =>
                 updateFormInput({ ...formInput, royaltyinweth: e.target.value })
               }
               style={{ width: "100%" }}
             />
-          </div>
+          
           <br />
-          <div
-            style={{
-              backgroundColor: "grey",
-              padding: "2rem",
-              borderRadius: ".5rem",
-            }}
-          >
+       
             <input
               className="formtxtfill docs"
               accept="audio/*,video/*,image/*"
@@ -232,9 +197,10 @@ function Mintnft() {
               onChange={onChange}
               style={{ width: "100%" }}
             />
-          </div>
+          
 
           <br />
+         
         </form>
         <div
           style={{
@@ -248,37 +214,27 @@ function Mintnft() {
             filetype=="mp4"?<Player src={fileUrl}></Player>:
             <img src={fileUrl}></img>
           ) : (
-            <h2
+            <div style={{width:"576px",height:"500px",border:"2px solid",borderColor:"#5999ad #5aa6b2"}}>
+               <h2
               style={{
                 color: "white",
-                fontFamily:
-                  "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+                textAlign:"center",
+                justifyContent:"center"
               }}
             >
               Preview Here
             </h2>
+            </div>
+           
           )}
         </div>
       </view>
-
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        <ShadowBtn style={{ marginBottom: "20px" }} onClick={createMarket}>
-          <div className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg">
+      <button className="digitalbutton" onClick={createMarket}>
+          <div style={{color:"white"}}>
             Create Digital Asset
           </div>
-        </ShadowBtn>
+        </button>
 
-        {/* </div> */}
-      </div>
-      <Footer />
     </div>
   );
 }

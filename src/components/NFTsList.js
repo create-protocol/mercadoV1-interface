@@ -130,6 +130,8 @@ const Nftslist = (props) => {
     }
   }
 
+  
+
   if (loadingState != "loaded") {
     return (
       <div

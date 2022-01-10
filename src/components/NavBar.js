@@ -146,19 +146,7 @@ const NavBar = (props) => {
               />
             </div>
           </Link>
-          {/* <div> 
-            <a
-              style={{
-                color: "white",
-                fontSize: "20px",
-                lineHeight: "32px",
-                fontFamily: "Century Gothic",
-                fontWeight: "700",
-              }}
-            >
-              About
-            </a>
-          </div> */}
+         
 
           <div
             style={{
