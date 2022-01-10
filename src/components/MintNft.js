@@ -121,6 +121,10 @@ function Mintnft() {
   // const handleChange = () => {
   //   setChecked(!checked);
   // };
+
+
+
+  
   return (
     <div>
       <PageHeader title="Create" />
@@ -160,6 +164,7 @@ function Mintnft() {
           />
 
           <input
+           
             className="formtxtfill docs"
             type="text"
             placeholder="_Description"
@@ -167,6 +172,7 @@ function Mintnft() {
               updateFormInput({ ...formInput, description: e.target.value })
             }
             style={{ width: "100%" }}
+            required
           />
 
           <input
@@ -177,6 +183,7 @@ function Mintnft() {
               updateFormInput({ ...formInput, price: e.target.value })
             }
             style={{ width: "100%" }}
+            required
           />
 
           <input
