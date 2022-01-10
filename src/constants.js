@@ -91,6 +91,7 @@ const routes = [
     path: "/desc2",
     component: Descpage,
   },
+  
   // {
   //   pathName: "LOG OUT",
   //   path: "/LOG OUT",
