@@ -212,14 +212,15 @@ function Mintnft() {
         >
           {fileUrl ? (
             filetype=="mp4"?<Player src={fileUrl}></Player>:
-            <img src={fileUrl}></img>
+            <img style={{objectFit:"contain",width:"576px",height:"500px"}} src={fileUrl} alt="pre"/>
           ) : (
             <div style={{width:"576px",height:"500px",border:"2px solid",borderColor:"#5999ad #5aa6b2"}}>
                <h2
               style={{
                 color: "white",
                 textAlign:"center",
-                justifyContent:"center"
+                justifyContent:"center",
+                objectFit:"contain"
               }}
             >
               Preview Here
