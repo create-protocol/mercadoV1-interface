@@ -9,6 +9,7 @@ import Infopage from './components/Infopage'
 import ContactUs from "./components/ContactUs";
 import Mintnft from "./components/MintNft";
 import Landingpage from './components/Landingpage'
+import Descpage from "./components/Descpage";
 const routes = [
   {
     pathName: "HOME",
@@ -84,6 +85,11 @@ const routes = [
     pathName: "main",
     path: "/main",
     component: Landingpage,
+  },
+  {
+    pathName: "main",
+    path: "/desc2",
+    component: Descpage,
   },
   // {
   //   pathName: "LOG OUT",
