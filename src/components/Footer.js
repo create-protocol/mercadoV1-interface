@@ -55,7 +55,7 @@ const Footer = () => {
           <FooterLink href="/about">About</FooterLink>
           <FooterLink href="/">Community</FooterLink>
           <FooterLink href="/faq">FAQ</FooterLink>
-          <div style={{marginTop:"3rem"}}>PRIVACY & POLICY</div>
+          <div style={{marginTop:"3.3rem"}}>PRIVACY & POLICY</div>
         </Row>
 
         <Row>
@@ -68,60 +68,14 @@ const Footer = () => {
             {/* <br></br> */}
             <a style={{color:"white"}} href="mailto:Info@createprotocol.org"><p>Email : Info@createprotocol.org</p></a>
             
-            <div style={{marginTop:"7rem"}}>COOKIES POLICY</div>
-            {/* <a
-              href="mailto:info@muzix.tech"
-              class="text-white me-6"
-              style={{ margin: "8px", fontSize: "30px",color:"white" }}
-            >
-              <i class="fa fa-envelope"></i>
-            </a>
-
-            <a
-              
-              class="text-white me-4"
-              style={{ margin: "8px", fontSize: "30px" ,color:"white"}}
-            >
-              <i class="fa fa-twitter"></i>
-            </a>
-            <a
-              href="https://www.linkedin.com/company/muzixtech/"
-              class="text-white me-4"
-              style={{ margin: "8px", fontSize: "30px",color:"white" }}
-            >
-              <i class="fa fa-linkedin"></i>
-            </a>
-
-            <a
-              
-              class="text-white me-4"
-              style={{ margin: "8px", fontSize: "30px",color:"white" }}
-            >
-              <i class="fa fa-instagram"></i>
-            </a> */}
+            <div style={{marginTop:"7.2rem"}}>COOKIES POLICY</div>
+      
           </div>
         </Row>
 
       
       </ContainerInner>
-      {/* <div style={{width:"80%",color:"wheat",display:"flex",alignItems:"center",justifyContent:"space-evenly",margin:"3rem 8rem",marginBottom:"4rem",fontFamily: "Open Sans",
-fontStyle: "normal",
-fontWeight: "normal",
-fontSize: "16px",
-lineHeight: "22px",
-letterSpacing:"0.3em"}}>
-            
-            <div style={{width:"40%",color:"wheat",display:"flex",alignItems:"center",justifyContent:"space-evenly"}}>
-            <div>LINKEDIN</div>
-            <div>REDDIT</div>
-            <div>FACEBOOK</div>
-            <div>TWITTER</div>
-            </div>
-            <div style={{width:"40%",color:"wheat",display:"flex",alignItems:"center",justifyContent:"space-evenly"}}>
-              
-              
-            </div>
-      </div> */}
+     
      
       <img
         src={linesmall2}
