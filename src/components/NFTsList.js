@@ -209,7 +209,7 @@ const Nftslist = (props) => {
                         </p>
                       </div>
                     ) : (
-                      <div className="nft-img-container " style={{marginLeft:"10px"}}>
+                      <div className="nft-img-container " style={{marginLeft:"10px",border:"none"}}>
                         <img
                           className="nft-img"
                           src={nft.image}
