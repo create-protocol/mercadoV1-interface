@@ -202,7 +202,7 @@ const ContactUs = () => {
                   type="radio"
                   value="Career"
                   name="options"
-                  onChange={this.handleChange}
+                  // onChange={this.handleChange}
                 />
                 <Radio for="html">Career</Radio>
                 <br />
@@ -211,7 +211,7 @@ const ContactUs = () => {
                   type="radio"
                   value="Investment"
                   name="options"
-                  onChange={this.handleChange}
+                  // onChange={this.handleChange}
                 />
                 <Radio for="html">Investment</Radio>
                 <br />
@@ -220,7 +220,7 @@ const ContactUs = () => {
                   type="radio"
                   name="options"
                   value="Business enquiries/ partnerships"
-                  onChange={this.handleChange}
+                  // onChange={this.handleChange}
                 />
                 <Radio for="html">Business enquiries/ partnerships</Radio>
                 <br />
