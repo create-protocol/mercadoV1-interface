@@ -66,7 +66,6 @@ margin-top:1rem;
 color:white;
 border:none;
 border-bottom:1px solid #565656
-
 `
 
 const Whitebtn=styled.div`
