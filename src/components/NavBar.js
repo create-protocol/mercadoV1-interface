@@ -178,6 +178,7 @@ const NavBar = (props) => {
                   }}
                 >
                   <button
+                  style={{display:"flex",alignItems:"center",justifyContent:"center"}}
                     class="border-gradient border-gradient-purple"
                     onClick={connectWallet}
                   >

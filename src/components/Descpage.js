@@ -454,6 +454,56 @@ const Descpage = (props) => {
                 </div>
               </div>
             </Biddingcard>
+            <Biddingcard>
+              <div
+                style={{
+                //   marginTop: "1.4rem",
+                  display: "flex",
+                  alignItems: "center",
+                  marginLeft: "2rem",
+                  height:"100%",
+                }}
+              >
+                <img
+                  style={{ objectFit: "contain", width: "5rem" }}
+                  src={Landingowner}
+                  alt="landingimg"
+                />
+                <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginLeft: "2rem",
+                    color: "white",
+                  }}
+                >
+                  <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
+                    By woodshelf
+                  </div>
+                  <div style={{ color: "#A9A9A9", fontSize: "0.9rem",marginTop:"1rem" }}>
+                    Bid of 20Eth
+                  </div>
+                </div>
+              </div>
+              <div>
+              <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginRight: "2rem",
+                    color: "white",
+                    height:"100%"
+                  }}
+                >
+                  <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
+                   365 ETH
+                  </div>
+                  <div style={{ color: "#A9A9A9", fontSize: "0.9rem",marginTop:"1rem" }}>
+                    11:46AM
+                  </div>
+                </div>
+              </div>
+            </Biddingcard>
             
           </div>
         </Right>

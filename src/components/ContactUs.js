@@ -86,6 +86,14 @@ font-size: 20px;
 line-height: 160%;
 color: #606060;`
 
+
+const handleChange = e => {
+  const { name, value } = e.target;
+
+  this.setState({
+    [name]: value
+  });
+};
 const ContactUs = () => {
   return (
     <>
@@ -200,6 +208,8 @@ const ContactUs = () => {
                   style={{ background: "none" }}
                   type="radio"
                   value="Career"
+                  name="options"
+                  onChange={this.handleChange}
                 />
                 <Radio for="html">Career</Radio>
                 <br />
@@ -207,13 +217,17 @@ const ContactUs = () => {
                   style={{ marginLeft: "1.5rem" }}
                   type="radio"
                   value="Investment"
+                  name="options"
+                  onChange={this.handleChange}
                 />
                 <Radio for="html">Investment</Radio>
                 <br />
                 <input
                   style={{ marginLeft: "1.5rem" }}
                   type="radio"
+                  name="options"
                   value="Business enquiries/ partnerships"
+                  onChange={this.handleChange}
                 />
                 <Radio for="html">Business enquiries/ partnerships</Radio>
                 <br />

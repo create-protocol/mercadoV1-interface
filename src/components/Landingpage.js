@@ -9,9 +9,15 @@ import LandingCard from "./LandingCard";
 import Sellerimg from "../assets/images/sellerimg.png";
 import Seller from "./Seller";
 import TrendingCarousel from "./TrendingCarousel";
+import Fundingimg from "../assets/images/FUNDING.png";
+import contactus from "../assets/images/contactus.png";
 
 const ImageContainer = styled.div`
-  //   background: url(${Landingimg});
+  background: url(${Fundingimg});
+  object-fit: contain;
+  background-position: center;
+  background-size: cover;
+  backgroundrepeat: no-repeat;
   height: 40rem;
   width: 100%;
   margintop: 0;
@@ -65,7 +71,15 @@ const Landingpage = () => {
         width: "100%",
       }}
     >
-      <div style={{ width: "100%" }}>
+      <div
+        style={{
+          width: "100%",
+          // backgroundImage: `url(require("../assets/images/FUNDING PAGE.png"))`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <ImageContainer>
           <div style={{ color: " #D14F8C", fontSize: ".9rem" }}>
             Buying & selling NFTs made easy through mercado.studio
@@ -107,7 +121,7 @@ const Landingpage = () => {
         >
           <HeadingText>Trending Creations</HeadingText>
           {/* <Transparentbtn>Explore more artists</Transparentbtn> */}
-        </div>  
+        </div>
         <div
           style={{ width: "100%", paddingLeft: "5rem", paddingRight: "5rem" }}
         >
