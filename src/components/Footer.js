@@ -41,12 +41,7 @@ const Footer = () => {
 
   
             </div>
-          {/* <Heading>Marketplace</Heading> */}
-
-          {/* <FooterLink href="/">Home</FooterLink> */}
-          {/* <FooterLink href="/creator/bharat-thakur">Creator</FooterLink> */}
-          {/* <FooterLink href="#">Discover</FooterLink> */}
-          {/* <FooterLink href="/creator">Creators</FooterLink> */}
+        
         </Row>
 
         <Row>
@@ -84,9 +79,7 @@ const Footer = () => {
           height: "1.3px",
         }}
       />
-      {/* <h4 style={{ color: "white" }}>
-        © 2021 mercado.studio. All rights reserved
-      </h4> */}
+     
     </Containertop>
   );
 };

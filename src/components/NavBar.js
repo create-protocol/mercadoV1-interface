@@ -9,6 +9,8 @@ import Drawerroutes from "./DrawerRoutes";
 import Home from "../assets/images/image 8.svg";
 import styled from "styled-components";
 import BlogPage from "./BlogPage";
+// import WalletConnectProvider from "@walletconnect/web3-provider";
+
 const ShadowBtn = styled.div`
   cursor: pointer;
   border: 1px solid #3498db;
@@ -50,6 +52,23 @@ const NavBar = (props) => {
   });
   async function connectWallet() {
     console.log("here");
+    if (window.ethereum) {
+      const web3Modal = new Web3Modal({
+        network: "mainnet",
+        cacheProvider: true,
+      });
+      const connection = await web3Modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
+      const signer = provider.getSigner();
+      setIsConnected(true);
+    } else {
+      alert("Please Install metamask extension from metamask.io");
+    }
+  }
+
+
+  async function connectWallet2() {
+    console.log("walletconnect here");
     if (window.ethereum) {
       const web3Modal = new Web3Modal({
         network: "mainnet",
