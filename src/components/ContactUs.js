@@ -86,13 +86,7 @@ line-height: 160%;
 color: #606060;`
 
 
-const handleChange = e => {
-  const { name, value } = e.target;
 
-  this.setState({
-    [name]: value
-  });
-};
 const ContactUs = () => {
   return (
     <>
