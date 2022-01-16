@@ -12,8 +12,9 @@ import i4 from "../assets/images/4.png";
 import i5 from "../assets/images/5.png";
 import i6 from "../assets/images/6.png";
 import sepline from "../assets/images/sep line.png";
-import bell from '../assets/images/bell_front.png'
-import envelope from '../assets/images/envelope_front.png'
+import bell from "../assets/images/bell_front.png";
+import envelope from "../assets/images/envelope_front.png";
+import Aboutbg from "../assets/images/about us bg.png";
 import { Link } from "react-router-dom";
 
 const Maindiv = styled.div`
@@ -21,6 +22,7 @@ const Maindiv = styled.div`
   text-align: left;
   margin: 5rem 8rem;
   color: white;
+  
 `;
 
 const Gradienttext = styled.div`
@@ -30,101 +32,133 @@ const Gradienttext = styled.div`
   font-size: 2.8rem;
   line-height: 57px;
 `;
+const Bgdiv = styled.div`
+  background: url(${Aboutbg});
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  backgroundrepeat: no-repeat;
+`;
 const Infopage = () => {
   return (
     <Maindiv>
-      
       {/* section1 */}
-      <div style={{ textAlign: "left", marginTop: "16rem" }}>
-        <div
-          style={{
-            // fontFamily: "Open Sans",
-            fontStyle: "normal",
-            fontWeight: "bold",
-            fontSize: "5.2rem",
-            lineHeight: "6.5rem",
-            textTransform: "capitalize",
-          }}
-        >
-          Hello,
-        </div>
-        <br />
+      <Bgdiv>
+        <div style={{ textAlign: "left", marginTop: "16rem" }}>
+          <div
+            style={{
+              // fontFamily: "Open Sans",
+              fontStyle: "normal",
+              fontWeight: "bold",
+              fontSize: "5.2rem",
+              lineHeight: "6.5rem",
+              textTransform: "capitalize",
+            }}
+          >
+            Hello,
+          </div>
+          <br />
 
-        <div
-          style={{
-            // fontFamily: "Open Sans",
-            fontFamily: "Century Gothic",
-            fontStyle: "normal",
-            fontWeight: "normal",
-            fontSize: "2.9rem",
-            lineHeight: "6.5rem",
-          }}
-        >
-          Beautiful,Creative minds
+          <div
+            style={{
+              // fontFamily: "Open Sans",
+              fontFamily: "Century Gothic",
+              fontStyle: "normal",
+              fontWeight: "normal",
+              fontSize: "2.9rem",
+              lineHeight: "6.5rem",
+            }}
+          >
+            Beautiful,Creative minds
+          </div>
         </div>
-      </div>
 
-      {/* section 2 */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
+        {/* section 2 */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            flexDirection: "column",
-            marginTop: "15rem",
-            width: "90%",
+            width: "100%",
           }}
         >
-          <img style={{ marginTop: "1rem" }} src={linewho} alt="line" />
           <div
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              width: "100%",
               flexDirection: "column",
+              marginTop: "6rem",
+              width: "90%",
             }}
           >
+            <img style={{ marginTop: "1rem" }} src={linewho} alt="line" />
             <div
               style={{
-                fontSize: "1rem",
-                opacity: "40%",
-                marginTop: "3rem",
-                width: "90%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+                flexDirection: "column",
+                marginTop: "6rem",
               }}
             >
-              Let us tell you something......
-            </div>
-            <div style={{ display: "flex", width: "90%" }}>
-              <div style={{ width: "76%" }}>
-                <div style={{fontSize:"2.5rem",fontFamily:"Century Gothic",fontStyle:"normal",marginTop:"2rem"}}>The Future Of Creation Is Distributed</div>
-                <div style={{fontSize:"1.3rem",fontFamily:"Century Gothic",fontStyle:"normal",marginTop:"1.5rem",marginLeft:"1.5rem"}}>
-                  <ul>
-                    <li>Democratization of creation has begun. </li>
-                    <li>The power is in the hands of Creators.</li>
-                    <li>The decentralised Creator economy is here.</li>
-                  </ul>
-                  
+              <div style={{ display: "flex", width: "90%" }}>
+                <div style={{ width: "76%" }}>
+                  <div
+                    style={{
+                      fontSize: "2.5rem",
+                      fontFamily: "Century Gothic",
+                      fontStyle: "normal",
+                      marginTop: "2rem",
+                    }}
+                  >
+                    The Future Of Creation Is Distributed
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "1.3rem",
+                      fontFamily: "Century Gothic",
+                      fontStyle: "normal",
+                      marginTop: "1.5rem",
+                      marginLeft: "1.5rem",
+                    }}
+                  >
+                    <ul>
+                      <li>Democratization of creation has begun. </li>
+                      <li>The power is in the hands of Creators.</li>
+                      <li>The decentralised Creator economy is here.</li>
+                    </ul>
+                  </div>
+                  <div
+                    style={{
+                      marginTop: "1.5rem",
+                      fontSize: "1.3rem",
+                      fontFamily: "Century Gothic",
+                      fontStyle: "bold",
+                    }}
+                  >
+                    And NFT on the trustless technology of blockchain is making
+                    it possible.
+                  </div>
                 </div>
-                <div style={{marginTop:"1.5rem",fontSize:"1.3rem",fontFamily:"Century Gothic",fontStyle:"bold"}}>And NFT on the trustless technology of blockchain is making it
-                  possible.</div>
-              </div>
-              <div style={{ width: "24%",display:"flex",flexDirection:"column",alignItems:"flex-end",justifyContent:"flex-end" }}>
-                <img  style={{width:"9rem"}} src={bell} alt="bells"/>
-                <img src={envelope} alt="envelopes"/>
+                <div
+                  style={{
+                    width: "24%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-end",
+                    justifyContent: "flex-end",
+                  }}
+                >
+                  <img style={{ width: "9rem" }} src={bell} alt="bells" />
+                  <img src={envelope} alt="envelopes" />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Bgdiv>
       {/* section3 */}
       <div
         style={{
@@ -189,9 +223,16 @@ const Infopage = () => {
             marginBottom: "8rem",
           }}
         >
-          <span style={{ fontSize: "2rem", lineHeight: "4.7rem",fontFamily:"Century Gothic",color:"#F4F4F4  " }}>
-                What is a Non-Fungible Token (NFT)?
-              </span> 
+          <span
+            style={{
+              fontSize: "2rem",
+              lineHeight: "4.7rem",
+              fontFamily: "Century Gothic",
+              color: "#F4F4F4  ",
+            }}
+          >
+            What is a Non-Fungible Token (NFT)?
+          </span>
           <img
             style={{ marginTop: "1rem", width: "90%" }}
             src={linewho}
@@ -206,7 +247,6 @@ const Infopage = () => {
             }}
           >
             <div style={{ width: "60%" }}>
-              
               <br />
               <div style={{ marginTop: "2rem", fontSize: "1.3rem" }}>
                 An NFT is Permanent Digital Certificate of Ownership{" "}
@@ -245,7 +285,7 @@ const Infopage = () => {
           flexDirection: "column",
           marginTop: "10rem",
           marginBottom: "5rem",
-          fontFamily:"Century Gothic"
+          fontFamily: "Century Gothic",
         }}
       >
         <span style={{ fontSize: "2.4rem", lineHeight: "4.8rem" }}>
@@ -259,10 +299,12 @@ const Infopage = () => {
         <div
           style={{
             display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
+            alignItems: "start",
+            justifyContent: "space-evenly",
             marginBottom: "10rem",
             marginTop: "4rem",
+            flexWrap:"wrap",
+            width:"100%"
           }}
         >
           <div
@@ -271,13 +313,14 @@ const Infopage = () => {
               alignItems: "center",
               flexDirection: "column",
               justifyContent: "left",
+              width:"8rem"
             }}
           >
-            <img src={i1} style={{ height: "8rem" }} alt="im1" />
+            <img src={i6} style={{ height:"10rem" }} alt="im1" />
             <div>
               <div>TEXT</div>
-              <img src={sepline} alt="seperation" />
-              <ul>
+              <img src={sepline} style={{width:"8rem"}} alt="seperation" />
+              <ul style={{marginLeft:"1.1rem"}}>
                 <li>Songs</li>
                 <li>Poems</li>
                 <li>Quotes,Etc</li>
@@ -289,13 +332,14 @@ const Infopage = () => {
               display: "flex",
               alignItems: "center",
               flexDirection: "column",
+              width:"8rem"
             }}
           >
-            <img src={i2} style={{ height: "8rem" }} alt="im1" />
+            <img src={i5} style={{ height: "10rem" }} alt="im1" />
             <div>
               <div>AUDIO</div>
-              <img src={sepline} alt="seperation" />
-              <ul>
+              <img src={sepline} style={{width:"8rem"}} alt="seperation" />
+              <ul style={{marginLeft:"1.1rem"}}>
                 <li>Songs</li>
                 <li>Tunes</li>
                 <li>Speeches,Etc</li>
@@ -307,13 +351,14 @@ const Infopage = () => {
               display: "flex",
               alignItems: "center",
               flexDirection: "column",
+              width:"8rem"
             }}
           >
-            <img src={i3} style={{ height: "8rem" }} alt="im1" />
+            <img src={i4} style={{ height: "10rem" }} alt="im1" />
             <div>
               <div>VIDEO</div>
-              <img src={sepline} alt="seperation" />
-              <ul>
+              <img src={sepline} style={{width:"8rem"}} alt="seperation" />
+              <ul style={{marginLeft:"1.1rem"}}>
                 <li>Movies</li>
                 <li>Short Films</li>
                 <li>Clips,Etc</li>
@@ -325,13 +370,14 @@ const Infopage = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              width:"8rem"
             }}
           >
-            <img src={i4} style={{ height: "8rem" }} alt="im1" />
+            <img src={i1} style={{ height:"10rem" }} alt="im1" />
             <div>
               <div>PHOTO</div>
-              <img src={sepline} alt="seperation" />
-              <ul>
+              <img src={sepline}  style={{width:"8rem"}} alt="seperation" />
+              <ul style={{marginLeft:"1.1rem"}}>
                 <li>Photography</li>
                 <li>Collages,Etc</li>
               </ul>
@@ -342,13 +388,14 @@ const Infopage = () => {
               display: "flex",
               alignItems: "center",
               flexDirection: "column",
+              width:"8rem"
             }}
           >
-            <img src={i5} style={{ height: "8rem" }} alt="im1" />
+            <img src={i2} style={{ height:"10rem" }} alt="im1" />
             <div>
               <div>2D ART</div>
-              <img src={sepline} alt="seperation" />
-              <ul>
+              <img src={sepline} style={{width:"8rem"}} alt="seperation" />
+              <ul style={{marginLeft:"1.1rem"}}>
                 <li>Digital Art</li>
                 <li>Paintings</li>
                 <li>Illustartions,Etc</li>
@@ -360,13 +407,14 @@ const Infopage = () => {
               display: "flex",
               alignItems: "center",
               flexDirection: "column",
+              width:"8rem"
             }}
           >
-            <img src={i6} style={{ height: "8rem" }} alt="im1" />
+            <img src={i3} style={{ height:"10rem" }} alt="im1" />
             <div>
               <div>3D ART</div>
-              <img src={sepline} alt="seperation" />
-              <ul>
+              <img src={sepline} style={{width:"8rem"}} alt="seperation" />
+              <ul style={{marginLeft:"1.1rem"}}>
                 <li>Physical Sculpture</li>
                 <li>Digital Models</li>
                 <li>Interactive Art,Etc</li>
@@ -420,30 +468,27 @@ const Infopage = () => {
               justifyContent: "center",
             }}
           >
-
-            <Link to='/asset/create'>
-            <button
-              style={{
-                background:
-                  "#EEFAFF",
+            <Link to="/asset/create">
+              <button
+                style={{
+                  background: "#EEFAFF",
                   boxShadow: "1px 5px 40px rgba(255, 255, 255, 0.15)",
-                borderRadius: "1rem",
-                border: "none",
-                width: "12rem",
-                padding:"1rem",
-                height: "max-content",
-                margin: "1rem",
-                color:"black",
-                fontFamily: "Century Gothic",
-                fontSize:"1rem",
-                fontWeight:"600"
-              }}
-            >
-              Click & register to make your creation an NFT
-            </button>
+                  borderRadius: "1rem",
+                  border: "none",
+                  width: "12rem",
+                  padding: "1rem",
+                  height: "max-content",
+                  margin: "1rem",
+                  color: "black",
+                  fontFamily: "Century Gothic",
+                  fontSize: "1rem",
+                  fontWeight: "600",
+                }}
+              >
+                Click & register to make your creation an NFT
+              </button>
             </Link>
           </div>
-          
         </div>
       </div>
     </Maindiv>
