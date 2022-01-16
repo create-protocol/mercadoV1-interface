@@ -153,7 +153,7 @@ const NavBar = (props) => {
           }}
         >
           <Link to="/">
-            <div style={{ width: "10px" }}>
+            <div style={{ width: "10px",marginLeft:"5.5rem" }}>
               <img
                 style={{
                   width: "300px",

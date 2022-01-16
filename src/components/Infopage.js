@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 const Maindiv = styled.div`
   color: white;
   text-align: left;
-  margin: 5rem 10rem;
+  margin: 5rem 8rem;
   color: white;
 `;
 
@@ -106,15 +106,16 @@ const Infopage = () => {
             <div style={{ display: "flex", width: "90%" }}>
               <div style={{ width: "76%" }}>
                 <div style={{fontSize:"2.5rem",fontFamily:"Century Gothic",fontStyle:"normal",marginTop:"2rem"}}>The Future Of Creation Is Distributed</div>
-                <div style={{fontSize:"1.3rem",fontFamily:"Century Gothic",fontStyle:"normal",marginTop:"1.5rem"}}>
+                <div style={{fontSize:"1.3rem",fontFamily:"Century Gothic",fontStyle:"normal",marginTop:"1.5rem",marginLeft:"1.5rem"}}>
                   <ul>
                     <li>Democratization of creation has begun. </li>
                     <li>The power is in the hands of Creators.</li>
                     <li>The decentralised Creator economy is here.</li>
                   </ul>
-                  <div style={{marginTop:"1.5rem"}}>And NFT on the trustless technology of blockchain is making it
-                  possible.</div>
+                  
                 </div>
+                <div style={{marginTop:"1.5rem",fontSize:"1.3rem",fontFamily:"Century Gothic",fontStyle:"bold"}}>And NFT on the trustless technology of blockchain is making it
+                  possible.</div>
               </div>
               <div style={{ width: "24%",display:"flex",flexDirection:"column",alignItems:"flex-end",justifyContent:"flex-end" }}>
                 <img  style={{width:"9rem"}} src={bell} alt="bells"/>
@@ -188,6 +189,9 @@ const Infopage = () => {
             marginBottom: "8rem",
           }}
         >
+          <span style={{ fontSize: "2rem", lineHeight: "4.7rem",fontFamily:"Century Gothic",color:"#F4F4F4  " }}>
+                What is a Non-Fungible Token (NFT)?
+              </span> 
           <img
             style={{ marginTop: "1rem", width: "90%" }}
             src={linewho}
@@ -202,9 +206,7 @@ const Infopage = () => {
             }}
           >
             <div style={{ width: "60%" }}>
-              <span style={{ fontSize: "3rem", lineHeight: "4.7rem" }}>
-                What is a Non-Fungible Token (NFT)?
-              </span>
+              
               <br />
               <div style={{ marginTop: "2rem", fontSize: "1.3rem" }}>
                 An NFT is Permanent Digital Certificate of Ownership{" "}
@@ -243,6 +245,7 @@ const Infopage = () => {
           flexDirection: "column",
           marginTop: "10rem",
           marginBottom: "5rem",
+          fontFamily:"Century Gothic"
         }}
       >
         <span style={{ fontSize: "2.4rem", lineHeight: "4.8rem" }}>
@@ -389,7 +392,7 @@ const Infopage = () => {
             justifyContent: "space-evenly",
             marginTop: "1rem",
             width: "80%",
-            marginBottom: "10rem",
+            marginBottom: "5rem",
           }}
         >
           <div style={{ width: "70%" }}>

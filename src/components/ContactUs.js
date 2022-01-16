@@ -230,21 +230,21 @@ const ContactUs = () => {
                 <FormLabel for="fname">Name*</FormLabel>
                 <InputForm
                   type="text"
-                  name="firstname"
+                  name="name"
                   // placeholder="Your name.."
                 />
 
                 <FormLabel for="lname">Email*</FormLabel>
                 <InputForm
                   type="text"
-                  name="lastname"
+                  name="email"
                   // placeholder="Your last name.."
                 />
                 <FormLabel for="lname">Message*</FormLabel>
                 <InputForm
                   type="text"
                   
-                  name="lastname"
+                  name="message"
                   // placeholder="Your last name.."
                 />
 

@@ -29,8 +29,8 @@ const ImageContainer = styled.div`
   color: #f4f4f4;
 
   text-align: left;
-  padding-left: 12rem;
-  padding-top: 9rem;
+  padding-left: 8rem;
+  padding-top: 11rem;
 `;
 const Transparentbtn = styled.div`
   border: 1px solid #f1f1f1;
@@ -69,6 +69,7 @@ const Landingpage = () => {
         fontStyle: "normal",
         color: "white",
         width: "100%",
+        marginTop:"6rem"
       }}
     >
       <div
@@ -115,8 +116,8 @@ const Landingpage = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            paddingLeft: "12rem",
-            paddingRight: "12rem",
+            paddingLeft: "8rem",
+            paddingRight: "8rem",
           }}
         >
           <HeadingText>Trending Creations</HeadingText>
@@ -134,8 +135,8 @@ const Landingpage = () => {
       <div
         style={{
           width: "100%",
-          paddingLeft: "12rem",
-          paddingRight: "12rem",
+          paddingLeft: "8rem",
+          paddingRight: "8rem",
           paddingTop: "9rem",
         }}
       >
@@ -178,8 +179,8 @@ const Landingpage = () => {
       <div
         style={{
           width: "100%",
-          paddingLeft: "12rem",
-          paddingRight: "12rem",
+          paddingLeft: "8rem",
+          paddingRight: "8rem",
           paddingTop: "9rem",
         }}
       >
