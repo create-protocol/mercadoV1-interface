@@ -11,6 +11,11 @@ import styled from "styled-components";
 import { Player } from "video-react";
 import "../../node_modules/video-react/dist/video-react.css"; // import css
 import PageHeader from "../components/PageHeader";
+import Createsell from "../assets/images/createsell.png";
+import Card1 from "../assets/images/card.png";
+import Card2 from "../assets/images/card1.png";
+import Card3 from "../assets/images/card2.png";
+import { Link } from "react-router-dom";
 
 import Footer from "./Footer";
 import axios from "axios";
@@ -34,6 +39,38 @@ const ShadowBtn = styled.div`
     transition: 0.5s;
   }
 `;
+
+const Transparentbtn = styled.div`
+  border: 1px solid #f1f1f1;
+  box-sizing: border-box;
+  filter: drop-shadow(2px 4px 50px rgba(96, 219, 212, 0.12));
+  border-radius: 2rem;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem 2.9rem;
+  cursor: pointer;
+`;
+
+const Createsmallh=styled.div`
+font-family: Century Gothic;
+font-style: normal;
+font-weight: bold;
+font-size: 1rem;
+line-height: 160%;
+text-align:left;
+color: #D14F8C;
+`
+
+const Createmaint=styled.div`
+font-family: Century Gothic;
+font-style: normal;
+font-weight: bold;
+font-size: 1.2rem;
+text-align:left;
+line-height: 140%;
+color: #F4F4F4;
+margin-top:1.2rem;
+`
 
 function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
@@ -128,6 +165,60 @@ function Mintnft() {
   return (
     <div>
       <PageHeader title="Create" />
+      <div
+        style={{
+          width: "100%",
+          paddingLeft: "8rem",
+          paddingRight: "8rem",
+          paddingTop: "2rem",
+          display:"flex",
+          alignItems:"center",
+          justifyContent:"center",
+          flexDirection:"column",
+          marginBottom:"5rem"
+        }}
+      >
+        <img style={{width:"35rem"}} src={Createsell} alt="heading"/>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            marginTop:"7rem"
+          }}
+        >
+          <div style={{ width: "47%", display: "flex",flexWrap:"wrap" }}>
+            <img src={Card1} style={{height:"6rem",width:"6rem"}} alt="C1"/>
+            <div style={{marginLeft:"3rem",width:"70%"}}>
+              <Createsmallh>Set up your Wallet</Createsmallh>
+              <Createmaint>Connect wallet by clicking the wallet icon in the top right corner. Learn about the wallets we support.</Createmaint>
+            </div>
+          </div>
+          <div style={{ width: "47%", display: "flex",flexWrap:"wrap" }}>
+            <img src={Card2} style={{height:"6rem",width:"6rem"}} alt="C1"/>
+            <div style={{marginLeft:"3rem",width:"70%"}}>
+              <Createsmallh>Create Your Collection</Createsmallh>
+              <Createmaint>Click Create and Add social links, a description, profile & banner images, and set a secondary sales fee.</Createmaint>
+            </div>
+          </div>
+          <div style={{ width: "47%", display: "flex",marginTop:"5rem",flexWrap:"wrap" }}>
+            <img src={Card3} style={{height:"6rem",width:"6rem"}} alt="C1"/>
+            <div style={{marginLeft:"3rem",width:"70%"}}>
+              <Createsmallh>Add Your NFTs</Createsmallh>
+              <Createmaint>Upload your work (image, video, audio, or 3D art), add a title and description, and customize your NFTs</Createmaint>
+            </div>
+          </div>
+          <div style={{ width: "47%", display: "flex",marginTop:"5rem",flexWrap:"wrap" }}>
+            <img src={Card1} style={{height:"6rem",width:"6rem"}} alt="C1"/>
+            <div style={{marginLeft:"3rem",width:"70%"}}>
+              <Createsmallh>List Them For Sale</Createsmallh>
+              <Createmaint>Choose between auctions, fixed-price listings, and declining-price listings. You choose how you want to sell your NFTs</Createmaint>
+            </div>
+          </div>
+        </div>
+        <Link to='/asset/create' style={{textDecoration:"none",color:"white"}}><Transparentbtn style={{marginTop:"3rem"}}>Create NFT</Transparentbtn></Link>
+      </div>
       <h3 className="getstarted">GET STARTED -</h3>
       <view
         style={{
@@ -234,6 +325,9 @@ function Mintnft() {
                 height: "500px",
                 border: "2px solid",
                 borderColor: "#5999ad #5aa6b2",
+                display:"flex",
+                alignItems:"center",
+                justifyContent:"center"
               }}
             >
               <h2
@@ -241,7 +335,6 @@ function Mintnft() {
                   color: "white",
                   textAlign: "center",
                   justifyContent: "center",
-
                   objectFit: "contain",
                 }}
               >
