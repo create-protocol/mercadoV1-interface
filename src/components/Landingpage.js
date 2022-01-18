@@ -17,6 +17,8 @@ import Card2 from "../assets/images/card1.png";
 import Card3 from "../assets/images/card2.png";
 import { Link } from "react-router-dom";
 
+import Sepline from "../assets/images/Vector 87.png";
+
 const ImageContainer = styled.div`
   background: url(${Fundingimg});
   object-fit: contain;
@@ -351,6 +353,7 @@ const Landingpage = () => {
             <Seller />
           </div>
         </div>
+        <img  src={Sepline} style={{width:"60rem",marginTop:"4rem"}}/>
       </div>
 
       {/* Create and sell nfts */}

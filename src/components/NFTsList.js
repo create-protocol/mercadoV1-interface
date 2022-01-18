@@ -167,24 +167,26 @@ const Nftslist = (props) => {
                 }}
               >
                 <Link to={`/asset/${nft.itemId}`}>
-                  <ImgHover>
-                    {nft.file == "mp4" ? (
-                      <div className="videomint">
+                  
+                    {nft.file === "mp4" ? (
+                      <div className="videomint" style={{objectFit:"contain",marginRight:"1rem",display:"flex",flexDirection:"column",justifyContent:"center"}}>
+                        <ImgHover>
                         <div
                         className="videomint"
                           
                           style={{
-                            width: "340px",
+                            width: "300px",
                             height: "270px",
-                            marginRight:"30px",
+                            // marginRight:"px",
                             padding:"4px"
                           }}
                         >
                           <div style={{alignItems:"center",marginTop:"20px"}}>
-                          <Player  src={nft.image} ></Player>
+                          <Player  src={nft.image}></Player>
                           </div>
                           
                         </div>
+                        
 
                         <p
                           style={{
@@ -207,8 +209,11 @@ const Nftslist = (props) => {
                             </Span1>
                           </div>
                         </p>
+                        </ImgHover>
                       </div>
+                      
                     ) : (
+                      <ImgHover>
                       <div className="nft-img-container " style={{marginLeft:"10px",border:"none"}}>
                         <img
                           className="nft-img"
@@ -238,8 +243,9 @@ const Nftslist = (props) => {
                           </div>
                         </p>
                       </div>
+                      </ImgHover>
                     )}
-                  </ImgHover>
+                  
                 </Link>
               </div>
 
