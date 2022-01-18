@@ -157,17 +157,10 @@ const ContactUs = () => {
                     marginTop: "2.5rem",
                   }}
                 >
-                  <img
-                    style={{ width: "2.4rem" }}
-                    src={location}
-                    alt="phonrcall"
-                  />
-                  <InnerText style={{ marginLeft: "1rem" }}>
-                    Muzix Technology Private Limited, Plot No-RZ-B-13, Gali No-1
-                    New Janki Puri, Uttam Nagar, New Delhi DL 11005
-                  </InnerText>
+                  
+                  
                 </div>
-                <img src={adddress} style={{ marginTop: "2.5rem",height:"9rem" }} alt="addr" />
+                {/* <img src={adddress} style={{ marginTop: "2.5rem",height:"9rem" }} alt="addr" /> */}
               </div>
             </div>
             <div

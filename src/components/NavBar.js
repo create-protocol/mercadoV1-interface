@@ -186,7 +186,7 @@ const NavBar = (props) => {
             <Link to='/about' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>About</div></Link>
             <Link to='/faq' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>FAQs</div></Link>
             <Link to='/contactus' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Contact us</div></Link>
-            <Link to='/blog' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Blog</div></Link>
+            
             <div>
               {curAddress == null && (
                 <div

@@ -33,7 +33,7 @@ const Gradienttext = styled.div`
   line-height: 57px;
 `;
 const Bgdiv = styled.div`
-  background: url(${Aboutbg});
+  background-image: url(${Aboutbg});
   object-fit: cover;
   background-position: center;
   background-size: cover;
@@ -43,8 +43,8 @@ const Infopage = () => {
   return (
     <Maindiv>
       {/* section1 */}
-      <Bgdiv>
-        <div style={{ textAlign: "left", marginTop: "16rem" }}>
+      <Bgdiv >
+        <div style={{ textAlign: "left", marginTop: "16rem" , }}>
           <div
             style={{
               // fontFamily: "Open Sans",

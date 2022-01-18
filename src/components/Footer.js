@@ -49,6 +49,7 @@ const Footer = () => {
           <FooterLink href="/">Home</FooterLink>
           <FooterLink href="/about">About</FooterLink>
           <FooterLink href="/">Community</FooterLink>
+          <FooterLink href="/blog">Blogs</FooterLink>
           <FooterLink href="/faq">FAQ</FooterLink>
           <div style={{marginTop:"3.3rem"}}>PRIVACY & POLICY</div>
         </Row>

@@ -10,6 +10,8 @@ import ContactUs from "./components/ContactUs";
 import Mintnft from "./components/MintNft";
 import Landingpage from './components/Landingpage'
 import Descpage from "./components/Descpage";
+import ArtisPage from "./components/ArtistBio";
+import Blog from "./components/Blog"
 const routes = [
   {
     pathName: "HOME",
@@ -30,18 +32,7 @@ const routes = [
     path: "/creator/bharat-thakur",
     component: Viewprofile,
   },
-  // {
-  //   pathName: "CONNECT WALLET",
-  //   path: "/CONNECT WALLET",
-  // },
-  // {
-  //   pathName: "DISCOVER CREATORS",
-  //   path: "/DISCOVER CREATORS",
-  // },
-  // {
-  //   pathName: "DISCOVER COLLECTORS",
-  //   path: "/DISCOVER COLLECTORS",
-  // },
+ 
   {
     pathName: "EXPLORE MARKETPLACE",
     path: "/EXPLORE MARKETPLACE",
@@ -92,10 +83,17 @@ const routes = [
     component: Descpage,
   },
   
-  // {
-  //   pathName: "LOG OUT",
-  //   path: "/LOG OUT",
-  // },
+  {
+    pathName: "main",
+    path: "/artist",
+    component: ArtisPage,
+  },
+  {
+    pathName: "blog",
+    path: "/blog",
+    component: Blog,
+  },
+  
 ];
 
 export { routes };
