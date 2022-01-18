@@ -161,6 +161,15 @@ const DescriptionPage = (props) => {
     }
   };
 
+  if (loadingState != "loaded") {
+    return (
+      <div
+        style={{ height: "200px", alignContent: "center", marginTop: "160px" }}
+      >
+        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+      </div>
+    );
+  }
   console.log(obj);
   return (
     <>
