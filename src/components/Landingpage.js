@@ -11,6 +11,11 @@ import Seller from "./Seller";
 import TrendingCarousel from "./TrendingCarousel";
 import Fundingimg from "../assets/images/FUNDING.png";
 import contactus from "../assets/images/contactus.png";
+import Createsell from "../assets/images/createsell.png";
+import Card1 from "../assets/images/card.png";
+import Card2 from "../assets/images/card1.png";
+import Card3 from "../assets/images/card2.png";
+import { Link } from "react-router-dom";
 
 const ImageContainer = styled.div`
   background: url(${Fundingimg});
@@ -50,6 +55,27 @@ const HeadingText = styled.div`
   font-size: 2.5rem;
   line-height: 140%;
 `;
+
+const Createsmallh=styled.div`
+font-family: Century Gothic;
+font-style: normal;
+font-weight: bold;
+font-size: 1rem;
+line-height: 160%;
+text-align:left;
+color: #D14F8C;
+`
+
+const Createmaint=styled.div`
+font-family: Century Gothic;
+font-style: normal;
+font-weight: bold;
+font-size: 1.2rem;
+text-align:left;
+line-height: 140%;
+color: #F4F4F4;
+margin-top:1.2rem;
+`
 // const Seller=styled.div`
 // height:7rem;
 // width:15rem;
@@ -69,7 +95,7 @@ const Landingpage = () => {
         fontStyle: "normal",
         color: "white",
         width: "100%",
-        marginTop:"6rem"
+        marginTop: "6rem",
       }}
     >
       <div
@@ -325,6 +351,63 @@ const Landingpage = () => {
             <Seller />
           </div>
         </div>
+      </div>
+
+      {/* Create and sell nfts */}
+
+      <div
+        style={{
+          width: "100%",
+          paddingLeft: "8rem",
+          paddingRight: "8rem",
+          paddingTop: "9rem",
+          display:"flex",
+          alignItems:"center",
+          justifyContent:"center",
+          flexDirection:"column",
+          marginBottom:"5rem"
+        }}
+      >
+        <img style={{width:"35rem"}} src={Createsell} alt="heading"/>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            marginTop:"7rem"
+          }}
+        >
+          <div style={{ width: "47%", display: "flex",flexWrap:"wrap" }}>
+            <img src={Card1} style={{height:"6rem",width:"6rem"}} alt="C1"/>
+            <div style={{marginLeft:"3rem",width:"70%"}}>
+              <Createsmallh>Set up your Wallet</Createsmallh>
+              <Createmaint>Connect wallet by clicking the wallet icon in the top right corner. Learn about the wallets we support.</Createmaint>
+            </div>
+          </div>
+          <div style={{ width: "47%", display: "flex",flexWrap:"wrap" }}>
+            <img src={Card2} style={{height:"6rem",width:"6rem"}} alt="C1"/>
+            <div style={{marginLeft:"3rem",width:"70%"}}>
+              <Createsmallh>Create Your Collection</Createsmallh>
+              <Createmaint>Click Create and Add social links, a description, profile & banner images, and set a secondary sales fee.</Createmaint>
+            </div>
+          </div>
+          <div style={{ width: "47%", display: "flex",marginTop:"5rem",flexWrap:"wrap" }}>
+            <img src={Card3} style={{height:"6rem",width:"6rem"}} alt="C1"/>
+            <div style={{marginLeft:"3rem",width:"70%"}}>
+              <Createsmallh>Add Your NFTs</Createsmallh>
+              <Createmaint>Upload your work (image, video, audio, or 3D art), add a title and description, and customize your NFTs</Createmaint>
+            </div>
+          </div>
+          <div style={{ width: "47%", display: "flex",marginTop:"5rem",flexWrap:"wrap" }}>
+            <img src={Card1} style={{height:"6rem",width:"6rem"}} alt="C1"/>
+            <div style={{marginLeft:"3rem",width:"70%"}}>
+              <Createsmallh>List Them For Sale</Createsmallh>
+              <Createmaint>Choose between auctions, fixed-price listings, and declining-price listings. You choose how you want to sell your NFTs</Createmaint>
+            </div>
+          </div>
+        </div>
+        <Link to='/asset/create' style={{textDecoration:"none",color:"white"}}><Transparentbtn style={{marginTop:"3rem"}}>Create NFT</Transparentbtn></Link>
       </div>
     </div>
   );
