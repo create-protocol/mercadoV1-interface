@@ -189,6 +189,7 @@ const DescriptionPage = (props) => {
                   alignItems: "start",
                   justifyContent: "start",
                   paddingBottom: "0",
+                  marginTop:"120px",
                   overflow: "hidden",
                 }}
               >
@@ -213,7 +214,7 @@ const DescriptionPage = (props) => {
                   color: "white",
                   fontSize: "26px",
                   letterSpacing: "2px",
-                  marginTop: "10px",
+                  marginTop: "120px",
                   width: "100%",
                   textAlign: "left",
                 }}
@@ -234,7 +235,7 @@ const DescriptionPage = (props) => {
                     color: "white",
                     fontSize: "18px",
                     letterSpacing: "2px",
-
+                    marginTop:"10px",
                     textAlign: "left",
                   }}
                 >
