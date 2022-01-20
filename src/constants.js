@@ -12,21 +12,13 @@ import Landingpage from './components/Landingpage'
 import Descpage from "./components/Descpage";
 import ArtisPage from "./components/ArtistBio";
 import Blog from "./components/Blog"
+import Privacy from "./components/privacy";
 const routes = [
   {
     pathName: "HOME",
     path: "/",
   },
-  // {
-  //   pathName: "SEARCH",
-  //   path: "/SEARCH",
-  //   component: Search,
-  // },
-  // {
-  //   pathName: "MINT NFT",
-  //   path: "/MINT NFT",
-  //   component: page2,
-  // },
+
   {
     pathName: "VIEW PROFILE",
     path: "/creator/bharat-thakur",
@@ -92,6 +84,11 @@ const routes = [
     pathName: "blog",
     path: "/blog",
     component: Blog,
+  },
+  {
+    pathName: "privacy",
+    path: "/privacy",
+    component: Privacy,
   },
   
 ];

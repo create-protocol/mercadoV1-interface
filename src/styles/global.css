@@ -31,7 +31,7 @@
 
 .page__header {
   position: relative;
-  background-image: url('../assets/images/banner.png');
+  background-image: url("../assets/images/banner.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -44,14 +44,53 @@
 
 .page__header h3 {
   color: white;
-
 }
+div.singlepara {
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  display: inline;
+  line-height: 160%;
+  /* text-align: left; */
+  color: #fafafa;
+  text-align: justify; /* For Edge */
+  -moz-text-align-last: justify; /* For Firefox prior 58.0 */
+  text-align-last: justify;
+  
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  /* visibility: hidden; */
+  font-size: 10px;
+  display: none;
+}
+
+.custom-file-input::before {
+  content: '';
+  display: inline-block;
+  background-image: url("../assets/images/Group\ 36617.svg");
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid rgb(15, 15, 15);
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  overflow: hidden;
+  font-size: 0;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  width: 62.7%;
+  height: 45px;
+}
+
 
 .page__title {
   font-size: 3rem;
   color: var(--primary-title-color);
   /* justify-content: left; */
-  text-align: left;
+  text-align: center;
 }
 
 /* FAQ Page styles */

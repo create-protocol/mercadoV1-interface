@@ -16,7 +16,7 @@ import Card1 from "../assets/images/card.png";
 import Card2 from "../assets/images/card1.png";
 import Card3 from "../assets/images/card2.png";
 import { Link } from "react-router-dom";
-
+import uploadfile from "../assets/images/Group 36617.svg"
 import Footer from "./Footer";
 import axios from "axios";
 const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
@@ -75,6 +75,7 @@ margin-top:1.2rem;
 function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
   const [filetype, setFileType] = useState(null);
+  const [filename,setfilename]=useState(null);
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
@@ -83,7 +84,8 @@ function Mintnft() {
   });
 
   async function onChange(e) {
-    console.log(e.target.files[0]);
+    setfilename(e.target.files[0].name)
+    // console.log(e.target.files[0].name);
     const filetype = e.target.files[0].type;
     const filetypefinal = filetype.substring(filetype.lastIndexOf(".") + 1);
     setFileType(filetype.substring(filetype.lastIndexOf("/") + 1));
@@ -153,12 +155,18 @@ function Mintnft() {
     // contract.unlistItem("0x25");
     await transaction.wait();
   }
-  // const [checked, setChecked] = useState(false);
-
-  // const handleChange = () => {
-  //   setChecked(!checked);
-  // };
-
+  
+  function getFile(){
+    <input
+    className="formtxtfill docs"
+    type="file"
+    
+    onChange={(e) =>
+      updateFormInput({ ...formInput, file: e.target.value })
+    }
+    style={{ width: "100%" }}
+  />
+}
 
 
   
@@ -235,14 +243,21 @@ function Mintnft() {
             width: "50%",
           }}
         >
-          <input
-            className="formtxtfill docs"
-            accept="audio/*,video/*,image/*"
-            type="file"
+         
+          
+
+          
+          <input type="file" class="custom-file-input" type="file"
             name="Asset"
-            onChange={onChange}
-            style={{ width: "100%" }}
-          />
+            onChange={onChange}/>
+          
+         
+          <span htmlFor="file" style={{color:"white",marginTop:"10px",marginLeft:"6px"}}>{filename}</span>
+       
+         
+            {/* <img onClick={getFile} src={uploadfile} style={{height:"45px",width:"70%",marginLeft:"-20px",marginBottom:"10px"}}/> */}
+           
+         
 
           <input
             className="formtxtfill docs"
