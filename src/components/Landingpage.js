@@ -385,12 +385,12 @@ const Landingpage = () => {
             <Seller />
           </div>
         </div>
-        <img  src={Sepline} style={{width:"60rem",marginTop:"4rem"}}/>
+        {/* <img  src={Sepline} style={{width:"60rem",marginTop:"4rem"}}/> */}
       </div>
 
       {/* Create and sell nfts */}
 
-      <div
+      {/* <div
         style={{
           width: "100%",
           paddingLeft: "8rem",
@@ -443,7 +443,7 @@ const Landingpage = () => {
           </div>
         </div>
         <Link to='/asset/create' style={{textDecoration:"none",color:"white"}}><Transparentbtn style={{marginTop:"3rem"}}>Create NFT</Transparentbtn></Link>
-      </div>
+      </div> */}
     </div>
   );
 };
