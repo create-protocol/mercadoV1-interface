@@ -146,6 +146,7 @@ const Landingpage = () => {
             justifyContent: "space-between",
             paddingLeft: "8rem",
             paddingRight: "8rem",
+            flexWrap:"wrap"
           }}
         >
           <HeadingText>Trending Creations</HeadingText>

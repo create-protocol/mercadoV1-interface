@@ -2,28 +2,41 @@ import React from "react";
 
 import styled from "styled-components";
 import Landingcardimg from "../assets/images/landingimg.png";
+import Landingimg from "../assets/images/Rectangle 728.png";
 import Landingowner from "../assets/images/landingowner.png";
 import Eth from "../assets/images/Ethereum (ETH).png";
 import Heart from "../assets/images/cil_heart.png";
 
+
 const Landingdiv = styled.div`
+  // background: linear-gradient(
+  //   180deg,
+  //   rgba(0, 0, 0, 0.11) 0%,
+  //   rgba(0, 0, 0, 0.53125) 48.96%,
+  //   rgba(186, 104, 200, 0.53) 100%
+  // );
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.11) 0%,
     rgba(0, 0, 0, 0.53125) 48.96%,
-    rgba(186, 104, 200, 0.53) 100%
+    rgba(55, 55, 55, 0.8) 100%
   );
+
   opacity: 0.75;
   box-shadow: 0px -10px 25px rgba(0, 0, 0, 0.32);
   border-radius: 24px;
-  height: 22rem;
-  width: 24%;
+  height: 23rem;
+  width: 18rem;
   padding: 0.8rem;
   object-fit: cover;
   display: flex;
   align-items: start;
   flex-direction: column;
   margin-top: 2rem;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const Imagecont = styled.div`
@@ -31,28 +44,31 @@ const Imagecont = styled.div`
   width: 100%;
   border-radius: 0.5rem;
   background: url(${Landingcardimg});
-  height:15rem;
+  height: 14rem;
   // -webkit-box-shadow: 0 8px 6px 10px black;
-	  //  -moz-box-shadow: 0 8px 6px 10px black;
-	        // box-shadow: 5px 8px 6px 10px black inset;
-   &:hover{
-
-   }
+  //  -moz-box-shadow: 0 8px 6px 10px black;
+  // box-shadow: 5px 8px 6px 10px black inset;
+  &:hover {
+  }
 `;
 
-const Btn=styled.div`
-color:black;
-border-radius: 30px;
-width:max-content;
-&:hover{
-  background: #75155E;
-box-shadow: 2px 4px 50px #414141;
-border-radius: 30px;
-width:max-content;
-padding: 0rem 1rem;
-color:white;
-}
-`
+const Btn = styled.div`
+  color: black;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  height: 2.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  &:hover {
+    box-shadow: 0px 0px 20px #9e55cb;
+  }
+`;
 
 const LandingCard = () => {
   return (
@@ -67,22 +83,31 @@ const LandingCard = () => {
         alt="landingimg"
       /> */}
       <Imagecont>
-        <div style={{marginTop:"59%",display:"flex",alignItems:"center",width:"100%",justifyContent:"center"}}><Btn>
-          Place bid
-          </Btn></div>
+        <div
+          style={{
+            marginTop: "60%",
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+            justifyContent: "space-between",
+            padding: "1rem 1rem",
+          }}
+        >
+          <Btn>Place bid</Btn>
+          <Btn>
+            <img src={Heart} alt="like" />
+            <div>365</div>
+          </Btn>
+        </div>
       </Imagecont>
-      <div
-        style={{ marginTop: "1.4rem", display: "flex", alignItems: "center" }}
-      >
+      <div style={{ marginTop: "1rem", display: "flex", alignItems: "center" }}>
         <img
-          style={{ objectFit: "contain", width: "2rem" }}
+          style={{ objectFit: "contain", width: "2.2rem" }}
           src={Landingowner}
           alt="landingimg"
         />
         <div style={{ width: "80%", textAlign: "left", marginLeft: "1rem" }}>
-          <div style={{ fontSize: "1rem", fontWeight: "bold" }}>
-            *Insert Artwork title*
-          </div>
+          <div style={{ fontSize: "1rem", fontWeight: "bold" }}>Si city</div>
           <div style={{ color: "#A9A9A9", fontSize: "0.7rem" }}>
             created by @brightmac
           </div>
@@ -107,10 +132,10 @@ const LandingCard = () => {
             <img src={Eth} alt="" />
             <div style={{ marginLeft: "0.4rem" }}>0.99 ETH</div>
           </div>
-          <div>4d 16h 32m 10s</div>
+          <div>Bid 12 ETH</div>
         </div>
       </div>
-      <div
+      {/* <div
         style={{
           width: "100%",
           display: "flex",
@@ -123,7 +148,7 @@ const LandingCard = () => {
           <img src={Heart} alt="like" />
           <div style={{ color: "black", marginLeft: ".3rem" }}>365</div>
         </div>
-      </div>
+      </div> */}
     </Landingdiv>
   );
 };
