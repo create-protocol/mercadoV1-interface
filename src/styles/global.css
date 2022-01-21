@@ -57,7 +57,6 @@ div.singlepara {
   text-align: justify; /* For Edge */
   -moz-text-align-last: justify; /* For Firefox prior 58.0 */
   text-align-last: justify;
-  
 }
 
 .custom-file-input::-webkit-file-upload-button {
@@ -67,7 +66,7 @@ div.singlepara {
 }
 
 .custom-file-input::before {
-  content: '';
+  content: "";
   display: inline-block;
   background-image: url("../assets/images/Group\ 36617.svg");
   background: linear-gradient(top, #f9f9f9, #e3e3e3);
@@ -84,7 +83,6 @@ div.singlepara {
   width: 62.7%;
   height: 45px;
 }
-
 
 .page__title {
   font-size: 3rem;
@@ -389,4 +387,47 @@ div.singlepara {
 
 /* xl */
 @media (min-width: 1280px) {
+}
+
+.search input {
+  text-indent: 20px;
+  margin-right: 40px;
+  font-family: FontAwesome, sans-serif;
+  border: 1.7px solid #8c8c8c;
+  background-color: black;
+  border-radius: 50px;
+}
+.search .fa-search {
+  position: absolute;
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 10%;
+  /* identical to box height, or 32px */
+
+  color: #464646;
+}
+.underline {
+  border-bottom-width: 2px;
+ }
+.round {
+  width: 100%;
+  border: 1.7px solid #8c8c8c;
+ text-align: left;
+  padding-left: -20px;
+  border-radius: 50px;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  bottom: 0.27%;
+  
+  font-size: 20px;
+}
+
+.search {
+  position: relative;
+  width: 341px;
+  height: 47px;
+  margin-bottom: 10px;
 }

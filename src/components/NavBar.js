@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Drawer } from "antd";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ethers } from "ethers";
 import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
@@ -9,6 +9,7 @@ import Drawerroutes from "./DrawerRoutes";
 import Home from "../assets/images/image 8.svg";
 import styled from "styled-components";
 import BlogPage from "./BlogPage";
+import Searchbar from "./Searchbar";
 // import WalletConnectProvider from "@walletconnect/web3-provider";
 
 const ShadowBtn = styled.div`
@@ -66,7 +67,6 @@ const NavBar = (props) => {
     }
   }
 
-
   async function connectWallet2() {
     console.log("walletconnect here");
     if (window.ethereum) {
@@ -112,6 +112,13 @@ const NavBar = (props) => {
     e.target.focus();
     setCopySuccess("Copied!");
   }
+
+ 
+
+  const homeClass =window.location.pathname === "/" ? "active" : "";
+  const aboutClass = window.location.pathname.match(/^\/about/) ? "active" : "";
+  const contactClass = window.location.pathname.match(/^\/contact/) ? "active" : "";
+
   return (
     <div
       style={{
@@ -149,44 +156,54 @@ const NavBar = (props) => {
             justifyContent: "space-between",
             alignItems: "end",
             marginLeft: "auto",
-            
           }}
         >
           <Link to="/">
-            <div style={{ width: "10px",marginLeft:"5.5rem" }}>
+            <div style={{ width: "10px", marginLeft: "5.5rem" }}>
               <img
                 style={{
                   width: "300px",
                   marginTop: "20px",
-                  marginLeft: "20px",
+                  marginLeft: "-30px",
                 }}
                 src={Home}
                 alt="homepage"
               />
             </div>
           </Link>
-         
+
+          <div style={{ width: "200px", marginLeft: "130px" }}>
+            <Searchbar />
+          </div>
 
           <div
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              width: "60%",
+              width: "50%",
               fontFamily: "Century Gothic",
               fontStyle: "normal",
               fontWeight: "bold",
               fontSize: "20px",
               color: "#FFFFFF",
-              textDecoration:"none", 
+              textDecoration: "none",
             }}
           >
-            <Link to='/' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Home</div></Link>
-            <Link to='/asset/create' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Create</div></Link>
-            <Link to='/about' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>About</div></Link>
-            <Link to='/faq' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>FAQs</div></Link>
-            <Link to='/contactus' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Contact us</div></Link>
-            
+            <Link to="/" style={{ color: "#FFF" }}>
+              <div style={{ textDecoration: "none" }}>Home</div>
+            </Link>
+            <Link to="/faq" style={{ color: "#FFF" }}>
+              <div style={{ textDecoration: "none" }}>Explore</div>
+            </Link>
+            <Link to="/asset/create" style={{ color: "#FFF" }}>
+              <div>Create</div>
+            </Link>
+            <Link to="/about"  style={{ color: "#FFF" }} >About</Link>
+            <Link to="/contactus" style={{ color: "#FFF" }}>
+              <div style={{ textDecoration: "none" }}>Contact us</div>
+            </Link>
+
             <div>
               {curAddress == null && (
                 <div
@@ -197,7 +214,11 @@ const NavBar = (props) => {
                   }}
                 >
                   <button
-                  style={{display:"flex",alignItems:"center",justifyContent:"center"}}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
                     class="border-gradient border-gradient-purple"
                     onClick={connectWallet}
                   >
@@ -208,42 +229,26 @@ const NavBar = (props) => {
             </div>
 
             {isConnected && (
-              <div style={{ display: "flex" }}>
-                {/* <div class="on-dark">
-                  <button class="border-gradient border-gradient-purple" onClick={disconnect}>
-                    Disconnect
+              <div  style={{
+                marginTop: "10px",
+                borderRadius: "5px",
+                outline: "none",
+              }}>
+                
+
+                <div class="on-dark">
+                  <button class="border-gradient border-gradient-purple">
+                    {window.ethereum.selectedAddress.substring(0, 5) +
+                      "..." +
+                      window.ethereum.selectedAddress.slice(-4)}
                   </button>
-                </div> */}
-                
-                  <div class="on-dark">
-                    <button class="border-gradient border-gradient-purple">
-                      {window.ethereum.selectedAddress.substring(0, 5) +
-                        "..." +
-                        window.ethereum.selectedAddress.slice(-4)}
-                    </button>
-                  </div>
-                
+                </div>
               </div>
             )}
           </div>
         </div>
       </div>
-      <Drawer
-        placement="left"
-        visible={showDrawer}
-        onClose={() => setShowDrawer(false)}
-        width={"80%"}
-        // size={"large"}
-        className="drawer"
-        drawerStyle={{ backgroundColor: "#1a1a1a" }}
-        title={<div className="drawer-title">MENU</div>}
-        headerStyle={{ backgroundColor: "#1a1a1a", padding: 0, border: "none" }}
-      >
-        <Drawerroutes
-          {...props}
-          closeDrawer={() => setShowDrawer(false)}
-        ></Drawerroutes>
-      </Drawer>
+     
     </div>
   );
 };

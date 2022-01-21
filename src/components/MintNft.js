@@ -18,7 +18,9 @@ import Card3 from "../assets/images/card2.png";
 import { Link } from "react-router-dom";
 import uploadfile from "../assets/images/Group 36617.svg"
 import Footer from "./Footer";
+import ProgressBar from 'react-bootstrap/ProgressBar'
 import axios from "axios";
+import Progress from 'react-progressbar';
 const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
 
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
@@ -76,6 +78,7 @@ function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
   const [filetype, setFileType] = useState(null);
   const [filename,setfilename]=useState(null);
+  const [prog,setprog]=useState(0);
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
@@ -93,6 +96,8 @@ function Mintnft() {
     try {
       const added = await client.add(file, {
         progress: (prog) => console.log(`received: ${prog}`),
+        
+        
       });
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
       setFileUrl(url);
@@ -173,6 +178,7 @@ function Mintnft() {
   return (
     <div>
       <PageHeader title="Create" />
+      
       <div
         style={{
           width: "100%",
@@ -254,6 +260,8 @@ function Mintnft() {
          
           <span htmlFor="file" style={{color:"white",marginTop:"10px",marginLeft:"6px"}}>{filename}</span>
        
+         
+         
          
             {/* <img onClick={getFile} src={uploadfile} style={{height:"45px",width:"70%",marginLeft:"-20px",marginBottom:"10px"}}/> */}
            

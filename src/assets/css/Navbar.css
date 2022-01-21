@@ -14,31 +14,29 @@
   color: #707070;
   font: normal normal bold 2.5rem/4rem Bahnschrift;
 }
-.connect-wallet2{
+.connect-wallet2 {
   background-color: rgb(112, 215, 49);
-color: rgb(26, 24, 24);
-font-size: 20px;
-font-weight: 700;
-height: 66px;
-width: 100%;
-border: 10px solid rgb(48, 52, 57);
-border-radius: 20px;
-align-items: baseline ;
-/* padding:-6px 6px 6px 6px; */
-padding-top: 0px;
-padding-bottom: 28px;
-cursor: pointer;
-margin-top: 0.625rem;
-max-width: 200px;
-transition: all 0.3s ease-in-out 0s;
-text-align: center;
-/* box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px; */
-/* margin-top:10px; */
-margin-right: 8px;
-margin-left: 20px;
+  color: rgb(26, 24, 24);
+  font-size: 20px;
+  font-weight: 700;
+  height: 66px;
+  width: 100%;
+  border: 10px solid rgb(48, 52, 57);
+  border-radius: 20px;
+  align-items: baseline;
+  /* padding:-6px 6px 6px 6px; */
+  padding-top: 0px;
+  padding-bottom: 28px;
+  cursor: pointer;
+  margin-top: 0.625rem;
+  max-width: 200px;
+  transition: all 0.3s ease-in-out 0s;
+  text-align: center;
+  /* box-shadow: rgb(53 54 56 / 50%) 0px 16px 30px; */
+  /* margin-top:10px; */
+  margin-right: 8px;
+  margin-left: 20px;
 }
-
-
 
 .h21 {
   font-size: 1rem;
@@ -46,27 +44,26 @@ margin-left: 20px;
 
 @media (min-width: 400px) {
   .h21 {
-      font-size: 1.3rem;
+    font-size: 1.3rem;
   }
 }
 
 @media (min-width: 600px) {
   .h21 {
-      font-size: 1.6rem;
+    font-size: 1.6rem;
   }
 }
 
 @media (min-width: 800px) {
   .h21 {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 }
 
 button {
-
   width: 221px;
   margin: 5px;
-  height: 60px;
+  height: 47px;
   text-align: center;
   /* height: 60px; */
 }
@@ -78,25 +75,35 @@ button {
   background-color: white;
   color: black;
   font-weight: 600;
-  font-family: 'Century Gothic';
+  font-family: "Century Gothic";
   font-size: 24px;
   border-radius: 15px;
-
 }
 
-
-
+.border-gradient2 {
+  border: 2px solid;
+  border-image-slice: 1;
+  border-width: 2px;
+  background-color: white;
+  color: black;
+  font-weight: 600;
+  font-family: "Century Gothic";
+  font-size: 28px;
+  border-radius: 15px;
+  padding: -10px;
+}
 
 @media (min-width: 1000px) {
   .h21 {
-      font-size: 2.2rem;
+    font-size: 2.2rem;
   }
 }
 
 .header-title {
   /* flex: 18 0 0; */
   flex-basis: 100%;
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 64px/90px var(--unnamed-font-family-bahnschrift);
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
+    64px/90px var(--unnamed-font-family-bahnschrift);
   color: var(--unnamed-color-707070);
   text-align: center;
   font: normal normal bold 3rem/4rem Bahnschrift;
@@ -115,7 +122,8 @@ button {
 }
 
 .drawer-title {
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 64px/90px var(--unnamed-font-family-bahnschrift);
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
+    64px/90px var(--unnamed-font-family-bahnschrift);
   color: var(--unnamed-color-ffffff);
   text-align: left;
   font: normal normal bold 2rem/3rem Bahnschrift;
@@ -131,7 +139,9 @@ button {
 
 .drawer-route {
   margin: 1.5rem;
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-48) / var(--unnamed-line-spacing-68) var(--unnamed-font-family-bahnschrift);
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold)
+    var(--unnamed-font-size-48) / var(--unnamed-line-spacing-68)
+    var(--unnamed-font-family-bahnschrift);
   color: var(--unnamed-color-707070);
   text-align: left;
   font: normal normal bold 2rem/3rem Bahnschrift;
