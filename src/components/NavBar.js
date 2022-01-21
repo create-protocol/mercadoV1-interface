@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Drawer } from "antd";
-import { Link } from "react-router-dom";
+import { NavLink as Link1,Link } from "react-router-dom";
 import { ethers } from "ethers";
 import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
@@ -181,7 +181,7 @@ const NavBar = (props) => {
               textDecoration:"none", 
             }}
           >
-            <Link to='/' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Home</div></Link>
+            <Link to='/'   activeClassName="active" style={{color: "#FFF"}} ><div style={{textDecoration:"none"}}>Home</div></Link>
             <Link to='/asset/create' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>Create</div></Link>
             <Link to='/about' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>About</div></Link>
             <Link to='/faq' style={{color: "#FFF"}}><div style={{textDecoration:"none"}}>FAQs</div></Link>

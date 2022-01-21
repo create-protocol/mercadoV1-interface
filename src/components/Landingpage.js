@@ -18,6 +18,7 @@ import Card3 from "../assets/images/card2.png";
 import { Link } from "react-router-dom";
 
 import Sepline from "../assets/images/Vector 87.png";
+import TopCollectionCard from "./TopCollectionCard";
 
 const ImageContainer = styled.div`
   background: url(${Fundingimg});
@@ -158,6 +159,36 @@ const Landingpage = () => {
           <TrendingCarousel />
         </div>
       </div>
+
+
+      {/* Top Collections */}
+      <div
+        style={{
+          width: "100%",
+          paddingLeft: "8rem",
+          paddingRight: "8rem",
+          paddingTop: "9rem",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <HeadingText>Top Collections</HeadingText>
+          <Transparentbtn>Explore all collections</Transparentbtn>
+        </div>
+        <div style={{width:"100%"}}>
+          <TopCollectionCard/>
+          <TopCollectionCard/>
+          <TopCollectionCard/>
+          <TopCollectionCard/>
+          <TopCollectionCard/>
+          <TopCollectionCard/>
+        </div>
+        </div>
 
       {/* Featured Assets */}
 

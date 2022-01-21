@@ -142,3 +142,7 @@ button {
   font-size: 22px;
   /* white-space: nowrap; */
 }
+
+.active{
+  border-bottom: 1px solid white;
+}
