@@ -62,7 +62,7 @@ const Btn = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  cursor:pointer;
   background: rgba(0, 0, 0, 0.6);
   color: white;
   &:hover {
