@@ -193,7 +193,7 @@ const NavBar = (props) => {
             <Link to="/" style={{ color: "#FFF" }}>
               <div style={{ textDecoration: "none" }}>Home</div>
             </Link>
-            <Link to="/faq" style={{ color: "#FFF" }}>
+            <Link to="/" style={{ color: "#FFF" }}>
               <div style={{ textDecoration: "none" }}>Explore</div>
             </Link>
             <Link to="/asset/create" style={{ color: "#FFF" }}>
