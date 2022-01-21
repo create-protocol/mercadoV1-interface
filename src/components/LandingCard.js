@@ -2,6 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 import Landingcardimg from "../assets/images/landingimg.png";
+import Landingcardimg1 from "../assets/images/landingimg1.png"
 import Landingimg from "../assets/images/Rectangle 728.png";
 import Landingowner from "../assets/images/landingowner.png";
 import Eth from "../assets/images/Ethereum (ETH).png";
@@ -43,7 +44,7 @@ const Imagecont = styled.div`
   object-fit: contain;
   width: 100%;
   border-radius: 0.5rem;
-  background: url(${Landingcardimg});
+  background: url(${Landingcardimg1});
   height: 14rem;
   // -webkit-box-shadow: 0 8px 6px 10px black;
   //  -moz-box-shadow: 0 8px 6px 10px black;
@@ -73,15 +74,6 @@ const Btn = styled.div`
 const LandingCard = () => {
   return (
     <Landingdiv>
-      {/* <img
-        style={{
-          objectFit: "contain",
-          width: "100%",
-          borderRadius: ".5rem",
-        }}
-        src={Landingcardimg}
-        alt="landingimg"
-      /> */}
       <Imagecont>
         <div
           style={{
@@ -135,20 +127,6 @@ const LandingCard = () => {
           <div>Bid 12 ETH</div>
         </div>
       </div>
-      {/* <div
-        style={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: ".6rem",
-        }}
-      >
-        <div style={{ width: "30%", display: "flex", alignItems: "center" }}>
-          <img src={Heart} alt="like" />
-          <div style={{ color: "black", marginLeft: ".3rem" }}>365</div>
-        </div>
-      </div> */}
     </Landingdiv>
   );
 };
