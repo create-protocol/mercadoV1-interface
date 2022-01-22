@@ -10,6 +10,7 @@ import Drawerroutes from "./DrawerRoutes";
 import Home from "../assets/images/image 8.svg";
 import styled from "styled-components";
 import BlogPage from "./BlogPage";
+import Searchbar from "./Searchbar";
 // import WalletConnectProvider from "@walletconnect/web3-provider";
 import Navdropline from '../assets/images/navdropline.png'
 
@@ -159,6 +160,13 @@ const NavBar = (props) => {
     e.target.focus();
     setCopySuccess("Copied!");
   }
+
+ 
+
+  const homeClass =window.location.pathname === "/" ? "active" : "";
+  const aboutClass = window.location.pathname.match(/^\/about/) ? "active" : "";
+  const contactClass = window.location.pathname.match(/^\/contact/) ? "active" : "";
+
   return (
     <>
       <Navdiv>
