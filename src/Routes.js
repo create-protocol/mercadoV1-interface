@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
+import NavBar1 from './components/Navbar1'
 import Home from './components/Home'
 import ScrollToTop from './ScrollToTop'
 import { routes } from './constants'
@@ -26,6 +27,7 @@ const Routes = () => {
     <div>
       <Router>
         <Route path="/" component={NavBar}></Route>
+        {/* <Route path="/" component={NavBar1}></Route> */}
         {/* <div style={{ marginTop: '10rem' }}></div> */}
         <ScrollToTop>
           <Switch>
