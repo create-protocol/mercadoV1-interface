@@ -13,6 +13,7 @@ import Descpage from "./components/Descpage";
 import ArtisPage from "./components/ArtistBio";
 import Blog from "./components/Blog"
 import Privacy from "./components/privacy";
+import Collections from "./components/Collections"
 const routes = [
   {
     pathName: "HOME",
@@ -89,6 +90,11 @@ const routes = [
     pathName: "privacy",
     path: "/privacy",
     component: Privacy,
+  },
+  {
+    pathName: "collections",
+    path: "/collections",
+    component: Collections,
   },
   
 ];

@@ -258,7 +258,7 @@ const NavBar = (props) => {
                 <img
                   style={{
                     width: "15rem",
-                    // marginTop: "20px",
+                    marginTop: "0.5rem",
                     marginLeft: "20px",
                   }}
                   src={Home}
@@ -282,7 +282,7 @@ const NavBar = (props) => {
                 textDecoration: "none",
               }}
             >
-              <div><Searchbar/></div>
+              <div style={{marginTop:"0.5rem"}}><Searchbar/></div>
               <Link
                 to="/"
                 activeStyle={{ color: "red" }}
@@ -295,9 +295,9 @@ const NavBar = (props) => {
                 <div class="dropdown">
                   <button class="dropbtn" >Explore</button>
                   <div class="dropdown-content">
-                    <Link to='#' style={{display:"flex",flexDirection:"column"}}>All NFTs <img src={Navdropline} alt="bar"/></Link>
+                    <Link to='/main' style={{display:"flex",flexDirection:"column"}}>All NFTs <img src={Navdropline} alt="bar"/></Link>
                     {/* <img src={Navdropline} alt="bar"/> */}
-                    <Link to='/faq'>Collections</Link>
+                    <Link to='/collections'>Collections</Link>
                     {/* <a href="#">Link 3</a> */}
                   </div>
                 </div>

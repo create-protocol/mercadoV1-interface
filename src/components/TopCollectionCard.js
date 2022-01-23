@@ -32,8 +32,8 @@ margin-top:.5rem;
 const TopCollectionCard=()=>{
     return(
         <div style={{display:"flex"}}>
-        <Flexdis style={{color:"#BA68C8",width:"3%",fontWeight:"bold"}}>1.</Flexdis>
-        <Maindiv style={{width:"97%",height:"7rem",display:"flex"}}>
+        {/* <Flexdis style={{color:"#BA68C8",width:"3%",fontWeight:"bold"}}>1.</Flexdis> */}
+        <Maindiv style={{width:"100%",height:"7rem",display:"flex"}}>
             
             <Flexdis style={{width:"20%",paddingLeft:"1rem"}}>
                 <img src={TopCollection} alt="im"/>

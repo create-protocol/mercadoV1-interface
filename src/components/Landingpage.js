@@ -252,7 +252,7 @@ const Landingpage = () => {
           }}
         >
           <HeadingText>Top Sellers</HeadingText>
-          <Transparentbtn>Explore more artists</Transparentbtn>
+          {/* <Transparentbtn>Explore more artists</Transparentbtn>  */}
         </div>
         <div
           style={{
