@@ -41,13 +41,13 @@ const Navdivdesktop = styled.div`
   zindex: 1000;
   background: black;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1180px) {
     display: none;
   }
 `;
 
 const Navdiv = styled.div`
-  @media (min-width: 1100px) {
+  @media (min-width: 1180px) {
     display: none;
   }
 
@@ -257,8 +257,8 @@ const NavBar = (props) => {
               <div style={{ width: "10px", marginLeft: "5.5rem" }}>
                 <img
                   style={{
-                    width: "300px",
-                    marginTop: "20px",
+                    width: "15rem",
+                    // marginTop: "20px",
                     marginLeft: "20px",
                   }}
                   src={Home}
@@ -266,21 +266,23 @@ const NavBar = (props) => {
                 />
               </div>
             </Link>
+            
 
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                width: "65%",
+                width: "70%",
                 fontFamily: "Century Gothic",
                 fontStyle: "normal",
                 fontWeight: "bold",
-                fontSize: "1.2rem",
+                fontSize: "1rem",
                 // color: "#FFFFFF",
                 textDecoration: "none",
               }}
             >
+              <div><Searchbar/></div>
               <Link
                 to="/"
                 activeStyle={{ color: "red" }}
@@ -288,6 +290,17 @@ const NavBar = (props) => {
               >
                 Home
                 {/* <div style={{ textDecoration: "none" ,color:"white"}}>Home</div> */}
+              </Link>
+              <Link to="/about">
+                <div class="dropdown">
+                  <button class="dropbtn" >Explore</button>
+                  <div class="dropdown-content">
+                    <Link to='#' style={{display:"flex",flexDirection:"column"}}>All NFTs <img src={Navdropline} alt="bar"/></Link>
+                    {/* <img src={Navdropline} alt="bar"/> */}
+                    <Link to='/faq'>Collections</Link>
+                    {/* <a href="#">Link 3</a> */}
+                  </div>
+                </div>
               </Link>
               <Link to="/asset/create" style={{ color: "#FFF" }}>
                 <div style={{ textDecoration: "none" }}>Create</div>
@@ -304,9 +317,6 @@ const NavBar = (props) => {
                   </div>
                 </div>
               </Link>
-              {/* <Link to="/faq" style={{ color: "#FFF" }}>
-                <div style={{ textDecoration: "none" }}>FAQs</div>
-              </Link> */}
               <Link to="/contactus" style={{ color: "#FFF" }}>
                 <div style={{ textDecoration: "none" }}>Contact us</div>
               </Link>
@@ -317,7 +327,7 @@ const NavBar = (props) => {
                   <div
                     style={{
                       marginTop: "10px",
-                      borderRadius: "5px",
+                      borderRadius: "10px",
                       outline: "none",
                     }}
                   >
@@ -327,6 +337,8 @@ const NavBar = (props) => {
                         alignItems: "center",
                         justifyContent: "center",
                         fontSize: "1.2rem",
+                        width:"12rem",
+                        borderRadius: "30px",
                       }}
                       class="border-gradient border-gradient-purple"
                       onClick={connectWallet}
