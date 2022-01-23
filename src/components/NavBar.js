@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Drawer } from "antd";
-import { NavLink as Link1, Link } from "react-router-dom";
+import { NavLink as Link1, Link, useLocation } from "react-router-dom";
 import { ethers } from "ethers";
 import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
@@ -12,7 +12,7 @@ import styled from "styled-components";
 import BlogPage from "./BlogPage";
 import Searchbar from "./Searchbar";
 // import WalletConnectProvider from "@walletconnect/web3-provider";
-import Navdropline from '../assets/images/navdropline.png'
+import Navdropline from "../assets/images/navdropline.png";
 
 export const GradientButton = styled.div`
   color: white;
@@ -72,6 +72,14 @@ const ShadowBtn = styled.div`
 `;
 
 const NavBar = (props) => {
+  const location = useLocation();
+
+  //destructuring pathname from location
+  const { pathname } = location;
+
+  //Javascript split method to get the name of the path in array
+  const splitLocation = pathname.split("/");
+
   const [showDrawer, setShowDrawer] = useState(false);
   const [curAddress, serCurAddress] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
@@ -161,11 +169,10 @@ const NavBar = (props) => {
     setCopySuccess("Copied!");
   }
 
- 
+  const homeClass = window.location.pathname;
+  const path = homeClass.substring(homeClass.lastIndexOf("/") + 1);
 
-  const homeClass =window.location.pathname === "/" ? "active" : "";
-  const aboutClass = window.location.pathname.match(/^\/about/) ? "active" : "";
-  const contactClass = window.location.pathname.match(/^\/contact/) ? "active" : "";
+  console.log(homeClass.substring(homeClass.lastIndexOf("/") + 1));
 
   return (
     <>
@@ -266,7 +273,6 @@ const NavBar = (props) => {
                 />
               </div>
             </Link>
-            
 
             <div
               style={{
@@ -282,7 +288,6 @@ const NavBar = (props) => {
                 textDecoration: "none",
               }}
             >
-              
               <Link
                 to="/"
                 activeStyle={{ color: "red" }}
@@ -293,34 +298,44 @@ const NavBar = (props) => {
               </Link>
               <Link to="/about">
                 <div class="dropdown">
-                  <button class="dropbtn" >Explore</button>
+                  <button class="dropbtn">Explore</button>
                   <div class="dropdown-content">
-                    <Link to='/main' style={{display:"flex",flexDirection:"column"}}>All NFTs <img src={Navdropline} alt="bar"/></Link>
+                    <Link
+                      to="/main"
+                      style={{ display: "flex", flexDirection: "column" }}
+                    >
+                      All NFTs <img src={Navdropline} alt="bar" />
+                    </Link>
                     {/* <img src={Navdropline} alt="bar"/> */}
-                    <Link to='/collections'>Collections</Link>
+                    <Link to="/collections">Collections</Link>
                     {/* <a href="#">Link 3</a> */}
                   </div>
                 </div>
               </Link>
-              <Link to="/asset/create" style={{ color: "#FFF" }}>
+              <Link  to="/asset/create" style={{ color: "#FFF" }}>
                 <div style={{ textDecoration: "none" }}>Create</div>
               </Link>
-              
+
               <Link to="/about">
                 <div class="dropdown">
-                  <button class="dropbtn" >About</button>
+                  <button class="dropbtn">About</button>
                   <div class="dropdown-content">
-                    <Link to='#' style={{display:"flex",flexDirection:"column"}}>Who are we? <img src={Navdropline} alt="bar"/></Link>
+                    <Link
+                      to="#"
+                      style={{ display: "flex", flexDirection: "column" }}
+                    >
+                      Who are we? <img src={Navdropline} alt="bar" />
+                    </Link>
                     {/* <img src={Navdropline} alt="bar"/> */}
-                    <Link to='/faq'>FAQs</Link>
+                    <Link to="/faq">FAQs</Link>
                     {/* <a href="#">Link 3</a> */}
                   </div>
                 </div>
               </Link>
+
               <Link to="/contactus" style={{ color: "#FFF" }}>
                 <div style={{ textDecoration: "none" }}>Contact us</div>
               </Link>
-              
 
               <div style={{ marginRight: "6.5rem" }}>
                 {curAddress == null && (
@@ -337,7 +352,7 @@ const NavBar = (props) => {
                         alignItems: "center",
                         justifyContent: "center",
                         fontSize: "1.2rem",
-                        width:"12rem",
+                        width: "12rem",
                         borderRadius: "30px",
                       }}
                       class="border-gradient border-gradient-purple"
@@ -347,36 +362,36 @@ const NavBar = (props) => {
                     </button>
                   </div>
                 )}
-              
-                
-                
-              {isConnected && (
-                <div style={{ display: "flex" }}>
-                  {/* <div class="on-dark">
+
+                {isConnected && (
+                  <div style={{ display: "flex" }}>
+                    {/* <div class="on-dark">
                   <button class="border-gradient border-gradient-purple" onClick={disconnect}>
                     Disconnect
                   </button>
                 </div> */}
 
-                  <div class="on-dark">
-                    <button class="border-gradient border-gradient-purple" style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "1.2rem",
-                        width:"12rem",
-                        borderRadius: "30px",
-                      }}>
-                      {window.ethereum.selectedAddress.substring(0, 5) +
-                        "..." +
-                        window.ethereum.selectedAddress.slice(-4)}
-                    </button>
+                    <div class="on-dark">
+                      <button
+                        class="border-gradient border-gradient-purple"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: "1.2rem",
+                          width: "12rem",
+                          borderRadius: "30px",
+                        }}
+                      >
+                        {window.ethereum.selectedAddress.substring(0, 5) +
+                          "..." +
+                          window.ethereum.selectedAddress.slice(-4)}
+                      </button>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
-            </div>
-             
           </div>
         </div>
         <Drawer
