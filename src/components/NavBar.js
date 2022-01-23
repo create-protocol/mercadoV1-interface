@@ -273,7 +273,7 @@ const NavBar = (props) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                width: "70%",
+                width: "60%",
                 fontFamily: "Century Gothic",
                 fontStyle: "normal",
                 fontWeight: "bold",
