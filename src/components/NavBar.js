@@ -282,7 +282,7 @@ const NavBar = (props) => {
                 textDecoration: "none",
               }}
             >
-              <div style={{marginTop:"0.5rem"}}><Searchbar/></div>
+              
               <Link
                 to="/"
                 activeStyle={{ color: "red" }}
