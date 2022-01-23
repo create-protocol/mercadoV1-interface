@@ -258,7 +258,7 @@ function Mintnft() {
             onChange={onChange}/>
           
          
-          <span htmlFor="file" style={{color:"white",marginTop:"10px",marginLeft:"6px"}}>{filename}</span>
+          {/* <span htmlFor="file" style={{color:"white",marginTop:"10px",marginLeft:"6px"}}>{filename}</span> */}
        
          
          
