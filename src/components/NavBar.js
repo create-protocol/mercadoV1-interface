@@ -347,8 +347,9 @@ const NavBar = (props) => {
                     </button>
                   </div>
                 )}
-              </div>
-
+              
+                
+                
               {isConnected && (
                 <div style={{ display: "flex" }}>
                   {/* <div class="on-dark">
@@ -358,7 +359,14 @@ const NavBar = (props) => {
                 </div> */}
 
                   <div class="on-dark">
-                    <button class="border-gradient border-gradient-purple">
+                    <button class="border-gradient border-gradient-purple" style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "1.2rem",
+                        width:"12rem",
+                        borderRadius: "30px",
+                      }}>
                       {window.ethereum.selectedAddress.substring(0, 5) +
                         "..." +
                         window.ethereum.selectedAddress.slice(-4)}
@@ -367,6 +375,8 @@ const NavBar = (props) => {
                 </div>
               )}
             </div>
+            </div>
+             
           </div>
         </div>
         <Drawer
