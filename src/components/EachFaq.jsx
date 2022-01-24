@@ -6,7 +6,7 @@ const EachFaq = ({ title, content }) => {
   useEffect(()=>{
     Aos.init();
   })
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false) 
 
   return (
     <div className="faq" data-aos="flip-left">
