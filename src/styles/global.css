@@ -377,7 +377,7 @@ div.singlepara {
   }
 
   .blogDetail__container {
-    column-gap: 5rem;
+    column-gap: -2rem;
   }
 
   .blogDetail {

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import {Link } from "react-router-dom";
 import contactus from "../assets/images/contactus.png";
 import contactusline from "../assets/images/contactusline.png";
 import phone from "../assets/images/carbon_phone.png";
@@ -9,6 +9,7 @@ import location from "../assets/images/ep_location.png";
 import adddress from "../assets/images/Mask Group.png";
 import TopCollectionCard from "./TopCollectionCard";
 import Updown from '../assets/images/uodown.png'
+import '../assets/css/filterdropdown.css'
 
 const ImageContainer = styled.div`
   background: url(${contactus});
@@ -33,6 +34,9 @@ const TopText = styled.div`
   font-weight: bold;
   font-size: 1.4rem;
   line-height: 150%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 `;
 
 const InnerText = styled.div`
@@ -116,8 +120,58 @@ const ContactUs = () => {
             //   textAlign: "left",
             }}
           >
-            <div >
+            <div style={{display:"flex",width:"100%",alignItems:"center",justifyContent:"space-between"}}>
               <TopText>Top NFT Collections</TopText>
+              <div>
+              <Link to="/about">
+                <div class="dropdownfilter">
+                  <button class="dropbtnfilter">All Chains <div className="downbtn"></div></button>
+                  <div class="dropdown-contentfilter">
+                    <Link
+                      to="/main"
+                      style={{ display: "flex", flexDirection: "column" }}
+                    >
+                      All NFTs 
+                    </Link>
+                    
+                    <Link to="/collections">Collections</Link>
+                    {/* <a href="#">Link 3</a> */}
+                  </div>
+                </div>
+              </Link>
+              <Link to="/about">
+                <div class="dropdownfilter">
+                  <button class="dropbtnfilter">All categories <div className="downbtn"></div></button>
+                  <div class="dropdown-contentfilter">
+                    <Link
+                      to="/main"
+                      style={{ display: "flex", flexDirection: "column" }}
+                    >
+                      All NFTs 
+                    </Link>
+                    
+                    <Link to="/collections">Collections</Link>
+                    {/* <a href="#">Link 3</a> */}
+                  </div>
+                </div>
+              </Link>
+              <Link to="/about">
+                <div class="dropdownfilter">
+                  <button class="dropbtnfilter">Last 7 days <div className="downbtn"></div></button>
+                  <div class="dropdown-contentfilter">
+                    <Link
+                      to="/main"
+                      style={{ display: "flex", flexDirection: "column" }}
+                    >
+                      All NFTs 
+                    </Link>
+                    
+                    <Link to="/collections">Collections</Link>
+                    {/* <a href="#">Link 3</a> */}
+                  </div>
+                </div>
+              </Link>
+              </div>
             </div>
             <div style={{marginTop:"2rem",display:"flex",width:"100%",alignItems:"center",justifyContent:"space-between"}}>
               <InnerText style={{width:"25%"}}>Collections</InnerText>
