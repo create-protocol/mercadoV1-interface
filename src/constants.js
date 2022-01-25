@@ -14,6 +14,7 @@ import ArtisPage from "./components/ArtistBio";
 import Blog from "./components/Blog"
 import Privacy from "./components/privacy";
 import Collections from "./components/Collections"
+import AllNFT from './components/AllNFT'
 const routes = [
   {
     pathName: "HOME",
@@ -95,6 +96,11 @@ const routes = [
     pathName: "collections",
     path: "/collections",
     component: Collections,
+  },
+  {
+    pathName: "allnft",
+    path: "/allnft",
+    component: AllNFT,
   },
   
 ];
