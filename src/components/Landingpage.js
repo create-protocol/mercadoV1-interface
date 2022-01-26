@@ -15,7 +15,9 @@ import Createsell from "../assets/images/createsell.png";
 import Card1 from "../assets/images/card.png";
 import Card2 from "../assets/images/card1.png";
 import Card3 from "../assets/images/card2.png";
+import Trending1 from "../assets/images/trending1.png";
 import { Link } from "react-router-dom";
+import Trendingcardsmall from "./Trendingcardsmall";
 
 import Sepline from "../assets/images/Vector 87.png";
 import TopCollectionCard from "./TopCollectionCard";
@@ -59,37 +61,54 @@ const HeadingText = styled.div`
   line-height: 140%;
 `;
 
-const Createsmallh=styled.div`
-font-family: Century Gothic;
-font-style: normal;
-font-weight: bold;
-font-size: 1rem;
-line-height: 160%;
-text-align:left;
-color: #D14F8C;
+const Createsmallh = styled.div`
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 160%;
+  text-align: left;
+  color: #d14f8c;
+`;
+
+const Createmaint = styled.div`
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: left;
+  line-height: 140%;
+  color: #f4f4f4;
+  margin-top: 1.2rem;
+`;
+
+const Trendingimagetext=styled.div`
+height:100%;
+width:100%;
+
+display:flex;
+padding:2rem;
+padding-top:1.5rem;
+
 `
 
-const Createmaint=styled.div`
+const Cardtext=styled.div`
+background: rgba(0, 0, 0, 0.6);
+border-radius: 5px;
 font-family: Century Gothic;
 font-style: normal;
 font-weight: bold;
-font-size: 1.2rem;
-text-align:left;
-line-height: 140%;
-color: #F4F4F4;
-margin-top:1.2rem;
+font-size: .7rem;
+line-height: 1.5rem;
+color: #FFFFFF;
+width:max-content;
+padding:1rem;
+height:2rem;
+display:flex;
+align-items:center;
+
+
 `
-// const Seller=styled.div`
-// height:7rem;
-// width:15rem;
-// background:#121212;
-// border-radius:1rem;
-// margin-left:1rem;
-// display:flex;
-// align-items:center;
-// // justify-content:center;
-// padding:1rem;
-// `
 const Landingpage = () => {
   return (
     <div
@@ -136,7 +155,6 @@ const Landingpage = () => {
       <div
         style={{
           width: "100%",
-
           paddingTop: "9rem",
         }}
       >
@@ -147,19 +165,65 @@ const Landingpage = () => {
             justifyContent: "space-between",
             paddingLeft: "8rem",
             paddingRight: "8rem",
-            flexWrap:"wrap"
+            flexWrap: "wrap",
           }}
         >
           <HeadingText>Trending Creations</HeadingText>
           {/* <Transparentbtn>Explore more artists</Transparentbtn> */}
         </div>
         <div
-          style={{ width: "100%", paddingLeft: "5rem", paddingRight: "5rem" }}
+          style={{
+            width: "100%",
+            paddingLeft: "7rem",
+            paddingRight: "7rem",
+            marginTop: "5rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
         >
-          <TrendingCarousel />
+          <div style={{ width: "30%" }}>
+            <div
+              style={{
+                width: "23rem",
+                height: "25rem",
+                backgroundImage: `url(${Trending1})`,
+                objectFit: "fill",
+                borderRadius: "1rem",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <Trendingimagetext>
+                <Cardtext>Psychedelic art</Cardtext>
+              </Trendingimagetext>
+            </div>
+          </div>
+          <div
+            style={{
+              width: "67%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              height: "24rem",
+              flexWrap: "wrap",
+              marginTop: "-1rem",
+            }}
+          >
+            <Trendingcardsmall />
+            <Trendingcardsmall />
+            <Trendingcardsmall />
+            <Trendingcardsmall />
+            <Trendingcardsmall />
+            <Trendingcardsmall />
+            <Trendingcardsmall />
+            <Trendingcardsmall />
+          </div>
+
+          {/* <TrendingCarousel /> */}
         </div>
       </div>
-
 
       {/* Top Collections */}
       <div
@@ -180,15 +244,15 @@ const Landingpage = () => {
           <HeadingText>Top Collections</HeadingText>
           <Transparentbtn>Explore all collections</Transparentbtn>
         </div>
-        <div style={{width:"100%"}}>
-          <TopCollectionCard/>
-          <TopCollectionCard/>
-          <TopCollectionCard/>
-          <TopCollectionCard/>
-          <TopCollectionCard/>
-          <TopCollectionCard/>
+        <div style={{ width: "100%" }}>
+          <TopCollectionCard />
+          <TopCollectionCard />
+          <TopCollectionCard />
+          <TopCollectionCard />
+          <TopCollectionCard />
+          <TopCollectionCard />
         </div>
-        </div>
+      </div>
 
       {/* Featured Assets */}
 
