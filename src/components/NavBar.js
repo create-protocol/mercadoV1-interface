@@ -301,7 +301,7 @@ const NavBar = (props) => {
                   <button class="dropbtn">Explore</button>
                   <div class="dropdown-content">
                     <Link
-                      to="/main"
+                      to="/allnft"
                       style={{ display: "flex", flexDirection: "column" }}
                     >
                       All NFTs <img src={Navdropline} alt="bar" />
