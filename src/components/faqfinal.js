@@ -57,12 +57,12 @@ const FaqPage = () => {
   return (
     <div style={{ minHeight: "150vh" }}>
       <PageHeader title="Frequently Asked Questions" />
-      <FillterCard/>
-      {/* <section className="container">
+      {/* <FillterCard/> */}
+      <section className="container">
         {data.rows.map((_, index) => (
           <EachFaq key={index} title={_.title} content={_.content} />
         ))}
-      </section> */}
+      </section>
     </div>
   );
 };

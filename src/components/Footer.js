@@ -48,10 +48,10 @@ const Footer = () => {
           <Heading>Quick Links</Heading>
           <FooterLink href="/">Home</FooterLink>
           <FooterLink href="/about">About</FooterLink>
-          <FooterLink href="/">Community</FooterLink>
+          <FooterLink href="/community-guidelines">Community</FooterLink>
           <FooterLink href="/blog">Blogs</FooterLink>
           <FooterLink href="/faq">FAQ</FooterLink>
-          <div style={{marginTop:"1.3rem"}}>PRIVACY & POLICY</div>
+          <FooterLink href="/privacy-policy" style={{marginTop:"1.3rem"}}>PRIVACY & POLICY</FooterLink>
         </Row>
 
         <Row>

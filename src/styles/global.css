@@ -88,7 +88,7 @@ div.singlepara {
   font-size: 3rem;
   color: var(--primary-title-color);
   /* justify-content: left; */
-  text-align: center;
+  text-align: start;
 }
 
 /* FAQ Page styles */
