@@ -193,11 +193,12 @@ const filterCard = () => {
     return (
         <Maincard style={{paddingTop:"2rem"}}>
         <div>
-            <section className="container">
+            <EachFilterCard/>
+            {/* <section className="container">
                 {data.rows.map((_, index) => (
                     <EachFilterCard key={index} title={_.title} buttons={_.buttons} />
                 ))}
-            </section>
+            </section> */}
         </div>
         </Maincard>
     )
