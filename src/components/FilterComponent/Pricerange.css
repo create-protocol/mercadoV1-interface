@@ -1,0 +1,12 @@
+.pricerange {
+  display: flex;
+  margin-bottom: 30px;
+}
+.counter {
+  padding-left: 40px;
+}
+input {
+  background: inherit;
+  border-radius: 20px;
+  width: 80px;
+}
