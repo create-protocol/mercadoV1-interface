@@ -14,6 +14,7 @@ const CollectionsFilter = () => {
                     <CollectionsSearchResult name={"Super liquids"} floorPrice={"0.0001123"} src={sampleImg} />
                     <CollectionsSearchResult name={"Super liquids"} floorPrice={"0.0001123"} src={sampleImg} />
                     <CollectionsSearchResult name={"Super liquids"} floorPrice={"0.0001123"} src={sampleImg} />
+                    <button className="loadmore">Load more</button>
                 </div>
             </div>
         </div>
