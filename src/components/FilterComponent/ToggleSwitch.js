@@ -4,11 +4,14 @@ import "./ToggleSwitch.css";
 const ToggleSwitch = () => {
   return (
     <>
-      <div className="toggle">
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider round"></span>
-        </label>
+      <div style={{ display: "flex", position: "relative", marginBottom: "2rem" }}>
+        <div className="buy-now">Buy Now</div>
+        <div class="toggle-switch">
+          <input type="checkbox" id="chkTest" name="chkTest" />
+          <label for="chkTest">
+            <span class="toggle-track"></span>
+          </label>
+        </div>
       </div>
     </>
   );
