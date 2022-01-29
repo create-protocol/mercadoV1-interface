@@ -10,13 +10,30 @@ const EachFilterCard = () => {
     useEffect(() => {
         Aos.init();
     })
+    const [buy,setBuy] = useState(false)
     const [open, setOpen] = useState(false)
+   
     // let buttons_comp = buttons.map((button, index) => {
     //     return <EachFilterButton key={index} name={button.name} url={button.url} />
     // });
     return (
         
         <>
+        <div className="faq" style={{minWidth:"90%",margin:"0",paddingTop:"0",paddingBottom:"0"}}>
+            <div onClick={() => setBuy(!buy)} className="faq__title">
+                <h2 className="faq__title--text" style={{fontSize:"1.2rem"}}>Item Status</h2>
+                <div className={`${buy ? 'arrow_up' : 'arrow_down'}`}>
+                    <img src={arrow_down} alt="arrow down" />
+                </div>
+                
+            </div>
+            
+            <span className="faq-divider-active" style={{height:".1rem"}}/>
+            {buy ? <p className="faq__text" style={{display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap"}}>hello 1</p> : null}
+
+            
+        </div>
+
         <div className="faq" style={{minWidth:"90%",margin:"0",paddingTop:"0",paddingBottom:"0"}}>
             <div onClick={() => setOpen(!open)} className="faq__title">
                 <h2 className="faq__title--text" style={{fontSize:"1.2rem"}}>Item Status</h2>
