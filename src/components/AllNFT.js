@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import "font-awesome/css/font-awesome.min.css";
 
 import contactus from "../assets/images/contactus.png";
 import filterimage from "../assets/images/Filter.png";
@@ -94,14 +95,25 @@ const AllNFT = () => {
         <ImageContainer>Discover</ImageContainer>
         <div class="flex-container">
           {/* <img src={filterimage} width="118px" height="52px"></img> */}
-          <button
-            class="filterbutton"
-            onClick={() => {
-              setFilterOpen(!filterOpen);
-            }}
-          >
-            Filter
-          </button>
+          {filterOpen ? (
+            <button
+              class="btn filterbutton2"
+              onClick={() => {
+                setFilterOpen(!filterOpen);
+              }}
+            >
+              <i class="fa fa-filter "></i>Filter
+            </button>
+          ) : (
+            <button
+              class="filterbutton"
+              onClick={() => {
+                setFilterOpen(!filterOpen);
+              }}
+            >
+              Filter
+            </button>
+          )}
 
           <div class="dropdownfilter">
             <button class="dropbtnfilter">
