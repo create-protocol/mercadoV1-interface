@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import contactus from "../assets/images/contactus.png";
@@ -86,10 +86,30 @@ const Whitebtn = styled.div`
 `;
 
 const AllNFT = () => {
+  const [filterOpen, setFilterOpen] = useState(false);
   return (
     <>
       <div style={{ width: "100%" }}>
         <ImageContainer>Discover</ImageContainer>
+        <div
+          style={{
+            background: "white",
+            color: "black",
+            fontFamily: "Century Gothic",
+            fontStyle: "normal",
+            fontWeight: "normal",
+            fontSize: "1.2rem",
+            width: "6rem",
+            borderRadius: "1rem",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            marginTop: '3rem',
+            marginLeft: '3rem',
+          }}
+        >
+          <a onClick={() => { setFilterOpen(!filterOpen) }}>Filter</a>
+        </div>
         <div
           style={{
             display: "flex",
@@ -99,6 +119,7 @@ const AllNFT = () => {
             marginTop: "3rem",
           }}
         >
+
           <div
             style={{
               display: "flex",
@@ -110,66 +131,33 @@ const AllNFT = () => {
               marginBottom: "10rem",
               color: "white",
               textAlign: "left",
-              marginLeft:"4rem",
-              marginRight:"4rem"
+              marginLeft: "4rem",
+              marginRight: "4rem"
             }}
           >
-            <div style={{ width: "25%" }}>
-              <div
-                style={{
-                  background: "white",
-                  color: "black",
-                  fontFamily: "Century Gothic",
-                  fontStyle: "normal",
-                  fontWeight: "normal",
-                  fontSize: "1.2rem",
-                  width:"6rem",
-                  borderRadius:"1rem",
-                  display:"flex",
-                  alignItems:"center",
-                  justifyContent:"center",
-                  textAlign:"center",
-                }}
-              >
-                Filter
-              </div>
+            {filterOpen && <div style={{ width: "25%" }}>
               <FillterCard />
-            </div>
+            </div>}
 
             <div
               style={{
-                width: "70%",
+                width: filterOpen == true ? "70%" : "100%",
                 display: "flex",
                 alignItems: "start",
                 justifyContent: "center",
                 flexDirection: "column",
               }}
             >
-              <div style={{display:"flex",width:"100%",flexDirection:"row-reverse"}}>
-              <Link to="#">
-                <div class="dropdownfilter">
-                  <button class="dropbtnfilter">Last 7 days<div className="downbtn"></div></button>
-                  <div class="dropdown-contentfilter">
-                    <Link
-                      to="/main"
-                      style={{ display: "flex", flexDirection: "column" }}
-                    >
-                      All NFTs 
-                    </Link>
-                    
-                    <Link to="/collections">Collections</Link>
-                    {/* <a href="#">Link 3</a> */}
-                  </div>
-                </div>
-              </Link>
-              </div>
-              <div style={{display:"flex",width:"100%",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap"}}>
-                  <Landingcard/>
-                  <Landingcard/>
-                  <Landingcard/>
-                  <Landingcard/>
-                  <Landingcard/>
-                  <Landingcard/>
+              <div style={{ display: "flex", width: "100%", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
+                <Landingcard />
+                <Landingcard />
+                <Landingcard />
+                <Landingcard />
+                <Landingcard />
+                <Landingcard />
+                <Landingcard />
+                <Landingcard />
+                <Landingcard />
               </div>
             </div>
           </div>
