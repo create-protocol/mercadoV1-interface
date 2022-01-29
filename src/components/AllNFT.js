@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import contactus from "../assets/images/contactus.png";
-import Landingcard from './LandingCard'
+import filterimage from "../assets/images/Filter.png";
+import Landingcard from "./LandingCard";
 import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
-import '../assets/css/filterdropdown.css'
+import "../assets/css/filterdropdown.css";
 
 const ImageContainer = styled.div`
   background: url(${contactus});
@@ -91,25 +92,35 @@ const AllNFT = () => {
     <>
       <div style={{ width: "100%" }}>
         <ImageContainer>Discover</ImageContainer>
-        <div
-          style={{
-            background: "white",
-            color: "black",
-            fontFamily: "Century Gothic",
-            fontStyle: "normal",
-            fontWeight: "normal",
-            fontSize: "1.2rem",
-            width: "6rem",
-            borderRadius: "1rem",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            marginTop: '3rem',
-            marginLeft: '3rem',
-          }}
-        >
-          <a onClick={() => { setFilterOpen(!filterOpen) }}>Filter</a>
+        <div class="flex-container">
+          {/* <img src={filterimage} width="118px" height="52px"></img> */}
+          <button
+            class="filterbutton"
+            onClick={() => {
+              setFilterOpen(!filterOpen);
+            }}
+          >
+            Filter
+          </button>
+
+          <div class="dropdownfilter">
+            <button class="dropbtnfilter">
+              Price ascending <div className="downbtn"></div>
+            </button>
+            <div class="dropdown-contentfilter">
+              <Link
+                to="/main"
+                style={{ display: "flex", flexDirection: "column" }}
+              >
+                All NFTs
+              </Link>
+
+              <Link to="/collections">Collections</Link>
+              {/* <a href="#">Link 3</a> */}
+            </div>
+          </div>
         </div>
+
         <div
           style={{
             display: "flex",
@@ -119,7 +130,6 @@ const AllNFT = () => {
             marginTop: "3rem",
           }}
         >
-
           <div
             style={{
               display: "flex",
@@ -132,12 +142,14 @@ const AllNFT = () => {
               color: "white",
               textAlign: "left",
               marginLeft: "4rem",
-              marginRight: "4rem"
+              marginRight: "4rem",
             }}
           >
-            {filterOpen && <div style={{ width: "25%" }}>
-              <FillterCard />
-            </div>}
+            {filterOpen && (
+              <div style={{ width: "25%" }}>
+                <FillterCard />
+              </div>
+            )}
 
             <div
               style={{
@@ -148,7 +160,15 @@ const AllNFT = () => {
                 flexDirection: "column",
               }}
             >
-              <div style={{ display: "flex", width: "100%", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
+              <div
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                }}
+              >
                 <Landingcard />
                 <Landingcard />
                 <Landingcard />
