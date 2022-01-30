@@ -79,7 +79,9 @@
   background: url("../images/down.png") no-repeat;
   display: inline-block;
 }
-.downbtn:hover:hover {
-  background: url("../images/down.png") no-repeat;
-  transform: rotate(180deg);
+.upbtn {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url("../images/up.png") no-repeat;
+  display: inline-block;
 }
