@@ -68,6 +68,7 @@ div.singlepara {
 .custom-file-input::before {
   content: "";
   display: inline-block;
+  object-fit: contain;
   background-image: url("../assets/images/Group\ 36617.svg");
   background: linear-gradient(top, #f9f9f9, #e3e3e3);
   border: 1px solid rgb(15, 15, 15);
