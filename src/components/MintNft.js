@@ -294,7 +294,7 @@ function Mintnft() {
         >
           <input
             type="file"
-            class="custom-file-input"
+            className="formtxtfill docs"
             type="file"
             name="Asset"
             onChange={onChange}
