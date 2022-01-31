@@ -188,7 +188,7 @@ const AllNFT = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 flexDirection: "column",
-                marginLeft:filterOpen==true? "0rem":"3rem",
+                marginLeft:filterOpen==true? "0rem":"2rem",
               }}
             > 
               <div style={{display:"flex",width:"100%",alignItems:"start",justifyContent:"flex-start",flexWrap:"wrap"}}>
