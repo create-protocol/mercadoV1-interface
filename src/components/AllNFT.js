@@ -4,7 +4,7 @@ import "font-awesome/css/font-awesome.min.css";
 
 import contactus from "../assets/images/contactus.png";
 import filterimage from "../assets/images/Filter.png";
-import Landingcard from "./LandingCard";
+import Landingcard from "./Newcard";
 import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
 import "../assets/css/filterdropdown.css";
@@ -93,8 +93,9 @@ const AllNFT = () => {
     <>
       <div style={{ width: "100%" }}>
         <ImageContainer>Discover</ImageContainer>
-        <div class="flex-container">
+        <div class="flex-container" style={{justifyContent:"space-between",width:"90%"}}>
           {/* <img src={filterimage} width="118px" height="52px"></img> */}
+          <div style={{display:"flex"}}>
           {filterOpen ? (
             <button
               class="btn filterbutton2"
@@ -131,6 +132,23 @@ const AllNFT = () => {
               {/* <a href="#">Link 3</a> */}
             </div>
           </div>
+          </div>
+          <div class="dropdownfilter">
+            <button class="dropbtnfilter">
+              Last 7 days<div className="downbtn"></div>
+            </button>
+            <div class="dropdown-contentfilter">
+              <Link
+                to="/main"
+                style={{ display: "flex", flexDirection: "column" }}
+              >
+                All NFTs
+              </Link>
+
+              <Link to="/collections">Collections</Link>
+              {/* <a href="#">Link 3</a> */}
+            </div>
+          </div>
         </div>
 
         <div
@@ -139,7 +157,7 @@ const AllNFT = () => {
             alignItems: "center",
             justifyContent: "center",
             width: "100%",
-            marginTop: "3rem",
+            marginTop: "4vh",
           }}
         >
           <div
@@ -158,7 +176,7 @@ const AllNFT = () => {
             }}
           >
             {filterOpen && (
-              <div style={{ width: "25%" }}>
+              <div style={{ width: "25%",marginTop:"2.7rem" }}>
                 <FillterCard />
               </div>
             )}
@@ -167,29 +185,19 @@ const AllNFT = () => {
               style={{
                 width: filterOpen == true ? "70%" : "100%",
                 display: "flex",
-                alignItems: "start",
+                alignItems: "center",
                 justifyContent: "center",
                 flexDirection: "column",
+                marginLeft:filterOpen==true? "0rem":"3rem",
               }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  flexWrap: "wrap",
-                }}
-              >
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
+            > 
+              <div style={{display:"flex",width:"100%",alignItems:"start",justifyContent:"flex-start",flexWrap:"wrap"}}>
+                  <Landingcard/>
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard/>
+                  <Landingcard />
               </div>
             </div>
           </div>

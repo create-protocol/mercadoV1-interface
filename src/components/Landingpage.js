@@ -35,13 +35,13 @@ const ImageContainer = styled.div`
   font-style: normal;
   font-weight: 600;
   font-size: 2.5rem;
-
   color: #f4f4f4;
-
   text-align: left;
   padding-left: 8rem;
   padding-top: 11rem;
 `;
+
+
 const Transparentbtn = styled.div`
   border: 1px solid #f1f1f1;
   box-sizing: border-box;
@@ -52,6 +52,7 @@ const Transparentbtn = styled.div`
   padding: 0.5rem 2.9rem;
   cursor: pointer;
 `;
+
 
 const HeadingText = styled.div`
   font-family: Century Gothic;
@@ -85,11 +86,9 @@ const Createmaint = styled.div`
 const Trendingimagetext=styled.div`
 height:100%;
 width:100%;
-
 display:flex;
 padding:2rem;
 padding-top:1.5rem;
-
 `
 
 const Cardtext=styled.div`
@@ -106,8 +105,6 @@ padding:1rem;
 height:2rem;
 display:flex;
 align-items:center;
-
-
 `
 const Landingpage = () => {
   return (
