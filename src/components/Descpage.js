@@ -295,7 +295,7 @@ const Descpage = (props) => {
           
           <div
             style={{
-              width: "80%",
+              width: "90%",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
