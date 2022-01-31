@@ -47,9 +47,9 @@ const Left = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 130%;
   margin-left: auto;
-  height: 100vh;
+  height: 120vh;
   @media (max-width: 1000px) {
     width: 100%;
     height: 60%;
@@ -62,7 +62,7 @@ const Right = styled.div`
   align-items: start;
   margin-right:100px;
   width: 100%;
-//   height:100vh;
+
   border:1px solid black
   flex-wrap:wrap
   @media (max-width: 1000px) {
@@ -247,7 +247,7 @@ const Descpage = (props) => {
                 style={{
                   width: "100%",
                   borderRadius: "15px",
-                  height: "25rem",
+                  height: "70vh",
                   objectFit: "cover",
                 }}
               />
