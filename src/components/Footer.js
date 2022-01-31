@@ -31,27 +31,63 @@ const Footer = () => {
             height="80px"
             style={{ opacity: "0.99" }}
           ></img>
-          <div style={{ color: "wheat", display: "flex", alignItems: "center", justifyContent: "space-evenly", marginTop: "10.4rem" }}>
-
-            <a href="https://www.linkedin.com/company/muzixtech/" style={{ color: "white", margin: "5px" }}><div>LINKEDIN</div></a>
-            <a style={{ color: "white", margin: "5px" }}><div>REDDIT</div></a>
-            <a style={{ color: "white", margin: "5px" }}><div>FACEBOOK</div></a>
-            <a href="https://twitter.com/MuzixNFT" style={{ color: "white", margin: "5px" }}><div>TWITTER</div></a>
-            <a href="https://instagram.com/muzix.nft?utm_medium=copy_link" style={{ color: "white", margin: "5px" }}><div>INSTAGRAM</div></a>
-
-
+          <div
+            style={{
+              color: "wheat",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-evenly",
+              marginTop: "10.4rem",
+            }}
+          >
+            <a
+              href="https://www.linkedin.com/company/muzixtech/"
+              style={{ color: "white", margin: "5px" }}
+            >
+              <div><i class="fa fa-linkedin" style={{fontSize:"28px"}}></i></div>
+            </a>
+            <a style={{ color: "white", margin: "5px" }}>
+              <div><i class="fa fa-facebook" style={{fontSize:"28px"}}></i></div>
+            </a>
+            <a style={{ color: "white", margin: "5px" }}>
+              <div><i class="fa fa-telegram" style={{fontSize:"28px"}}></i></div>
+            </a>
+            <a
+              href="https://instagram.com/muzix.nft?utm_medium=copy_link"
+              style={{ color: "white", margin: "5px" }}
+            >
+              <div><i class="fa fa-instagram" style={{fontSize:"28px"}}></i></div>
+            </a>
+            <a
+              href="https://twitter.com/MuzixNFT"
+              style={{ color: "white", margin: "5px" }}
+            >
+              <div><i class="fa fa-twitter" style={{fontSize:"28px"}}></i></div>
+            </a>
+            
+          
           </div>
-
         </Row>
 
         <Row>
           <Heading>Quick Links</Heading>
           <FooterLink href="/">Home</FooterLink>
           <FooterLink href="/about">About</FooterLink>
-          <FooterLink href="/community-guidelines">Community</FooterLink>
+          <FooterLink href="/">Community</FooterLink>
           <FooterLink href="/blog">Blogs</FooterLink>
           <FooterLink href="/faq">FAQ</FooterLink>
-          <FooterLink href="/privacy-policy" style={{ marginTop: "1.3rem" }}>PRIVACY & POLICY</FooterLink>
+          <FooterLink
+            href="/community-guidelines"
+            style={{ marginTop: "1.3rem" }}
+          >
+            Community guidelines
+          </FooterLink>
+          <FooterLink
+            href="/privacy-policy"
+            style={{ marginTop: "-1.99rem", marginLeft: "14rem" }}
+          >
+            PRIVACY & POLICY
+          </FooterLink>
         </Row>
 
         <Row>
@@ -62,16 +98,19 @@ const Footer = () => {
           >
             <p>Phone : +91 8178382149</p>
             {/* <br></br> */}
-            <a style={{ color: "white" }} href="mailto:Info@createprotocol.org"><p>Email : Info@createprotocol.org</p></a>
+            <a style={{ color: "white" }} href="mailto:Info@createprotocol.org">
+              <p>Email : Info@createprotocol.org</p>
+            </a>
 
-            <FooterLink href="/cookies-policy" style={{ marginTop: "7.2rem" }}>COOKIES POLICY</FooterLink>
-
+            <FooterLink
+              href="/cookies-policy"
+              style={{ marginTop: "7.2rem", marginLeft: "-3rem" }}
+            >
+              COOKIES POLICY
+            </FooterLink>
           </div>
         </Row>
-
-
       </ContainerInner>
-
 
       <img
         src={linesmall2}
@@ -80,7 +119,6 @@ const Footer = () => {
           height: "1.3px",
         }}
       />
-
     </Containertop>
   );
 };

@@ -1,6 +1,6 @@
 body {
   /* background-color: black; */
-  border: 1px solid var(--unnamed-color-0c0c0c);
+  /* border: 1px solid var(--unnamed-color-0c0c0c); */
   background: #1a1a1a 0% 0% no-repeat padding-box;
 }
 
@@ -8,6 +8,27 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.req {
+  /* position: absolute; */
+  width: 81px;
+  height: 12px;
+  left: 951px;
+  top: 1533px;
+font-size: 10px;
+  /* Ghost text mobile */
+
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 12px;
+
+  color: #ffffff;
+}
+textarea {
+  width: 300px;
+  height: 150px;
 }
 
 .formfill {
@@ -26,19 +47,27 @@ body {
 .formtxtfill {
   margin-bottom: 20px;
   margin-top: 20px;
-  background: black 0% 0% no-repeat padding-box;
+  background: #363636;
   border-radius: 6px;
   width: 80%;
   height: 40px;
-  color: white;
+  /* color: white; */
+}
+.formtxtfill2{
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background: #363636;
+  border-radius: 6px;
+  height: 90px;
+ 
 }
 .docs {
-  border: 2px solid;
-  border-color: #5999ad #5aa6b2;
+  /* border: 2px solid; */
+  /* border-color: #5999ad #5aa6b2; */
 }
 
 ::placeholder {
-  color: #a0abb8;
+  /* color: #a0abb8; */
   padding: 18px;
   /* margin: 10px; */
 }
