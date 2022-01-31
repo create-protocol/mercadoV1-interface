@@ -305,7 +305,7 @@ function Mintnft() {
             width: "50%",
           }}
         >
-          {uploading && <p style={{ fontSize: "1rem" }}>uploaded {prog}%</p>}
+          {uploading && <p style={{ fontSize: "2rem" }}>uploaded {prog}%</p>}
           <input
             type="file"
             className="formtxtfill docs"
