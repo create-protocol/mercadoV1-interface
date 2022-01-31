@@ -164,12 +164,12 @@ const AllNFT = () => {
               </Link>
               </div>
               <div style={{display:"flex",width:"100%",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap"}}>
-                  <Landingcard/>
-                  <Landingcard/>
-                  <Landingcard/>
-                  <Landingcard/>
-                  <Landingcard/>
-                  <Landingcard/>
+                  <Landingcard style={{width:"10vw",height:"40vw"}}/>
+                  <Landingcard style={{width:"30%",height:"40vw"}}/>
+                  <Landingcard style={{width:"30%",height:"40vw"}}/>
+                  <Landingcard style={{width:"30%",height:"40vw"}}/>
+                  <Landingcard style={{width:"30%",height:"40vw"}}/>
+                  <Landingcard style={{width:"30%",height:"40vw"}}/>
               </div>
             </div>
           </div>
