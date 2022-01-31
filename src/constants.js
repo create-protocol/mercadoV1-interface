@@ -12,9 +12,11 @@ import Landingpage from './components/Landingpage'
 import Descpage from "./components/Descpage";
 import ArtisPage from "./components/ArtistBio";
 import Blog from "./components/Blog"
-import Privacy from "./components/privacy";
 import Collections from "./components/Collections"
 import AllNFT from './components/AllNFT'
+import Privacy from "./components/Privacy/Privacy";
+import CommGuide from "./components/Privacy/CommGuide";
+import CookiesPolicy from "./components/Privacy/Cookie";
 const routes = [
   {
     pathName: "HOME",
@@ -78,7 +80,7 @@ const routes = [
   },
   
   {
-    pathName: "main",
+    pathName: "artist",
     path: "/artist",
     component: ArtisPage,
   },
@@ -88,9 +90,19 @@ const routes = [
     component: Blog,
   },
   {
-    pathName: "privacy",
-    path: "/privacy",
+    pathName: "privacy-policy",
+    path: "/privacy-policy",
     component: Privacy,
+  },
+   {
+    pathName: "community-guidelines",
+    path: "/community-guidelines",
+    component: CommGuide,
+  },
+  {
+    pathName: "cookies-policy",
+    path: "/cookies-policy",
+    component: CookiesPolicy,
   },
   {
     pathName: "collections",

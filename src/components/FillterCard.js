@@ -2,7 +2,7 @@ import React from 'react'
 import EachFilterCard from './EachFilterCard'
 import styled from 'styled-components'
 
-const Maincard=styled.div`
+const Maincard = styled.div`
 background: #131313;
 box-shadow: 0px 4px 12px rgba(68, 68, 68, 0.15);
 border-radius: 24px;
@@ -191,14 +191,10 @@ const data = {
 
 const filterCard = () => {
     return (
-        <Maincard style={{paddingTop:"2rem"}}>
-        <div>
-            <section className="container">
-                {data.rows.map((_, index) => (
-                    <EachFilterCard key={index} title={_.title} buttons={_.buttons} />
-                ))}
-            </section>
-        </div>
+        <Maincard style={{ paddingTop: "2rem" }}>
+            <div>
+                <EachFilterCard />
+            </div>
         </Maincard>
     )
 }

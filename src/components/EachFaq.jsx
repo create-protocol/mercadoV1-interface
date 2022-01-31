@@ -9,7 +9,7 @@ const EachFaq = ({ title, content }) => {
   const [open, setOpen] = useState(false) 
 
   return (
-    <div className="faq" data-aos="flip-left">
+    <div className="faq" >
       <div onClick={() => setOpen(!open)} className="faq__title">
         <h2 className="faq__title--text">{title}</h2>
         <div className={`${open ? 'arrow_up' : 'arrow_down'}`}>

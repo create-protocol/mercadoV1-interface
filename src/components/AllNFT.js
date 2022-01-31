@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import "font-awesome/css/font-awesome.min.css";
 
 import contactus from "../assets/images/contactus.png";
-import Landingcard from './LandingCard'
+import filterimage from "../assets/images/Filter.png";
+import Landingcard from "./LandingCard";
 import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
-import '../assets/css/filterdropdown.css'
+import "../assets/css/filterdropdown.css";
 
 const ImageContainer = styled.div`
   background: url(${contactus});
@@ -86,10 +88,51 @@ const Whitebtn = styled.div`
 `;
 
 const AllNFT = () => {
+  const [filterOpen, setFilterOpen] = useState(false);
   return (
     <>
       <div style={{ width: "100%" }}>
         <ImageContainer>Discover</ImageContainer>
+        <div class="flex-container">
+          {/* <img src={filterimage} width="118px" height="52px"></img> */}
+          {filterOpen ? (
+            <button
+              class="btn filterbutton2"
+              onClick={() => {
+                setFilterOpen(!filterOpen);
+              }}
+            >
+              <i class="fa fa-filter "></i>Filter
+            </button>
+          ) : (
+            <button
+              class="filterbutton"
+              onClick={() => {
+                setFilterOpen(!filterOpen);
+              }}
+            >
+              Filter
+            </button>
+          )}
+
+          <div class="dropdownfilter">
+            <button class="dropbtnfilter">
+              Price ascending <div className="downbtn"></div>
+            </button>
+            <div class="dropdown-contentfilter">
+              <Link
+                to="/main"
+                style={{ display: "flex", flexDirection: "column" }}
+              >
+                All NFTs
+              </Link>
+
+              <Link to="/collections">Collections</Link>
+              {/* <a href="#">Link 3</a> */}
+            </div>
+          </div>
+        </div>
+
         <div
           style={{
             display: "flex",
@@ -110,35 +153,19 @@ const AllNFT = () => {
               marginBottom: "10rem",
               color: "white",
               textAlign: "left",
-              marginLeft:"4rem",
-              marginRight:"4rem"
+              marginLeft: "4rem",
+              marginRight: "4rem",
             }}
           >
-            <div style={{ width: "25%" }}>
-              <div
-                style={{
-                  background: "white",
-                  color: "black",
-                  fontFamily: "Century Gothic",
-                  fontStyle: "normal",
-                  fontWeight: "normal",
-                  fontSize: "1.2rem",
-                  width:"6rem",
-                  borderRadius:"1rem",
-                  display:"flex",
-                  alignItems:"center",
-                  justifyContent:"center",
-                  textAlign:"center",
-                }}
-              >
-                Filter
+            {filterOpen && (
+              <div style={{ width: "25%" }}>
+                <FillterCard />
               </div>
-              <FillterCard />
-            </div>
+            )}
 
             <div
               style={{
-                width: "70%",
+                width: filterOpen == true ? "70%" : "100%",
                 display: "flex",
                 alignItems: "start",
                 justifyContent: "center",

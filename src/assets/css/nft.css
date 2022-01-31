@@ -11,8 +11,79 @@
   margin-top: 18px;
   opacity: 0.9;
 }
-.maindiv{
+.maindiv {
   max-width: 1500px;
+}
+.flex-container {
+  display: flex;
+  width: 24%;
+  margin-top: 1rem;
+  margin-bottom: -4rem;
+  margin-left: 4rem;
+}
+.filterbutton {
+  display: flex;
+  font-size: 18px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: black;
+  width: 118px;
+  height: 50px;
+  left: 167px;
+  top: 575px;
+  color: white;
+
+  border: 1.5px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+.filterbutton2 {
+  display: flex;
+  font-size: 18px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: white;
+  width: 118px;
+  height: 50px;
+  left: 167px;
+  top: 575px;
+  color: black;
+
+  border: 1.5px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+.pricebutton{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: black;
+  width: 239px;
+  height: 52px;
+  left: 167px;
+  top: 575px;
+
+  border: 1.5px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+
+.flex-child {
+  flex: 1;
+  border: 2px solid white;
+}
+
+.flex-child:first-child {
+  margin-right: 20px;
 }
 
 .scroll {
@@ -21,7 +92,6 @@
 .nft-card-container:hover {
   opacity: 0.8;
 }
-
 
 .nft-card-container:hover .nft-details-container .nft-details .clr {
   color: black;
@@ -43,7 +113,8 @@
   display: block;
   margin-right: 50px;
 } */
-#videomintprice{}
+#videomintprice {
+}
 
 .nft-img {
   height: 280px;

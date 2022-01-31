@@ -31,27 +31,27 @@ const Footer = () => {
             height="80px"
             style={{ opacity: "0.99" }}
           ></img>
-          <div style={{color:"wheat",display:"flex",alignItems:"center",justifyContent:"space-evenly",marginTop:"10.4rem"}}>
-            
-           <a href="https://www.linkedin.com/company/muzixtech/" style={{color:"white",margin:"5px"}}><div>LINKEDIN</div></a>
-           <a style={{color:"white",margin:"5px"}}><div>REDDIT</div></a>
-           <a style={{color:"white",margin:"5px"}}><div>FACEBOOK</div></a>
-           <a href="https://twitter.com/MuzixNFT" style={{color:"white",margin:"5px"}}><div>TWITTER</div></a>
-           <a href="https://instagram.com/muzix.nft?utm_medium=copy_link" style={{color:"white",margin:"5px"}}><div>INSTAGRAM</div></a>
+          <div style={{ color: "wheat", display: "flex", alignItems: "center", justifyContent: "space-evenly", marginTop: "10.4rem" }}>
 
-  
-            </div>
-        
+            <a href="https://www.linkedin.com/company/muzixtech/" style={{ color: "white", margin: "5px" }}><div>LINKEDIN</div></a>
+            <a style={{ color: "white", margin: "5px" }}><div>REDDIT</div></a>
+            <a style={{ color: "white", margin: "5px" }}><div>FACEBOOK</div></a>
+            <a href="https://twitter.com/MuzixNFT" style={{ color: "white", margin: "5px" }}><div>TWITTER</div></a>
+            <a href="https://instagram.com/muzix.nft?utm_medium=copy_link" style={{ color: "white", margin: "5px" }}><div>INSTAGRAM</div></a>
+
+
+          </div>
+
         </Row>
 
         <Row>
           <Heading>Quick Links</Heading>
           <FooterLink href="/">Home</FooterLink>
           <FooterLink href="/about">About</FooterLink>
-          <FooterLink href="/">Community</FooterLink>
+          <FooterLink href="/community-guidelines">Community</FooterLink>
           <FooterLink href="/blog">Blogs</FooterLink>
           <FooterLink href="/faq">FAQ</FooterLink>
-          <div style={{marginTop:"1.3rem"}}>PRIVACY & POLICY</div>
+          <FooterLink href="/privacy-policy" style={{ marginTop: "1.3rem" }}>PRIVACY & POLICY</FooterLink>
         </Row>
 
         <Row>
@@ -62,17 +62,17 @@ const Footer = () => {
           >
             <p>Phone : +91 8178382149</p>
             {/* <br></br> */}
-            <a style={{color:"white"}} href="mailto:Info@createprotocol.org"><p>Email : Info@createprotocol.org</p></a>
-            
-            <div style={{marginTop:"7.2rem"}}>COOKIES POLICY</div>
-      
+            <a style={{ color: "white" }} href="mailto:Info@createprotocol.org"><p>Email : Info@createprotocol.org</p></a>
+
+            <FooterLink href="/cookies-policy" style={{ marginTop: "7.2rem" }}>COOKIES POLICY</FooterLink>
+
           </div>
         </Row>
 
-      
+
       </ContainerInner>
-     
-     
+
+
       <img
         src={linesmall2}
         style={{
@@ -80,7 +80,7 @@ const Footer = () => {
           height: "1.3px",
         }}
       />
-     
+
     </Containertop>
   );
 };

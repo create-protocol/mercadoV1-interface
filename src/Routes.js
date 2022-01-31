@@ -22,6 +22,7 @@ import Footer from './components/Footer'
 import BlogPage from './components/BlogPage'
 import BlogDetailPage from './components/BlogDetailPage'
 import Landingpage from './components/Landingpage'
+import CommGuide from './components/Privacy/CommGuide'
 const Routes = () => {
   return (
     <div>
@@ -42,6 +43,7 @@ const Routes = () => {
             <Route exact path="/faq" component={Faq}></Route>
             <Route exact path="/teampage" component={TeamPagefinal}></Route>
             <Route exact path="/descpage" component={DescPage}></Route>
+            <Route exact path="/commduide" component={CommGuide}></Route>
             {/* <Route exact path="/landing" component={Landingpage}></Route> */}
             <Route
               exact
