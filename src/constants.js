@@ -80,7 +80,7 @@ const routes = [
   },
   
   {
-    pathName: "main",
+    pathName: "artist",
     path: "/artist",
     component: ArtisPage,
   },
