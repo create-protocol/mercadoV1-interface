@@ -276,7 +276,12 @@ function Mintnft() {
           </Transparentbtn>
         </Link>
       </div>
+      <div>
       <h3 className="getstarted">GET STARTED -</h3>
+      
+      </div>
+      {/* <h3 className="req">GET STARTED -</h3> */}
+      
       <view
         style={{
           display: "flex",
@@ -300,43 +305,41 @@ function Mintnft() {
             onChange={onChange}
           />
 
-         
+          <label className="formlable">NFT name </label>
           <input
             className="formtxtfill docs"
             type="text"
-            placeholder="_NFT name"
             onChange={(e) =>
               updateFormInput({ ...formInput, name: e.target.value })
             }
             style={{ width: "100%" }}
           />
-
-          <input
-            className="formtxtfill docs"
-            type="text"
-            placeholder="_Description"
+          <label className="formlable2">Description</label>
+          <textarea
+            className="formtxtfill2"
+          
+            rows="1"
+            cols="10"
             onChange={(e) =>
               updateFormInput({ ...formInput, description: e.target.value })
             }
             style={{ width: "100%" }}
-            required
-          />
-
+            
+          ></textarea>
+          <label className="formlable">Price in WETH </label>
           <input
             className="formtxtfill docs"
             type="text"
-            placeholder="_Price in WETH"
             onChange={(e) =>
               updateFormInput({ ...formInput, price: e.target.value })
             }
             style={{ width: "100%" }}
             required
           />
-
+          <label className="formlable">Creator royalty (in WETH) </label>
           <input
             className="formtxtfill docs"
             type="text"
-            placeholder="_Creator royalty (in WETH)"
             onChange={(e) =>
               updateFormInput({ ...formInput, royaltyinweth: e.target.value })
             }
@@ -379,8 +382,7 @@ function Mintnft() {
               style={{
                 width: "576px",
                 height: "500px",
-                border: "2px solid",
-                borderColor: "#5999ad #5aa6b2",
+                backgroundColor:"#363636",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
