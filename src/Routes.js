@@ -23,7 +23,9 @@ import BlogPage from './components/BlogPage'
 import BlogDetailPage from './components/BlogDetailPage'
 import Landingpage from './components/Landingpage'
 import CommGuide from './components/Privacy/CommGuide'
+import { useState } from 'react'
 const Routes = () => {
+  const [lang, setLang] = useState("EN")
   return (
     <div>
       <Router>
@@ -65,7 +67,9 @@ const Routes = () => {
             <Route exact path={'/preview-nft'} component={Previewnft}></Route>
           </Switch>
         </ScrollToTop>
-        <Route path="/" component={Footer}></Route>
+        <Route path="/" >
+          <Footer lang={lang} setLang={code => setLang(code)} />
+        </Route>
       </Router>
     </div>
   )
