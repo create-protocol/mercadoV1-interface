@@ -21,15 +21,15 @@ const Landingdiv = styled.div`
   box-shadow: 0px -10px 25px rgba(0, 0, 0, 0.32);
   border-radius: 24px;
   height: 58vh;
-  width: 20vw;
+  width: 19vw;
   padding: 0.8rem;
   object-fit: cover;
   display: flex;
   align-items: start;
   flex-direction: column;
   margin-top: 2rem;
-  margin-left:.3rem;
-  margin-right:.3rem;
+  margin-left:.5rem;
+  margin-right:.5rem;
   @media (max-width: 600px) {
     width: 100%;
   }
