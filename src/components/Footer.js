@@ -3,7 +3,6 @@ import logo from "../assets/images/image 6.svg";
 import "font-awesome/css/font-awesome.min.css";
 import linesmall from "../assets/images/line (4).png";
 import linesmall2 from "../assets/images/line (3).png";
-
 import {
   Containertop,
   Row,
@@ -12,7 +11,12 @@ import {
   ContainerInner,
 } from "./FooterStyles";
 
-const Footer = () => {
+
+
+const Footer = (props) => {
+  const handleLangSelect = (e) => {
+    props.setLang(e.target.value);
+  }
   return (
     <Containertop>
       <img
@@ -127,6 +131,15 @@ const Footer = () => {
           height: "1.3px",
         }}
       />
+      {/* <div>
+        <label for="lang">Language:</label>
+        <select name="lang" id="lang" onChange={handleLangSelect} value={props.lang}>
+          <option value="en" selected="selected">English</option>
+          <option value="es">Spanish</option>
+          <option value="ja">Japanese</option>
+          <option value="ru">Russian</option>
+        </select>
+      </div> */}
     </Containertop>
   );
 };

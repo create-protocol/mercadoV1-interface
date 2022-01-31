@@ -78,7 +78,8 @@ function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
   const [filetype, setFileType] = useState(null);
   const [filename, setfilename] = useState(null);
-  const [prog, setprog] = useState(0);
+  const [uploading, setUploading] = useState(false);
+  const [prog, setProg] = useState(0);
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
@@ -88,14 +89,21 @@ function Mintnft() {
 
   async function onChange(e) {
     setfilename(e.target.files[0].name);
+    setUploading(true);
     // console.log(e.target.files[0].name);
     const filetype = e.target.files[0].type;
+    const fileSize = e.target.files[0].size;
     const filetypefinal = filetype.substring(filetype.lastIndexOf(".") + 1);
     setFileType(filetype.substring(filetype.lastIndexOf("/") + 1));
     const file = e.target.files[0];
     try {
       const added = await client.add(file, {
-        progress: (prog) => console.log(`received: ${prog}`),
+        progress: (prog) => {
+          setProg(Math.floor(prog / fileSize * 100));
+          if (prog == fileSize) {
+            setUploading(false);
+          }
+        },
       });
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
       setFileUrl(url);
@@ -277,11 +285,11 @@ function Mintnft() {
         </Link>
       </div>
       <div>
-      <h3 className="getstarted">GET STARTED -</h3>
-      
+        <h3 className="getstarted">GET STARTED -</h3>
+
       </div>
       {/* <h3 className="req">GET STARTED -</h3> */}
-      
+
       <view
         style={{
           display: "flex",
@@ -297,6 +305,7 @@ function Mintnft() {
             width: "50%",
           }}
         >
+          {uploading && <p style={{ fontSize: "2rem" }}>uploaded {prog}%</p>}
           <input
             type="file"
             className="formtxtfill docs"
@@ -304,6 +313,7 @@ function Mintnft() {
             name="Asset"
             onChange={onChange}
           />
+
 
           <label className="formlable">NFT name </label>
           <input
@@ -317,14 +327,14 @@ function Mintnft() {
           <label className="formlable2">Description</label>
           <textarea
             className="formtxtfill2"
-          
+
             rows="1"
             cols="10"
             onChange={(e) =>
               updateFormInput({ ...formInput, description: e.target.value })
             }
             style={{ width: "100%" }}
-            
+
           ></textarea>
           <label className="formlable">Price in WETH </label>
           <input
@@ -382,7 +392,7 @@ function Mintnft() {
               style={{
                 width: "576px",
                 height: "500px",
-                backgroundColor:"#363636",
+                backgroundColor: "#363636",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
