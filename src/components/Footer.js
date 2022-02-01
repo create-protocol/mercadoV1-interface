@@ -48,28 +48,36 @@ const Footer = (props) => {
               href="https://www.linkedin.com/company/muzixtech/"
               style={{ color: "white", margin: "5px" }}
             >
-              <div><i class="fa fa-linkedin" style={{ fontSize: "28px" }}></i></div>
+              <div>
+                <i class="fa fa-linkedin" style={{ fontSize: "28px" }}></i>
+              </div>
             </a>
             <a style={{ color: "white", margin: "5px" }}>
-              <div><i class="fa fa-facebook" style={{ fontSize: "28px" }}></i></div>
+              <div>
+                <i class="fa fa-facebook" style={{ fontSize: "28px" }}></i>
+              </div>
             </a>
             <a style={{ color: "white", margin: "5px" }}>
-              <div><i class="fa fa-telegram" style={{ fontSize: "28px" }}></i></div>
+              <div>
+                <i class="fa fa-telegram" style={{ fontSize: "28px" }}></i>
+              </div>
             </a>
             <a
               href="https://instagram.com/muzix.nft?utm_medium=copy_link"
               style={{ color: "white", margin: "5px" }}
             >
-              <div><i class="fa fa-instagram" style={{ fontSize: "28px" }}></i></div>
+              <div>
+                <i class="fa fa-instagram" style={{ fontSize: "28px" }}></i>
+              </div>
             </a>
             <a
               href="https://twitter.com/MuzixNFT"
               style={{ color: "white", margin: "5px" }}
             >
-              <div><i class="fa fa-twitter" style={{ fontSize: "28px" }}></i></div>
+              <div>
+                <i class="fa fa-twitter" style={{ fontSize: "28px" }}></i>
+              </div>
             </a>
-
-
           </div>
         </Row>
 
