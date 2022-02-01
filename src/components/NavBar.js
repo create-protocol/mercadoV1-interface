@@ -79,7 +79,7 @@ const NavBar = (props) => {
 
   //Javascript split method to get the name of the path in array
   const splitLocation = pathname.split("/");
-
+  const [colorChange, setColorchange] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
   const [curAddress, serCurAddress] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
@@ -173,7 +173,16 @@ const NavBar = (props) => {
   const path = homeClass.substring(homeClass.lastIndexOf("/") + 1);
 
   console.log(homeClass.substring(homeClass.lastIndexOf("/") + 1));
-
+  
+  const changeNavbarColor = () =>{
+    if(window.scrollY >= 50){
+      setColorchange(true);
+    }
+    else{
+      setColorchange(false);
+    }
+ };
+ window.addEventListener('scroll', changeNavbarColor);
   return (
     <>
       <Navdiv>
@@ -228,7 +237,9 @@ const NavBar = (props) => {
           top: "0",
           width: "100%",
           zIndex: "1000",
-          background: "black",
+          transition:".8s",
+          background: colorChange?"black":"none",
+
         }}
       >
         <div
@@ -343,7 +354,7 @@ const NavBar = (props) => {
                     style={{
                       marginTop: "10px",
                       borderRadius: "10px",
-                      outline: "none",
+                      border:"none"
                     }}
                   >
                     <button
@@ -351,9 +362,10 @@ const NavBar = (props) => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        fontSize: "1.2rem",
-                        width: "12rem",
+                        fontSize: "1rem",
+                        width: "10rem",
                         borderRadius: "30px",
+                        border:"none"
                       }}
                       class="border-gradient border-gradient-purple"
                       onClick={connectWallet}

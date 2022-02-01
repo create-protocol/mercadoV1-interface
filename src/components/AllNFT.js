@@ -91,7 +91,7 @@ const AllNFT = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   return (
     <>
-      <div style={{ width: "100%" }}>
+      <div style={{ width: "100%",marginTop:"5rem" }}>
         <ImageContainer>Discover</ImageContainer>
         <div class="flex-container" style={{justifyContent:"space-between",width:"90%"}}>
           {/* <img src={filterimage} width="118px" height="52px"></img> */}

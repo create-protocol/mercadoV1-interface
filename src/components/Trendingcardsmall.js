@@ -28,8 +28,8 @@ const Trendingcardsmall = () => {
   return (
     <div
       style={{
-        width: "11.5rem",
-        height: "12rem",
+        width: "23%",
+        height: "48%",
         backgroundImage: `url(${Trending1})`,
         objectFit: "fill",
         borderRadius: "1rem",

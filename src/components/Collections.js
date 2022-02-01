@@ -95,7 +95,7 @@ const Whitebtn = styled.div`
 const ContactUs = () => {
   return (
     <>
-      <div style={{ width: "100%" }}>
+      <div style={{ width: "100%" ,marginTop:"5rem"}}>
         <ImageContainer>Collections</ImageContainer>
         <div
           style={{

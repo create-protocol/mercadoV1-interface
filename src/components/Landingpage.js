@@ -5,7 +5,7 @@ import Landingcardimg from "../assets/images/landingimg.png";
 import Landingowner from "../assets/images/landingowner.png";
 import Eth from "../assets/images/Ethereum (ETH).png";
 import Heart from "../assets/images/cil_heart.png";
-import LandingCard from "./LandingCard";
+import LandingCard from "./Newcard";
 import Sellerimg from "../assets/images/sellerimg.png";
 import Seller from "./Seller";
 import TrendingCarousel from "./TrendingCarousel";
@@ -114,7 +114,7 @@ const Landingpage = () => {
         fontStyle: "normal",
         color: "white",
         width: "100%",
-        marginTop: "6rem",
+        
       }}
     >
       <div
@@ -175,15 +175,16 @@ const Landingpage = () => {
             paddingRight: "7rem",
             marginTop: "5rem",
             display: "flex",
+            height:"60vh",
             alignItems: "center",
             justifyContent: "space-between",
           }}
         >
-          <div style={{ width: "30%" }}>
+          <div style={{ width: "30%",height:"100% " }}>
             <div
               style={{
-                width: "23rem",
-                height: "25rem",
+                width: "100%",
+                height: "100%",
                 backgroundImage: `url(${Trending1})`,
                 objectFit: "fill",
                 borderRadius: "1rem",
@@ -203,9 +204,9 @@ const Landingpage = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              height: "24rem",
+              height: "100%",
               flexWrap: "wrap",
-              marginTop: "-1rem",
+              
             }}
           >
             <Trendingcardsmall />
@@ -256,8 +257,8 @@ const Landingpage = () => {
       <div
         style={{
           width: "100%",
-          paddingLeft: "8rem",
-          paddingRight: "8rem",
+          paddingLeft: "7.5rem",
+          paddingRight: "7.5rem",
           paddingTop: "9rem",
         }}
       >
@@ -271,13 +272,17 @@ const Landingpage = () => {
           <HeadingText>Featured Assets</HeadingText>
           <Transparentbtn>Explore more</Transparentbtn>
         </div>
+        
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
+            alignItems: "start",
+            justifyContent: "",
             flexWrap: "wrap",
             marginTop: "2rem",
+            width:"101%",
+            marginLeft:"0.2rem"
+            
           }}
         >
           <LandingCard />
@@ -291,7 +296,7 @@ const Landingpage = () => {
           <LandingCard />
           <LandingCard />
           <LandingCard />
-          <LandingCard />
+          {/* <LandingCard /> */}
         </div>
       </div>
 
