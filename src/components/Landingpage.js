@@ -280,7 +280,7 @@ const Landingpage = () => {
             justifyContent: "",
             flexWrap: "wrap",
             marginTop: "2rem",
-            width:"101%",
+            width:"108%",
             marginLeft:"0.2rem"
             
           }}
