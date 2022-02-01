@@ -97,7 +97,7 @@ const Infopage = () => {
               width: "90%",
             }}
           >
-            <img style={{ marginTop: "1rem" }} src={linewho} alt="line" />
+            <img style={{ marginTop: "1rem" ,width:"100%"}} src={linewho} alt="line" />
             <div
               style={{
                 display: "flex",
@@ -291,6 +291,7 @@ const Infopage = () => {
           marginTop: "10rem",
           marginBottom: "5rem",
           fontFamily: "Century Gothic",
+          padding:"0 8rem"
         }}
       >
         <span style={{ fontSize: "2.4rem", lineHeight: "4.8rem" }}>
