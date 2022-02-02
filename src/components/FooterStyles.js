@@ -35,7 +35,7 @@ text-align:start;
 `
 
 export const FooterLink = styled.a`
-color: #FFFFFF;
+color:  #E0E0E0;
 margin-bottom: 10px;
 font-size: 15px;
 text-decoration: none;
@@ -48,7 +48,7 @@ text-decoration: none;
 
 export const Heading = styled.p`
 font-size: 20px;
-color: #FFFFFF;
+color: white;
 margin-bottom: 2rem;
 font-weight: bold;
 `;

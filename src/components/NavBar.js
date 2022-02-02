@@ -299,14 +299,14 @@ const NavBar = (props) => {
                 textDecoration: "none",
               }}
             >
-              <Link
+              {/* <Link
                 to="/"
                 activeStyle={{ color: "red" }}
                 style={{ color: "white" }}
               >
                 Home
-                {/* <div style={{ textDecoration: "none" ,color:"white"}}>Home</div> */}
-              </Link>
+                
+              </Link> */}
               <Link to="/about">
                 <div class="dropdown">
                   <button class="dropbtn">Explore</button>

@@ -11,12 +11,10 @@ import {
   ContainerInner,
 } from "./FooterStyles";
 
-
-
 const Footer = (props) => {
   const handleLangSelect = (e) => {
     props.setLang(e.target.value);
-  }
+  };
   return (
     <Containertop>
       <img
@@ -80,23 +78,27 @@ const Footer = (props) => {
             </a>
           </div>
         </Row>
-
+        <Row style={{display:"flex",flexDirection:"column-reverse"}}>
+          <FooterLink>
+            <FooterLink
+              href="/community-guidelines"
+              style={{ marginTop: "1.3rem" }}
+            >
+              COMMUNITY GUIDELINES
+            </FooterLink>
+          </FooterLink>
+        </Row>
         <Row>
-          <Heading>Quick Links</Heading>
+          <Heading style={{color:"#FFFFFF"}}>Quick Links</Heading>
           <FooterLink href="/">Home</FooterLink>
           <FooterLink href="/about">About</FooterLink>
           <FooterLink href="/">Community</FooterLink>
           <FooterLink href="/blog">Blogs</FooterLink>
           <FooterLink href="/faq">FAQ</FooterLink>
-          <FooterLink
-            href="/community-guidelines"
-            style={{ marginTop: "1.3rem" }}
-          >
-            Community guidelines
-          </FooterLink>
+
           <FooterLink
             href="/privacy-policy"
-            style={{ marginTop: "-1.99rem", marginLeft: "14rem" }}
+            style={{ marginTop: "1.2rem", marginLeft: "" }}
           >
             PRIVACY & POLICY
           </FooterLink>
@@ -116,7 +118,7 @@ const Footer = (props) => {
 
             <FooterLink
               href="/cookies-policy"
-              style={{ marginTop: "7.2rem", marginLeft: "-3rem" }}
+              style={{ marginTop: "7.2rem", marginLeft: "" }}
             >
               COOKIES POLICY
             </FooterLink>

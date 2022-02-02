@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
 
@@ -13,6 +13,7 @@ import Tick from "../assets/images/tickimg.png";
 import Share from "../assets/images/share.png";
 import Settings from "../assets/images/settings.png";
 import Filterline from "../assets/images/filterbottomline.png";
+import CollectedCard from './CollectedCard'
 
 const ImageContainer = styled.div`
   background: #313131;
@@ -115,18 +116,51 @@ const Filtercurved = styled.div`
   justify-content: space-between;
   padding: 0 0.5rem;
   margin-right: 0.1rem;
-  cursor:pointer;
+  cursor: pointer;
 `;
 
-const Filtercurveddiv=styled.div`
-border-bottom: 1px solid linear-gradient(90deg, rgba(128, 147, 255, 0.25) 9.45%, #7D9BFA 26.47%, #60DBD4 72.88%, rgba(92, 228, 207, 0.25) 89.94%);
+const Filtercurveddiv = styled.div`
+  border-bottom: 1px solid
+    linear-gradient(
+      90deg,
+      rgba(128, 147, 255, 0.25) 9.45%,
+      #7d9bfa 26.47%,
+      #60dbd4 72.88%,
+      rgba(92, 228, 207, 0.25) 89.94%
+    );
+`;
 
-// border-image-source: linear-gradient(90deg, rgba(128, 147, 255, 0.25) 9.45%, #7D9BFA 26.47%, #60DBD4 72.88%, rgba(92, 228, 207, 0.25) 89.94%);
+const initialstate = {
+  Collected: true,
+  Created: false,
+};
 
-
-`
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "Collected": {
+      return {
+        Collected: true,
+  Created: false,
+      };
+    }
+    case "Created": {
+      return {
+        Collected: false,
+  Created: true,
+      };
+    }
+    default: {
+      return {
+        Collected: true,
+        Created: false,
+      };
+    }
+  }
+};
 const Userprofile = () => {
   const [filterOpen, setFilterOpen] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialstate);
+
   return (
     <>
       <div style={{ width: "100%", marginTop: "5rem" }}>
@@ -149,14 +183,13 @@ const Userprofile = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            
           }}
         >
           <div style={{ display: "flex", width: "80%" }}>
-            <Filtercurved>
+            <Filtercurved onClick={()=>{dispatch({type:'Collected'})}}>
               Collected<div>0</div>
             </Filtercurved>
-            <Filtercurved>
+            <Filtercurved onClick={()=>{dispatch({type:'Created'})}}>
               Created<div>0</div>
             </Filtercurved>
             <Filtercurved>
@@ -183,7 +216,7 @@ const Userprofile = () => {
             <img src={Settings} />
           </div>
         </Filtercurveddiv>
-        <img src={Filterline} style={{width:"90vw"}}/>
+        <img src={Filterline} style={{ width: "90vw" }} />
         <div
           class="flex-container"
           style={{
@@ -292,19 +325,19 @@ const Userprofile = () => {
             }}
           >
             {filterOpen && (
-              <div style={{ width: "25%", marginTop: "2.7rem" }}>
+              <div style={{ width: "20%", marginTop: "2.7rem" }}>
                 <FillterCard />
               </div>
             )}
-
+            {state.Collected&&
             <div
               style={{
-                width: filterOpen == true ? "70%" : "100%",
+                width: filterOpen == true ? "80%" : "100%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 flexDirection: "column",
-                marginLeft: filterOpen == true ? "0rem" : "2rem",
+                marginLeft: filterOpen == true ? "4rem" : "2rem",
               }}
             >
               <div
@@ -314,7 +347,7 @@ const Userprofile = () => {
                   alignItems: "start",
                   justifyContent: "flex-start",
                   flexWrap: "wrap",
-                  marginLeft:"1.5rem"
+                  marginLeft: "1.5rem",
                 }}
               >
                 <Landingcard />
@@ -327,6 +360,44 @@ const Userprofile = () => {
                 <Landingcard />
               </div>
             </div>
+}
+            {state.Created&&
+            <div
+              style={{
+                width: filterOpen == true ? "80%" : "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                marginLeft: filterOpen == true ? "2rem" : "4rem",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  alignItems: "start",
+                  justifyContent: "flex-start",
+                  flexWrap: "wrap",
+                  
+                }}
+              >
+                <CollectedCard/>
+                <CollectedCard/>
+                <CollectedCard/>
+                <CollectedCard/>
+                <CollectedCard/>
+                <CollectedCard/>
+                <CollectedCard/>
+                <CollectedCard/>
+                <CollectedCard/>
+                <CollectedCard/>
+                <CollectedCard/>
+                <CollectedCard/>  
+                
+              </div>
+            </div>
+}
           </div>
         </div>
       </div>
