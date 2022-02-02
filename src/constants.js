@@ -17,6 +17,7 @@ import AllNFT from './components/AllNFT'
 import Privacy from "./components/Privacy/Privacy";
 import CommGuide from "./components/Privacy/CommGuide";
 import CookiesPolicy from "./components/Privacy/Cookie";
+import Userprofile from "./components/Userprofile";
 const routes = [
   {
     pathName: "HOME",
@@ -113,6 +114,11 @@ const routes = [
     pathName: "allnft",
     path: "/allnft",
     component: AllNFT,
+  },
+  {
+    pathName: "profile",
+    path: "/profile",
+    component: Userprofile,
   },
   
 ];
