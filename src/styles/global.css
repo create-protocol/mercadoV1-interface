@@ -102,6 +102,7 @@ div.singlepara {
   align-items: center;
   letter-spacing: 0.3vmin;
   color: #a0abb8;
+  border:none;
 }
 .formlable2 {
   left: 16.51%;

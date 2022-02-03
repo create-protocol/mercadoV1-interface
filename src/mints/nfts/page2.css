@@ -51,6 +51,7 @@ textarea {
   border-radius: 6px;
   width: 80%;
   height: 40px;
+  border:none;
   /* color: white; */
 }
 .formtxtfill2{
@@ -59,6 +60,7 @@ textarea {
   background: #363636;
   border-radius: 6px;
   height: 90px;
+  border:none;
  
 }
 .docs {

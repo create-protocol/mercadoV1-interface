@@ -18,6 +18,8 @@ import Privacy from "./components/Privacy/Privacy";
 import CommGuide from "./components/Privacy/CommGuide";
 import CookiesPolicy from "./components/Privacy/Cookie";
 import Userprofile from "./components/Userprofile";
+import ProfileSettings from './components/Profilesettings'
+
 const routes = [
   {
     pathName: "HOME",
@@ -119,6 +121,11 @@ const routes = [
     pathName: "profile",
     path: "/profile",
     component: Userprofile,
+  },
+  {
+    pathName: "settings",
+    path: "/settings",
+    component: ProfileSettings,
   },
   
 ];
