@@ -139,10 +139,12 @@ const Landingpage = () => {
             Explore the NFT marketplace dedicated to creators
           </div>
           <div style={{ display: "flex", marginTop: "2rem" }}>
-            <Transparentbtn>Explore NFTs</Transparentbtn>
-            <Transparentbtn style={{ marginLeft: "2rem" }}>
+           
+           <a href="/allnft" style={{textDecoration:"none",color:"white"}}><Transparentbtn >Explore NFTs</Transparentbtn></a> 
+            <a href="/asset/create" style={{textDecoration:"none",color:"white"}}><Transparentbtn style={{ marginLeft: "2rem" }}>
               Create NFT
-            </Transparentbtn>
+            </Transparentbtn></a>
+            
           </div>
         </ImageContainer>
       </div>
