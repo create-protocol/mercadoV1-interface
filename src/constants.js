@@ -21,10 +21,7 @@ import Userprofile from "./components/Userprofile";
 import ProfileSettings from './components/Profilesettings'
 
 const routes = [
-  {
-    pathName: "HOME",
-    path: "/",
-  },
+  
 
   {
     pathName: "VIEW PROFILE",
@@ -72,8 +69,8 @@ const routes = [
     component: Mintnft,
   },
   {
-    pathName: "main",
-    path: "/main",
+    pathName: "/",
+    path: "/",
     component: Landingpage,
   },
   {

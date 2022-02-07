@@ -30,11 +30,10 @@ const Routes = () => {
     <div>
       <Router>
         <Route path="/" component={NavBar}></Route>
-        {/* <Route path="/" component={NavBar1}></Route> */}
-        {/* <div style={{ marginTop: '10rem' }}></div> */}
+        
         <ScrollToTop>
           <Switch>
-            <Route exact path="/" component={Home}></Route>
+            <Route exact path="/" component={Landingpage}></Route>
             <Route exact path="/page2" component={page2}></Route>
             <Route exact path="/page3" component={page3}></Route>
             <Route exact path="/page4" component={page4}></Route>
