@@ -1,18 +1,17 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useState } from "react";
 import { Drawer } from "antd";
-import { NavLink as Link1, Link, useLocation } from "react-router-dom";
-import { ethers } from "ethers";
+import { Link } from "react-router-dom";
 import { isBrowser } from "react-device-detect";
 import "../assets/css/Navbar.css";
 import "../assets/css/dropdownnav.css";
-import Web3Modal from "web3modal";
 import Drawerroutes from "./DrawerRoutes";
 import Home from "../assets/images/image 8.svg";
 import styled from "styled-components";
-import BlogPage from "./BlogPage";
-import Searchbar from "./Searchbar";
 // import WalletConnectProvider from "@walletconnect/web3-provider";
 import Navdropline from "../assets/images/navdropline.png";
+import ConnectWallet from "./ConnectWallet";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleWalletPopup } from "../store";
 
 export const GradientButton = styled.div`
   color: white;
@@ -60,119 +59,15 @@ const Navdiv = styled.div`
   background: transparent;
 `;
 
-const ShadowBtn = styled.div`
-  cursor: pointer;
-  border: 1px solid #3498db;
-  background-color: transparent;
-  height: 50px;
-  width: 200px;
-  color: #3498db;
-  font-size: 1.5em;
-  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
-`;
 
-const NavBar = (props) => {
-  const location = useLocation();
-
-  //destructuring pathname from location
-  const { pathname } = location;
-
-  //Javascript split method to get the name of the path in array
-  const splitLocation = pathname.split("/");
+const NavBar = (props) => { 
 
   const [showDrawer, setShowDrawer] = useState(false);
-  const [curAddress, serCurAddress] = useState(null);
-  const [isConnected, setIsConnected] = useState(false);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
 
-  setInterval(function () {
-    if (window.ethereum.selectedAddress != null) {
-      // console.log("connected");
-      // console.log(window.ethereum.selectedAddress);
-    } else {
-      // console.log("not connected");
-      setIsConnected(false);
-      serCurAddress(null);
-    }
-  }, 500);
-  useEffect(async function connectWallet() {
-    setTimeout(function () {
-      if (window.ethereum && isConnected) {
-        serCurAddress(window.ethereum.selectedAddress);
-      } else {
-        <h1>
-          Please Install metamask extension from{" "}
-          <a href="https://metamask.io/">Here</a>{" "}
-        </h1>;
-      }
-    }, 100);
-  });
-  async function connectWallet() {
-    console.log("here");
-    if (window.ethereum) {
-      const web3Modal = new Web3Modal({
-        network: "mainnet",
-        cacheProvider: true,
-      });
-      const connection = await web3Modal.connect();
-      const provider = new ethers.providers.Web3Provider(connection);
-      const signer = provider.getSigner();
-      setIsConnected(true);
-    } else {
-      alert("Please Install metamask extension from metamask.io");
-    }
-  }
-
-  async function connectWallet2() {
-    console.log("walletconnect here");
-    if (window.ethereum) {
-      const web3Modal = new Web3Modal({
-        network: "mainnet",
-        cacheProvider: true,
-      });
-      const connection = await web3Modal.connect();
-      const provider = new ethers.providers.Web3Provider(connection);
-      const signer = provider.getSigner();
-      setIsConnected(true);
-    } else {
-      alert("Please Install metamask extension from metamask.io");
-    }
-  }
-
-  async function disconnect() {
-    setIsConnected(false);
-    serCurAddress(null);
-  }
-
-  useLayoutEffect(() => {
-    if (window.ethereum && isConnected) {
-      window.ethereum.on("accountsChanged", function (accounts) {
-        serCurAddress(window.ethereum.selectedAddress);
-      });
-    } else {
-      <h1>
-        Please Install metamask extension from metamask.io
-        <a href="https://metamask.io/">Here</a>{" "}
-      </h1>;
-    }
-  }, []);
-
-  const [copySuccess, setCopySuccess] = useState("");
-  const textAreaRef = useRef(null);
-
-  function copyToClipboard(e) {
-    textAreaRef.current.select();
-    document.execCommand("copy");
-    // This is just personal preference.
-    // I prefer to not show the whole text area selected.
-    e.target.focus();
-    setCopySuccess("Copied!");
-  }
-
-  const homeClass = window.location.pathname;
-  const path = homeClass.substring(homeClass.lastIndexOf("/") + 1);
-
-  console.log(homeClass.substring(homeClass.lastIndexOf("/") + 1));
+  const dispatch = useDispatch()
+  const handleToggle = () => {dispatch(toggleWalletPopup())};
+  const wallet =  useSelector(state => state.wallet.wallet)
 
   return (
     <>
@@ -192,11 +87,6 @@ const NavBar = (props) => {
             <span></span>
 
             <ul id="menu">
-              {/* <button>
-                <Link to="/team">
-                  <li style={{fontSize:"14px"}}> Team and Advisors</li>
-                </Link>
-              </button> */}
               <Link to="/" activeClassName="active">
                 <div style={{ textDecoration: "none" }}>Home</div>
               </Link>
@@ -294,7 +184,6 @@ const NavBar = (props) => {
                 style={{ color: "white" }}
               >
                 Home
-                {/* <div style={{ textDecoration: "none" ,color:"white"}}>Home</div> */}
               </Link>
               <Link to="/about">
                 <div class="dropdown">
@@ -306,9 +195,7 @@ const NavBar = (props) => {
                     >
                       All NFTs <img src={Navdropline} alt="bar" />
                     </Link>
-                    {/* <img src={Navdropline} alt="bar"/> */}
                     <Link to="/collections">Collections</Link>
-                    {/* <a href="#">Link 3</a> */}
                   </div>
                 </div>
               </Link>
@@ -326,9 +213,7 @@ const NavBar = (props) => {
                     >
                       Who are we? <img src={Navdropline} alt="bar" />
                     </Link>
-                    {/* <img src={Navdropline} alt="bar"/> */}
                     <Link to="/faq">FAQs</Link>
-                    {/* <a href="#">Link 3</a> */}
                   </div>
                 </div>
               </Link>
@@ -338,7 +223,29 @@ const NavBar = (props) => {
               </Link>
 
               <div style={{ marginRight: "6.5rem" }}>
-                {curAddress == null && (
+               
+
+                {wallet && wallet.address ? (
+                  <div style={{ display: "flex" }}>
+                    <div class="on-dark">
+                      <button
+                        class="border-gradient border-gradient-purple"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: "1.2rem",
+                          width: "12rem",
+                          borderRadius: "30px",
+                        }}
+                      >
+                        {wallet.address.substring(0, 5) +
+                          "..." +
+                         wallet.address.slice(-4)}
+                      </button>
+                    </div>
+                  </div>
+                ): (
                   <div
                     style={{
                       marginTop: "10px",
@@ -356,38 +263,10 @@ const NavBar = (props) => {
                         borderRadius: "30px",
                       }}
                       class="border-gradient border-gradient-purple"
-                      onClick={connectWallet}
+                      onClick={handleToggle}
                     >
                       Connect Wallet
                     </button>
-                  </div>
-                )}
-
-                {isConnected && (
-                  <div style={{ display: "flex" }}>
-                    {/* <div class="on-dark">
-                  <button class="border-gradient border-gradient-purple" onClick={disconnect}>
-                    Disconnect
-                  </button>
-                </div> */}
-
-                    <div class="on-dark">
-                      <button
-                        class="border-gradient border-gradient-purple"
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: "1.2rem",
-                          width: "12rem",
-                          borderRadius: "30px",
-                        }}
-                      >
-                        {window.ethereum.selectedAddress.substring(0, 5) +
-                          "..." +
-                          window.ethereum.selectedAddress.slice(-4)}
-                      </button>
-                    </div>
                   </div>
                 )}
               </div>
@@ -415,6 +294,7 @@ const NavBar = (props) => {
           ></Drawerroutes>
         </Drawer>
       </Navdivdesktop>
+      <ConnectWallet />
     </>
   );
 };
