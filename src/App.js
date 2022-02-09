@@ -6,7 +6,6 @@ import { Helmet } from "react-helmet";
 import './styles/global.css';
 import {Provider} from 'react-redux';
 import { store } from "./store";
-import ConnectWallet from "./components/ConnectWallet";
 
 
 // import newsletter from './components/newsletter';
@@ -17,12 +16,10 @@ function App() {
         <title>mercado.studio</title>
         <meta name="description" content="A marketplace for artist" />
         <meta name="keywords" content="mercado studio,muzix mercado studio,mercado NFT,Create protocall,Marketplace ,mercado nft " />
-        
       </Helmet>
       <Provider store={store}>
         <Routes />
       </Provider>
-      
     </div>
   );
 }

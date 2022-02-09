@@ -5,8 +5,8 @@ import { create as ipfsHttpClient } from "ipfs-http-client";
 import Web3Modal from "web3modal";
 import { nftaddress, nftmarketaddress, polygonweth } from "../config";
 import "../assets/css/home.css";
-import NFT from "../abis/NFT.json";
-import Market from "../abis/Marketplace.json";
+import NFT from "../ethereum/NFT.json";
+import Market from "../ethereum/Marketplace.json";
 import styled from "styled-components";
 import { Player } from "video-react";
 import "../../node_modules/video-react/dist/video-react.css"; // import css

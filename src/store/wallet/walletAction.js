@@ -9,7 +9,10 @@ export const ADD_ORDER = "ADD_ORDER";
 export const ERROR = "ERROR";
 export const UPDATE_WALLET = 'UPDATE_WALLET';
 
-//Fetch order
+
+
+
+
 export const toggleWalletPopup = () => {
   return  (dispatch) => {
     dispatch({
@@ -59,7 +62,6 @@ export const addMetamask = () => {
                   dispatch({
                     type : ERROR,
                     ErrorText : switchError});
-
                 }
               }
             } 

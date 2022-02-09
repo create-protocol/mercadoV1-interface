@@ -69,7 +69,7 @@ div.singlepara {
   content: "";
   display: inline-block;
   background-image: url("../assets/images/Group\ 36617.svg");
-  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  background: linear-gradient(to bottom, #f9f9f9, #e3e3e3);
   border: 1px solid rgb(15, 15, 15);
   border-radius: 3px;
   padding: 5px 8px;

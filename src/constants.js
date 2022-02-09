@@ -18,8 +18,23 @@ const routes = [
   {
     pathName: "HOME",
     path: "/",
+    component: Landingpage,
   },
-
+  {
+    pathName: "FAQ & HELP",
+    path: "/FAQ & HELP",
+    component: faq,
+  },
+  {
+    pathName: "ABOUT MUZIX",
+    path: "/ABOUT MUZIX",
+    component: Previewnft,
+  },
+  {
+    pathName: "contactus",
+    path: "/contactus",
+    component: ContactUs,
+  },
   {
     pathName: "VIEW PROFILE",
     path: "/creator/bharat-thakur",
@@ -36,16 +51,6 @@ const routes = [
     component:DescriptionPage,
   },
   {
-    pathName: "FAQ & HELP",
-    path: "/FAQ & HELP",
-    component: faq,
-  },
-  {
-    pathName: "ABOUT MUZIX",
-    path: "/ABOUT MUZIX",
-    component: Previewnft,
-  },
-  {
     pathName: "profile",
     path: "/profile/:addr",
     component: Profile,
@@ -54,11 +59,6 @@ const routes = [
     pathName: "profile",
     path: "/info_page",
     component: Infopage,
-  },
-  {
-    pathName: "contactus",
-    path: "/contactus",
-    component: ContactUs,
   },
   {
     pathName: "mintnft",
