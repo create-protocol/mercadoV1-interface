@@ -68,6 +68,7 @@ div.singlepara {
 .custom-file-input::before {
   content: "";
   display: inline-block;
+  object-fit: contain;
   background-image: url("../assets/images/Group\ 36617.svg");
   background: linear-gradient(to bottom, #f9f9f9, #e3e3e3);
   border: 1px solid rgb(15, 15, 15);
@@ -80,15 +81,57 @@ div.singlepara {
   -webkit-user-select: none;
   cursor: pointer;
   font-weight: 700;
-  width: 62.7%;
+  width: 900.7%;
   height: 45px;
 }
+.formlable {
+  /* position: absolute; */
+  left: 16.51%;
+  right: 78.49%;
+  top: 53.87%;
+  bottom: 45.23%;
 
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 26px;
+  /* identical to box height, or 144% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.3vmin;
+  color: #a0abb8;
+  border:none;
+}
+.formlable2 {
+  left: 16.51%;
+  right: 78.49%;
+  top: 53.87%;
+  bottom: 45.23%;
+
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 26px;
+  /* identical to box height, or 144% */
+
+  display: flex;
+  align-items: center;
+
+  color: #a0abb8;
+}
+.formlable::after {
+  content: "*";
+  color: red;
+  margin-left: 2px;
+}
 .page__title {
   font-size: 3rem;
   color: var(--primary-title-color);
   /* justify-content: left; */
-  text-align: center;
+  text-align: start;
 }
 
 /* FAQ Page styles */
@@ -410,18 +453,18 @@ div.singlepara {
 }
 .underline {
   border-bottom-width: 2px;
- }
+}
 .round {
   width: 100%;
   border: 1.7px solid #8c8c8c;
- text-align: left;
+  text-align: left;
   padding-left: -20px;
   border-radius: 50px;
   position: absolute;
   left: 0%;
   top: 0%;
   bottom: 0.27%;
-  
+
   font-size: 20px;
 }
 

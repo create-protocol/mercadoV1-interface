@@ -16,11 +16,11 @@ import Card1 from "../assets/images/card.png";
 import Card2 from "../assets/images/card1.png";
 import Card3 from "../assets/images/card2.png";
 import { Link } from "react-router-dom";
-import uploadfile from "../assets/images/Group 36617.svg"
+import uploadfile from "../assets/images/Group 36617.svg";
 import Footer from "./Footer";
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import ProgressBar from "react-bootstrap/ProgressBar";
 import axios from "axios";
-import Progress from 'react-progressbar';
+import Progress from "react-progressbar";
 const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
 
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
@@ -53,32 +53,33 @@ const Transparentbtn = styled.div`
   cursor: pointer;
 `;
 
-const Createsmallh=styled.div`
-font-family: Century Gothic;
-font-style: normal;
-font-weight: bold;
-font-size: 1rem;
-line-height: 160%;
-text-align:left;
-color: #D14F8C;
-`
+const Createsmallh = styled.div`
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 160%;
+  text-align: left;
+  color: #d14f8c;
+`;
 
-const Createmaint=styled.div`
-font-family: Century Gothic;
-font-style: normal;
-font-weight: bold;
-font-size: 1.2rem;
-text-align:left;
-line-height: 140%;
-color: #F4F4F4;
-margin-top:1.2rem;
-`
+const Createmaint = styled.div`
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: left;
+  line-height: 140%;
+  color: #f4f4f4;
+  margin-top: 1.2rem;
+`;
 
 function Mintnft() {
   const [fileUrl, setFileUrl] = useState(null);
   const [filetype, setFileType] = useState(null);
-  const [filename,setfilename]=useState(null);
-  const [prog,setprog]=useState(0);
+  const [filename, setfilename] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [prog, setProg] = useState(0);
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
@@ -87,17 +88,22 @@ function Mintnft() {
   });
 
   async function onChange(e) {
-    setfilename(e.target.files[0].name)
+    setfilename(e.target.files[0].name);
+    setUploading(true);
     // console.log(e.target.files[0].name);
     const filetype = e.target.files[0].type;
+    const fileSize = e.target.files[0].size;
     const filetypefinal = filetype.substring(filetype.lastIndexOf(".") + 1);
     setFileType(filetype.substring(filetype.lastIndexOf("/") + 1));
     const file = e.target.files[0];
     try {
       const added = await client.add(file, {
-        progress: (prog) => console.log(`received: ${prog}`),
-        
-        
+        progress: (prog) => {
+          setProg(Math.floor(prog / fileSize * 100));
+          if (prog == fileSize) {
+            setUploading(false);
+          }
+        },
       });
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
       setFileUrl(url);
@@ -160,80 +166,130 @@ function Mintnft() {
     // contract.unlistItem("0x25");
     await transaction.wait();
   }
-  
-  function getFile(){
+
+  function getFile() {
     <input
-    className="formtxtfill docs"
-    type="file"
-    
-    onChange={(e) =>
-      updateFormInput({ ...formInput, file: e.target.value })
-    }
-    style={{ width: "100%" }}
-  />
-}
+      className="formtxtfill docs"
+      type="file"
+      onChange={(e) => updateFormInput({ ...formInput, file: e.target.value })}
+      style={{ width: "100%" }}
+    />;
+  }
 
-
-  
   return (
     <div>
       <PageHeader title="Create" />
-      
+
       <div
         style={{
           width: "100%",
           paddingLeft: "8rem",
           paddingRight: "8rem",
           paddingTop: "2rem",
-          display:"flex",
-          alignItems:"center",
-          justifyContent:"center",
-          flexDirection:"column",
-          marginBottom:"5rem"
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          marginBottom: "5rem",
         }}
       >
-        <img style={{width:"35rem"}} src={Createsell} alt="heading"/>
+        <img style={{ width: "35rem" }} src={Createsell} alt="heading" />
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             flexWrap: "wrap",
-            marginTop:"7rem"
+            marginTop: "7rem",
           }}
         >
-          <div style={{ width: "47%", display: "flex",flexWrap:"wrap" }}>
-            <img src={Card1} style={{height:"6rem",width:"6rem"}} alt="C1"/>
-            <div style={{marginLeft:"3rem",width:"70%"}}>
+          <div style={{ width: "47%", display: "flex", flexWrap: "wrap" }}>
+            <img
+              src={Card1}
+              style={{ height: "6rem", width: "6rem" }}
+              alt="C1"
+            />
+            <div style={{ marginLeft: "3rem", width: "70%" }}>
               <Createsmallh>Set up your Wallet</Createsmallh>
-              <Createmaint>Connect wallet by clicking the wallet icon in the top right corner. Learn about the wallets we support.</Createmaint>
+              <Createmaint>
+                Connect wallet by clicking the wallet icon in the top right
+                corner. Learn about the wallets we support.
+              </Createmaint>
             </div>
           </div>
-          <div style={{ width: "47%", display: "flex",flexWrap:"wrap" }}>
-            <img src={Card2} style={{height:"6rem",width:"6rem"}} alt="C1"/>
-            <div style={{marginLeft:"3rem",width:"70%"}}>
+          <div style={{ width: "47%", display: "flex", flexWrap: "wrap" }}>
+            <img
+              src={Card2}
+              style={{ height: "6rem", width: "6rem" }}
+              alt="C1"
+            />
+            <div style={{ marginLeft: "3rem", width: "70%" }}>
               <Createsmallh>Create Your Collection</Createsmallh>
-              <Createmaint>Click Create and Add social links, a description, profile & banner images, and set a secondary sales fee.</Createmaint>
+              <Createmaint>
+                Click Create and Add social links, a description, profile &
+                banner images, and set a secondary sales fee.
+              </Createmaint>
             </div>
           </div>
-          <div style={{ width: "47%", display: "flex",marginTop:"5rem",flexWrap:"wrap" }}>
-            <img src={Card3} style={{height:"6rem",width:"6rem"}} alt="C1"/>
-            <div style={{marginLeft:"3rem",width:"70%"}}>
+          <div
+            style={{
+              width: "47%",
+              display: "flex",
+              marginTop: "5rem",
+              flexWrap: "wrap",
+            }}
+          >
+            <img
+              src={Card3}
+              style={{ height: "6rem", width: "6rem" }}
+              alt="C1"
+            />
+            <div style={{ marginLeft: "3rem", width: "70%" }}>
               <Createsmallh>Add Your NFTs</Createsmallh>
-              <Createmaint>Upload your work (image, video, audio, or 3D art), add a title and description, and customize your NFTs</Createmaint>
+              <Createmaint>
+                Upload your work (image, video, audio, or 3D art), add a title
+                and description, and customize your NFTs
+              </Createmaint>
             </div>
           </div>
-          <div style={{ width: "47%", display: "flex",marginTop:"5rem",flexWrap:"wrap" }}>
-            <img src={Card1} style={{height:"6rem",width:"6rem"}} alt="C1"/>
-            <div style={{marginLeft:"3rem",width:"70%"}}>
+          <div
+            style={{
+              width: "47%",
+              display: "flex",
+              marginTop: "5rem",
+              flexWrap: "wrap",
+            }}
+          >
+            <img
+              src={Card1}
+              style={{ height: "6rem", width: "6rem" }}
+              alt="C1"
+            />
+            <div style={{ marginLeft: "3rem", width: "70%" }}>
               <Createsmallh>List Them For Sale</Createsmallh>
-              <Createmaint>Choose between auctions, fixed-price listings, and declining-price listings. You choose how you want to sell your NFTs</Createmaint>
+              <Createmaint>
+                Choose between auctions, fixed-price listings, and
+                declining-price listings. You choose how you want to sell your
+                NFTs
+              </Createmaint>
             </div>
           </div>
         </div>
-        <Link to='/asset/create' style={{textDecoration:"none",color:"white"}}><Transparentbtn style={{marginTop:"3rem"}}>Create NFT</Transparentbtn></Link>
+        <Link
+          to="/asset/create"
+          style={{ textDecoration: "none", color: "white" }}
+        >
+          <Transparentbtn style={{ marginTop: "3rem" }}>
+            Create NFT
+          </Transparentbtn>
+        </Link>
       </div>
-      <h3 className="getstarted">GET STARTED -</h3>
+      <div>
+        <h3 className="getstarted">GET STARTED -</h3>
+
+      </div>
+      {/* <h3 className="req">GET STARTED -</h3> */}
+
       <view
         style={{
           display: "flex",
@@ -249,61 +305,51 @@ function Mintnft() {
             width: "50%",
           }}
         >
-         
-          
-
-          
-          <input type="file" class="custom-file-input" type="file"
+          {uploading && <p style={{ fontSize: "2rem" }}>uploaded {prog}%</p>}
+          <input
+            type="file"
+            className="formtxtfill docs"
+            type="file"
             name="Asset"
-            onChange={onChange}/>
-          
-         
-          {/* <span htmlFor="file" style={{color:"white",marginTop:"10px",marginLeft:"6px"}}>{filename}</span> */}
-       
-         
-         
-         
-            {/* <img onClick={getFile} src={uploadfile} style={{height:"45px",width:"70%",marginLeft:"-20px",marginBottom:"10px"}}/> */}
-           
-         
+            onChange={onChange}
+          />
 
+
+          <label className="formlable">NFT name </label>
           <input
             className="formtxtfill docs"
             type="text"
-            placeholder="_NFT name"
             onChange={(e) =>
               updateFormInput({ ...formInput, name: e.target.value })
             }
             style={{ width: "100%" }}
           />
+          <label className="formlable2">Description</label>
+          <textarea
+            className="formtxtfill2"
 
-          <input
-           
-            className="formtxtfill docs"
-            type="text"
-            placeholder="_Description"
+            rows="1"
+            cols="10"
             onChange={(e) =>
               updateFormInput({ ...formInput, description: e.target.value })
             }
             style={{ width: "100%" }}
-            required
-          />
 
+          ></textarea>
+          <label className="formlable">Price in WETH </label>
           <input
             className="formtxtfill docs"
             type="text"
-            placeholder="_Price in WETH"
             onChange={(e) =>
               updateFormInput({ ...formInput, price: e.target.value })
             }
             style={{ width: "100%" }}
             required
           />
-
+          <label className="formlable">Creator royalty (in WETH) </label>
           <input
             className="formtxtfill docs"
             type="text"
-            placeholder="_Creator royalty (in WETH)"
             onChange={(e) =>
               updateFormInput({ ...formInput, royaltyinweth: e.target.value })
             }
@@ -346,11 +392,10 @@ function Mintnft() {
               style={{
                 width: "576px",
                 height: "500px",
-                border: "2px solid",
-                borderColor: "#5999ad #5aa6b2",
-                display:"flex",
-                alignItems:"center",
-                justifyContent:"center"
+                backgroundColor: "#363636",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <h2

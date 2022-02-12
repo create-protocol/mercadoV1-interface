@@ -118,7 +118,9 @@ const NavBar = (props) => {
           top: "0",
           width: "100%",
           zIndex: "1000",
-          background: "black",
+          transition:".8s",
+          background: colorChange?"black":"none",
+
         }}
       >
         <div
@@ -178,19 +180,20 @@ const NavBar = (props) => {
                 textDecoration: "none",
               }}
             >
-              <Link
+              {/* <Link
                 to="/"
                 activeStyle={{ color: "red" }}
                 style={{ color: "white" }}
               >
                 Home
-              </Link>
+                
+              </Link> */}
               <Link to="/about">
                 <div class="dropdown">
                   <button class="dropbtn">Explore</button>
                   <div class="dropdown-content">
                     <Link
-                      to="/main"
+                      to="/allnft"
                       style={{ display: "flex", flexDirection: "column" }}
                     >
                       All NFTs <img src={Navdropline} alt="bar" />
@@ -250,7 +253,7 @@ const NavBar = (props) => {
                     style={{
                       marginTop: "10px",
                       borderRadius: "10px",
-                      outline: "none",
+                      border:"none"
                     }}
                   >
                     <button
@@ -258,9 +261,10 @@ const NavBar = (props) => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        fontSize: "1.2rem",
-                        width: "12rem",
+                        fontSize: "1rem",
+                        width: "10rem",
                         borderRadius: "30px",
+                        border:"none"
                       }}
                       class="border-gradient border-gradient-purple"
                       onClick={handleToggle}

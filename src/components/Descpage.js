@@ -32,6 +32,7 @@ import {
 } from "react-share";
 import { FacebookIcon, TwitterIcon, TelegramIcon } from "react-share";
 import Share from "./nftshare";
+
 const Splitscreen = styled.div`
   display: flex;
   flex-direction: row;
@@ -46,9 +47,9 @@ const Left = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 130%;
   margin-left: auto;
-  height: 100vh;
+  height: 120vh;
   @media (max-width: 1000px) {
     width: 100%;
     height: 60%;
@@ -61,7 +62,7 @@ const Right = styled.div`
   align-items: start;
   margin-right:100px;
   width: 100%;
-//   height:100vh;
+
   border:1px solid black
   flex-wrap:wrap
   @media (max-width: 1000px) {
@@ -87,14 +88,9 @@ const Signupbtn = styled.div`
 `;
 
 const Biddingcard = styled.div`
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.11) 0%,
-    rgba(0, 0, 0, 0.53125) 48.96%,
-    rgba(186, 104, 200, 0.53) 100%
-  );
-  opacity: 0.75;
-  box-shadow: 0px -10px 25px rgba(0, 0, 0, 0.32);
+background: linear-gradient(180deg, rgba(0, 0, 0, 0.11) 0%, rgba(0, 0, 0, 0.53125) 48.96%, rgba(55, 55, 55, 0.8) 100%);
+opacity: 0.75;
+box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.32);
   border-radius: 24px;
   display: flex;
   align-items: center;
@@ -108,14 +104,14 @@ const Mainheading=styled.div`
 font-family: Century Gothic;
 font-style: normal;
 font-weight: 600;
-font-size: 2.8rem;
+font-size: 2.3rem;
 line-height: 140%;`
 
 const Desctext=styled.div`
 font-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
-font-size: 1.2rem;
+font-size: 1rem;
 line-height: 160%;
 color: #A9A9A9;`
 
@@ -140,7 +136,6 @@ line-height:0.5rem;
 const Lefttext=styled.div`
 font-family: Century Gothic;
 font-style: normal;
-font-weight: bold;
 font-size: 18px;
 line-height:0;
 `
@@ -225,7 +220,7 @@ const Descpage = (props) => {
   //   console.log(obj);
   return (
     <>
-      <Splitscreen>
+      <Splitscreen style={{marginTop:"7rem"}}>
         <Left>
           <div
             style={{
@@ -252,11 +247,15 @@ const Descpage = (props) => {
                 style={{
                   width: "100%",
                   borderRadius: "15px",
-                  height: "25rem",
+                  height: "70vh",
                   objectFit: "cover",
                 }}
               />
             </Zoom>
+            <div style={{marginTop:"1rem",display:"flex",alignItems:"center",justifyContent:"center"}}>
+                  <img src={Landingowner} style={{marginRight:"1rem"}}/>
+                  <Lefttext style={{color:"#A9A9A9"}}>created by @brightmac</Lefttext>
+            </div>
             <div style={{ color: "white", }}>
                 <Leftheading>Contract Address</Leftheading>
               
@@ -287,44 +286,16 @@ const Descpage = (props) => {
             <Desctext>
               Lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing
               elit. Curabitur id sem elit. Nulla suscipit massa vitae eleifend
-              malesuada. Suspendisse at arcu rhoncus odio efficitur finibus ut
-              eu tellus. Praesent iaculis massa eu lacus dictum, vitae tristique
-              sem congue. Aliquam dui tellus, malesuada quis commodo nec,
-              ullamcorper quis tortor.{" "}
+              malesuada.
             </Desctext>
             {/* {obj.name} */}
           </p>
+          
+            
+          
           <div
             style={{
-              marginTop: "1.4rem",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <img
-              style={{ objectFit: "contain", width: "2rem" }}
-              src={Landingowner}
-              alt="landingimg"
-            />
-            <div
-              style={{
-                width: "80%",
-                textAlign: "left",
-                marginLeft: "1rem",
-                color: "white",
-              }}
-            >
-              <div style={{ fontSize: "1rem", fontWeight: "bold" }}>
-                *Insert Artwork title*
-              </div>
-              <div style={{ color: "#A9A9A9", fontSize: "0.7rem" }}>
-                created by @brightmac
-              </div>
-            </div>
-          </div>
-          <div
-            style={{
-              width: "100%",
+              width: "90%",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -358,7 +329,7 @@ const Descpage = (props) => {
                   <img src={Eth} alt="" />
                   <div style={{ marginLeft: "0.4rem" }}>0.99 ETH</div>
                 </div>
-                <div>Buy now</div>
+                <div style={{background: "#229CEA",padding:".7rem",borderRadius:"0.5rem",cursor:"pointer"}}>Buy now</div>
               </div>
             </div>
             <div
@@ -404,6 +375,7 @@ const Descpage = (props) => {
             }}
           >
             <Biddingtext>Ongoing Bids</Biddingtext>
+            
             <Biddingcard>
               <div
                 style={{
@@ -424,14 +396,14 @@ const Descpage = (props) => {
                     width: "80%",
                     textAlign: "left",
                     marginLeft: "2rem",
-                    color: "white",
+                    color: "#A9A9A9"
                   }}
                 >
-                  <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
+                  <div style={{ fontSize: "1rem",fontWeight:"normal" }}>
                     By woodshelf
                   </div>
-                  <div style={{ color: "#A9A9A9", fontSize: "0.9rem",marginTop:"1rem" }}>
-                    Bid of 20Eth
+                  <div style={{ fontSize: "1rem",marginTop:"1rem" }}>
+                    Bid at 20Eth
                   </div>
                 </div>
               </div>
@@ -442,63 +414,14 @@ const Descpage = (props) => {
                     textAlign: "left",
                     marginRight: "2rem",
                     color: "white",
-                    height:"100%"
+                    height:"100%",
+                    color: "#A9A9A9",
                   }}
                 >
-                  <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
+                  <div style={{ fontSize: "1rem"}}>
                    365 ETH
                   </div>
-                  <div style={{ color: "#A9A9A9", fontSize: "0.9rem",marginTop:"1rem" }}>
-                    11:46AM
-                  </div>
-                </div>
-              </div>
-            </Biddingcard>
-            <Biddingcard>
-              <div
-                style={{
-                //   marginTop: "1.4rem",
-                  display: "flex",
-                  alignItems: "center",
-                  marginLeft: "2rem",
-                  height:"100%",
-                }}
-              >
-                <img
-                  style={{ objectFit: "contain", width: "5rem" }}
-                  src={Landingowner}
-                  alt="landingimg"
-                />
-                <div
-                  style={{
-                    width: "80%",
-                    textAlign: "left",
-                    marginLeft: "2rem",
-                    color: "white",
-                  }}
-                >
-                  <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
-                    By woodshelf
-                  </div>
-                  <div style={{ color: "#A9A9A9", fontSize: "0.9rem",marginTop:"1rem" }}>
-                    Bid of 20Eth
-                  </div>
-                </div>
-              </div>
-              <div>
-              <div
-                  style={{
-                    width: "80%",
-                    textAlign: "left",
-                    marginRight: "2rem",
-                    color: "white",
-                    height:"100%"
-                  }}
-                >
-                  <div style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
-                   365 ETH
-                  </div>
-                  <div style={{ color: "#A9A9A9", fontSize: "0.9rem",marginTop:"1rem" }}>
+                  <div style={{ fontSize: "0.9rem",marginTop:"1rem" }}>
                     11:46AM
                   </div>
                 </div>

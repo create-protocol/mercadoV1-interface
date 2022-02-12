@@ -12,8 +12,14 @@ import Landingpage from './components/Landingpage'
 import Descpage from "./components/Descpage";
 import ArtisPage from "./components/ArtistBio";
 import Blog from "./components/Blog"
-import Privacy from "./components/privacy";
 import Collections from "./components/Collections"
+import AllNFT from './components/AllNFT'
+import Privacy from "./components/Privacy/Privacy";
+import CommGuide from "./components/Privacy/CommGuide";
+import CookiesPolicy from "./components/Privacy/Cookie";
+import Userprofile from "./components/Userprofile";
+import ProfileSettings from './components/Profilesettings'
+
 const routes = [
   {
     pathName: "HOME",
@@ -66,8 +72,8 @@ const routes = [
     component: Mintnft,
   },
   {
-    pathName: "main",
-    path: "/main",
+    pathName: "/",
+    path: "/",
     component: Landingpage,
   },
   {
@@ -77,7 +83,7 @@ const routes = [
   },
   
   {
-    pathName: "main",
+    pathName: "artist",
     path: "/artist",
     component: ArtisPage,
   },
@@ -87,14 +93,39 @@ const routes = [
     component: Blog,
   },
   {
-    pathName: "privacy",
-    path: "/privacy",
+    pathName: "privacy-policy",
+    path: "/privacy-policy",
     component: Privacy,
+  },
+   {
+    pathName: "community-guidelines",
+    path: "/community-guidelines",
+    component: CommGuide,
+  },
+  {
+    pathName: "cookies-policy",
+    path: "/cookies-policy",
+    component: CookiesPolicy,
   },
   {
     pathName: "collections",
     path: "/collections",
     component: Collections,
+  },
+  {
+    pathName: "allnft",
+    path: "/allnft",
+    component: AllNFT,
+  },
+  {
+    pathName: "profile",
+    path: "/profile",
+    component: Userprofile,
+  },
+  {
+    pathName: "settings",
+    path: "/settings",
+    component: ProfileSettings,
   },
   
 ];

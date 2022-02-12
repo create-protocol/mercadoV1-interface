@@ -14,13 +14,13 @@ import i6 from "../assets/images/6.png";
 import sepline from "../assets/images/sep line.png";
 import bell from "../assets/images/bell_front.png";
 import envelope from "../assets/images/envelope_front.png";
-import Aboutbg from "../assets/images/about us bg.png";
+import Aboutbg from "../assets/images/about.png";
 import { Link } from "react-router-dom";
 
 const Maindiv = styled.div`
   color: white;
   text-align: left;
-  margin: 5rem 8rem;
+  
   color: white;
   
 `;
@@ -44,7 +44,8 @@ const Infopage = () => {
     <Maindiv>
       {/* section1 */}
       <Bgdiv >
-        <div style={{ textAlign: "left", marginTop: "16rem" , }}>
+        <div style={{ textAlign: "left",paddingTop:"6rem", paddingLeft:"8rem",
+              paddingRight:"8rem", }}>
           <div
             style={{
               // fontFamily: "Open Sans",
@@ -53,6 +54,9 @@ const Infopage = () => {
               fontSize: "5.2rem",
               lineHeight: "6.5rem",
               textTransform: "capitalize",
+              paddingTop:"7rem",
+              
+
             }}
           >
             Hello,
@@ -80,6 +84,7 @@ const Infopage = () => {
             alignItems: "center",
             justifyContent: "center",
             width: "100%",
+            
           }}
         >
           <div
@@ -92,7 +97,7 @@ const Infopage = () => {
               width: "90%",
             }}
           >
-            <img style={{ marginTop: "1rem" }} src={linewho} alt="line" />
+            <img style={{ marginTop: "1rem" ,width:"100%"}} src={linewho} alt="line" />
             <div
               style={{
                 display: "flex",
@@ -286,6 +291,7 @@ const Infopage = () => {
           marginTop: "10rem",
           marginBottom: "5rem",
           fontFamily: "Century Gothic",
+          padding:"0 8rem"
         }}
       >
         <span style={{ fontSize: "2.4rem", lineHeight: "4.8rem" }}>
