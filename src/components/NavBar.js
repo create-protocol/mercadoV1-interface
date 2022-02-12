@@ -39,7 +39,6 @@ const Navdivdesktop = styled.div`
   width: 100%;
   zindex: 1000;
   background: black;
-
   @media (max-width: 1180px) {
     display: none;
   }
@@ -49,12 +48,10 @@ const Navdiv = styled.div`
   @media (min-width: 1180px) {
     display: none;
   }
-
   width: 100%;
   padding-top: 2rem;
   padding-left: 1rem;
   padding-right: 1rem;
-
   height: 100px;
   background: transparent;
 `;
@@ -119,8 +116,7 @@ const NavBar = (props) => {
           width: "100%",
           zIndex: "1000",
           transition:".8s",
-          background: colorChange?"black":"none",
-
+          background: "black",
         }}
       >
         <div
