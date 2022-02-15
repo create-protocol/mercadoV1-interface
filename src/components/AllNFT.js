@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
-
+import axios from 'axios';
 import contactus from "../assets/images/contactus.png";
 import filterimage from "../assets/images/Filter.png";
 import Landingcard from "./Newcard";
@@ -89,49 +89,68 @@ const Whitebtn = styled.div`
 
 const AllNFT = () => {
   const [filterOpen, setFilterOpen] = useState(false);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const collections = ['cryptopunks', 'boredapeyatchclub', 'pudgypenguins', 'guttergang']
+    const get = { method: 'GET' };
+    let completeNFTArray = [];
+    collections.forEach(collection => {
+      console.log(collection);
+      fetch(`https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=25&collection=${collection}`, get)
+        .then(response => response.json())
+        .then(nftArray => {
+          console.log(nftArray.assets)
+          nftArray.assets.forEach(eachNFT => {
+            completeNFTArray.push(eachNFT)
+          })
+          console.log("NOW: ", completeNFTArray)
+        })
+        .catch(err => console.error(err))
+    })
+  })
   return (
     <>
-      <div style={{ width: "100%",marginTop:"5rem" }}>
+      <div style={{ width: "100%", marginTop: "5rem" }}>
         <ImageContainer>Discover</ImageContainer>
-        <div class="flex-container" style={{justifyContent:"space-between",width:"90%"}}>
+        <div class="flex-container" style={{ justifyContent: "space-between", width: "90%" }}>
           {/* <img src={filterimage} width="118px" height="52px"></img> */}
-          <div style={{display:"flex"}}>
-          {filterOpen ? (
-            <button
-              class="btn filterbutton2"
-              onClick={() => {
-                setFilterOpen(!filterOpen);
-              }}
-            >
-              <i class="fa fa-filter "></i>Filter
-            </button>
-          ) : (
-            <button
-              class="filterbutton"
-              onClick={() => {
-                setFilterOpen(!filterOpen);
-              }}
-            >
-              Filter
-            </button>
-          )}
-
-          <div class="dropdownfilter">
-            <button class="dropbtnfilter">
-              Price ascending <div className="downbtn"></div>
-            </button>
-            <div class="dropdown-contentfilter">
-              <Link
-                to="/main"
-                style={{ display: "flex", flexDirection: "column" }}
+          <div style={{ display: "flex" }}>
+            {filterOpen ? (
+              <button
+                class="btn filterbutton2"
+                onClick={() => {
+                  setFilterOpen(!filterOpen);
+                }}
               >
-                All NFTs
-              </Link>
+                <i class="fa fa-filter "></i>Filter
+              </button>
+            ) : (
+              <button
+                class="filterbutton"
+                onClick={() => {
+                  setFilterOpen(!filterOpen);
+                }}
+              >
+                Filter
+              </button>
+            )}
 
-              <Link to="/collections">Collections</Link>
-              {/* <a href="#">Link 3</a> */}
+            <div class="dropdownfilter">
+              <button class="dropbtnfilter">
+                Price ascending <div className="downbtn"></div>
+              </button>
+              <div class="dropdown-contentfilter">
+                <Link
+                  to="/main"
+                  style={{ display: "flex", flexDirection: "column" }}
+                >
+                  All NFTs
+                </Link>
+
+                <Link to="/collections">Collections</Link>
+                {/* <a href="#">Link 3</a> */}
+              </div>
             </div>
-          </div>
           </div>
           <div class="dropdownfilter">
             <button class="dropbtnfilter">
@@ -176,7 +195,7 @@ const AllNFT = () => {
             }}
           >
             {filterOpen && (
-              <div style={{ width: "25%",marginTop:"2.7rem" }}>
+              <div style={{ width: "25%", marginTop: "2.7rem" }}>
                 <FillterCard />
               </div>
             )}
@@ -188,16 +207,16 @@ const AllNFT = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 flexDirection: "column",
-                marginLeft:filterOpen===true? "0rem":"2rem",
+                marginLeft: filterOpen === true ? "0rem" : "2rem",
               }}
-            > 
-              <div style={{display:"flex",width:"100%",alignItems:"start",justifyContent:"flex-start",flexWrap:"wrap"}}>
-                  <Landingcard/>
-                  <Landingcard />
-                  <Landingcard />
-                  <Landingcard />
-                  <Landingcard/>
-                  <Landingcard />
+            >
+              <div style={{ display: "flex", width: "100%", alignItems: "start", justifyContent: "flex-start", flexWrap: "wrap" }}>
+                <Landingcard />
+                <Landingcard />
+                <Landingcard />
+                <Landingcard />
+                <Landingcard />
+                <Landingcard />
               </div>
             </div>
           </div>
