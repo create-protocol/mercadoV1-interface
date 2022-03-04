@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
 
@@ -8,6 +8,7 @@ import Landingcard from "./Newcard";
 import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
 import "../assets/css/filterdropdown.css";
+import axios from "axios";
 
 const ImageContainer = styled.div`
   background: url(${contactus});
@@ -87,8 +88,44 @@ const Whitebtn = styled.div`
   color: #606060;
 `;
 
+let config = {
+  headers : {
+    "X-API-Key" : 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip'    
+  }
+}
+
+const fetchData = async () => {
+  const collectionTop = [
+    '0x59468516a8259058bad1ca5f8f4bff190d30e066',
+    '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
+    '0xed5af388653567af2f388e6224dc7c4b3241c544',
+    '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb'
+  ]
+  const collectionTopArr = [...collectionTop,...collectionTop,...collectionTop,...collectionTop,...collectionTop] // To collect data of 5 NFTs
+
+  const responseAllNFT = await Promise.all(
+    collectionTopArr.map(async (ele,index)=> {
+      const id = parseInt(index/4) + 1;
+      const res = axios.get(`https://deep-index.moralis.io/api/v2/nft/${ele}​/${id}?chain=eth&format=decimal`,
+                             { 'headers': {"X-API-Key" : 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip'} });
+      return res;
+    })
+  );
+
+  console.log(responseAllNFT);
+
+  // const response = await axios.get();
+
+}
+
 const AllNFT = () => {
   const [filterOpen, setFilterOpen] = useState(false);
+  const [data, setData] = useState([]);
+  
+  useEffect(()=>{
+    fetchData();
+
+  })
   return (
     <>
       <div style={{ width: "100%",marginTop:"5rem" }}>
