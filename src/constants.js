@@ -78,7 +78,7 @@ const routes = [
   },
   {
     pathName: "main",
-    path: "/assets/:item1/:item2",
+    path: "/assets/:collection/:id",
     component: Descpage,
   },
   {
