@@ -143,8 +143,8 @@ const Descpage = () => {
 
   const { item1,item2 } = useParams();
   //itemid = itemid.toNumber();
-  var token_address = ethers.BigNumber.from(item1);
-  var itemId = ethers.BigNumber.from(item2);
+  var token_address = item1;
+  var itemId =item2;
   console.log(token_address,itemId);
   
 
@@ -163,11 +163,11 @@ const Descpage = () => {
     const responseAllNFT = await Promise.all(
       collectionTopArr.map(async (ele, index) => {
         const id = parseInt(index / 4) + 1;
-        const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + ele + '/' + id + '?chain=eth',
+        const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + token_address + '/' + itemId + '?chain=eth',
           { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
         return res.data;
       })
-    );
+    );  
     setData(responseAllNFT);
     console.log("response from desc2");
     console.log(responseAllNFT);

@@ -9,7 +9,7 @@ import Eth from "../assets/images/Ethereum (ETH).png";
 import Heart from "../assets/images/cil_heart.png";
 import axios from "axios";
 
-
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 const Landingdiv = styled.div`
   background: linear-gradient(
     180deg,
@@ -87,7 +87,7 @@ const LandingCard = (props) => {
     <Landingdiv>
       {/* <img src={image} alt="image" /> */}
       <Imagecont style={{background: 
-        `url(${p})`}}>
+        `url(${p})`} || <Skeleton count={10}/>}>
         <div
           style={{
             marginTop: "60%",
@@ -112,9 +112,9 @@ const LandingCard = (props) => {
           alt="landingimg"
         />
         <div style={{ width: "80%", textAlign: "left", marginLeft: "1rem" }}>
-          <div style={{ fontSize: "1rem", fontWeight: "bold" }}>{props.name}</div>
+          <div style={{ fontSize: "1rem", fontWeight: "bold" }}>{props.name || <Skeleton />}</div>
           <div className="text-truncate" style={{ color: "#A9A9A9", fontSize: "0.7rem" }}>
-            created by {props.owner}
+            created by {props.owner || <Skeleton />}
           </div>
         </div>
       </div>
@@ -135,7 +135,7 @@ const LandingCard = (props) => {
         >
           <div style={{ display: "flex" }}>
             <img src={Eth} alt="" />
-            <div style={{ marginLeft: "0.4rem" }}>{props.symbol}</div>
+            <div style={{ marginLeft: "0.4rem" }}>{props.symbol || <Skeleton count={10}/>}</div>
           </div>
           {/* <div>Bid 12 ETH</div> */}
         </div>

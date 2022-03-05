@@ -20,7 +20,7 @@ import Landingcard from "./Newcard";
 import Trending1 from "../assets/images/trending1.png";
 import { Link } from "react-router-dom";
 import Trendingcardsmall from "./Trendingcardsmall";
-
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import Sepline from "../assets/images/Vector 87.png";
 import TopCollectionCard from "./TopCollectionCard";
 
@@ -120,7 +120,6 @@ const Landingpage = (props) => {
       '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb'
     ]
     const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
-
     const responseAllNFT = await Promise.all(
       collectionTopArr.map(async (ele, index) => {
         const id = parseInt(index / 4) + 1;
@@ -337,7 +336,7 @@ const Landingpage = (props) => {
               {data.map(ele =>
                 <Link to={`/asset/${ele.token_address}/${ele.token_id}`} style={{textDecoration:"none",color:"white"}}>
                   <Landingcard
-                    image={JSON.parse(ele.metadata)}
+                    image={JSON.parse(ele.metadata)} 
                     owner={ele.owner}
                     name={ele.name}
                     symbol={ele.symbol + ' #' + ele.token_id} /></Link>
