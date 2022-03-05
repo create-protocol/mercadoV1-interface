@@ -41,6 +41,7 @@ const Imagecont = styled.div`
   width: 100%;
   border-radius: 0.5rem;
   background: url(${Landingcardimg1});
+  background-size: cover;
   height:35vh;
   // -webkit-box-shadow: 0 8px 6px 10px black;
   //  -moz-box-shadow: 0 8px 6px 10px black;
@@ -86,8 +87,10 @@ const LandingCard = (props) => {
   return (
     <Landingdiv>
       {/* <img src={image} alt="image" /> */}
-      <Imagecont style={{background: 
-        `url(${p})`}}>
+      <Imagecont style={{
+        background: `url(${p})`,
+        backgroundSize: "cover"
+        }}>
         <div
           style={{
             marginTop: "60%",

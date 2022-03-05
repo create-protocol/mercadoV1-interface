@@ -25,10 +25,10 @@ function TeamPageFinal() {
             flexWrap: "wrap",
           }}
         >
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px",height:"35rem" }}
               >
                 <div
@@ -40,23 +40,23 @@ function TeamPageFinal() {
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Abhishek Krishna</h2>
-                  <div class="col">
-                    <p class="title" style={{ fontSize: "20px" ,marginBottom:"-2px"}}>
+                  <div className="col">
+                    <p className="title" style={{ fontSize: "20px" ,marginBottom:"-2px"}}>
                       Founder,CEO and Chief Architect
                     </p>
-                    <p class="title" style={{marginBottom:"-2px"}}>IIT Roorkee</p>
+                    <p className="title" style={{marginBottom:"-2px"}}>IIT Roorkee</p>
                   </div>
-                  <p class="title">
+                  <p className="title">
                     Experienced Entrepreneur and coder. Before Muzix Krishna has
                     founded Kcolbchain: Blockchain development and research
                     community Ojam:
                   </p>
-                  <p class="title">example@example.com</p>
-                  <p class="title">
+                  <p className="title">example@example.com</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem",  marginTop: "-0.6rem" }}
                     >
                       Contact
@@ -66,10 +66,10 @@ function TeamPageFinal() {
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"35rem"}}
               >
                 <div
@@ -81,23 +81,23 @@ function TeamPageFinal() {
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Girish Kumar</h2>
-                  <div class="col">
-                    <p class="title" style={{ fontSize: "20px" ,marginBottom:"-4px"}}>
+                  <div className="col">
+                    <p className="title" style={{ fontSize: "20px" ,marginBottom:"-4px"}}>
                       CoFounder
                     </p>
-                    <p class="title" style={{marginBottom:"14px"}}>IIT Roorkee</p>
+                    <p className="title" style={{marginBottom:"14px"}}>IIT Roorkee</p>
                   </div>
-                  <p class="title">
+                  <p className="title">
                     Dropped out for Entrepreneurship Girish has as an experience
                     of building & running multi crore business from scratch.
                     Tagbin : Built multi crore digital experiences online 
                   </p>
-                  <p class="title">example@example.com</p>
-                  <p class="title">
+                  <p className="title">example@example.com</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "0.3rem" }}
                     >
                       Contact
@@ -108,10 +108,10 @@ function TeamPageFinal() {
             </div>
           </div>
 
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px",height:"35rem" }}
               >
                 <div
@@ -123,23 +123,23 @@ function TeamPageFinal() {
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Noriko Takasaki</h2>
-                  <div class="col">
-                    <p class="title" style={{ fontSize: "20px",marginBottom:"-4px" }}>
+                  <div className="col">
+                    <p className="title" style={{ fontSize: "20px",marginBottom:"-4px" }}>
                       Cofounder
                     </p>
-                    <p class="title" style={{marginBottom:"-2px"}}>PHD(Music)</p>
+                    <p className="title" style={{marginBottom:"-2px"}}>PHD(Music)</p>
                   </div>
-                  <p class="title">
+                  <p className="title">
                     Noriko is a Musician, Music Producer, Composer, and Tabla
                     player. She has worked with Entrepreneurs, artists and
                     labels from across the world and runs several websites in
                     Japanese.
                   </p>
-                  <p class="title">example@example.com</p>
-                  <p class="title">
-                    <button class="button" style={{ borderRadius: "1rem" }}>
+                  <p className="title">example@example.com</p>
+                  <p className="title">
+                    <button className="button" style={{ borderRadius: "1rem" }}>
                       Contact
                     </button>
                   </p>
@@ -171,10 +171,10 @@ function TeamPageFinal() {
             flexWrap: "wrap",
           }}
         >
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"32rem"}}
               >
                 <div
@@ -186,26 +186,26 @@ function TeamPageFinal() {
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Akhil Srivastava</h2>
-                  <div class="col">
-                    <p class="title" style={{ fontSize: "20px" }}>
+                  <div className="col">
+                    <p className="title" style={{ fontSize: "20px" }}>
                       Serial Entrepreneur
                     </p>
-                    <p class="title">
+                    <p className="title">
                       Stanford University Graduate School of Business
                     </p>
                   </div>
-                  {/* <p class="title">
+                  {/* <p className="title">
                     Experienced Entrepreneur and coder. Before Muzix Krishna has
                     founded Kcolbchain: Blockchain development and research
                     community Ojam: Mobile Audio Workstation Neuron Gym:
                     Neuroscience based brain Training Games
                   </p> */}
-                  <p class="title">example@example.com</p>
-                  <p class="title">
+                  <p className="title">example@example.com</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "0.6rem" }}
                     >
                       Contact
@@ -215,10 +215,10 @@ function TeamPageFinal() {
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px",height:"32rem" }}
               >
                 <div
@@ -230,24 +230,24 @@ function TeamPageFinal() {
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Kunal Singh</h2>
-                  <div class="col">
-                    <p class="title" style={{ fontSize: "20px" }}>
+                  <div className="col">
+                    <p className="title" style={{ fontSize: "20px" }}>
                       Specialist in Investment & Finance
                     </p>
-                    <p class="title">Purdue & Stanford University Graduate</p>
+                    <p className="title">Purdue & Stanford University Graduate</p>
                   </div>
-                  {/* <p class="title">
+                  {/* <p className="title">
                     Dropped out for Entrepreneurship Girish has as an experience
                     of building & running multi crore business from scratch.
                     Tagbin : Built multi crore digital experiences online &
                     offline. Skills : Business, Growth, Partnerships
                   </p> */}
-                  <p class="title">example@example.com</p>
-                  <p class="title">
+                  <p className="title">example@example.com</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "3.9rem" }}
                     >
                       Contact
@@ -258,10 +258,10 @@ function TeamPageFinal() {
             </div>
           </div>
 
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"32rem"}}
               >
                 <div
@@ -273,24 +273,24 @@ function TeamPageFinal() {
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Garima Singh</h2>
-                  <div class="col">
-                    {/* <p class="title" style={{ fontSize: "20px" }}>
+                  <div className="col">
+                    {/* <p className="title" style={{ fontSize: "20px" }}>
                     Blockchain Consultant | DeFi Solutions |
 Cryptocurrency Exchangel Crypto Investor 
                     </p>
-                    <p class="title">PHD(Music)</p> */}
+                    <p className="title">PHD(Music)</p> */}
                   </div>
-                  <p class="title">
+                  <p className="title">
                     Blockchain Consultant | DeFi Solutions | Cryptocurrency
                     Exchangel Crypto Investor |ICO, IEO advisor| NET Marketplace
                     (Business Intelligence & Analytics | DAPP | DEX | Smart
                     Contract
                   </p>
-                  <p class="title">example@example.com</p>
-                  <p class="title">
-                    <button class="button" style={{ borderRadius: "4.9rem" }}>
+                  <p className="title">example@example.com</p>
+                  <p className="title">
+                    <button className="button" style={{ borderRadius: "4.9rem" }}>
                       Contact
                     </button>
                   </p>
@@ -326,10 +326,10 @@ Cryptocurrency Exchangel Crypto Investor
             flexWrap: "wrap",
           }}
         >
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"25rem"}}
               >
                 <div
@@ -341,14 +341,14 @@ Cryptocurrency Exchangel Crypto Investor
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Nikhil Gupta</h2>
                   
             
-                  <p class="title">Marketing & Business</p>
-                  <p class="title">
+                  <p className="title">Marketing & Business</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "1rem" }}
                     >
                       Contact
@@ -358,10 +358,10 @@ Cryptocurrency Exchangel Crypto Investor
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"25rem"}}
               >
                 <div
@@ -373,14 +373,14 @@ Cryptocurrency Exchangel Crypto Investor
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Ashish Gupta</h2>
                   
             
-                  <p class="title">Full stack dev</p>
-                  <p class="title">
+                  <p className="title">Full stack dev</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "1rem" }}
                     >
                       Contact
@@ -390,10 +390,10 @@ Cryptocurrency Exchangel Crypto Investor
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"25rem"}}
               >
                 <div
@@ -405,14 +405,14 @@ Cryptocurrency Exchangel Crypto Investor
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2 style={{fontSize:"19px"}}>Abhishek Kishore</h2>
                   
             
-                  <p class="title">Blockchain Developer</p>
-                  <p class="title">
+                  <p className="title">Blockchain Developer</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "1rem" }}
                     >
                       Contact
@@ -422,10 +422,10 @@ Cryptocurrency Exchangel Crypto Investor
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"25rem"}}
               >
                 <div
@@ -437,14 +437,14 @@ Cryptocurrency Exchangel Crypto Investor
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2 style={{fontSize:"17px"}}>Deepanshu Gupta (TR)</h2>
                   
             
-                  <p class="title">Product</p>
-                  <p class="title">
+                  <p className="title">Product</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "1rem" }}
                     >
                       Contact
@@ -454,10 +454,10 @@ Cryptocurrency Exchangel Crypto Investor
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"25rem"}}
               >
                 <div
@@ -469,14 +469,14 @@ Cryptocurrency Exchangel Crypto Investor
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Kartik Bala</h2>
                   
             
-                  <p class="title">Blockchain & Architecture</p>
-                  <p class="title">
+                  <p className="title">Blockchain & Architecture</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "1rem" }}
                     >
                       Contact
@@ -486,10 +486,10 @@ Cryptocurrency Exchangel Crypto Investor
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"25rem"}}
               >
                 <div
@@ -501,14 +501,14 @@ Cryptocurrency Exchangel Crypto Investor
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2 style={{fontSize:"19px"}}>Dheeraj Kollipara</h2>
                   
             
-                  <p class="title">Product & UX NET ARTIST</p>
-                  <p class="title">
+                  <p className="title">Product & UX NET ARTIST</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "1rem" }}
                     >
                       Contact
@@ -519,10 +519,10 @@ Cryptocurrency Exchangel Crypto Investor
             </div>
           </div>
 
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"25rem"}}
               >
                 <div
@@ -534,14 +534,14 @@ Cryptocurrency Exchangel Crypto Investor
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Samarpan Dutta</h2>
                   
             
-                  <p class="title">Blockchain Developer</p>
-                  <p class="title">
+                  <p className="title">Blockchain Developer</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "1rem" }}
                     >
                       Contact
@@ -552,10 +552,10 @@ Cryptocurrency Exchangel Crypto Investor
             </div>
           </div>
 
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"25rem"}}
               >
                 <div
@@ -567,14 +567,14 @@ Cryptocurrency Exchangel Crypto Investor
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Niket Kumar</h2>
                   
             
-                  <p class="title">Product</p>
-                  <p class="title">
+                  <p className="title">Product</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "1rem" }}
                     >
                       Contact
@@ -585,10 +585,10 @@ Cryptocurrency Exchangel Crypto Investor
             </div>
           </div>
 
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"25rem"}}
               >
                 <div
@@ -600,14 +600,14 @@ Cryptocurrency Exchangel Crypto Investor
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2 style={{fontSize:"14px"}}>Kapil Bombarekar (PhD)</h2>
                   
             
-                  <p class="title">NET Research & Artist Community</p>
-                  <p class="title">
+                  <p className="title">NET Research & Artist Community</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "1rem" }}
                     >
                       Contact
@@ -618,10 +618,10 @@ Cryptocurrency Exchangel Crypto Investor
             </div>
           </div>
 
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"25rem"}}
               >
                 <div
@@ -633,14 +633,14 @@ Cryptocurrency Exchangel Crypto Investor
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Khizar Hussain</h2>
                   
             
-                  <p class="title">Content & Community</p>
-                  <p class="title">
+                  <p className="title">Content & Community</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "1rem" }}
                     >
                       Contact
@@ -651,10 +651,10 @@ Cryptocurrency Exchangel Crypto Investor
             </div>
           </div>
 
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"25rem"}}
               >
                 <div
@@ -666,14 +666,14 @@ Cryptocurrency Exchangel Crypto Investor
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2>Cephas</h2>
                   
             
-                  <p class="title">Security</p>
-                  <p class="title">
+                  <p className="title">Security</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "1rem" }}
                     >
                       Contact
@@ -684,10 +684,10 @@ Cryptocurrency Exchangel Crypto Investor
             </div>
           </div>
 
-          <div class="row">
-            <div class="column">
+          <div className="row">
+            <div className="column">
               <div
-                class="card"
+                className="card"
                 style={{ width: "340px", borderRadius: "10px" ,height:"25rem"}}
               >
                 <div
@@ -699,14 +699,14 @@ Cryptocurrency Exchangel Crypto Investor
                     alt="Jane"
                   />
                 </div>
-                <div class="container">
+                <div className="container">
                   <h2 style={{fontSize:"22px"}}>Yashish Khurana</h2>
                   
             
-                  <p class="title">Product & Crypto Strategy</p>
-                  <p class="title">
+                  <p className="title">Product & Crypto Strategy</p>
+                  <p className="title">
                     <button
-                      class="button"
+                      className="button"
                       style={{ borderRadius: "1rem", marginTop: "1rem" }}
                     >
                       Contact

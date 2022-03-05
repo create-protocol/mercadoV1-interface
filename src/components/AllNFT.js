@@ -8,7 +8,6 @@ import Landingcard from "./Newcard";
 import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
 import "../assets/css/filterdropdown.css";
-import axios from "axios";
 
 const ImageContainer = styled.div`
   background: url(${contactus});
@@ -104,14 +103,14 @@ const AllNFT = () => {
     const collectionTop = [
       '0x59468516a8259058bad1ca5f8f4bff190d30e066',
       '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
-      '0xed5af388653567af2f388e6224dc7c4b3241c544',
+      '0x90b2baca772f677f0eff93a844fa70d19fbbd46a',
       '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb'
     ]
     const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
 
     const responseAllNFT = await Promise.all(
       collectionTopArr.map(async (ele, index) => {
-        const id = parseInt(index / 4) + 1;
+        const id = parseInt(index / 4) + 2;
         const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + ele + '/' + id + '?chain=eth',
           { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
         return res.data;
@@ -133,21 +132,21 @@ const AllNFT = () => {
     <>
       <div style={{ width: "100%", marginTop: "5rem" }}>
         <ImageContainer>Discover</ImageContainer>
-        <div class="flex-container" style={{ justifyContent: "space-between", width: "90%" }}>
+        <div className="flex-container" style={{ justifyContent: "space-between", width: "90%" }}>
           {/* <img src={filterimage} width="118px" height="52px"></img> */}
           <div style={{ display: "flex" }}>
             {filterOpen ? (
               <button
-                class="btn filterbutton2"
+                className="btn filterbutton2"
                 onClick={() => {
                   setFilterOpen(!filterOpen);
                 }}
               >
-                <i class="fa fa-filter "></i>Filter
+                <i className="fa fa-filter "></i>Filter
               </button>
             ) : (
               <button
-                class="filterbutton"
+                className="filterbutton"
                 onClick={() => {
                   setFilterOpen(!filterOpen);
                 }}
@@ -156,11 +155,11 @@ const AllNFT = () => {
               </button>
             )}
 
-            <div class="dropdownfilter">
-              <button class="dropbtnfilter">
+            <div className="dropdownfilter">
+              <button className="dropbtnfilter">
                 Price ascending <div className="downbtn"></div>
               </button>
-              <div class="dropdown-contentfilter">
+              <div className="dropdown-contentfilter">
                 <Link
                   to="/main"
                   style={{ display: "flex", flexDirection: "column" }}
@@ -173,11 +172,11 @@ const AllNFT = () => {
               </div>
             </div>
           </div>
-          <div class="dropdownfilter">
-            <button class="dropbtnfilter">
+          <div className="dropdownfilter">
+            <button className="dropbtnfilter">
               Last 7 days<div className="downbtn"></div>
             </button>
-            <div class="dropdown-contentfilter">
+            <div className="dropdown-contentfilter">
               <Link
                 to="/main"
                 style={{ display: "flex", flexDirection: "column" }}

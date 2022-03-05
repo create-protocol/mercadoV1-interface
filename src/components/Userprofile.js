@@ -218,7 +218,7 @@ const Userprofile = () => {
         </Filtercurveddiv>
         <img src={Filterline} style={{ width: "90vw" }} />
         <div
-          class="flex-container"
+          className="flex-container"
           style={{
             justifyContent: "space-between",
             width: "90%",
@@ -229,16 +229,16 @@ const Userprofile = () => {
           <div style={{ display: "flex" }}>
             {filterOpen ? (
               <button
-                class="btn filterbutton2"
+                className="btn filterbutton2"
                 onClick={() => {
                   setFilterOpen(!filterOpen);
                 }}
               >
-                <i class="fa fa-filter "></i>Filter
+                <i className="fa fa-filter "></i>Filter
               </button>
             ) : (
               <button
-                class="filterbutton"
+                className="filterbutton"
                 onClick={() => {
                   setFilterOpen(!filterOpen);
                 }}
@@ -247,11 +247,11 @@ const Userprofile = () => {
               </button>
             )}
 
-            <div class="dropdownfilter">
-              <button class="dropbtnfilter">
+            <div className="dropdownfilter">
+              <button className="dropbtnfilter">
                 Price ascending <div className="downbtn"></div>
               </button>
-              <div class="dropdown-contentfilter">
+              <div className="dropdown-contentfilter">
                 <Link
                   to="/main"
                   style={{ display: "flex", flexDirection: "column" }}
@@ -265,11 +265,11 @@ const Userprofile = () => {
             </div>
           </div>
           <div>
-            <div class="dropdownfilter">
-              <button class="dropbtnfilter">
+            <div className="dropdownfilter">
+              <button className="dropbtnfilter">
                 Single Item<div className="downbtn"></div>
               </button>
-              <div class="dropdown-contentfilter">
+              <div className="dropdown-contentfilter">
                 <Link
                   to="/main"
                   style={{ display: "flex", flexDirection: "column" }}
@@ -281,11 +281,11 @@ const Userprofile = () => {
                 {/* <a href="#">Link 3</a> */}
               </div>
             </div>
-            <div class="dropdownfilter">
-              <button class="dropbtnfilter">
+            <div className="dropdownfilter">
+              <button className="dropbtnfilter">
                 Recently saved<div className="downbtn"></div>
               </button>
-              <div class="dropdown-contentfilter">
+              <div className="dropdown-contentfilter">
                 <Link
                   to="/main"
                   style={{ display: "flex", flexDirection: "column" }}
