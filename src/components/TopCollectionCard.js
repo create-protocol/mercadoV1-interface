@@ -29,7 +29,7 @@ padding:0.5rem 0;
 border-radius:1rem;
 margin-top:.5rem;
 `
-const TopCollectionCard=()=>{
+const TopCollectionCard=(props)=>{
     return(
         <div style={{display:"flex"}}>
         {/* <Flexdis style={{color:"#BA68C8",width:"3%",fontWeight:"bold"}}>1.</Flexdis> */}

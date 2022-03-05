@@ -78,7 +78,12 @@ const routes = [
   },
   {
     pathName: "main",
-    path: "/desc2",
+    path: "/assets/:item1/:item2",
+    component: Descpage,
+  },
+  {
+    pathName: "main",
+    path: "/desc",
     component: Descpage,
   },
   

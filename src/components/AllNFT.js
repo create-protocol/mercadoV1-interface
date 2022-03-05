@@ -89,8 +89,8 @@ const Whitebtn = styled.div`
 `;
 
 let config = {
-  headers : {
-    "X-API-Key" : 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip'    
+  headers: {
+    "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip'
   }
 }
 
@@ -107,25 +107,25 @@ const AllNFT = () => {
       '0xed5af388653567af2f388e6224dc7c4b3241c544',
       '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb'
     ]
-    const collectionTopArr = [...collectionTop,...collectionTop,...collectionTop,...collectionTop,...collectionTop] // To collect data of 5 NFTs
-  
+    const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
+
     const responseAllNFT = await Promise.all(
-      collectionTopArr.map(async (ele,index)=> {
-        const id = parseInt(index/4) + 1;
-        const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/'+ele + '/' + id + '?chain=eth',
-                      { 'headers': {"X-API-Key" : 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip'} });
+      collectionTopArr.map(async (ele, index) => {
+        const id = parseInt(index / 4) + 1;
+        const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + ele + '/' + id + '?chain=eth',
+          { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
         return res.data;
       })
     );
     setData(responseAllNFT);
-  
+    console.log("response");
     console.log(responseAllNFT);
-  
+
     // const response = await axios.get();
-  
+
   }
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     fetchData();
 
   })
@@ -230,14 +230,14 @@ const AllNFT = () => {
                 flexDirection: "column",
                 marginLeft: filterOpen === true ? "0rem" : "2rem",
               }}
-            > 
-              <div style={{display:"flex",width:"100%",alignItems:"start",justifyContent:"flex-start",flexWrap:"wrap"}}>
-                {data.map(ele => 
-                  <Landingcard 
+            >
+              <div style={{ display: "flex", width: "100%", alignItems: "start", justifyContent: "flex-start", flexWrap: "wrap" }}>
+                {data.map(ele =>
+                  <Landingcard
                     image={JSON.parse(ele.metadata)}
                     owner={ele.owner}
                     name={ele.name}
-                    symbol={ele.symbol + ' #'+ ele.token_id}/>)}
+                    symbol={ele.symbol + ' #' + ele.token_id} />)}
               </div>
             </div>
           </div>
