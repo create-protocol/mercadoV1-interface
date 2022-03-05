@@ -334,9 +334,9 @@ const Landingpage = (props) => {
           >
             <div style={{ display: "flex", width: "100%", alignItems: "start", justifyContent: "flex-start", flexWrap: "wrap" }}>
               {data.map(ele =>
-                <Link to={`/asset/${ele.token_address}/${ele.token_id}`} style={{textDecoration:"none",color:"white"}}>
+                <Link to={`/asset/${ele.token_address}/${ele.token_id}`} style={{ textDecoration: "none", color: "white" }}>
                   <Landingcard
-                    image={JSON.parse(ele.metadata)} 
+                    image={JSON.parse(ele.metadata)}
                     owner={ele.owner}
                     name={ele.name}
                     symbol={ele.symbol + ' #' + ele.token_id} /></Link>
@@ -346,7 +346,6 @@ const Landingpage = (props) => {
         </div>
       </div>
 
-      {/* Top Seller */}
 
       <div
         style={{
