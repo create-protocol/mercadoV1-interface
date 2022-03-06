@@ -109,16 +109,16 @@ const LandingCard = (props) => {
         </div>
       </Imagecont>
       <div style={{ marginTop: "3vh", display: "flex", alignItems: "center",height:"8vh" }}>
-        <img
+        {/* <img
           style={{ objectFit: "contain", width: "2.2rem" }}
           src={Landingowner}
           alt="landingimg"
-        />
+        /> */}
         <div style={{ width: "80%", textAlign: "left", marginLeft: "1rem" }}>
           <div style={{ fontSize: "1rem", fontWeight: "bold" }}>{props.name || <Skeleton />}</div>
-          <div className="text-truncate" style={{ color: "#A9A9A9", fontSize: "0.7rem" }}>
+          {/* <div className="text-truncate" style={{ color: "#A9A9A9", fontSize: "0.7rem" }}>
             created by {props.owner || <Skeleton />}
-          </div>
+          </div> */}
         </div>
       </div>
       <div style={{ width: "100%", marginTop: "0.5rem" }}>

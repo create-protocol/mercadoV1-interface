@@ -261,7 +261,7 @@ const Landingpage = (props) => {
       </div>
 
       {/* Top Collections */}
-      <div
+      {/* <div
         style={{
           width: "100%",
           paddingLeft: "8rem",
@@ -287,7 +287,7 @@ const Landingpage = (props) => {
           <TopCollectionCard />
           <TopCollectionCard />
         </div>
-      </div>
+      </div> */}
 
       {/* Featured Assets */}
 
@@ -362,10 +362,10 @@ const Landingpage = (props) => {
             justifyContent: "space-between",
           }}
         >
-          <HeadingText>Top Sellers</HeadingText>
-          {/* <Transparentbtn>Explore more artists</Transparentbtn>  */}
+          {/* <HeadingText>Top Sellers</HeadingText> */}
+         
         </div>
-        <div
+        {/* <div
           style={{
             display: "flex",
             alignItems: "center",
@@ -495,7 +495,7 @@ const Landingpage = (props) => {
             </div>
             <Seller />
           </div>
-        </div>
+        </div> */}
         {/* <img  src={Sepline} style={{width:"60rem",marginTop:"4rem"}}/> */}
       </div>
 
@@ -553,7 +553,7 @@ const Landingpage = (props) => {
             </div>
           </div>
         </div>
-        <Link to='/asset/create' style={{textDecoration:"none",color:"white"}}><Transparentbtn style={{marginTop:"3rem"}}>Create NFT</Transparentbtn></Link>
+        <Link to='/assets/create' style={{textDecoration:"none",color:"white"}}><Transparentbtn style={{marginTop:"3rem"}}>Create NFT</Transparentbtn></Link>
       </div>
     </div>
   );
