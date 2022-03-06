@@ -1,11 +1,6 @@
 import React from "react";
-import { ethers } from "ethers";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Web3Modal from "web3modal";
-import Market from "../abis/Marketplace.json";
-import NFT from "../abis/NFT.json";
-import { nftmarketaddress, nftaddress } from "../config";
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
 
@@ -13,25 +8,11 @@ import "font-awesome/css/font-awesome.min.css";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { useParams } from "react-router-dom";
-import Loader from "react-loader-spinner";
-import Footer from "./Footer.js";
-import { useHistory } from "react-router";
-import { sendTransaction } from "./sendTransaction";
-
-import Player from "video-react/lib/components/Player";
 import "../../node_modules/video-react/dist/video-react.css"; // import css
-
-import descimage from "../assets/images/descpage.png";
+import Loader from "react-loader-spinner";
 import Landingowner from "../assets/images/landingowner.png";
 import Eth from "../assets/images/Ethereum (ETH).png";
-import reactshare from "./nftshare";
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  TelegramShareButton,
-} from "react-share";
-import { FacebookIcon, TwitterIcon, TelegramIcon } from "react-share";
-import Share from "./nftshare";
+
 
 const Splitscreen = styled.div`
   display: flex;
@@ -62,7 +43,6 @@ const Right = styled.div`
   align-items: start;
   margin-right:100px;
   width: 100%;
-
   border:1px solid black
   flex-wrap:wrap
   @media (max-width: 1000px) {
@@ -72,20 +52,6 @@ const Right = styled.div`
   }
 `;
 
-const Signupbtn = styled.div`
-  display: block;
-  width: 20%;
-  background: rgb(7, 7, 135);
-  color: white;
-  border: none;
-  padding: 1rem;
-  font-size: medium;
-  border-radius: 8px;
-  &:hover {
-    background: blue;
-    transition: 200ms ease-in;
-  }
-`;
 
 const Biddingcard = styled.div`
 background: linear-gradient(180deg, rgba(0, 0, 0, 0.11) 0%, rgba(0, 0, 0, 0.53125) 48.96%, rgba(55, 55, 55, 0.8) 100%);
@@ -100,14 +66,14 @@ box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.32);
   margin-left: 0;
   margin-top: 0.7rem;
 `;
-const Mainheading=styled.div`
+const Mainheading = styled.div`
 font-family: Century Gothic;
 font-style: normal;
 font-weight: 600;
 font-size: 2.3rem;
 line-height: 140%;`
 
-const Desctext=styled.div`
+const Desctext = styled.div`
 font-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
@@ -115,7 +81,7 @@ font-size: 1rem;
 line-height: 160%;
 color: #A9A9A9;`
 
-const Biddingtext=styled.div`
+const Biddingtext = styled.div`
 font-family: Century Gothic;
 font-style: normal;
 font-weight: 600;
@@ -123,7 +89,7 @@ font-size: 1.5rem;
 line-height: 140%;
 margin-top:1rem;`
 
-const Leftheading=styled.div`
+const Leftheading = styled.div`
 font-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
@@ -133,94 +99,56 @@ color: #A9A9A9;
 line-height:0.5rem;
 `
 
-const Lefttext=styled.div`
+const Lefttext = styled.div`
 font-family: Century Gothic;
 font-style: normal;
 font-size: 18px;
-line-height:0;
+line-height:1;
 `
-const Descpage = (props) => {
-  //   const [allowance, setAllowance] = useState(false);
-  //   const [obj, setobj] = useState({});
-  //   const [loadingState, setLoadingState] = useState("not-loaded");
-  //   const { itemid } = useParams();
-  //   itemid = itemid.toNumber();
-  //   var itemId = ethers.BigNumber.from(itemid);
 
-  //   useEffect(() => {
-  // load2(itemId);
-  //   }, []);
+const createURI = (uri) => uri.slice(0,7) === "ipfs://" ? 'https://ipfs.infura.io/ipfs/' + uri.slice(7) : uri;
 
-  //   async function load2(itemId) {
-  //     const provider = new ethers.providers.JsonRpcProvider(
-  //       `https://polygon-mainnet.g.alchemy.com/v2/bv51--wKZGYGrXlqxnqJ_rRdz6cR5t-4`
-  //     );
+const Descpage = () => {
 
-  //     const marketContract = new ethers.Contract(
-  //       nftmarketaddress,
-  //       Market.abi,
-  //       provider
-  //     );
-  //     itemId = ethers.BigNumber.from(itemId);
-  //     const data = await marketContract.fetchIndividualNFT(itemId);
-  //     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
-  //     const tokenUri = await tokenContract.tokenURI(data.tokenId.toNumber());
-  //     const meta = await axios.get(tokenUri);
-  //     var item = {
-  //       itemId: data.itemId,
-  //       nftContract: data.nftContract,
-  //       tokenId: data.tokenId,
-  //       seller: data.seller,
-  //       price: ethers.utils.formatEther(data.price), // price in wei
-  //       image: meta.data.image || meta.data.imageCID,
-  //       name: meta.data.name,
-  //       desc: meta.data.description,
-  //       file:meta.data.file,
-  //     };
+  const { collection,id } = useParams();
+  const [loadingState, setLoadingState] = useState("not-loaded");
+  //itemid = itemid.toNumber();
+  // var token_address = ethers.BigNumber.from(item1);
+  // var itemId = ethers.BigNumber.from(item2);
+  // console.log(collection,id);
 
-  //     console.log("item: ", item);
-  //     setobj(item);
-  //     setLoadingState("loaded");
-  //   }
-  //   const isEnoughAllowance = async () => {
-  //     const owner = await window.wallet.getAddress();
-  //     const amt = await window.ercInst.allowance(
-  //       owner,
-  //       window.marketInst.address
-  //     );
-  //     console.log(amt >= ethers.utils.parseEther(obj.price));
-  //     setAllowance(amt >= ethers.utils.parseEther(obj.price));
-  //   };
+  const [metaData,setMetaData] = useState();
 
-  //   const buyNFT = async () => {
-  //     const web3Modal = new Web3Modal();
-  //     const connection = await web3Modal.connect();
-  //     const provider = new ethers.providers.Web3Provider(connection);
-  //     const signer = provider.getSigner();
-  //     window.wallet = signer;
-  //     console.log(ethers.utils.parseEther(obj.price));
-  //     if (!allowance) {
-  //       await sendTransaction(
-  //         window.ercInst,
-  //         "approve",
-  //         [window.marketInst.address, ethers.utils.parseEther(obj.price)],
-  //         "You give allowance to MarketPlace of required WETH"
-  //       );
-  //       await isEnoughAllowance();
-  //     } else {
-  //       await sendTransaction(
-  //         window.marketInst,
-  //         "buyNFT",
-  //         [itemId],
-  //         "You have successfully Purchase This Token"
-  //       );
-  //     }
-  //   };
+  const fetchMetaData = async () => {
+    try{
+      const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + collection + '/' + id + '?chain=eth',
+      { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
+      // const  imageMetaData = await axios.get(createURI(res.data.token_uri));
+      setMetaData({...res.data, ...JSON.parse(res.data.metadata)});
+      console.log("metadata : " ,metaData);
+      setLoadingState("loaded");
+    }catch(e){
+      console.log(e); 
+    }
 
-  //   console.log(obj);
+  }
+
+  useEffect(()=>{
+    fetchMetaData();
+  },[])
+  
+  if (loadingState != "loaded") {
+    return (
+      <div
+        style={{ height: "200px", alignContent: "center", marginTop: "160px" }}
+      >
+        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+      </div>
+    );
+  }
   return (
     <>
-      <Splitscreen style={{marginTop:"7rem"}}>
+      {metaData && <Splitscreen style={{ marginTop: "7rem" }}>
         <Left>
           <div
             style={{
@@ -236,13 +164,13 @@ const Descpage = (props) => {
               paddingBottom: "0",
               overflow: "hidden",
               flexDirection: "column",
-              textAlign:"left"
+              textAlign: "left"
             }}
           >
             {/* {obj.file=="mp4"?<Player src={obj.image}></Player>:  */}
             <Zoom>
               <img
-                src={descimage}
+                src={createURI(metaData.image)}
                 alt="nft"
                 style={{
                   width: "100%",
@@ -252,22 +180,22 @@ const Descpage = (props) => {
                 }}
               />
             </Zoom>
-            <div style={{marginTop:"1rem",display:"flex",alignItems:"center",justifyContent:"center"}}>
-                  <img src={Landingowner} style={{marginRight:"1rem"}}/>
-                  <Lefttext style={{color:"#A9A9A9"}}>created by @brightmac</Lefttext>
+            <div style={{ marginTop: "1rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <img src={Landingowner} alt="nftImage" style={{ marginRight: "1rem" }} />
+              <Lefttext style={{ color: "#A9A9A9" }}>created by <br/> {metaData.owner_of}</Lefttext>
             </div>
             <div style={{ color: "white", }}>
-                <Leftheading>Contract Address</Leftheading>
-              
+              <Leftheading>Contract Address</Leftheading>
+
               <br />
-              <Lefttext>0xahi66785bsjxbk9q728276hbshjcbjsnck9777cc1</Lefttext>
-              
+              <Lefttext>{metaData.token_address}</Lefttext>
+
             </div>
             <div style={{ color: "white" }}>
               <Leftheading>Token Id</Leftheading>
               <br />
-              <Lefttext>33456</Lefttext>
-              
+              <Lefttext>{metaData.token_id}</Lefttext>
+
             </div>
           </div>
         </Left>
@@ -282,17 +210,17 @@ const Descpage = (props) => {
               textAlign: "left",
             }}
           >
-            <Mainheading>Description</Mainheading>
-            <Desctext>
-              Lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Curabitur id sem elit. Nulla suscipit massa vitae eleifend
-              malesuada.
-            </Desctext>
+            {metaData && <Mainheading>{metaData.name}</Mainheading>}
+            <br/>
+            <Mainheading className="text-muted">Description</Mainheading>
+            {metaData && <Desctext>
+              {metaData.description}
+            </Desctext>}
             {/* {obj.name} */}
           </p>
-          
-            
-          
+
+
+
           <div
             style={{
               width: "90%",
@@ -322,14 +250,14 @@ const Descpage = (props) => {
                   padding: "1rem 1rem",
                   fontSize: ".7rem",
                   fontWeight: "500",
-                  marginTop:"1rem"
+                  marginTop: "1rem"
                 }}
               >
                 <div style={{ display: "flex" }}>
                   <img src={Eth} alt="" />
                   <div style={{ marginLeft: "0.4rem" }}>0.99 ETH</div>
                 </div>
-                <div style={{background: "#229CEA",padding:".7rem",borderRadius:"0.5rem",cursor:"pointer"}}>Buy now</div>
+                <div style={{ background: "#229CEA", padding: ".7rem", borderRadius: "0.5rem", cursor: "pointer" }}>Buy now</div>
               </div>
             </div>
             <div
@@ -353,7 +281,7 @@ const Descpage = (props) => {
                   padding: "1rem 1rem",
                   fontSize: ".7rem",
                   fontWeight: "500",
-                  marginTop:"1rem"
+                  marginTop: "1rem"
                 }}
               >
                 <div style={{ display: "flex" }}>
@@ -370,20 +298,20 @@ const Descpage = (props) => {
               display: "flex",
               textAlign: "left",
               flexDirection: "column",
-              color:"white",
-              marginTop:"5rem"
+              color: "white",
+              marginTop: "5rem"
             }}
           >
             <Biddingtext>Ongoing Bids</Biddingtext>
-            
+
             <Biddingcard>
               <div
                 style={{
-                //   marginTop: "1.4rem",
+                  //   marginTop: "1.4rem",
                   display: "flex",
                   alignItems: "center",
                   marginLeft: "2rem",
-                  height:"100%",
+                  height: "100%",
                 }}
               >
                 <img
@@ -399,38 +327,38 @@ const Descpage = (props) => {
                     color: "#A9A9A9"
                   }}
                 >
-                  <div style={{ fontSize: "1rem",fontWeight:"normal" }}>
+                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
                     By woodshelf
                   </div>
-                  <div style={{ fontSize: "1rem",marginTop:"1rem" }}>
+                  <div style={{ fontSize: "1rem", marginTop: "1rem" }}>
                     Bid at 20Eth
                   </div>
                 </div>
               </div>
               <div>
-              <div
+                <div
                   style={{
                     width: "80%",
                     textAlign: "left",
                     marginRight: "2rem",
                     color: "white",
-                    height:"100%",
+                    height: "100%",
                     color: "#A9A9A9",
                   }}
                 >
-                  <div style={{ fontSize: "1rem"}}>
-                   365 ETH
+                  <div style={{ fontSize: "1rem" }}>
+                    365 ETH
                   </div>
-                  <div style={{ fontSize: "0.9rem",marginTop:"1rem" }}>
+                  <div style={{ fontSize: "0.9rem", marginTop: "1rem" }}>
                     11:46AM
                   </div>
                 </div>
               </div>
             </Biddingcard>
-            
+
           </div>
         </Right>
-      </Splitscreen>
+      </Splitscreen>}
       {/* <Footer /> */}
     </>
   );

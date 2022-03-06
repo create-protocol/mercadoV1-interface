@@ -1,25 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Landingimg from "../assets/images/landingpage.png";
-import Landingcardimg from "../assets/images/landingimg.png";
-import Landingowner from "../assets/images/landingowner.png";
-import Eth from "../assets/images/Ethereum (ETH).png";
-import Heart from "../assets/images/cil_heart.png";
-import LandingCard from "./Newcard";
-import Sellerimg from "../assets/images/sellerimg.png";
 import Seller from "./Seller";
-import TrendingCarousel from "./TrendingCarousel";
+import axios from "axios";
 import Fundingimg from "../assets/images/FUNDING.png";
-import contactus from "../assets/images/contactus.png";
-import Createsell from "../assets/images/createsell.png";
-import Card1 from "../assets/images/card.png";
-import Card2 from "../assets/images/card1.png";
-import Card3 from "../assets/images/card2.png";
+import Landingcard from "./Newcard";
 import Trending1 from "../assets/images/trending1.png";
 import { Link } from "react-router-dom";
 import Trendingcardsmall from "./Trendingcardsmall";
-
-import Sepline from "../assets/images/Vector 87.png";
 import TopCollectionCard from "./TopCollectionCard";
 
 const ImageContainer = styled.div`
@@ -83,7 +70,7 @@ const Createmaint = styled.div`
   margin-top: 1.2rem;
 `;
 
-const Trendingimagetext=styled.div`
+const Trendingimagetext = styled.div`
 height:100%;
 width:100%;
 display:flex;
@@ -91,7 +78,7 @@ padding:2rem;
 padding-top:1.5rem;
 `
 
-const Cardtext=styled.div`
+const Cardtext = styled.div`
 background: rgba(0, 0, 0, 0.6);
 border-radius: 5px;
 font-family: Century Gothic;
@@ -106,7 +93,42 @@ height:2rem;
 display:flex;
 align-items:center;
 `
-const Landingpage = () => {
+const Landingpage = (props) => {
+
+  const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    const collectionTop = [
+      '0x59468516a8259058bad1ca5f8f4bff190d30e066',
+      '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
+      '0x90b2baca772f677f0eff93a844fa70d19fbbd46a',
+      '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb'
+    ]
+    const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
+
+    const responseAllNFT = await Promise.all(
+      collectionTopArr.map(async (ele, index) => {
+        const id = parseInt(index / 4) + 2;
+        const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + ele + '/' + id + '?chain=eth',
+          { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
+        return res.data;
+      })
+    );
+    setData(responseAllNFT);
+    console.log("response");
+    console.log(responseAllNFT);
+    console.log(responseAllNFT[0].token_address);
+
+    // const response = await axios.get();
+
+  }
+
+  useEffect(() => {
+    fetchData();
+
+  })
+
+
   return (
     <div
       style={{
@@ -114,7 +136,7 @@ const Landingpage = () => {
         fontStyle: "normal",
         color: "white",
         width: "100%",
-        
+
       }}
     >
       <div
@@ -139,12 +161,12 @@ const Landingpage = () => {
             Explore the NFT marketplace dedicated to creators
           </div>
           <div style={{ display: "flex", marginTop: "2rem" }}>
-           
-           <a href="/allnft" style={{textDecoration:"none",color:"white"}}><Transparentbtn >Explore NFTs</Transparentbtn></a> 
-            <a href="/asset/create" style={{textDecoration:"none",color:"white"}}><Transparentbtn style={{ marginLeft: "2rem" }}>
+
+            <a href="/allnft" style={{ textDecoration: "none", color: "white" }}><Transparentbtn >Explore NFTs</Transparentbtn></a>
+            <a href="/asset/create" style={{ textDecoration: "none", color: "white" }}><Transparentbtn style={{ marginLeft: "2rem" }}>
               Create NFT
             </Transparentbtn></a>
-            
+
           </div>
         </ImageContainer>
       </div>
@@ -177,12 +199,12 @@ const Landingpage = () => {
             paddingRight: "7rem",
             marginTop: "5rem",
             display: "flex",
-            height:"60vh",
+            height: "60vh",
             alignItems: "center",
             justifyContent: "space-between",
           }}
         >
-          <div style={{ width: "30%",height:"100% " }}>
+          <div style={{ width: "30%", height: "100% " }}>
             <div
               style={{
                 width: "100%",
@@ -208,7 +230,7 @@ const Landingpage = () => {
               justifyContent: "space-between",
               height: "100%",
               flexWrap: "wrap",
-              
+
             }}
           >
             <Trendingcardsmall />
@@ -274,7 +296,7 @@ const Landingpage = () => {
           <HeadingText>Featured Assets</HeadingText>
           <Transparentbtn>Explore more</Transparentbtn>
         </div>
-        
+
         <div
           style={{
             display: "flex",
@@ -282,23 +304,31 @@ const Landingpage = () => {
             justifyContent: "",
             flexWrap: "wrap",
             marginTop: "2rem",
-            width:"108%",
-            marginLeft:"0.2rem"
-            
+            width: "108%",
+            marginLeft: "0.2rem"
+
           }}
         >
-          <LandingCard />
-          <LandingCard />
-          <LandingCard />
-          <LandingCard />
-          <LandingCard />
-          <LandingCard />
-          <LandingCard />
-          <LandingCard />
-          <LandingCard />
-          <LandingCard />
-          <LandingCard />
-          {/* <LandingCard /> */}
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
+            <div style={{ display: "flex", width: "100%", alignItems: "start", justifyContent: "flex-start", flexWrap: "wrap" }}>
+              {data.map(ele =>
+                <Link to={`/asset/${ele.token_address}/${ele.token_id}`} style={{textDecoration:"none",color:"white"}}>
+                  <Landingcard
+                    image={JSON.parse(ele.metadata)}
+                    owner={ele.owner}
+                    name={ele.name}
+                    symbol={ele.symbol + ' #' + ele.token_id} /></Link>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 

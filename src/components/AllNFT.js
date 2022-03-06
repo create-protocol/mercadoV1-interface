@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
-
+import axios from 'axios';
 import contactus from "../assets/images/contactus.png";
 import filterimage from "../assets/images/Filter.png";
 import Landingcard from "./Newcard";
@@ -20,7 +20,6 @@ const ImageContainer = styled.div`
   font-size: 2.5rem;
   line-height: 140%;
   color: #f4f4f4;
-
   text-align: left;
   padding-left: 12rem;
   padding-top: 9rem;
@@ -40,7 +39,6 @@ const InnerText = styled.div`
   font-weight: normal;
   font-size: 0.9rem;
   line-height: 150%;
-
   color: #ffffff;
 `;
 
@@ -87,57 +85,96 @@ const Whitebtn = styled.div`
   color: #606060;
 `;
 
+let config = {
+  headers: {
+    "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip'
+  }
+}
+
+
+
 const AllNFT = () => {
   const [filterOpen, setFilterOpen] = useState(false);
+  const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    const collectionTop = [
+      '0x59468516a8259058bad1ca5f8f4bff190d30e066',
+      '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
+      '0x90b2baca772f677f0eff93a844fa70d19fbbd46a',
+      '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb'
+    ]
+    const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
+
+    const responseAllNFT = await Promise.all(
+      collectionTopArr.map(async (ele, index) => {
+        const id = parseInt(index / 4) + 2;
+        const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + ele + '/' + id + '?chain=eth',
+          { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
+        return res.data;
+      })
+    );
+    setData(responseAllNFT);
+    console.log("response");
+    console.log(responseAllNFT);
+
+    // const response = await axios.get();
+
+  }
+
+  useEffect(() => {
+    fetchData();
+
+  })
   return (
     <>
-      <div style={{ width: "100%",marginTop:"5rem" }}>
+      <div style={{ width: "100%", marginTop: "5rem" }}>
         <ImageContainer>Discover</ImageContainer>
-        <div class="flex-container" style={{justifyContent:"space-between",width:"90%"}}>
+        <div className="flex-container" style={{ justifyContent: "space-between", width: "90%" }}>
           {/* <img src={filterimage} width="118px" height="52px"></img> */}
-          <div style={{display:"flex"}}>
-          {filterOpen ? (
-            <button
-              class="btn filterbutton2"
-              onClick={() => {
-                setFilterOpen(!filterOpen);
-              }}
-            >
-              <i class="fa fa-filter "></i>Filter
-            </button>
-          ) : (
-            <button
-              class="filterbutton"
-              onClick={() => {
-                setFilterOpen(!filterOpen);
-              }}
-            >
-              Filter
-            </button>
-          )}
-
-          <div class="dropdownfilter">
-            <button class="dropbtnfilter">
-              Price ascending <div className="downbtn"></div>
-            </button>
-            <div class="dropdown-contentfilter">
-              <Link
-                to="/main"
-                style={{ display: "flex", flexDirection: "column" }}
+          <div style={{ display: "flex" }}>
+            {filterOpen ? (
+              <button
+                className="btn filterbutton2"
+                onClick={() => {
+                  setFilterOpen(!filterOpen);
+                }}
               >
-                All NFTs
-              </Link>
+                <i className="fa fa-filter "></i>Filter
+              </button>
+            ) : (
+              <button
+                className="filterbutton"
+                onClick={() => {
+                  setFilterOpen(!filterOpen);
+                }}
+              >
+                Filter
+              </button>
+            )}
 
-              <Link to="/collections">Collections</Link>
-              {/* <a href="#">Link 3</a> */}
+            <div className="dropdownfilter">
+              <button className="dropbtnfilter">
+                Price ascending <div className="downbtn"></div>
+              </button>
+              <div className="dropdown-contentfilter">
+                <Link
+                  to="/main"
+                  style={{ display: "flex", flexDirection: "column" }}
+                >
+                  All NFTs
+                </Link>
+
+                <Link to="/collections">Collections</Link>
+                {/* <a href="#">Link 3</a> */}
+              </div>
             </div>
           </div>
-          </div>
-          <div class="dropdownfilter">
-            <button class="dropbtnfilter">
+          <div className="dropdownfilter">
+            <button className="dropbtnfilter">
               Last 7 days<div className="downbtn"></div>
             </button>
-            <div class="dropdown-contentfilter">
+            <div className="dropdown-contentfilter">
               <Link
                 to="/main"
                 style={{ display: "flex", flexDirection: "column" }}
@@ -176,28 +213,28 @@ const AllNFT = () => {
             }}
           >
             {filterOpen && (
-              <div style={{ width: "25%",marginTop:"2.7rem" }}>
+              <div style={{ width: "25%", marginTop: "2.7rem" }}>
                 <FillterCard />
               </div>
             )}
 
             <div
               style={{
-                width: filterOpen == true ? "70%" : "100%",
+                width: filterOpen === true ? "70%" : "100%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 flexDirection: "column",
-                marginLeft:filterOpen==true? "0rem":"2rem",
+                marginLeft: filterOpen === true ? "0rem" : "2rem",
               }}
-            > 
-              <div style={{display:"flex",width:"100%",alignItems:"start",justifyContent:"flex-start",flexWrap:"wrap"}}>
-                  <Landingcard/>
-                  <Landingcard />
-                  <Landingcard />
-                  <Landingcard />
-                  <Landingcard/>
-                  <Landingcard />
+            >
+              <div style={{ display: "flex", width: "100%", alignItems: "start", justifyContent: "flex-start", flexWrap: "wrap" }}>
+                {data.map(ele =>
+                  <Landingcard
+                    image={JSON.parse(ele.metadata)}
+                    owner={ele.owner}
+                    name={ele.name}
+                    symbol={ele.symbol + ' #' + ele.token_id} />)}
               </div>
             </div>
           </div>
