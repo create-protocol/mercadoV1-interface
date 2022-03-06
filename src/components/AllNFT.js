@@ -3,7 +3,6 @@ import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
 import axios from 'axios';
 import contactus from "../assets/images/contactus.png";
-import filterimage from "../assets/images/Filter.png";
 import Landingcard from "./Newcard";
 import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
