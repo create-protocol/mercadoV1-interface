@@ -41,33 +41,33 @@ const Mobilepage = () => {
       <div style={{ display: "flex",justifyContent:"space-evenly",width:"100%",alignItems:"center" }}>
         <a
           href="mailto:info@muzix.tech"
-          class="text-white me-6"
+          className="text-white me-6"
           style={{ margin: "8px", fontSize: "30px", color: "white" }}
         >
-          <i class="fa fa-envelope"></i>
+          <i className="fa fa-envelope"></i>
         </a>
 
         <a
           href="https://twitter.com/MuzixNFT"
-          class="text-white me-4"
+          className="text-white me-4"
           style={{ margin: "8px", fontSize: "30px", color: "white" }}
         >
-          <i class="fa fa-twitter"></i>
+          <i className="fa fa-twitter"></i>
         </a>
         <a
           href="https://www.linkedin.com/company/muzixtech/"
-          class="text-white me-4"
+          className="text-white me-4"
           style={{ margin: "8px", fontSize: "30px", color: "white" }}
         >
-          <i class="fa fa-linkedin"></i>
+          <i className="fa fa-linkedin"></i>
         </a>
 
         <a
           href="https://instagram.com/muzix.nft?utm_medium=copy_link"
-          class="text-white me-4"
+          className="text-white me-4"
           style={{ margin: "8px", fontSize: "30px", color: "white" }}
         >
-          <i class="fa fa-instagram"></i>
+          <i className="fa fa-instagram"></i>
         </a>
       </div>
     </div>

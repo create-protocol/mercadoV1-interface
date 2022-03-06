@@ -185,9 +185,9 @@ const NavBar = (props) => {
                 
               </Link> */}
               <Link to="/about">
-                <div class="dropdown">
-                  <button class="dropbtn">Explore</button>
-                  <div class="dropdown-content">
+                <div className="dropdown">
+                  <button className="dropbtn">Explore</button>
+                  <div className="dropdown-content">
                     <Link
                       to="/allnft"
                       style={{ display: "flex", flexDirection: "column" }}
@@ -203,9 +203,9 @@ const NavBar = (props) => {
               </Link>
 
               <Link to="/about">
-                <div class="dropdown">
-                  <button class="dropbtn">About</button>
-                  <div class="dropdown-content">
+                <div className="dropdown">
+                  <button className="dropbtn">About</button>
+                  <div className="dropdown-content">
                     <Link
                       to="#"
                       style={{ display: "flex", flexDirection: "column" }}
@@ -226,9 +226,9 @@ const NavBar = (props) => {
 
                 {wallet && wallet.address ? (
                   <div style={{ display: "flex" }}>
-                    <div class="on-dark">
+                    <div className="on-dark">
                       <button
-                        class="border-gradient border-gradient-purple"
+                        className="border-gradient border-gradient-purple"
                         style={{
                           display: "flex",
                           alignItems: "center",
@@ -262,7 +262,7 @@ const NavBar = (props) => {
                         borderRadius: "30px",
                         border:"none"
                       }}
-                      class="border-gradient border-gradient-purple"
+                      className="border-gradient border-gradient-purple"
                       onClick={handleToggle}
                     >
                       Connect Wallet

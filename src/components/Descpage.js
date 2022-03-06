@@ -1,11 +1,6 @@
 import React from "react";
-import { ethers } from "ethers";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Web3Modal from "web3modal";
-import Market from "../ethereum/Marketplace.json";
-import NFT from "../ethereum/NFT.json";
-import { nftmarketaddress, nftaddress } from "../config";
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
 
@@ -13,25 +8,11 @@ import "font-awesome/css/font-awesome.min.css";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { useParams } from "react-router-dom";
-import Loader from "react-loader-spinner";
-import Footer from "./Footer.js";
-import { useHistory } from "react-router";
-import { sendTransaction } from "./sendTransaction";
-
-import Player from "video-react/lib/components/Player";
 import "../../node_modules/video-react/dist/video-react.css"; // import css
-
-import descimage from "../assets/images/descpage.png";
+import Loader from "react-loader-spinner";
 import Landingowner from "../assets/images/landingowner.png";
 import Eth from "../assets/images/Ethereum (ETH).png";
-import reactshare from "./nftshare";
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  TelegramShareButton,
-} from "react-share";
-import { FacebookIcon, TwitterIcon, TelegramIcon } from "react-share";
-import Share from "./nftshare";
+
 
 const Splitscreen = styled.div`
   display: flex;
@@ -62,7 +43,6 @@ const Right = styled.div`
   align-items: start;
   margin-right:100px;
   width: 100%;
-
   border:1px solid black
   flex-wrap:wrap
   @media (max-width: 1000px) {
@@ -72,20 +52,6 @@ const Right = styled.div`
   }
 `;
 
-const Signupbtn = styled.div`
-  display: block;
-  width: 20%;
-  background: rgb(7, 7, 135);
-  color: white;
-  border: none;
-  padding: 1rem;
-  font-size: medium;
-  border-radius: 8px;
-  &:hover {
-    background: blue;
-    transition: 200ms ease-in;
-  }
-`;
 
 const Biddingcard = styled.div`
 background: linear-gradient(180deg, rgba(0, 0, 0, 0.11) 0%, rgba(0, 0, 0, 0.53125) 48.96%, rgba(55, 55, 55, 0.8) 100%);
@@ -137,49 +103,52 @@ const Lefttext = styled.div`
 font-family: Century Gothic;
 font-style: normal;
 font-size: 18px;
-line-height:0;
+line-height:1;
 `
+
+const createURI = (uri) => uri.slice(0,7) === "ipfs://" ? 'https://ipfs.infura.io/ipfs/' + uri.slice(7) : uri;
+
 const Descpage = () => {
 
-  const { item1,item2 } = useParams();
+  const { collection,id } = useParams();
+  const [loadingState, setLoadingState] = useState("not-loaded");
   //itemid = itemid.toNumber();
-  var token_address = item1;
-  var itemId =item2;
-  console.log(token_address,itemId);
-  
+  // var token_address = ethers.BigNumber.from(item1);
+  // var itemId = ethers.BigNumber.from(item2);
+  // console.log(collection,id);
 
-  const [data, setData] = useState();
+  const [metaData,setMetaData] = useState();
 
-  const fetchData = async () => {
-    console.log("hello fromd sesc")
-    const collectionTop = [
-      '0x59468516a8259058bad1ca5f8f4bff190d30e066',
-      '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
-      '0xed5af388653567af2f388e6224dc7c4b3241c544',
-      '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb'
-    ]
-    const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
+  const fetchMetaData = async () => {
+    try{
+      const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + collection + '/' + id + '?chain=eth',
+      { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
+      // const  imageMetaData = await axios.get(createURI(res.data.token_uri));
+      setMetaData({...res.data, ...JSON.parse(res.data.metadata)});
+      console.log("metadata : " ,metaData);
+      setLoadingState("loaded");
+    }catch(e){
+      console.log(e); 
+    }
 
-    const responseAllNFT = await Promise.all(
-      collectionTopArr.map(async (ele, index) => {
-        const id = parseInt(index / 4) + 1;
-        const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + token_address + '/' + itemId + '?chain=eth',
-          { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
-        return res.data;
-      })
-    );  
-    setData(responseAllNFT);
-    console.log("response from desc2");
-    console.log(responseAllNFT);
   }
 
-  useEffect(() => {
-    fetchData();
-
-  })
+  useEffect(()=>{
+    fetchMetaData();
+  },[])
+  
+  if (loadingState != "loaded") {
+    return (
+      <div
+        style={{ height: "200px", alignContent: "center", marginTop: "160px" }}
+      >
+        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+      </div>
+    );
+  }
   return (
     <>
-      <Splitscreen style={{ marginTop: "7rem" }}>
+      {metaData && <Splitscreen style={{ marginTop: "7rem" }}>
         <Left>
           <div
             style={{
@@ -201,7 +170,7 @@ const Descpage = () => {
             {/* {obj.file=="mp4"?<Player src={obj.image}></Player>:  */}
             <Zoom>
               <img
-                src={descimage}
+                src={createURI(metaData.image)}
                 alt="nft"
                 style={{
                   width: "100%",
@@ -212,20 +181,20 @@ const Descpage = () => {
               />
             </Zoom>
             <div style={{ marginTop: "1rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <img src={Landingowner} style={{ marginRight: "1rem" }} />
-              <Lefttext style={{ color: "#A9A9A9" }}>created by @brightmac</Lefttext>
+              <img src={Landingowner} alt="nftImage" style={{ marginRight: "1rem" }} />
+              <Lefttext style={{ color: "#A9A9A9" }}>created by <br/> {metaData.owner_of}</Lefttext>
             </div>
             <div style={{ color: "white", }}>
               <Leftheading>Contract Address</Leftheading>
 
               <br />
-              <Lefttext>0xahi66785bsjxbk9q728276hbshjcbjsnck9777cc1</Lefttext>
+              <Lefttext>{metaData.token_address}</Lefttext>
 
             </div>
             <div style={{ color: "white" }}>
               <Leftheading>Token Id</Leftheading>
               <br />
-              <Lefttext>33456</Lefttext>
+              <Lefttext>{metaData.token_id}</Lefttext>
 
             </div>
           </div>
@@ -241,12 +210,12 @@ const Descpage = () => {
               textAlign: "left",
             }}
           >
-            <Mainheading>Description</Mainheading>
-            <Desctext>
-              Lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Curabitur id sem elit. Nulla suscipit massa vitae eleifend
-              malesuada.
-            </Desctext>
+            {metaData && <Mainheading>{metaData.name}</Mainheading>}
+            <br/>
+            <Mainheading className="text-muted">Description</Mainheading>
+            {metaData && <Desctext>
+              {metaData.description}
+            </Desctext>}
             {/* {obj.name} */}
           </p>
 
@@ -389,7 +358,7 @@ const Descpage = () => {
 
           </div>
         </Right>
-      </Splitscreen>
+      </Splitscreen>}
       {/* <Footer /> */}
     </>
   );

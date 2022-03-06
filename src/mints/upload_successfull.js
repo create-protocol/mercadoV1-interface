@@ -29,9 +29,9 @@ function upload() {
             <br/>
             <h2>choose how you would like to list your nft</h2><br/>
             <h2> fixed price</h2>
-            <label class="switch">
+            <label className="switch">
                 <input type="checkbox"/>
-                <span class="slider round"></span>
+                <span className="slider round"></span>
             </label><br/>
             <h2>enter fixed price</h2><br/>
             <form action="/action_page.php" style={{color: 'white'}}>

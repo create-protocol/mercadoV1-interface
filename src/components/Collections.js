@@ -131,11 +131,11 @@ const ContactUs = () => {
               <TopText>Top NFT Collections</TopText>
               <div>
                 <Link to="/about">
-                  <div class="dropdownfilter">
-                    <button class="dropbtnfilter">
+                  <div className="dropdownfilter">
+                    <button className="dropbtnfilter">
                       All Chains <div className="downbtn"></div>
                     </button>
-                    <div class="dropdown-contentfilter">
+                    <div className="dropdown-contentfilter">
                       <Link
                         to="/main"
                         style={{ display: "flex", flexDirection: "column" }}
@@ -149,11 +149,11 @@ const ContactUs = () => {
                   </div>
                 </Link>
                 <Link to="/about">
-                  <div class="dropdownfilter">
-                    <button class="dropbtnfilter">
+                  <div className="dropdownfilter">
+                    <button className="dropbtnfilter">
                       All categories <div className="downbtn"></div>
                     </button>
-                    <div class="dropdown-contentfilter">
+                    <div className="dropdown-contentfilter">
                       <Link
                         to="/main"
                         style={{ display: "flex", flexDirection: "column" }}
@@ -167,11 +167,11 @@ const ContactUs = () => {
                   </div>
                 </Link>
                 <Link to="/about">
-                  <div class="dropdownfilter">
-                    <button class="dropbtnfilter">
+                  <div className="dropdownfilter">
+                    <button className="dropbtnfilter">
                       Last 7 days <div className="downbtn"></div>
                     </button>
-                    <div class="dropdown-contentfilter">
+                    <div className="dropdown-contentfilter">
                       <Link
                         to="/main"
                         style={{ display: "flex", flexDirection: "column" }}

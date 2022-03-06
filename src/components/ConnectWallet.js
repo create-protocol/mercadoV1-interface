@@ -30,7 +30,7 @@ export default function ConnectWallet() {
         <Modal.Header closeButton>
           <Modal.Title style={{color:'#000'}}>Connect a Wallet</Modal.Title>
         </Modal.Header>
-        {walletStore.Error && <div class="alert alert-danger m-3" role="alert">{walletStore.Error}</div>}
+        {walletStore.Error && <div className="alert alert-danger m-3" role="alert">{walletStore.Error}</div>}
         <Modal.Body>
           <div className="walletCard d-flex justify-content-between" onClick={() => {dispatch(addMetamask())}} style={style.Card} >
             <div style={style.cardText}>MetaMask</div>

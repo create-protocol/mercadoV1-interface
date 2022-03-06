@@ -47,17 +47,17 @@ const Footer = (props) => {
               style={{ color: "white", margin: "5px" }}
             >
               <div>
-                <i class="fa fa-linkedin" style={{ fontSize: "28px" }}></i>
+                <i className="fa fa-linkedin" style={{ fontSize: "28px" }}></i>
               </div>
             </a>
             <a style={{ color: "white", margin: "5px" }}>
               <div>
-                <i class="fa fa-facebook" style={{ fontSize: "28px" }}></i>
+                <i className="fa fa-facebook" style={{ fontSize: "28px" }}></i>
               </div>
             </a>
             <a style={{ color: "white", margin: "5px" }}>
               <div>
-                <i class="fa fa-telegram" style={{ fontSize: "28px" }}></i>
+                <i className="fa fa-telegram" style={{ fontSize: "28px" }}></i>
               </div>
             </a>
             <a
@@ -65,7 +65,7 @@ const Footer = (props) => {
               style={{ color: "white", margin: "5px" }}
             >
               <div>
-                <i class="fa fa-instagram" style={{ fontSize: "28px" }}></i>
+                <i className="fa fa-instagram" style={{ fontSize: "28px" }}></i>
               </div>
             </a>
             <a
@@ -73,7 +73,7 @@ const Footer = (props) => {
               style={{ color: "white", margin: "5px" }}
             >
               <div>
-                <i class="fa fa-twitter" style={{ fontSize: "28px" }}></i>
+                <i className="fa fa-twitter" style={{ fontSize: "28px" }}></i>
               </div>
             </a>
           </div>
