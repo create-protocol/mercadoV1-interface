@@ -87,7 +87,7 @@ const NavBar = (props) => {
               <Link to="/" activeClassName="active">
                 <div style={{ textDecoration: "none" }}>Home</div>
               </Link>
-              <Link to="/asset/create">
+              <Link to="/assets/create">
                 <div style={{ textDecoration: "none" }}>Create</div>
               </Link>
               <Link to="/about">
@@ -198,7 +198,7 @@ const NavBar = (props) => {
                   </div>
                 </div>
               </Link>
-              <Link  to="/asset/create" style={{ color: "#FFF" }}>
+              <Link  to="/assets/create" style={{ color: "#FFF" }}>
                 <div style={{ textDecoration: "none" }}>Create</div>
               </Link>
 

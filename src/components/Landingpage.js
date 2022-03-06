@@ -6,9 +6,13 @@ import Fundingimg from "../assets/images/FUNDING.png";
 import Landingcard from "./Newcard";
 import Trending1 from "../assets/images/trending1.png";
 import { Link } from "react-router-dom";
+import Createsell from "../assets/images/createsell.png";
+import Card1 from "../assets/images/card.png";
+import Card2 from "../assets/images/card1.png";
+import Card3 from "../assets/images/card2.png";
 import Trendingcardsmall from "./Trendingcardsmall";
 import TopCollectionCard from "./TopCollectionCard";
-
+import Loader from "react-loader-spinner";
 const ImageContainer = styled.div`
   background: url(${Fundingimg});
   object-fit: contain;
@@ -96,6 +100,7 @@ align-items:center;
 const Landingpage = (props) => {
 
   const [data, setData] = useState([]);
+  const [loadingState, setLoadingState] = useState("not-loaded");
 
   const fetchData = async () => {
     const collectionTop = [
@@ -115,9 +120,10 @@ const Landingpage = (props) => {
       })
     );
     setData(responseAllNFT);
-    console.log("response");
-    console.log(responseAllNFT);
-    console.log(responseAllNFT[0].token_address);
+    setLoadingState("loaded");
+    // console.log("response");
+    // console.log(responseAllNFT);
+    // console.log(responseAllNFT[0].token_address);
 
     // const response = await axios.get();
 
@@ -127,8 +133,15 @@ const Landingpage = (props) => {
     fetchData();
 
   })
-
-
+  if (loadingState != "loaded") {
+    return (
+      <div
+        style={{ height: "200px", alignContent: "center", marginBottom:"100px" }}
+      >
+        <Loader type="Puff" color="#00BFFF" height={400} width={100} />
+      </div>
+    );
+  }
   return (
     <div
       style={{
@@ -163,7 +176,7 @@ const Landingpage = (props) => {
           <div style={{ display: "flex", marginTop: "2rem" }}>
 
             <a href="/allnft" style={{ textDecoration: "none", color: "white" }}><Transparentbtn >Explore NFTs</Transparentbtn></a>
-            <a href="/asset/create" style={{ textDecoration: "none", color: "white" }}><Transparentbtn style={{ marginLeft: "2rem" }}>
+            <a href="/assets/create" style={{ textDecoration: "none", color: "white" }}><Transparentbtn style={{ marginLeft: "2rem" }}>
               Create NFT
             </Transparentbtn></a>
 
@@ -488,7 +501,7 @@ const Landingpage = (props) => {
 
       {/* Create and sell nfts */}
 
-      {/* <div
+      <div
         style={{
           width: "100%",
           paddingLeft: "8rem",
@@ -541,7 +554,7 @@ const Landingpage = (props) => {
           </div>
         </div>
         <Link to='/asset/create' style={{textDecoration:"none",color:"white"}}><Transparentbtn style={{marginTop:"3rem"}}>Create NFT</Transparentbtn></Link>
-      </div> */}
+      </div>
     </div>
   );
 };

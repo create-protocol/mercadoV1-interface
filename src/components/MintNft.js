@@ -276,7 +276,7 @@ function Mintnft() {
           </div>
         </div>
         <Link
-          to="/asset/create"
+          to="/assets/create"
           style={{ textDecoration: "none", color: "white" }}
         >
           <Transparentbtn style={{ marginTop: "3rem" }}>
@@ -309,7 +309,7 @@ function Mintnft() {
           <input
             type="file"
             className="formtxtfill docs"
-            type="file"
+            
             name="Asset"
             onChange={onChange}
           />
