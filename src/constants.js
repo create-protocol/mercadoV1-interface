@@ -28,7 +28,7 @@ const routes = [
   },
   {
     pathName: "FAQ & HELP",
-    path: "/FAQ & HELP",
+    path: "/faq",
     component: faq,
   },
   {
@@ -62,13 +62,13 @@ const routes = [
     component: Profile,
   },
   {
-    pathName: "profile",
-    path: "/info_page",
+    pathName: "about",
+    path: "/about",
     component: Infopage,
   },
   {
-    pathName: "mintnft",
-    path: "/asset/create",
+    pathName: "create",
+    path: "/assets/create",
     component: Mintnft,
   },
   {
@@ -81,11 +81,7 @@ const routes = [
     path: "/asset/:collection/:id",
     component: Descpage,
   },
-  {
-    pathName: "main",
-    path: "/desc",
-    component: Descpage,
-  },
+ 
   
   {
     pathName: "artist",

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
-import axios from 'axios';
+
 import contactus from "../assets/images/contactus.png";
 import Landingcard from "./Newcard";
 import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
 import "../assets/css/filterdropdown.css";
-
+import Loader from "react-loader-spinner";
 const ImageContainer = styled.div`
   background: url(${contactus});
   height: 17rem;
@@ -95,6 +96,7 @@ let config = {
 const AllNFT = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const [data, setData] = useState([]);
+  const [loadingState, setLoadingState] = useState("not-loaded");
 
   const fetchData = async () => {
     const collectionTop = [
@@ -114,8 +116,9 @@ const AllNFT = () => {
       })
     );
     setData(responseAllNFT);
-    console.log("response");
-    console.log(responseAllNFT);
+    setLoadingState("loaded");
+    // console.log("response");
+    // console.log(responseAllNFT);
 
     // const response = await axios.get();
 
@@ -125,6 +128,15 @@ const AllNFT = () => {
     fetchData();
 
   })
+  if (loadingState != "loaded") {
+    return (
+      <div
+        style={{ height: "200px", alignContent: "center", marginBottom:"100px" }}
+      >
+        <Loader type="Puff" color="#00BFFF" height={400} width={100} />
+      </div>
+    );
+  }
   return (
     <>
       <div style={{ width: "100%", marginTop: "5rem" }}>

@@ -474,7 +474,7 @@ const Infopage = () => {
               justifyContent: "center",
             }}
           >
-            <Link to="/asset/create">
+            <Link to="/assets/create">
               <button
                 style={{
                   background: "#EEFAFF",
