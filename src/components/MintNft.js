@@ -24,7 +24,105 @@ import Progress from "react-progressbar";
 const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
 
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
+const Formlabel=styled.label`
+left: 16.51%;
+  right: 78.49%;
+  top: 53.87%;
+  bottom: 45.23%;
 
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 26px;
+  /* identical to box height, or 144% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.3vmin;
+  color: #a0abb8;
+  border:none;`
+
+  const Button1=styled.div`
+  width: 221px;
+    height: 47px;
+    border: 2px solid;
+    border-image-slice: 1;
+    border-width: 2px;
+    background-color: black;
+    color: #f1f1f1;
+    border-radius: 30px;
+    font-family: Century Gothic;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 160%;
+    margin-right: 75rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-left:3rem`
+  
+  
+    const Formlabel2=styled.label`
+    left: 16.51%;
+    right: 78.49%;
+    top: 53.87%;
+    bottom: 45.23%;
+  
+    font-family: Century Gothic;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 26px;
+    /* identical to box height, or 144% */
+  
+    display: flex;
+    align-items: center;
+  
+    color: #a0abb8;
+    `
+  
+  
+    const Formfill=styled.form`
+    margin: 18px;
+    margin-left: 50px;
+    font: var(--unnamed-font-style-normal) normal
+      var(--unnamed-font-weight-normal) var(--unnamed-font-size-32) /
+      var(--unnamed-line-spacing-44) var(--unnamed-font-family-bahnschrift);
+    letter-spacing: var(--unnamed-character-spacing-6-4);
+  
+    text-align: left;
+    font: normal normal normal 24px Bahnschrift;
+    letter-spacing: 6.4px;`
+    const Formfilltxtdocs=styled.input`
+    margin-left: 25px;
+      font: var(--unnamed-font-style-normal) normal 300 var(--unnamed-font-size-24)/var(--unnamed-line-spacing-34) var(--unnamed-font-family-bahnschrift);
+      letter-spacing: var(--unnamed-character-spacing-4-8);
+      color: var(--unnamed-color-ffffff);
+      text-align: left;
+      font: normal normal 300 24px/34px Bahnschrift;
+      letter-spacing: 4.8px;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      border: 2px solid white;
+      border-radius: 2px solid red;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      background: #363636;
+      border-radius: 6px;
+      width: 80%;
+      height: 40px;
+      border:none;
+      margin-left:0`
+      
+    const Formfilltxt2=styled.textarea`
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background: #363636;
+    border-radius: 6px;
+    height: 90px;
+    border:none;`
 const ShadowBtn = styled.div`
   background-color: green;
   color: white;
@@ -297,8 +395,8 @@ function Mintnft() {
           justifyContent: "center",
         }}
       >
-        <form
-          className="formfill"
+        <Formfill
+          // className="formfill"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -306,7 +404,7 @@ function Mintnft() {
           }}
         >
           {uploading && <p style={{ fontSize: "2rem" }}>uploaded {prog}%</p>}
-          <input
+          <Formfilltxtdocs
             type="file"
             className="formtxtfill docs"
             
@@ -315,8 +413,8 @@ function Mintnft() {
           />
 
 
-          <label className="formlable">NFT name </label>
-          <input
+          <Formlabel className="formlable">NFT name </Formlabel>
+          <Formfilltxtdocs
             className="formtxtfill docs"
             type="text"
             onChange={(e) =>
@@ -324,8 +422,8 @@ function Mintnft() {
             }
             style={{ width: "100%" }}
           />
-          <label className="formlable2">Description</label>
-          <textarea
+          <Formlabel2 className="formlable2">Description</Formlabel2>
+          <Formfilltxt2
             className="formtxtfill2"
 
             rows="1"
@@ -335,9 +433,9 @@ function Mintnft() {
             }
             style={{ width: "100%" }}
 
-          ></textarea>
-          <label className="formlable">Price in WETH </label>
-          <input
+          ></Formfilltxt2>
+          <Formlabel className="formlable">Price in WETH </Formlabel>
+          <Formfilltxtdocs
             className="formtxtfill docs"
             type="text"
             onChange={(e) =>
@@ -346,8 +444,8 @@ function Mintnft() {
             style={{ width: "100%" }}
             required
           />
-          <label className="formlable">Creator royalty (in WETH) </label>
-          <input
+          <Formlabel className="formlable">Creator royalty (in WETH) </Formlabel>
+          <Formfilltxtdocs
             className="formtxtfill docs"
             type="text"
             onChange={(e) =>
@@ -356,7 +454,7 @@ function Mintnft() {
             style={{ width: "100%" }}
           />
           {/* <br /> */}
-        </form>
+        </Formfill>
         <div
           style={{
             display: "flex",
@@ -412,9 +510,9 @@ function Mintnft() {
           )}
         </div>
       </view>
-      <button className="digitalbutton" onClick={createMarket}>
+      <Button1 className="digitalbutton" onClick={createMarket}>
         <div style={{ color: "white" }}>Create Digital Asset</div>
-      </button>
+      </Button1>
     </div>
   );
 }
