@@ -20,9 +20,9 @@ import { Link } from "react-router-dom";
 const Maindiv = styled.div`
   color: white;
   text-align: left;
-  
+
   color: white;
-  
+
 `;
 
 const Gradienttext = styled.div`
@@ -55,7 +55,7 @@ const Infopage = () => {
               lineHeight: "6.5rem",
               textTransform: "capitalize",
               paddingTop:"7rem",
-              
+
 
             }}
           >
@@ -66,7 +66,6 @@ const Infopage = () => {
           <div
             style={{
               // fontFamily: "Open Sans",
-              fontFamily: "Century Gothic",
               fontStyle: "normal",
               fontWeight: "normal",
               fontSize: "2.9rem",
@@ -84,7 +83,7 @@ const Infopage = () => {
             alignItems: "center",
             justifyContent: "center",
             width: "100%",
-            
+
           }}
         >
           <div
@@ -113,7 +112,6 @@ const Infopage = () => {
                   <div
                     style={{
                       fontSize: "2.5rem",
-                      fontFamily: "Century Gothic",
                       fontStyle: "normal",
                       marginTop: "2rem",
                     }}
@@ -123,7 +121,6 @@ const Infopage = () => {
                   <div
                     style={{
                       fontSize: "1.3rem",
-                      fontFamily: "Century Gothic",
                       fontStyle: "normal",
                       marginTop: "1.5rem",
                       marginLeft: "1.5rem",
@@ -139,7 +136,6 @@ const Infopage = () => {
                     style={{
                       marginTop: "1.5rem",
                       fontSize: "1.3rem",
-                      fontFamily: "Century Gothic",
                       fontStyle: "bold",
                     }}
                   >
@@ -232,7 +228,6 @@ const Infopage = () => {
             style={{
               fontSize: "2rem",
               lineHeight: "4.7rem",
-              fontFamily: "Century Gothic",
               color: "#F4F4F4  ",
             }}
           >
@@ -290,7 +285,6 @@ const Infopage = () => {
           flexDirection: "column",
           marginTop: "10rem",
           marginBottom: "5rem",
-          fontFamily: "Century Gothic",
           padding:"0 8rem"
         }}
       >
@@ -486,7 +480,6 @@ const Infopage = () => {
                   height: "max-content",
                   margin: "1rem",
                   color: "black",
-                  fontFamily: "Century Gothic",
                   fontSize: "1rem",
                   fontWeight: "600",
                 }}

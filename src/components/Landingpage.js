@@ -22,7 +22,6 @@ const ImageContainer = styled.div`
   height: 40rem;
   width: 100%;
   margintop: 0;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: 600;
   font-size: 2.5rem;
@@ -46,7 +45,6 @@ const Transparentbtn = styled.div`
 
 
 const HeadingText = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 2.5rem;
@@ -54,7 +52,6 @@ const HeadingText = styled.div`
 `;
 
 const Createsmallh = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 1rem;
@@ -64,7 +61,6 @@ const Createsmallh = styled.div`
 `;
 
 const Createmaint = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 1.2rem;
@@ -85,7 +81,6 @@ padding-top:1.5rem;
 const Cardtext = styled.div`
 background: rgba(0, 0, 0, 0.6);
 border-radius: 5px;
-font-family: Century Gothic;
 font-style: normal;
 font-weight: bold;
 font-size: .7rem;
@@ -133,7 +128,7 @@ const Landingpage = (props) => {
     fetchData();
 
   })
-  if (loadingState != "loaded") {
+  if (loadingState !== "loaded") {
     return (
       <div
         style={{ height: "200px", alignContent: "center", marginBottom:"100px" }}
@@ -145,7 +140,6 @@ const Landingpage = (props) => {
   return (
     <div
       style={{
-        fontFamily: "Century Gothic",
         fontStyle: "normal",
         color: "white",
         width: "100%",
@@ -162,7 +156,7 @@ const Landingpage = (props) => {
         }}
       >
         <ImageContainer>
-          <div style={{ color: " #D14F8C", fontSize: ".9rem" }}>
+          <div style={{ color: " #D14F8C", fontSize: ".9rem", fontWeight: 'bold' }}>
             Buying & selling NFTs made easy through mercado.studio
           </div>
           <div style={{ fontSize: "3.7rem", lineHeight: "4.5rem" }}>
@@ -186,7 +180,7 @@ const Landingpage = (props) => {
 
       {/* Trending Carousel */}
 
-     
+
       {/* Top Collections */}
       {/* <div
         style={{
@@ -290,7 +284,7 @@ const Landingpage = (props) => {
           }}
         >
           {/* <HeadingText>Top Sellers</HeadingText> */}
-         
+
         </div>
         {/* <div
           style={{

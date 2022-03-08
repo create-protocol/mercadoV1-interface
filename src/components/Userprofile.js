@@ -20,7 +20,6 @@ const ImageContainer = styled.div`
   height: 15rem;
   width: 100%;
   margintop: 0;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: 600;
   font-size: 2.5rem;
@@ -32,7 +31,6 @@ const ImageContainer = styled.div`
 `;
 
 const TopText = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 1.1rem;
@@ -43,7 +41,6 @@ const TopText = styled.div`
 `;
 
 const InnerText = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-style: normal;
   font-weight: normal;
@@ -54,7 +51,6 @@ const InnerText = styled.div`
 `;
 
 const Radio = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 1rem;
@@ -62,7 +58,6 @@ const Radio = styled.div`
 `;
 
 const FormLabel = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 1.2rem;
@@ -88,7 +83,6 @@ const Whitebtn = styled.div`
   height: 62px;
   background: #b4b4b4;
   border-radius: 15px;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -379,7 +373,7 @@ const Userprofile = () => {
                   alignItems: "start",
                   justifyContent: "flex-start",
                   flexWrap: "wrap",
-                  
+
                 }}
               >
                 <CollectedCard/>
@@ -393,8 +387,8 @@ const Userprofile = () => {
                 <CollectedCard/>
                 <CollectedCard/>
                 <CollectedCard/>
-                <CollectedCard/>  
-                
+                <CollectedCard/>
+
               </div>
             </div>
 }

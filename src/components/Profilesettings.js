@@ -30,7 +30,6 @@ const ImageContainer = styled.div`
   height: 15rem;
   width: 100%;
   margintop: 0;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: 600;
   font-size: 2.5rem;
@@ -54,7 +53,6 @@ const TopText = styled.div`
 `;
 
 const InnerText = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-style: normal;
   font-weight: normal;
@@ -168,7 +166,7 @@ const Inputtext = styled.input`
   &:focus {
     outline: none;
     color:black;
-  
+
   }
 `;
 

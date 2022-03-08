@@ -13,7 +13,6 @@ const ImageContainer = styled.div`
   height: 17rem;
   width: 100%;
   margintop: 0;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: 600;
   font-size: 2.5rem;
@@ -26,7 +25,6 @@ const ImageContainer = styled.div`
 `;
 
 const TopText = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 1.4rem;
@@ -34,7 +32,6 @@ const TopText = styled.div`
 `;
 
 const InnerText = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 0.9rem;
@@ -44,7 +41,6 @@ const InnerText = styled.div`
 `;
 
 const Radio = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 1rem;
@@ -52,7 +48,6 @@ const Radio = styled.div`
 `;
 
 const FormLabel=styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
 font-size: 1.2rem;
@@ -78,7 +73,6 @@ width: 204px;
 height: 62px;
 background: #B4B4B4;
 border-radius: 15px;
-font-family: Century Gothic;
 font-style: normal;
 font-weight: bold;
 font-size: 20px;
@@ -157,8 +151,8 @@ const ContactUs = () => {
                     marginTop: "2.5rem",
                   }}
                 >
-                  
-                  
+
+
                 </div>
                 {/* <img src={adddress} style={{ marginTop: "2.5rem",height:"9rem" }} alt="addr" /> */}
               </div>
@@ -219,7 +213,7 @@ const ContactUs = () => {
                 <br />
               </div>
               <div style={{ display: "flex", flexDirection: "column",color:"#6C6767",width:"100%" }}>
-                
+
                 <FormLabel for="fname">Name*</FormLabel>
                 <InputForm
                   type="text"
@@ -236,7 +230,7 @@ const ContactUs = () => {
                 <FormLabel for="lname">Message*</FormLabel>
                 <InputForm
                   type="text"
-                  
+
                   name="message"
                   // placeholder="Your last name.."
                 />

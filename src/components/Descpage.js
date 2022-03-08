@@ -67,14 +67,12 @@ box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.32);
   margin-top: 0.7rem;
 `;
 const Mainheading = styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-weight: 600;
 font-size: 2.3rem;
 line-height: 140%;`
 
 const Desctext = styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
 font-size: 1rem;
@@ -82,7 +80,6 @@ line-height: 160%;
 color: #A9A9A9;`
 
 const Biddingtext = styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-weight: 600;
 font-size: 1.5rem;
@@ -90,7 +87,6 @@ line-height: 140%;
 margin-top:1rem;`
 
 const Leftheading = styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
 font-size: 14px;
@@ -100,7 +96,6 @@ line-height:0.5rem;
 `
 
 const Lefttext = styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-size: 18px;
 line-height:1;
@@ -128,7 +123,7 @@ const Descpage = () => {
       console.log("metadata : " ,metaData);
       setLoadingState("loaded");
     }catch(e){
-      console.log(e); 
+      console.log(e);
     }
 
   }
@@ -136,7 +131,7 @@ const Descpage = () => {
   useEffect(()=>{
     fetchMetaData();
   },[])
-  
+
   if (loadingState != "loaded") {
     return (
       <div

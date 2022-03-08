@@ -56,8 +56,11 @@ const Navdiv = styled.div`
   background: transparent;
 `;
 
+const NavLink = styled(Link)`
+  font-family: 'Montserrat', sans-serif;
+`;
 
-const NavBar = (props) => { 
+const NavBar = (props) => {
 
   const [showDrawer, setShowDrawer] = useState(false);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
@@ -84,28 +87,28 @@ const NavBar = (props) => {
             <span></span>
 
             <ul id="menu">
-              <Link to="/" activeClassName="active">
+              <NavLink to="/" activeClassName="active">
                 <div style={{ textDecoration: "none" }}>Home</div>
-              </Link>
-              <Link to="/assets/create">
+              </NavLink>
+              <NavLink to="/assets/create">
                 <div style={{ textDecoration: "none" }}>Create</div>
-              </Link>
-              <Link to="/about">
+              </NavLink>
+              <NavLink to="/about">
                 <div style={{ textDecoration: "none" }}>About</div>
-              </Link>
-              <Link to="/faq">
+              </NavLink>
+              <NavLink to="/faq">
                 <div style={{ textDecoration: "none" }}>FAQs</div>
-              </Link>
-              <Link to="/contactus">
+              </NavLink>
+              <NavLink to="/contactus">
                 <div style={{ textDecoration: "none" }}>Contact us</div>
-              </Link>
+              </NavLink>
             </ul>
           </div>
 
           <div>
-            <Link to="/">
+            <NavLink to="/">
               <img src={Home} alt="logo" style={{ height: "3rem" }} />
-            </Link>
+            </NavLink>
           </div>
         </nav>
       </Navdiv>
@@ -148,7 +151,7 @@ const NavBar = (props) => {
               marginLeft: "auto",
             }}
           >
-            <Link to="/">
+            <NavLink to="/">
               <div style={{ width: "10px", marginLeft: "5.5rem" }}>
                 <img
                   style={{
@@ -160,7 +163,7 @@ const NavBar = (props) => {
                   alt="homepage"
                 />
               </div>
-            </Link>
+            </NavLink>
 
             <div
               style={{
@@ -168,7 +171,6 @@ const NavBar = (props) => {
                 alignItems: "center",
                 justifyContent: "space-between",
                 width: "60%",
-                fontFamily: "Century Gothic",
                 fontStyle: "normal",
                 fontWeight: "bold",
                 fontSize: "1rem",
@@ -176,53 +178,53 @@ const NavBar = (props) => {
                 textDecoration: "none",
               }}
             >
-              {/* <Link
+              {/* <NavLink
                 to="/"
                 activeStyle={{ color: "red" }}
                 style={{ color: "white" }}
               >
                 Home
-                
-              </Link> */}
-              <Link to="/about">
+
+              </NavLink> */}
+              <NavLink to="/about">
                 <div className="dropdown">
                   <button className="dropbtn">Explore</button>
                   <div className="dropdown-content">
-                    <Link
+                    <NavLink
                       to="/allnft"
                       style={{ display: "flex", flexDirection: "column" }}
                     >
                       All NFTs <img src={Navdropline} alt="bar" />
-                    </Link>
-                    <Link to="/collections">Collections</Link>
+                    </NavLink>
+                    <NavLink to="/collections">Collections</NavLink>
                   </div>
                 </div>
-              </Link>
-              <Link  to="/assets/create" style={{ color: "#FFF" }}>
+              </NavLink>
+              <NavLink  to="/assets/create" style={{ color: "#FFF" }}>
                 <div style={{ textDecoration: "none" }}>Create</div>
-              </Link>
+              </NavLink>
 
-              <Link to="/about">
+              <NavLink to="/about">
                 <div className="dropdown">
                   <button className="dropbtn">About</button>
                   <div className="dropdown-content">
-                    <Link
+                    <NavLink
                       to="#"
                       style={{ display: "flex", flexDirection: "column" }}
                     >
                       Who are we? <img src={Navdropline} alt="bar" />
-                    </Link>
-                    <Link to="/faq">FAQs</Link>
+                    </NavLink>
+                    <NavLink to="/faq">FAQs</NavLink>
                   </div>
                 </div>
-              </Link>
+              </NavLink>
 
-              <Link to="/contactus" style={{ color: "#FFF" }}>
+              <NavLink to="/contactus" style={{ color: "#FFF" }}>
                 <div style={{ textDecoration: "none" }}>Contact us</div>
-              </Link>
+              </NavLink>
 
               <div style={{ marginRight: "6.5rem" }}>
-               
+
 
                 {wallet && wallet.address ? (
                   <div style={{ display: "flex" }}>
@@ -257,12 +259,13 @@ const NavBar = (props) => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        fontSize: "1rem",
+                        fontSize: "0.9rem",
                         width: "10rem",
-                        borderRadius: "30px",
-                        border:"none"
+                        borderRadius: "10px",
+                        border:"none",
+                        fontFamily: 'Montserrat, sans-serif'
                       }}
-                      className="border-gradient border-gradient-purple"
+                      className="border-gradient"
                       onClick={handleToggle}
                     >
                       Connect Wallet
