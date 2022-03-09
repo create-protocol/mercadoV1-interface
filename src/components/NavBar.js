@@ -12,7 +12,10 @@ import Navdropline from "../assets/images/navdropline.png";
 import ConnectWallet from "./ConnectWallet";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleWalletPopup } from "../store";
+import { Menu, Button } from 'antd';
+import {MenuOutlined} from '@ant-design/icons';
 
+const SubMenu = Menu;
 export const GradientButton = styled.div`
   color: white;
   border-radius: 5px;
@@ -53,6 +56,7 @@ const Navdiv = styled.div`
   padding-right: 1rem;
   height: 100px;
   background: transparent;
+  position: fixed;
 `;
 
 const NavLink = styled(Link)`
@@ -63,6 +67,7 @@ const NavBar = (props) => {
 
   const [showDrawer, setShowDrawer] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
 
   const dispatch = useDispatch()
@@ -83,6 +88,10 @@ const NavBar = (props) => {
     }
   }, []);
 
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed);
+  }
+
   return (
     <>
       <Navdiv>
@@ -93,6 +102,8 @@ const NavBar = (props) => {
             justifyContent: "space-between",
           }}
         >
+          <MenuOutlined style={{color: 'white', fontSize: '2rem'}}/>
+
           <div id="menuToggle">
             <input type="checkbox" />
             <span></span>
@@ -133,27 +144,12 @@ const NavBar = (props) => {
           zIndex: "1000",
           transition:".8s",
           background: !scrolled ? 'transparent' : '#1a1a1a',
-          height: '5rem'
+          height: !scrolled ? '8rem' : '5rem'
         }}
       >
         <div
           className="header-container"
-          style={
-            name
-              ? name === ""
-                ? {
-                    background: "transparent",
-                    position: "absolute",
-                    zIndex: 2,
-                    width: "100%",
-
-                    color: "#FFFFFF",
-                    fontSize: isBrowser ? "3rem" : "1.5rem",
-                    keyboard: true,
-                  }
-                : {}
-              : {}
-          }
+          style={{marginTop: !scrolled ? '3rem' : 0, transition:".3s",}}
         >
           <div
             className="header-ham"

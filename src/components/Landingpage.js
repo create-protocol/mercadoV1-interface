@@ -18,7 +18,7 @@ import { Spin, Space } from 'antd';
 const ImageContainer = styled.div`
   background: url(${Fundingimg});
   object-fit: contain;
-  background-position: center;
+  background-position: top;
   background-size: cover;
   backgroundrepeat: no-repeat;
   min-height: 100vh;
@@ -133,15 +133,15 @@ const Landingpage = (props) => {
   if (loadingState !== "loaded") {
     return (
       <div
-        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px" }}
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px", justifyContent: 'center' }}
       >
-        {/*<Loader type="Puff" color="#00BFFF" height={400} width={100} />*/}
-        <Space size="large">
+        <div style={{minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
           <Spin size="large" />
-        </Space>
+        </div>
       </div>
     );
   }
+
   return (
     <div
       style={{
@@ -160,24 +160,26 @@ const Landingpage = (props) => {
         }}
       >
         <ImageContainer>
-          <div style={{ color: " #D14F8C", fontSize: ".9rem", fontWeight: 'bold' }}>
-            Buying & selling NFTs made easy through mercado.studio
-          </div>
-          <div style={{ fontSize: "3.7rem", lineHeight: "4.5rem" }}>
-            Discover,
-            <br /> collect and sell <br />
-            NFTs{" "}
-          </div>
-          <div style={{ fontSize: "1.2rem" }}>
-            Explore the NFT marketplace dedicated to creators
-          </div>
-          <div style={{ display: "flex", marginTop: "2rem" }}>
+          <div style={{paddingTop:'8vh', height: '100%', display:'flex',flexDirection: 'column', justifyContent:'center'}}>
+            <div style={{ color: " #D14F8C", fontSize: ".9rem", fontWeight: 'bold' }}>
+              Buying & selling NFTs made easy through mercado.studio
+            </div>
+            <div style={{ fontSize: "3.7rem", lineHeight: "4.5rem" }}>
+              Discover,
+              <br /> collect and sell <br />
+              NFTs{" "}
+            </div>
+            <div style={{ fontSize: "1.2rem" }}>
+              Explore the NFT marketplace dedicated to creators
+            </div>
+            <div style={{ display: "flex", marginTop: "2rem" }}>
 
-            <a href="/allnft" style={{ textDecoration: "none", color: "white" }}><Transparentbtn >Explore NFTs</Transparentbtn></a>
-            <a href="/assets/create" style={{ textDecoration: "none", color: "white" }}><Transparentbtn style={{ marginLeft: "2rem" }}>
-              Create NFT
-            </Transparentbtn></a>
+              <a href="/allnft" style={{ textDecoration: "none", color: "white" }}><Transparentbtn >Explore NFTs</Transparentbtn></a>
+              <a href="/assets/create" style={{ textDecoration: "none", color: "white" }}><Transparentbtn style={{ marginLeft: "2rem" }}>
+                Create NFT
+              </Transparentbtn></a>
 
+            </div>
           </div>
         </ImageContainer>
       </div>
