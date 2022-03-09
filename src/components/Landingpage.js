@@ -13,13 +13,15 @@ import Card3 from "../assets/images/card2.png";
 import Trendingcardsmall from "./Trendingcardsmall";
 import TopCollectionCard from "./TopCollectionCard";
 import Loader from "react-loader-spinner";
+import { Spin, Space } from 'antd';
+
 const ImageContainer = styled.div`
   background: url(${Fundingimg});
   object-fit: contain;
   background-position: center;
   background-size: cover;
   backgroundrepeat: no-repeat;
-  height: 40rem;
+  min-height: 100vh;
   width: 100%;
   margintop: 0;
   font-style: normal;
@@ -126,14 +128,17 @@ const Landingpage = (props) => {
 
   useEffect(() => {
     fetchData();
+  }, []);
 
-  })
   if (loadingState !== "loaded") {
     return (
       <div
-        style={{ height: "200px", alignContent: "center", marginBottom:"100px" }}
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px" }}
       >
-        <Loader type="Puff" color="#00BFFF" height={400} width={100} />
+        {/*<Loader type="Puff" color="#00BFFF" height={400} width={100} />*/}
+        <Space size="large">
+          <Spin size="large" />
+        </Space>
       </div>
     );
   }
@@ -143,7 +148,6 @@ const Landingpage = (props) => {
         fontStyle: "normal",
         color: "white",
         width: "100%",
-
       }}
     >
       <div

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
 import { isBrowser } from "react-device-detect";
@@ -38,7 +38,6 @@ const Navdivdesktop = styled.div`
   top: 0;
   width: 100%;
   zindex: 1000;
-  background: black;
   @media (max-width: 1180px) {
     display: none;
   }
@@ -63,11 +62,26 @@ const NavLink = styled(Link)`
 const NavBar = (props) => {
 
   const [showDrawer, setShowDrawer] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
 
   const dispatch = useDispatch()
   const handleToggle = () => {dispatch(toggleWalletPopup())};
   const wallet =  useSelector(state => state.wallet.wallet)
+
+  useEffect(() => {
+    const handleScroll = _ => {
+      if (window.pageYOffset > 100) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return _ => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, []);
 
   return (
     <>
@@ -77,7 +91,6 @@ const NavBar = (props) => {
           style={{
             display: "flex",
             justifyContent: "space-between",
-            fontFamily: "'Rubik', sans-serif",
           }}
         >
           <div id="menuToggle">
@@ -119,7 +132,8 @@ const NavBar = (props) => {
           width: "100%",
           zIndex: "1000",
           transition:".8s",
-          background: "black",
+          background: !scrolled ? 'transparent' : '#1a1a1a',
+          height: '5rem'
         }}
       >
         <div
@@ -155,7 +169,7 @@ const NavBar = (props) => {
               <div style={{ width: "10px", marginLeft: "5.5rem" }}>
                 <img
                   style={{
-                    width: "15rem",
+                    width: "18rem",
                     marginTop: "0.5rem",
                     marginLeft: "20px",
                   }}
@@ -170,7 +184,7 @@ const NavBar = (props) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                width: "60%",
+                width: "50%",
                 fontStyle: "normal",
                 fontWeight: "bold",
                 fontSize: "1rem",
@@ -249,8 +263,7 @@ const NavBar = (props) => {
                 ): (
                   <div
                     style={{
-                      marginTop: "10px",
-                      borderRadius: "10px",
+                      borderRadius: "8px",
                       border:"none"
                     }}
                   >
