@@ -22,7 +22,7 @@ const Landingdiv = styled.div`
   border-radius: 24px;
   height: 50vh;
   width: 12vw;
-  
+
   object-fit: cover;
   display: flex;
   align-items: start;
@@ -68,7 +68,6 @@ const Btn = styled.div`
 `;
 
 const  Heading2=styled.div`
-ont-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
 font-size: .7rem;
@@ -82,7 +81,6 @@ margin-top:2%
 `
 
 const Lowertext=styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
 font-size: .7rem;
@@ -100,8 +98,8 @@ const LandingCard = () => {
       <Imagecont>
       </Imagecont>
       <div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between"}}>
-          
-          
+
+
           <Heading2>creator name</Heading2>
           <Lowertext>Lorem ipsum dolor sit amet, consectetur Leo...</Lowertext>
           <img src={Collectedline} style={{width:"90%",marginTop:"4%"}} alt="mh"/>
@@ -110,7 +108,7 @@ const LandingCard = () => {
                 <div style={{display:"flex",width:"25%",justifyContent:"space-between"}}>
                     <img src={Heart} alt="heart" style={{width:"3vh",height:"3vh"}}/>
                     <div>12</div>
- 
+
                 </div>
           </div>
       </div>

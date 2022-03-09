@@ -68,7 +68,6 @@ const Btn = styled.div`
 `;
 
 const  Heading2=styled.div`
-ont-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
 font-size: .7rem;
@@ -80,7 +79,6 @@ color: #A9A9A9;
 `
 
 const Lowertext=styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
 font-size: .8rem;

@@ -29,8 +29,6 @@ left: 16.51%;
   right: 78.49%;
   top: 53.87%;
   bottom: 45.23%;
-
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -52,7 +50,6 @@ left: 16.51%;
     background-color: black;
     color: #f1f1f1;
     border-radius: 30px;
-    font-family: Century Gothic;
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
@@ -62,28 +59,26 @@ left: 16.51%;
     align-items:center;
     justify-content:center;
     margin-left:3rem`
-  
-  
+
+
     const Formlabel2=styled.label`
     left: 16.51%;
     right: 78.49%;
     top: 53.87%;
     bottom: 45.23%;
-  
-    font-family: Century Gothic;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
     line-height: 26px;
     /* identical to box height, or 144% */
-  
+
     display: flex;
     align-items: center;
-  
+
     color: #a0abb8;
     `
-  
-  
+
+
     const Formfill=styled.form`
     margin: 18px;
     margin-left: 50px;
@@ -91,7 +86,7 @@ left: 16.51%;
       var(--unnamed-font-weight-normal) var(--unnamed-font-size-32) /
       var(--unnamed-line-spacing-44) var(--unnamed-font-family-bahnschrift);
     letter-spacing: var(--unnamed-character-spacing-6-4);
-  
+
     text-align: left;
     font: normal normal normal 24px Bahnschrift;
     letter-spacing: 6.4px;`
@@ -115,7 +110,7 @@ left: 16.51%;
       height: 40px;
       border:none;
       margin-left:0`
-      
+
     const Formfilltxt2=styled.textarea`
     margin-bottom: 20px;
     margin-top: 20px;
@@ -152,7 +147,6 @@ const Transparentbtn = styled.div`
 `;
 
 const Createsmallh = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 1rem;
@@ -162,7 +156,6 @@ const Createsmallh = styled.div`
 `;
 
 const Createmaint = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 1.2rem;
@@ -407,7 +400,7 @@ function Mintnft() {
           <Formfilltxtdocs
             type="file"
             className="formtxtfill docs"
-            
+
             name="Asset"
             onChange={onChange}
           />

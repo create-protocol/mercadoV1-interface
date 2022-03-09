@@ -12,7 +12,6 @@ const Trendingimagetext = styled.div`
 const Cardtext = styled.div`
   background: rgba(0, 0, 0, 0.6);
   border-radius: 5px;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 0.7rem;

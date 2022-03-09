@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Drawer } from "antd";
 import { Link } from "react-router-dom";
 import { isBrowser } from "react-device-detect";
@@ -12,7 +12,10 @@ import Navdropline from "../assets/images/navdropline.png";
 import ConnectWallet from "./ConnectWallet";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleWalletPopup } from "../store";
+import { Menu, Button } from 'antd';
+import {MenuOutlined} from '@ant-design/icons';
 
+const SubMenu = Menu;
 export const GradientButton = styled.div`
   color: white;
   border-radius: 5px;
@@ -38,7 +41,6 @@ const Navdivdesktop = styled.div`
   top: 0;
   width: 100%;
   zindex: 1000;
-  background: black;
   @media (max-width: 1180px) {
     display: none;
   }
@@ -54,17 +56,41 @@ const Navdiv = styled.div`
   padding-right: 1rem;
   height: 100px;
   background: transparent;
+  position: fixed;
 `;
 
+const NavLink = styled(Link)`
+  font-family: 'Montserrat', sans-serif;
+`;
 
-const NavBar = (props) => { 
+const NavBar = (props) => {
 
   const [showDrawer, setShowDrawer] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
 
   const dispatch = useDispatch()
   const handleToggle = () => {dispatch(toggleWalletPopup())};
   const wallet =  useSelector(state => state.wallet.wallet)
+
+  useEffect(() => {
+    const handleScroll = _ => {
+      if (window.pageYOffset > 100) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return _ => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, []);
+
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed);
+  }
 
   return (
     <>
@@ -74,9 +100,10 @@ const NavBar = (props) => {
           style={{
             display: "flex",
             justifyContent: "space-between",
-            fontFamily: "'Rubik', sans-serif",
           }}
         >
+          <MenuOutlined style={{color: 'white', fontSize: '2rem'}}/>
+
           <div id="menuToggle">
             <input type="checkbox" />
             <span></span>
@@ -84,28 +111,28 @@ const NavBar = (props) => {
             <span></span>
 
             <ul id="menu">
-              <Link to="/" activeClassName="active">
+              <NavLink to="/" activeClassName="active">
                 <div style={{ textDecoration: "none" }}>Home</div>
-              </Link>
-              <Link to="/assets/create">
+              </NavLink>
+              <NavLink to="/assets/create">
                 <div style={{ textDecoration: "none" }}>Create</div>
-              </Link>
-              <Link to="/about">
+              </NavLink>
+              <NavLink to="/about">
                 <div style={{ textDecoration: "none" }}>About</div>
-              </Link>
-              <Link to="/faq">
+              </NavLink>
+              <NavLink to="/faq">
                 <div style={{ textDecoration: "none" }}>FAQs</div>
-              </Link>
-              <Link to="/contactus">
+              </NavLink>
+              <NavLink to="/contactus">
                 <div style={{ textDecoration: "none" }}>Contact us</div>
-              </Link>
+              </NavLink>
             </ul>
           </div>
 
           <div>
-            <Link to="/">
+            <NavLink to="/">
               <img src={Home} alt="logo" style={{ height: "3rem" }} />
-            </Link>
+            </NavLink>
           </div>
         </nav>
       </Navdiv>
@@ -116,27 +143,13 @@ const NavBar = (props) => {
           width: "100%",
           zIndex: "1000",
           transition:".8s",
-          background: "black",
+          background: !scrolled ? 'transparent' : '#1a1a1a',
+          height: !scrolled ? '8rem' : '5rem'
         }}
       >
         <div
           className="header-container"
-          style={
-            name
-              ? name === ""
-                ? {
-                    background: "transparent",
-                    position: "absolute",
-                    zIndex: 2,
-                    width: "100%",
-
-                    color: "#FFFFFF",
-                    fontSize: isBrowser ? "3rem" : "1.5rem",
-                    keyboard: true,
-                  }
-                : {}
-              : {}
-          }
+          style={{marginTop: !scrolled ? '3rem' : 0, transition:".3s",}}
         >
           <div
             className="header-ham"
@@ -148,11 +161,11 @@ const NavBar = (props) => {
               marginLeft: "auto",
             }}
           >
-            <Link to="/">
+            <NavLink to="/">
               <div style={{ width: "10px", marginLeft: "5.5rem" }}>
                 <img
                   style={{
-                    width: "15rem",
+                    width: "18rem",
                     marginTop: "0.5rem",
                     marginLeft: "20px",
                   }}
@@ -160,15 +173,14 @@ const NavBar = (props) => {
                   alt="homepage"
                 />
               </div>
-            </Link>
+            </NavLink>
 
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                width: "60%",
-                fontFamily: "Century Gothic",
+                width: "50%",
                 fontStyle: "normal",
                 fontWeight: "bold",
                 fontSize: "1rem",
@@ -176,53 +188,53 @@ const NavBar = (props) => {
                 textDecoration: "none",
               }}
             >
-              {/* <Link
+              {/* <NavLink
                 to="/"
                 activeStyle={{ color: "red" }}
                 style={{ color: "white" }}
               >
                 Home
-                
-              </Link> */}
-              <Link to="/about">
+
+              </NavLink> */}
+              <NavLink to="/about">
                 <div className="dropdown">
                   <button className="dropbtn">Explore</button>
                   <div className="dropdown-content">
-                    <Link
+                    <NavLink
                       to="/allnft"
                       style={{ display: "flex", flexDirection: "column" }}
                     >
                       All NFTs <img src={Navdropline} alt="bar" />
-                    </Link>
-                    <Link to="/collections">Collections</Link>
+                    </NavLink>
+                    <NavLink to="/collections">Collections</NavLink>
                   </div>
                 </div>
-              </Link>
-              <Link  to="/assets/create" style={{ color: "#FFF" }}>
+              </NavLink>
+              <NavLink  to="/assets/create" style={{ color: "#FFF" }}>
                 <div style={{ textDecoration: "none" }}>Create</div>
-              </Link>
+              </NavLink>
 
-              <Link to="/about">
+              <NavLink to="/about">
                 <div className="dropdown">
                   <button className="dropbtn">About</button>
                   <div className="dropdown-content">
-                    <Link
+                    <NavLink
                       to="#"
                       style={{ display: "flex", flexDirection: "column" }}
                     >
                       Who are we? <img src={Navdropline} alt="bar" />
-                    </Link>
-                    <Link to="/faq">FAQs</Link>
+                    </NavLink>
+                    <NavLink to="/faq">FAQs</NavLink>
                   </div>
                 </div>
-              </Link>
+              </NavLink>
 
-              <Link to="/contactus" style={{ color: "#FFF" }}>
+              <NavLink to="/contactus" style={{ color: "#FFF" }}>
                 <div style={{ textDecoration: "none" }}>Contact us</div>
-              </Link>
+              </NavLink>
 
               <div style={{ marginRight: "6.5rem" }}>
-               
+
 
                 {wallet && wallet.address ? (
                   <div style={{ display: "flex" }}>
@@ -247,8 +259,7 @@ const NavBar = (props) => {
                 ): (
                   <div
                     style={{
-                      marginTop: "10px",
-                      borderRadius: "10px",
+                      borderRadius: "8px",
                       border:"none"
                     }}
                   >
@@ -257,12 +268,13 @@ const NavBar = (props) => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        fontSize: "1rem",
+                        fontSize: "0.9rem",
                         width: "10rem",
-                        borderRadius: "30px",
-                        border:"none"
+                        borderRadius: "10px",
+                        border:"none",
+                        fontFamily: 'Montserrat, sans-serif'
                       }}
-                      className="border-gradient border-gradient-purple"
+                      className="border-gradient"
                       onClick={handleToggle}
                     >
                       Connect Wallet
