@@ -13,7 +13,7 @@ import ConnectWallet from "./ConnectWallet";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleWalletPopup } from "../store";
 import { Menu, Button } from 'antd';
-import {MenuOutlined} from '@ant-design/icons';
+import { MenuOutlined } from '@ant-design/icons';
 
 const SubMenu = Menu;
 export const GradientButton = styled.div`
@@ -71,8 +71,8 @@ const NavBar = (props) => {
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
 
   const dispatch = useDispatch()
-  const handleToggle = () => {dispatch(toggleWalletPopup())};
-  const wallet =  useSelector(state => state.wallet.wallet)
+  const handleToggle = () => { dispatch(toggleWalletPopup()) };
+  const wallet = useSelector(state => state.wallet.wallet)
 
   useEffect(() => {
     const handleScroll = _ => {
@@ -102,7 +102,7 @@ const NavBar = (props) => {
             justifyContent: "space-between",
           }}
         >
-          <MenuOutlined style={{color: 'white', fontSize: '2rem'}}/>
+          <MenuOutlined style={{ color: 'white', fontSize: '2rem' }} />
 
           <div id="menuToggle">
             <input type="checkbox" />
@@ -142,14 +142,14 @@ const NavBar = (props) => {
           top: "0",
           width: "100%",
           zIndex: "1000",
-          transition:".8s",
+          transition: ".8s",
           background: !scrolled ? 'transparent' : '#1a1a1a',
           height: !scrolled ? '8rem' : '5rem'
         }}
       >
         <div
           className="header-container"
-          style={{marginTop: !scrolled ? '3rem' : 0, transition:".3s",}}
+          style={{ marginTop: !scrolled ? '3rem' : 0, transition: ".3s", }}
         >
           <div
             className="header-ham"
@@ -210,7 +210,7 @@ const NavBar = (props) => {
                   </div>
                 </div>
               </NavLink>
-              <NavLink  to="/assets/create" style={{ color: "#FFF" }}>
+              <NavLink to="/assets/create" style={{ color: "#FFF" }}>
                 <div style={{ textDecoration: "none" }}>Create</div>
               </NavLink>
 
@@ -237,30 +237,61 @@ const NavBar = (props) => {
 
 
                 {wallet && wallet.address ? (
-                  <div style={{ display: "flex" }}>
-                    <div className="on-dark">
-                      <button
-                        className="border-gradient border-gradient-purple"
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: "1.2rem",
-                          width: "12rem",
-                          borderRadius: "30px",
-                        }}
-                      >
-                        {wallet.address.substring(0, 5) +
-                          "..." +
-                         wallet.address.slice(-4)}
-                      </button>
-                    </div>
-                  </div>
-                ): (
+
+<div style={{ display: "flex" }}>
+<div className="on-dark">
+  <button
+    className="border-gradient border-gradient-purple"
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontSize: "1.2rem",
+      width: "12rem",
+      borderRadius: "30px",
+    }}
+  >
+    {wallet.address.substring(0, 5) +
+      "..." +
+     wallet.address.slice(-4)}
+  </button>
+</div>
+</div>
+
+
+//                   <div style={{ display: "flex" }}>
+//  <NavLink to="/about">
+//                 <div className="dropdown border-gradient border-gradient-purple"style={{
+                        
+//                         alignItems: "center",
+//                         justifyContent: "center",
+//                         fontSize: "1.2rem",
+//                         width: "12rem",
+//                         height:"3.1rem",
+//                         borderRadius: "30px",
+//                       }} >
+//                   <button className="dropbtn " >{wallet.address.substring(0, 5) +
+//                           "..." +
+//                           wallet.address.slice(-4)}</button>
+//                   <div className="dropdown-contentwalet">
+//                     <NavLink
+//                       to="/allnft"
+//                       style={{ display: "flex", flexDirection: "column" }}
+//                     >
+//                       All NFTs <img src={Navdropline} alt="bar" />
+//                     </NavLink>
+//                     <NavLink to="/collections">Collections</NavLink>
+//                   </div>
+//                 </div>
+//               </NavLink>
+
+                    
+//                   </div>
+                ) : (
                   <div
                     style={{
                       borderRadius: "8px",
-                      border:"none"
+                      border: "none"
                     }}
                   >
                     <button
@@ -271,7 +302,7 @@ const NavBar = (props) => {
                         fontSize: "0.9rem",
                         width: "10rem",
                         borderRadius: "10px",
-                        border:"none",
+                        border: "none",
                         fontFamily: 'Montserrat, sans-serif'
                       }}
                       className="border-gradient"

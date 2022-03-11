@@ -36,4 +36,5 @@
 /* Highlight dropdown button when dropdown menu is open */
 .dropdown:hover .dropbtn {
   background-color: #474885;
+  
 }
