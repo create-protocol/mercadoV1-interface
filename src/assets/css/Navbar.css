@@ -84,7 +84,7 @@ button {
   border: 2px solid;
   border-image-slice: 1;
   border-width: 2px;
-  background-color: white;
+  background: linear-gradient(100deg, #227AFF, #1BF9F9);
   color: black;
   font-weight: 600;
   font-size: 28px;

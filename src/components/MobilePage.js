@@ -7,7 +7,7 @@ import Logo from "../assets/images/help-logo.png";
 import { Link } from "react-router-dom";
 import ComingSoon from "../assets/images/comingsoon1.png";
 import Right from '../assets/images/Vectoright.png'
-import Footer from "./Footer";
+import MobileFooter from "./FooterMobile";
 
 const Divtext = styled.div`
   font-family: "Montserrat";
@@ -19,9 +19,7 @@ const Divtext = styled.div`
   margin-top: 3rem;
   display: flex;
   align-items: center;
-
   /* Secondary text */
-
   color: #a9a9a9;
 `;
 
@@ -45,12 +43,9 @@ const Div2 = styled.div`
   font-size: 16px;
   line-height: 120%;
   /* or 19px */
-
   display: flex;
   align-items: center;
-
   /* Primary text */
-
   color: #f0f0f0;
 `;
 
@@ -110,7 +105,6 @@ const Text2 = styled.div`
   line-height: 120%;
   text-align: left;
   margin-top: 1rem;
-
   color: #a9a9a9;
 `;
 
@@ -195,9 +189,42 @@ const MobilePage = () => {
           <Div2>To be among the first users</Div2>
           <Div2 style={{ fontSize: ".7rem", marginTop: "1rem" }}>Email*</Div2>
 
-          <SearchBox style={{height:"5rem",marginTop:".5rem"}}>
+          <SearchBox style={{ height: "5rem", marginTop: ".5rem" }}>
             <Inputdiv type="text" placeholder="Your Email Address here" />
           </SearchBox>
+
+
+{/*           
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7_dtp.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+
+</style>
+<div id="mc_embed_signup">
+<form action="https://createprotocol.us14.list-manage.com/subscribe/post?u=51056ca5a49a991438bd212f6&amp;id=ded84bb1e4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
+    <div id="mc_embed_signup_scroll">
+	<h2>Subscribe</h2>
+<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL"/>
+</div>
+	<div id="mce-responses" class="clear foot">
+		<div class="response" id="mce-error-response" style={{display:"none"}}></div>
+		<div class="response" id="mce-success-response" style={{display:"none"}}></div>
+	</div>   
+    <div style={{position:"absolute",left:"-500px"}} aria-hidden="true"><input type="text" name="b_51056ca5a49a991438bd212f6_ded84bb1e4" tabindex="-1" value=""/></div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"/>
+                
+            </div>
+        </div>
+    </div>
+</form>
+</div> */}
+
+          
           
           <div
             style={{ display: "flex", alignItems: "center", marginTop: "2rem" }}
@@ -227,7 +254,7 @@ const MobilePage = () => {
           </div> */}
         
       </div>
-      <Footer />
+      <MobileFooter />
     </div>
   );
 };

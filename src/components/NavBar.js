@@ -12,8 +12,10 @@ import Navdropline from "../assets/images/navdropline.png";
 import ConnectWallet from "./ConnectWallet";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleWalletPopup } from "../store";
-import { Menu, Button } from 'antd';
+import { Menu,Button,Dropdown } from 'antd';
 import {MenuOutlined} from '@ant-design/icons';
+import Web3 from "web3";
+import "antd/dist/antd.css";
 
 const SubMenu = Menu;
 export const GradientButton = styled.div`
@@ -92,6 +94,10 @@ const NavBar = (props) => {
     setCollapsed(!collapsed);
   }
 
+  // console.log(Web3.eth.getBalance("0x407d73d8a49eeb85d32cf465507dd71d507100c1"))
+//  var bal= web3.eth.getBalance(wallet.address)
+// .then(console.log);
+//   console.log("here are we"+bal);
   return (
     <>
       <Navdiv>
@@ -237,25 +243,54 @@ const NavBar = (props) => {
 
 
                 {wallet && wallet.address ? (
-                  <div style={{ display: "flex" }}>
-                    <div className="on-dark">
-                      <button
-                        className="border-gradient border-gradient-purple"
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: "1.2rem",
-                          width: "12rem",
-                          borderRadius: "30px",
-                        }}
-                      >
+                
+                <div   className="border-gradient2" style={{
+                  display: "flex",
+                  
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "0.9rem",
+                  width: "10rem",
+                  height:"3rem",
+                  borderRadius: "10px",
+                  border:"none",
+                  fontFamily: 'Montserrat, sans-serif'
+                }}
+               
+                >
+                 
+                  <>
+                    <Dropdown
+                      overlay={(
+                        <Menu>
+                          <Menu.Item key="0">
+                            <a href="/profile"> Profile ({wallet.address.substring(0, 5) +
+                          "..." +
+                         wallet.address.slice(-4)})</a>
+                           
+                          </Menu.Item>
+                          <Menu.Item key="1">
+                          <a href="/profile">My Items</a>
+                          </Menu.Item>
+                          <Menu.Item key="1">
+                          <a href="/collections">My Collections</a>
+                          </Menu.Item>
+                          <Menu.Item key="1">
+                          <a href="/profile">Offers</a>
+                          </Menu.Item>
+                        </Menu>
+                      )}
+                      trigger={['click']}>
+                      <a  style={{color: 'white', fontSize: '1.2rem', fontWeight: 'bold', textDecoration: "none"}}
+                         onClick={e => e.preventDefault()}>
                         {wallet.address.substring(0, 5) +
                           "..." +
                          wallet.address.slice(-4)}
-                      </button>
-                    </div>
-                  </div>
+                      </a>
+                    </Dropdown>
+                  </>
+                </div>
+              
                 ): (
                   <div
                     style={{

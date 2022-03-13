@@ -12,7 +12,7 @@ import "../../node_modules/video-react/dist/video-react.css"; // import css
 import Loader from "react-loader-spinner";
 import Landingowner from "../assets/images/landingowner.png";
 import Eth from "../assets/images/Ethereum (ETH).png";
-
+import { Spin, Space } from 'antd';
 
 const Splitscreen = styled.div`
   display: flex;
@@ -132,12 +132,14 @@ const Descpage = () => {
     fetchMetaData();
   },[])
 
-  if (loadingState != "loaded") {
+  if (loadingState !== "loaded") {
     return (
       <div
-        style={{ height: "200px", alignContent: "center", marginTop: "160px" }}
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px", justifyContent: 'center' }}
       >
-        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+        <div style={{minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+          <Spin size="large" />
+        </div>
       </div>
     );
   }
