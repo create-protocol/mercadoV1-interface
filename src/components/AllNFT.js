@@ -122,12 +122,14 @@ const AllNFT = () => {
     fetchData();
 
   })
-  if (loadingState != "loaded") {
+  if (loadingState !== "loaded") {
     return (
       <div
-        style={{ height: "200px", alignContent: "center", marginBottom:"100px" }}
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px", justifyContent: 'center' }}
       >
-        <Loader type="Puff" color="#00BFFF" height={400} width={100} />
+        <div style={{minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+          <Spin size="large" />
+        </div>
       </div>
     );
   }
