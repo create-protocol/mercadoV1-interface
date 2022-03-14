@@ -268,7 +268,7 @@ function Mintnft() {
   }
 
   return (
-    <div>
+    <div style={{paddingTop: '10rem'}}>
       <PageHeader title="Create" />
 
       <div

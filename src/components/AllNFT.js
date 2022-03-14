@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
-
+import { Spin } from 'antd';
 import contactus from "../assets/images/contactus.png";
 import Landingcard from "./Newcard";
 import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
 import "../assets/css/filterdropdown.css";
-import Loader from "react-loader-spinner";
 const ImageContainer = styled.div`
   background: url(${contactus});
   height: 17rem;
