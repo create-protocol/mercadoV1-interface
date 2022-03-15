@@ -135,6 +135,28 @@ const ShadowBtn = styled.div`
   }
 `;
 
+const Getstarted=styled.div`
+padding: 10px;
+margin-left: 26px;
+/* Header 2 */
+
+font-style: normal;
+font-weight: bold;
+font-size: 27px;
+line-height: 140%;
+margin-top: 20px;
+/* padding-top: -10px; */
+/* display: inline; */
+margin-left: 44px;
+/* identical to box height, or 38px */
+
+display: flex;
+align-items: flex-end;
+text-align: right;
+
+color: #0070ff;
+`
+
 const Transparentbtn = styled.div`
   border: 1px solid #f1f1f1;
   box-sizing: border-box;
@@ -375,10 +397,8 @@ function Mintnft() {
           </Transparentbtn>
         </Link>
       </div>
-      <div>
-        <h3 className="getstarted">GET STARTED -</h3>
-
-      </div>
+      <Getstarted>GET STARTED -</Getstarted>
+     
       {/* <h3 className="req">GET STARTED -</h3> */}
 
       <view

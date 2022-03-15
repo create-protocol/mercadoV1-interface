@@ -157,7 +157,7 @@ const Userprofile = () => {
 
   return (
     <>
-      <div style={{ width: "100%", marginTop: "5rem" }}>
+      <div style={{ width: "100%",paddingTop:"10rem" }}>
         <ImageContainer>
           <Profilediv>
             <img src={Profileimg} alt="hi" style={{ height: "28vh" }} />

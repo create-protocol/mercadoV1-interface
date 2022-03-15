@@ -22,7 +22,7 @@ const ArtisPage = () => {
   const [music, setMusic] = useState(false);
 
   return (
-    <div style={{ height: "250vh", width: "100%" }}>
+    <div style={{ height: "250vh", width: "100%" ,paddingTop:"10rem"}}>
       <PageHeader subtitle="Home  >  Blogs  >  An open call to artists" />
       <div className="blogDetail__container" style={{ display:"flex",alignItems:"start",justifyContent:"space-between" }}>
         <section className="profile" style={{ width: "25%" }}>

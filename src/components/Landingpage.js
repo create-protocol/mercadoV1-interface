@@ -118,8 +118,8 @@ const Landingpage = (props) => {
     );
     setData(responseAllNFT);
     setLoadingState("loaded");
-    // console.log("response");
-    // console.log(responseAllNFT);
+    console.log("response");
+    console.log(responseAllNFT);
     // console.log(responseAllNFT[0].token_address);
 
     // const response = await axios.get();
