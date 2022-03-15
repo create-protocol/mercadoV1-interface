@@ -84,7 +84,7 @@ color: #606060;`
 const ContactUs = () => {
   return (
     <>
-      <div style={{ width: "100%",marginTop:"5rem" }}>
+      <div style={{ width: "100%" , paddingTop: '10rem'}}>
         <ImageContainer>Connect with us</ImageContainer>
         <div
           style={{

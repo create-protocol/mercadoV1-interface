@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
-
+import { Spin } from 'antd';
 import contactus from "../assets/images/contactus.png";
 import Landingcard from "./Newcard";
 import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
 import "../assets/css/filterdropdown.css";
-import Loader from "react-loader-spinner";
-import { Spin, Space } from 'antd';
 const ImageContainer = styled.div`
   background: url(${contactus});
   height: 17rem;
@@ -136,7 +134,7 @@ const AllNFT = () => {
   }
   return (
     <>
-      <div style={{ width: "100%", marginTop: "5rem" }}>
+      <div style={{ width: "100%", paddingTop: "10rem" }}>
         <ImageContainer>Discover</ImageContainer>
         <div className="flex-container" style={{ justifyContent: "space-between", width: "90%" }}>
           {/* <img src={filterimage} width="118px" height="52px"></img> */}

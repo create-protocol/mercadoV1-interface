@@ -71,7 +71,7 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <div className="faq">
+        <div className="faq" style={{paddingTop:"10rem"}}>
           <FaqPage />
         </div>
       </>

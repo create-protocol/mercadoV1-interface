@@ -9,10 +9,9 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { useParams } from "react-router-dom";
 import "../../node_modules/video-react/dist/video-react.css"; // import css
-import Loader from "react-loader-spinner";
 import Landingowner from "../assets/images/landingowner.png";
 import Eth from "../assets/images/Ethereum (ETH).png";
-import { Spin, Space } from 'antd';
+import { Spin } from 'antd';
 
 const Splitscreen = styled.div`
   display: flex;
@@ -119,8 +118,8 @@ const Descpage = () => {
       const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + collection + '/' + id + '?chain=eth',
       { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
       // const  imageMetaData = await axios.get(createURI(res.data.token_uri));
+      console.log(res.data.metadata, res, res.data, 'this is the response');
       setMetaData({...res.data, ...JSON.parse(res.data.metadata)});
-      console.log("metadata : " ,metaData);
       setLoadingState("loaded");
     }catch(e){
       console.log(e);
@@ -131,6 +130,8 @@ const Descpage = () => {
   useEffect(()=>{
     fetchMetaData();
   },[])
+
+
 
   if (loadingState !== "loaded") {
     return (
@@ -145,7 +146,7 @@ const Descpage = () => {
   }
   return (
     <>
-      {metaData && <Splitscreen style={{ marginTop: "7rem" }}>
+      {metaData && <Splitscreen style={{ paddingTop: "10rem" }}>
         <Left>
           <div
             style={{
@@ -338,7 +339,6 @@ const Descpage = () => {
                     width: "80%",
                     textAlign: "left",
                     marginRight: "2rem",
-                    color: "white",
                     height: "100%",
                     color: "#A9A9A9",
                   }}
