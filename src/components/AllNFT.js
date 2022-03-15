@@ -9,6 +9,7 @@ import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
 import "../assets/css/filterdropdown.css";
 import Loader from "react-loader-spinner";
+import { Spin, Space } from 'antd';
 const ImageContainer = styled.div`
   background: url(${contactus});
   height: 17rem;
