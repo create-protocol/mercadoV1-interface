@@ -14,7 +14,7 @@ import Share from "../assets/images/share.png";
 import Settings from "../assets/images/settings.png";
 import Filterline from "../assets/images/filterbottomline.png";
 import CollectedCard from './CollectedCard'
-
+import axios from 'axios';
 const ImageContainer = styled.div`
   background: #313131;
   height: 15rem;
@@ -134,13 +134,13 @@ const reducer = (state, action) => {
     case "Collected": {
       return {
         Collected: true,
-  Created: false,
+        Created: false,
       };
     }
     case "Created": {
       return {
         Collected: false,
-  Created: true,
+        Created: true,
       };
     }
     default: {
@@ -154,18 +154,42 @@ const reducer = (state, action) => {
 const Userprofile = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialstate);
+  const [ownerresponse, setOwnerresponse] = useState([]);
+
+
+  const apiKey = "sUFA8R6qs3OkJxrY9riiWlH_s7GJvfbH";
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+
+  
+  const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
+  const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
+  const tokenId = "2";
+  const tokenType = "erc721";
+  const fetchURL = `${baseURL}?contractAddress=${contractAddr}&tokenId=${tokenId}&tokenType=${tokenType}`
+  // Make the request and print the formatted response:
+  fetch(fetchURL, requestOptions)
+    .then(response => response.json())
+    .then(result=> setOwnerresponse(result))
+    .catch(error => console.log('error', error));
+    
+    // console.log(ownerresponse.media[0].gateway);
+
+   
 
   return (
     <>
-      <div style={{ width: "100%",paddingTop:"10rem" }}>
+      <div style={{ width: "100%", paddingTop: "10rem" }}>
         <ImageContainer>
           <Profilediv>
-            <img src={Profileimg} alt="hi" style={{ height: "28vh" }} />
+            {/* <img src={ownerresponse.media[0].gateway} alt="hi" style={{ height: "28vh" }} /> */}
             <TopText>
               Bright MBA
               <img src={Tick} style={{ marginLeft: ".5vw" }} />
             </TopText>
-            <InnerText>0dsf8....84h</InnerText>
+            {/* <InnerText>{ownerresponse?ownerresponse.contract:"null"}</InnerText> */}
             <InnerText>Joined January 2022</InnerText>
           </Profilediv>
         </ImageContainer>
@@ -180,10 +204,10 @@ const Userprofile = () => {
           }}
         >
           <div style={{ display: "flex", width: "80%" }}>
-            <Filtercurved onClick={()=>{dispatch({type:'Collected'})}}>
+            <Filtercurved onClick={() => { dispatch({ type: 'Collected' }) }}>
               Collected<div>0</div>
             </Filtercurved>
-            <Filtercurved onClick={()=>{dispatch({type:'Created'})}}>
+            <Filtercurved onClick={() => { dispatch({ type: 'Created' }) }}>
               Created<div>0</div>
             </Filtercurved>
             <Filtercurved>
@@ -323,75 +347,75 @@ const Userprofile = () => {
                 <FillterCard />
               </div>
             )}
-            {state.Collected&&
-            <div
-              style={{
-                width: filterOpen == true ? "80%" : "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-                marginLeft: filterOpen == true ? "4rem" : "2rem",
-              }}
-            >
+            {state.Collected &&
               <div
                 style={{
+                  width: filterOpen == true ? "80%" : "100%",
                   display: "flex",
-                  width: "100%",
-                  alignItems: "start",
-                  justifyContent: "flex-start",
-                  flexWrap: "wrap",
-                  marginLeft: "1.5rem",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  marginLeft: filterOpen == true ? "4rem" : "2rem",
                 }}
               >
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
+                <div
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    alignItems: "start",
+                    justifyContent: "flex-start",
+                    flexWrap: "wrap",
+                    marginLeft: "1.5rem",
+                  }}
+                >
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                </div>
               </div>
-            </div>
-}
-            {state.Created&&
-            <div
-              style={{
-                width: filterOpen == true ? "80%" : "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-                marginLeft: filterOpen == true ? "2rem" : "4rem",
-              }}
-            >
+            }
+            {state.Created &&
               <div
                 style={{
+                  width: filterOpen == true ? "80%" : "100%",
                   display: "flex",
-                  width: "100%",
-                  alignItems: "start",
-                  justifyContent: "flex-start",
-                  flexWrap: "wrap",
-
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  marginLeft: filterOpen == true ? "2rem" : "4rem",
                 }}
               >
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
+                <div
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    alignItems: "start",
+                    justifyContent: "flex-start",
+                    flexWrap: "wrap",
 
+                  }}
+                >
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+
+                </div>
               </div>
-            </div>
-}
+            }
           </div>
         </div>
       </div>

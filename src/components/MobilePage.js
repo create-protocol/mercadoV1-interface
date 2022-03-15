@@ -152,7 +152,8 @@ const Borderbtn = styled.div`
 const MobilePage = () => {
   return (
     <div style={{
-      background: "black",}}>
+      background: "black", paddingTop: "1rem"
+    }}>
       <div
         style={{
           background: "black",
@@ -194,10 +195,9 @@ const MobilePage = () => {
           </SearchBox>
 
 
-{/*           
+          {/*           
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7_dtp.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
-
 </style>
 <div id="mc_embed_signup">
 <form action="https://createprotocol.us14.list-manage.com/subscribe/post?u=51056ca5a49a991438bd212f6&amp;id=ded84bb1e4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
@@ -224,17 +224,17 @@ const MobilePage = () => {
 </form>
 </div> */}
 
-          
-          
+
+
           <div
             style={{ display: "flex", alignItems: "center", marginTop: "2rem" }}
           >
-            <Btndiv style={{display:"flex",alignItems:"center",justifyContent:"space-between",width:"10rem"}}><span>Notify Me</span><img src={Right} alt="hi"/></Btndiv>
+            <Btndiv style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "10rem" }}><span>Notify Me</span><img src={Right} alt="hi" /></Btndiv>
           </div>
-          
-          
+
+
         </div>
-          {/* <div
+        {/* <div
           style={{
             background: "black",
             height: "120vh",
@@ -252,9 +252,12 @@ const MobilePage = () => {
       <img src={Logo} alt="hi" />
           
           </div> */}
-        
-      </div>
+
+      </div >
+
       <MobileFooter />
+
+
     </div>
   );
 };
