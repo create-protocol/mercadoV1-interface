@@ -119,7 +119,6 @@ const AllNFT = () => {
 
   useEffect(() => {
     fetchData();
-
   })
   if (loadingState !== "loaded") {
     return (
