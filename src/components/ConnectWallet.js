@@ -12,13 +12,15 @@ export default function ConnectWallet() {
  const dispatch = useDispatch()
 
   const handleToggle = () => {dispatch(toggleWalletPopup())};
+  
   useEffect(() => {
     if(window.ethereum && walletStore.wallet) {
       window.ethereum.on('accountsChanged', () => {
         dispatch(addMetamask());
       })
     }
-  })
+  }, []);
+
   return (
     <>
     <div>
@@ -27,7 +29,7 @@ export default function ConnectWallet() {
         onHide={handleToggle}
         backdrop="static"
         keyboard={false}
-        
+
       >
         <Modal.Header closeButton>
           <Modal.Title style={{color:'#000',marginLeft:"100px",marginRight:"auto",justifyContent:"center"}}>Connect to a Wallet</Modal.Title>
@@ -43,10 +45,10 @@ export default function ConnectWallet() {
             <img width="50px" src="https://avatars0.githubusercontent.com/u/37784886" alt="walletconnect" />
           </div>
         </Modal.Body>
-        
+
       </Modal>
     </div>
-     
+
     </>
   );
 
