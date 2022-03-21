@@ -30,7 +30,6 @@ export const GradientButton = styled.div`
     #a53db6 49.56%,
     #cb3f59 93.2%
   );
-
   padding: 0.5rem;
   font-weight: bold;
   font-size: 14px;
@@ -203,7 +202,6 @@ const NavBar = (props) => {
                 style={{ color: "white" }}
               >
                 Home
-
               </NavLink> */}
               <NavLink to="/about">
                 <div className="dropdown">

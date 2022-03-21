@@ -160,8 +160,7 @@ const Userprofile = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [loadingState, setLoadingState] = useState("not-loaded");
   
-  const fetchData = async () => {
-
+  
     const apiKey = "sUFA8R6qs3OkJxrY9riiWlH_s7GJvfbH";
    
     const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
@@ -183,33 +182,27 @@ const Userprofile = () => {
 
 
 
-  const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
-  const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
-  const tokenId = "2";
-  const tokenType = "erc721";
-  const fetchURL = `${baseURL}?contractAddress=${contractAddr}&tokenId=${tokenId}&tokenType=${tokenType}`;
+ 
 
-  useEffect(() => {
-    // Make the request and print the formatted response:
-    fetch(fetchURL, requestOptions)
-      .then(response => response.json())
-      .then(result=> setOwnerresponse(result))
-      .catch(error => console.log('error', error));
-
-  }, []);
+  
 
   console.log(ownerresponse);
     // console.log(ownerresponse.media[0].gateway);
 
 
 
-  }
   
+
   useEffect(() => {
-    fetchData();
-    console.log("here");
-    
-  },[])
+    // Make the request and print the formatted response:
+    fetch(fetchURL)
+      .then(response => response.json())
+      .then(result=> setOwnerresponse(result))
+      .catch(error => console.log('error', error));
+
+  }, []);
+  
+ 
   if (loadingState !== "loaded") {
     return (
       <div
