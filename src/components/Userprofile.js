@@ -7,6 +7,7 @@ import filterimage from "../assets/images/Filter.png";
 import Landingcard from "./Profilecardbig";
 import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
+import { Spin } from 'antd';
 import "../assets/css/filterdropdown.css";
 import Profileimg from "../assets/images/profileimg.png";
 import Tick from "../assets/images/tickimg.png";
@@ -154,14 +155,32 @@ const reducer = (state, action) => {
 const Userprofile = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialstate);
-  const [ownerresponse, setOwnerresponse] = useState([]);
+  const [ownerresponse, setOwnerresponse] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [loadingState, setLoadingState] = useState("not-loaded");
+  
+  const fetchData = async () => {
 
+    const apiKey = "sUFA8R6qs3OkJxrY9riiWlH_s7GJvfbH";
+   
+    const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
+    const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
+    const tokenId = "2";
+    const tokenType = "erc721";
+    const fetchURL = `${baseURL}?contractAddress=${contractAddr}&tokenId=${tokenId}&tokenType=${tokenType}`
+    axios
+      .get(fetchURL)
+      .then((res) => {
+        setOwnerresponse(res.data);
+        setLoadingState("loaded");
+      })
+      .catch((err) => {
+        setError(err);
+        setIsLoaded(true);
+      });
+    console.log("here");
 
-  const apiKey = "sUFA8R6qs3OkJxrY9riiWlH_s7GJvfbH";
-  var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-  };
 
 
   const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
@@ -184,17 +203,40 @@ const Userprofile = () => {
 
 
 
+  }
+  
+  useEffect(() => {
+    fetchData();
+    console.log("here");
+    
+  },[])
+  if (loadingState !== "loaded") {
+    return (
+      <div
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px", justifyContent: 'center' }}
+      >
+        <div style={{minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+          <Spin size="large" />
+        </div>
+      </div>
+    );
+  }
+  // console.log(ownerresponse);
+
+
   return (
+
     <>
-      <div style={{ width: "100%", paddingTop: "10rem" }}>
+      {ownerresponse &&  ownerresponse.media && ownerresponse.media.length>0 ?  (
+        <div style={{ width: "100%", paddingTop: "10rem" }}>
         <ImageContainer>
           <Profilediv>
-            {/* <img src={ownerresponse.media[0].gateway} alt="hi" style={{ height: "28vh" }} /> */}
+            <img src={ownerresponse.media[0].gateway} alt="hi" style={{ height: "28vh" }} />
             <TopText>
               Bright MBA
               <img src={Tick} style={{ marginLeft: ".5vw" }} />
             </TopText>
-            {/* <InnerText>{ownerresponse?ownerresponse.contract:"null"}</InnerText> */}
+            <InnerText>{ownerresponse ? ownerresponse.contract.address : "null"}</InnerText>
             <InnerText>Joined January 2022</InnerText>
           </Profilediv>
         </ImageContainer>
@@ -424,6 +466,8 @@ const Userprofile = () => {
           </div>
         </div>
       </div>
+      ):null}
+      
     </>
   );
 };
