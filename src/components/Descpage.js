@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
-
 import "font-awesome/css/font-awesome.min.css";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
@@ -11,7 +9,7 @@ import { useParams } from "react-router-dom";
 import "../../node_modules/video-react/dist/video-react.css"; // import css
 import Landingowner from "../assets/images/landingowner.png";
 import Eth from "../assets/images/Ethereum (ETH).png";
-import { Spin } from 'antd';
+import { Spin, Avatar } from 'antd';
 
 const Splitscreen = styled.div`
   display: flex;
@@ -136,14 +134,14 @@ const Descpage = () => {
   const [metaData,setMetaData] = useState();
 
   const fetchMetaData = async () => {
-    try{
+    try {
       const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + collection + '/' + id + '?chain=eth',
       { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
       // const  imageMetaData = await axios.get(createURI(res.data.token_uri));
       console.log(res.data.metadata, res, res.data, 'this is the response');
       setMetaData({...res.data, ...JSON.parse(res.data.metadata)});
       setLoadingState("loaded");
-    }catch(e){
+    } catch(e){
       console.log(e);
     }
 
@@ -201,7 +199,10 @@ const Descpage = () => {
               />
             </Zoom>
             <div style={{ marginTop: "1rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <img src={Landingowner} alt="nftImage" style={{ marginRight: "1rem" }} />
+              <Avatar
+                size={{ xs: 24, sm: 32, md: 30, lg: 40, xl: 55, xxl: 100 }}
+                src="https://joeschmoe.io/api/v1/random"
+              />
               <Lefttext style={{ color: "#A9A9A9" }}>created by <br/> {metaData.owner_of}</Lefttext>
             </div>
             <div style={{ color: "white", }}>

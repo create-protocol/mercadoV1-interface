@@ -93,9 +93,6 @@ const NavBar = (props) => {
     setCollapsed(!collapsed);
   }
 
-  console.log(wallet, 'this is wallet data');
-
-
   // console.log(Web3.eth.getBalance("0x407d73d8a49eeb85d32cf465507dd71d507100c1"))
 //  var bal= web3.eth.getBalance(wallet.address)
 // .then(console.log);

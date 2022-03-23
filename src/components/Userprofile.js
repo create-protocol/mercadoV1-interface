@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from "react";
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
-
+import { useSelector, useDispatch } from 'react-redux';
 import contactus from "../assets/images/contactus.png";
 import filterimage from "../assets/images/Filter.png";
 import Landingcard from "./Profilecardbig";
@@ -153,16 +153,19 @@ const reducer = (state, action) => {
   }
 };
 const Userprofile = () => {
+
   const [filterOpen, setFilterOpen] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialstate);
-  const [ownerresponse, setOwnerresponse] = useState(null);
+  const [ownerresponse, setOwnerresponse] = useState([]);
+  const walletData = useSelector(state => state.wallet.wallet);
+  console.log(walletData, 'this is the wallet data', walletData?.address);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [loadingState, setLoadingState] = useState("not-loaded");
-  
-  
+
+
     const apiKey = "sUFA8R6qs3OkJxrY9riiWlH_s7GJvfbH";
-   
+
     const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
     const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
     const tokenId = "2";
@@ -182,16 +185,16 @@ const Userprofile = () => {
 
 
 
- 
 
-  
+
+
 
   console.log(ownerresponse);
     // console.log(ownerresponse.media[0].gateway);
 
 
 
-  
+
 
   useEffect(() => {
     // Make the request and print the formatted response:
@@ -201,8 +204,8 @@ const Userprofile = () => {
       .catch(error => console.log('error', error));
 
   }, []);
-  
- 
+
+
   if (loadingState !== "loaded") {
     return (
       <div
@@ -460,7 +463,7 @@ const Userprofile = () => {
         </div>
       </div>
       ):null}
-      
+
     </>
   );
 };
