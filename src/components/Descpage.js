@@ -70,6 +70,28 @@ font-style: normal;
 font-weight: 600;
 font-size: 2.3rem;
 line-height: 140%;`
+const Borderbtn = styled.div`
+  cursor: pointer;
+  border-radius: 7px;
+  padding: 0.5rem 1.4rem;
+  margin-left: 0.5rem;
+  padding-top: 0.45rem;
+  font-weight: 600;
+  font-size: 12px;
+  color: white;
+  border: solid 2px transparent;
+  background-image: linear-gradient(black, black),
+    linear-gradient(
+      279.52deg,
+      rgba(27, 249, 249, 0.05) -39.47%,
+      rgba(23, 247, 206, 0.840625) -5.82%,
+      rgba(34, 122, 255, 0.958132) 99.45%,
+      rgba(76, 146, 251, 0.5) 136.47%
+    );
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px black inset;
+`;
 
 const Desctext = styled.div`
 font-style: normal;
@@ -186,7 +208,12 @@ const Descpage = () => {
               <Leftheading>Contract Address</Leftheading>
 
               <br />
+              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",}}>
               <Lefttext>{metaData.token_address}</Lefttext>
+              <Borderbtn>Copy address</Borderbtn>
+
+              </div>
+              
 
             </div>
             <div style={{ color: "white" }}>
@@ -286,7 +313,7 @@ const Descpage = () => {
                   <img src={Eth} alt="" />
                   <div style={{ marginLeft: "0.4rem" }}>4d 16h 32m 10s</div>
                 </div>
-                <div>Place bid</div>
+                <Borderbtn>Place bid</Borderbtn>
               </div>
             </div>
           </div>
