@@ -23,9 +23,9 @@ const Seller=()=>{
 
             </div>
             <div style={{display:"flex",alignItems:"start",justifyContent:"center",flexDirection:"column",marginLeft:"1.5rem",width:"70%"}}>
-              <div style={{fontFamily:"Century Gothic",color:"white",fontWeight:"bold",fontSize:".9rem"}}>Abdul Ahmed</div>
-              <div style={{fontFamily:"Century Gothic",color:"white",fontSize:".7rem",color:"#C1C1C1",lineHeight:"0.8rem"}}>@abduul</div>
-              <div style={{fontFamily:"Century Gothic",color:"white",fontSize:".8rem",fontWeight:"500",color:"#FF007A",fontWeight:"bold",marginTop:".3rem"}}>100.20ETH</div>
+              <div style={{color:"white",fontWeight:"bold",fontSize:".9rem"}}>Abdul Ahmed</div>
+              <div style={{color:"white",fontSize:".7rem",color:"#C1C1C1",lineHeight:"0.8rem"}}>@abduul</div>
+              <div style={{color:"white",fontSize:".8rem",fontWeight:"500",color:"#FF007A",fontWeight:"bold",marginTop:".3rem"}}>100.20ETH</div>
             </div>
           </TopSeller>
  )

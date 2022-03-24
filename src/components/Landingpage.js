@@ -13,16 +13,17 @@ import Card3 from "../assets/images/card2.png";
 import Trendingcardsmall from "./Trendingcardsmall";
 import TopCollectionCard from "./TopCollectionCard";
 import Loader from "react-loader-spinner";
+import { Spin, Space } from 'antd';
+
 const ImageContainer = styled.div`
   background: url(${Fundingimg});
   object-fit: contain;
-  background-position: center;
+  background-position: top;
   background-size: cover;
   backgroundrepeat: no-repeat;
-  height: 40rem;
+  min-height: 100vh;
   width: 100%;
   margintop: 0;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: 600;
   font-size: 2.5rem;
@@ -46,7 +47,6 @@ const Transparentbtn = styled.div`
 
 
 const HeadingText = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 2.5rem;
@@ -54,7 +54,6 @@ const HeadingText = styled.div`
 `;
 
 const Createsmallh = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 1rem;
@@ -64,7 +63,6 @@ const Createsmallh = styled.div`
 `;
 
 const Createmaint = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 1.2rem;
@@ -85,7 +83,6 @@ padding-top:1.5rem;
 const Cardtext = styled.div`
 background: rgba(0, 0, 0, 0.6);
 border-radius: 5px;
-font-family: Century Gothic;
 font-style: normal;
 font-weight: bold;
 font-size: .7rem;
@@ -121,8 +118,8 @@ const Landingpage = (props) => {
     );
     setData(responseAllNFT);
     setLoadingState("loaded");
-    // console.log("response");
-    // console.log(responseAllNFT);
+    console.log("response");
+    console.log(responseAllNFT);
     // console.log(responseAllNFT[0].token_address);
 
     // const response = await axios.get();
@@ -131,25 +128,26 @@ const Landingpage = (props) => {
 
   useEffect(() => {
     fetchData();
+  }, []);
 
-  })
-  if (loadingState != "loaded") {
+  if (loadingState !== "loaded") {
     return (
       <div
-        style={{ height: "200px", alignContent: "center", marginBottom:"100px" }}
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px", justifyContent: 'center' }}
       >
-        <Loader type="Puff" color="#00BFFF" height={400} width={100} />
+        <div style={{minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+          <Spin size="large" />
+        </div>
       </div>
     );
   }
+
   return (
     <div
       style={{
-        fontFamily: "Century Gothic",
         fontStyle: "normal",
         color: "white",
         width: "100%",
-
       }}
     >
       <div
@@ -162,31 +160,33 @@ const Landingpage = (props) => {
         }}
       >
         <ImageContainer>
-          <div style={{ color: " #D14F8C", fontSize: ".9rem" }}>
-            Buying & selling NFTs made easy through mercado.studio
-          </div>
-          <div style={{ fontSize: "3.7rem", lineHeight: "4.5rem" }}>
-            Discover,
-            <br /> collect and sell <br />
-            NFTs{" "}
-          </div>
-          <div style={{ fontSize: "1.2rem" }}>
-            Explore the NFT marketplace dedicated to creators
-          </div>
-          <div style={{ display: "flex", marginTop: "2rem" }}>
+          <div style={{paddingTop:'8vh', height: '100%', display:'flex',flexDirection: 'column', justifyContent:'center'}}>
+            <div style={{ color: " #D14F8C", fontSize: ".9rem", fontWeight: 'bold' }}>
+              Buying & selling NFTs made easy through mercado.studio
+            </div>
+            <div style={{ fontSize: "3.7rem", lineHeight: "4.5rem" }}>
+              Discover,
+              <br /> collect and sell <br />
+              NFTs{" "}
+            </div>
+            <div style={{ fontSize: "1.2rem" }}>
+              Explore the NFT marketplace dedicated to creators
+            </div>
+            <div style={{ display: "flex", marginTop: "2rem" }}>
 
-            <a href="/allnft" style={{ textDecoration: "none", color: "white" }}><Transparentbtn >Explore NFTs</Transparentbtn></a>
-            <a href="/assets/create" style={{ textDecoration: "none", color: "white" }}><Transparentbtn style={{ marginLeft: "2rem" }}>
-              Create NFT
-            </Transparentbtn></a>
+              <a href="/allnft" style={{ textDecoration: "none", color: "white" }}><Transparentbtn >Explore NFTs</Transparentbtn></a>
+              <a href="/assets/create" style={{ textDecoration: "none", color: "white" }}><Transparentbtn style={{ marginLeft: "2rem" }}>
+                Create NFT
+              </Transparentbtn></a>
 
+            </div>
           </div>
         </ImageContainer>
       </div>
 
       {/* Trending Carousel */}
 
-     
+
       {/* Top Collections */}
       {/* <div
         style={{
@@ -290,7 +290,7 @@ const Landingpage = (props) => {
           }}
         >
           {/* <HeadingText>Top Sellers</HeadingText> */}
-         
+
         </div>
         {/* <div
           style={{

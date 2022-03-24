@@ -17,8 +17,6 @@ body {
   top: 1533px;
 font-size: 10px;
   /* Ghost text mobile */
-
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
@@ -61,7 +59,7 @@ textarea {
   border-radius: 6px;
   height: 90px;
   border:none;
- 
+
 }
 .docs {
   /* border: 2px solid; */
@@ -77,8 +75,7 @@ textarea {
   padding: 10px;
   margin-left: 26px;
   /* Header 2 */
-
-  font-family: Century Gothic;
+ 
   font-style: normal;
   font-weight: bold;
   font-size: 27px;
@@ -105,7 +102,6 @@ textarea {
   background-color: black;
   color: #f1f1f1;
   border-radius: 30px;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 20px;

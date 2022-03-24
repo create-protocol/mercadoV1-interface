@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import TopCollection from '../assets/images/topcollections.png'
 
 const Textcomp = styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
 font-size: 1.2rem;

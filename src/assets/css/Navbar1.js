@@ -17,7 +17,7 @@ export const NavbarM = styled.div`
     display: none;
   }
   background-image: url(${img});
- 
+
 `;
 export const Logos = styled.div`
 
@@ -63,7 +63,6 @@ export const H1 = styled.h1`
   font-size: 96px;
   line-height: 95px;
   text-align: right;
-  font-family: EarthOrbiter;
   background: linear-gradient(83.93deg, #ffffff 5.84%, #f5b4c3 101.22%);
   font-style: normal;
   font-weight: normal;
@@ -99,7 +98,7 @@ export const GradientButton = styled.div`
 
 export const GradientBorder = styled.div`
   background: linear-gradient(273.83deg, rgba(242, 39, 78, 0.71) -18.25%, #333095 113.47%);
- 
+
 
 
   border-radius: 8px;
@@ -116,7 +115,3 @@ export const GradientSpan = styled.span`
   border-radius: 6px;
   color: white;
 `;
-
-
-
-

@@ -19,7 +19,6 @@ const ImageContainer = styled.div`
   font-size: 2.5rem;
   line-height: 140%;
   color: #f4f4f4;
-
   text-align: left;
   padding-left: 12rem;
   padding-top: 9rem;
@@ -39,7 +38,6 @@ const InnerText = styled.div`
   font-weight: normal;
   font-size: 0.9rem;
   line-height: 150%;
-
   color: #ffffff;
 `;
 
@@ -63,6 +61,8 @@ margin-top:2rem;
 const InputForm=styled.input`
 background:none;
 margin-top:1rem;
+width:20rem;
+height:2rem;
 color:white;
 border:none;
 
@@ -91,7 +91,7 @@ color: #606060;`
 const ContactUs = () => {
   return (
     <>
-      <div style={{ width: "100%",marginTop:"5rem" }}>
+      <div style={{ width: "100%" }}>
         <ImageContainer>Connect with us</ImageContainer>
         <div
           style={{
@@ -158,10 +158,17 @@ const ContactUs = () => {
                     marginTop: "2.5rem",
                   }}
                 >
-                  
-                  
+                  <img
+                    style={{ width: "2.4rem" }}
+                    src={location}
+                    alt="phonrcall"
+                  />
+                  <InnerText style={{ marginLeft: "1rem" }}>
+                    Muzix Technology Private Limited, Plot No-RZ-B-13, Gali No-1
+                    New Janki Puri, Uttam Nagar, New Delhi DL 11005
+                  </InnerText>
                 </div>
-                {/* <img src={adddress} style={{ marginTop: "2.5rem",height:"9rem" }} alt="addr" /> */}
+                <img src={adddress} style={{ marginTop: "2.5rem",height:"9rem" }} alt="addr" />
               </div>
             </div>
             <div
@@ -196,7 +203,7 @@ const ContactUs = () => {
                   type="radio"
                   value="Career"
                   name="options"
-                  // onChange={this.handleChange}
+                  
                 />
                 <Radio for="html">Career</Radio>
                 <br />
@@ -205,7 +212,7 @@ const ContactUs = () => {
                   type="radio"
                   value="Investment"
                   name="options"
-                  // onChange={this.handleChange}
+                  
                 />
                 <Radio for="html">Investment</Radio>
                 <br />
@@ -214,7 +221,7 @@ const ContactUs = () => {
                   type="radio"
                   name="options"
                   value="Business enquiries/ partnerships"
-                  // onChange={this.handleChange}
+                  
                 />
                 <Radio for="html">Business enquiries/ partnerships</Radio>
                 <br />
@@ -224,21 +231,21 @@ const ContactUs = () => {
                 <FormLabel for="fname">Name*</FormLabel>
                 <InputForm
                   type="text"
-                  name="name"
+                  name="firstname"
                   // placeholder="Your name.."
                 />
 
                 <FormLabel for="lname">Email*</FormLabel>
                 <InputForm
                   type="text"
-                  name="email"
+                  name="lastname"
                   // placeholder="Your last name.."
                 />
                 <FormLabel for="lname">Message*</FormLabel>
                 <InputForm
                   type="text"
                   
-                  name="message"
+                  name="lastname"
                   // placeholder="Your last name.."
                 />
 

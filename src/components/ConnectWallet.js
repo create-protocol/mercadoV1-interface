@@ -12,23 +12,27 @@ export default function ConnectWallet() {
  const dispatch = useDispatch()
 
   const handleToggle = () => {dispatch(toggleWalletPopup())};
+  
   useEffect(() => {
     if(window.ethereum && walletStore.wallet) {
       window.ethereum.on('accountsChanged', () => {
         dispatch(addMetamask());
       })
     }
-  })
+  }, []);
+
   return (
     <>
-      <Modal
+    <div>
+    <Modal
         show={walletStore.isWalletModelOpen}
         onHide={handleToggle}
         backdrop="static"
         keyboard={false}
+
       >
         <Modal.Header closeButton>
-          <Modal.Title style={{color:'#000'}}>Connect a Wallet</Modal.Title>
+          <Modal.Title style={{color:'#000',marginLeft:"100px",marginRight:"auto",justifyContent:"center"}}>Connect to a Wallet</Modal.Title>
         </Modal.Header>
         {walletStore.Error && <div className="alert alert-danger m-3" role="alert">{walletStore.Error}</div>}
         <Modal.Body>
@@ -41,8 +45,10 @@ export default function ConnectWallet() {
             <img width="50px" src="https://avatars0.githubusercontent.com/u/37784886" alt="walletconnect" />
           </div>
         </Modal.Body>
-        
+
       </Modal>
+    </div>
+
     </>
   );
 
@@ -50,17 +56,18 @@ export default function ConnectWallet() {
 
 const style = {
   Card : {
-    border:"1px solid #e1e1e8",
-    borderRadius : "7px",
+    border: "1.5px solid rgb(0, 0, 0)",
+    borderRadius : "10px",
     width : "100%",
-    padding: "5px",
+    padding: "10px 20px",
     margin: "3px",
-    marginBottom:"5px"
+    marginBottom:"10px"
 
 
   },
   cardText : {
-    fontSize : "20px",
+    fontSize : "15px",
+    fontWeight : "400",
     color : "black",
     marginTop : "auto",
     marginBottom : "auto",

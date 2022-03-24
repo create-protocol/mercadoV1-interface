@@ -39,14 +39,12 @@
   height: 240px;
   display: flex;
   align-items: center;
-  margin-top: 5rem;
 }
 
 .page__header h3 {
   color: white;
 }
 div.singlepara {
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
@@ -90,14 +88,11 @@ div.singlepara {
   right: 78.49%;
   top: 53.87%;
   bottom: 45.23%;
-
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 26px;
   /* identical to box height, or 144% */
-
   display: flex;
   align-items: center;
   letter-spacing: 0.3vmin;
@@ -109,17 +104,13 @@ div.singlepara {
   right: 78.49%;
   top: 53.87%;
   bottom: 45.23%;
-
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 26px;
   /* identical to box height, or 144% */
-
   display: flex;
   align-items: center;
-
   color: #a0abb8;
 }
 .formlable::after {
@@ -135,7 +126,6 @@ div.singlepara {
 }
 
 /* FAQ Page styles */
-
 .faq {
   width: 100%;
   display: flex;
@@ -189,7 +179,6 @@ div.singlepara {
 }
 
 /* Blog page styles */
-
 .blog__wrapper {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -435,14 +424,12 @@ div.singlepara {
 .search input {
   text-indent: 20px;
   margin-right: 40px;
-  font-family: FontAwesome, sans-serif;
   border: 1.7px solid #8c8c8c;
   background-color: black;
   border-radius: 50px;
 }
 .search .fa-search {
   position: absolute;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
@@ -464,7 +451,6 @@ div.singlepara {
   left: 0%;
   top: 0%;
   bottom: 0.27%;
-
   font-size: 20px;
 }
 

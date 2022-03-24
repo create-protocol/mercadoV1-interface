@@ -2,19 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
-
+import { Spin } from 'antd';
 import contactus from "../assets/images/contactus.png";
 import Landingcard from "./Newcard";
 import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
 import "../assets/css/filterdropdown.css";
-import Loader from "react-loader-spinner";
 const ImageContainer = styled.div`
   background: url(${contactus});
   height: 17rem;
   width: 100%;
   margintop: 0;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: 600;
   font-size: 2.5rem;
@@ -26,7 +24,6 @@ const ImageContainer = styled.div`
 `;
 
 const TopText = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 1.4rem;
@@ -34,7 +31,6 @@ const TopText = styled.div`
 `;
 
 const InnerText = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 0.9rem;
@@ -43,7 +39,6 @@ const InnerText = styled.div`
 `;
 
 const Radio = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 1rem;
@@ -51,7 +46,6 @@ const Radio = styled.div`
 `;
 
 const FormLabel = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 1.2rem;
@@ -77,7 +71,6 @@ const Whitebtn = styled.div`
   height: 62px;
   background: #b4b4b4;
   border-radius: 15px;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -126,20 +119,21 @@ const AllNFT = () => {
 
   useEffect(() => {
     fetchData();
-
   })
-  if (loadingState != "loaded") {
+  if (loadingState !== "loaded") {
     return (
       <div
-        style={{ height: "200px", alignContent: "center", marginBottom:"100px" }}
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px", justifyContent: 'center' }}
       >
-        <Loader type="Puff" color="#00BFFF" height={400} width={100} />
+        <div style={{minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+          <Spin size="large" />
+        </div>
       </div>
     );
   }
   return (
     <>
-      <div style={{ width: "100%", marginTop: "5rem" }}>
+      <div style={{ width: "100%", paddingTop: "10rem" }}>
         <ImageContainer>Discover</ImageContainer>
         <div className="flex-container" style={{ justifyContent: "space-between", width: "90%" }}>
           {/* <img src={filterimage} width="118px" height="52px"></img> */}

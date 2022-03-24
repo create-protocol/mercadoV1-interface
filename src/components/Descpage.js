@@ -1,18 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
-
 import "font-awesome/css/font-awesome.min.css";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { useParams } from "react-router-dom";
 import "../../node_modules/video-react/dist/video-react.css"; // import css
-import Loader from "react-loader-spinner";
 import Landingowner from "../assets/images/landingowner.png";
 import Eth from "../assets/images/Ethereum (ETH).png";
-
+import { Spin, Avatar } from 'antd';
 
 const Splitscreen = styled.div`
   display: flex;
@@ -67,14 +64,34 @@ box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.32);
   margin-top: 0.7rem;
 `;
 const Mainheading = styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-weight: 600;
 font-size: 2.3rem;
 line-height: 140%;`
+const Borderbtn = styled.div`
+  cursor: pointer;
+  border-radius: 7px;
+  padding: 0.5rem 1.4rem;
+  margin-left: 0.5rem;
+  padding-top: 0.45rem;
+  font-weight: 600;
+  font-size: 12px;
+  color: white;
+  border: solid 2px transparent;
+  background-image: linear-gradient(black, black),
+    linear-gradient(
+      279.52deg,
+      rgba(27, 249, 249, 0.05) -39.47%,
+      rgba(23, 247, 206, 0.840625) -5.82%,
+      rgba(34, 122, 255, 0.958132) 99.45%,
+      rgba(76, 146, 251, 0.5) 136.47%
+    );
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px black inset;
+`;
 
 const Desctext = styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
 font-size: 1rem;
@@ -82,7 +99,6 @@ line-height: 160%;
 color: #A9A9A9;`
 
 const Biddingtext = styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-weight: 600;
 font-size: 1.5rem;
@@ -90,7 +106,6 @@ line-height: 140%;
 margin-top:1rem;`
 
 const Leftheading = styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-weight: normal;
 font-size: 14px;
@@ -100,7 +115,6 @@ line-height:0.5rem;
 `
 
 const Lefttext = styled.div`
-font-family: Century Gothic;
 font-style: normal;
 font-size: 18px;
 line-height:1;
@@ -120,15 +134,15 @@ const Descpage = () => {
   const [metaData,setMetaData] = useState();
 
   const fetchMetaData = async () => {
-    try{
+    try {
       const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + collection + '/' + id + '?chain=eth',
       { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
       // const  imageMetaData = await axios.get(createURI(res.data.token_uri));
+      console.log(res.data.metadata, res, res.data, 'this is the response');
       setMetaData({...res.data, ...JSON.parse(res.data.metadata)});
-      console.log("metadata : " ,metaData);
       setLoadingState("loaded");
-    }catch(e){
-      console.log(e); 
+    } catch(e){
+      console.log(e);
     }
 
   }
@@ -136,19 +150,23 @@ const Descpage = () => {
   useEffect(()=>{
     fetchMetaData();
   },[])
-  
-  if (loadingState != "loaded") {
+
+
+
+  if (loadingState !== "loaded") {
     return (
       <div
-        style={{ height: "200px", alignContent: "center", marginTop: "160px" }}
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px", justifyContent: 'center' }}
       >
-        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+        <div style={{minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+          <Spin size="large" />
+        </div>
       </div>
     );
   }
   return (
     <>
-      {metaData && <Splitscreen style={{ marginTop: "7rem" }}>
+      {metaData && <Splitscreen style={{ paddingTop: "10rem" }}>
         <Left>
           <div
             style={{
@@ -181,14 +199,22 @@ const Descpage = () => {
               />
             </Zoom>
             <div style={{ marginTop: "1rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <img src={Landingowner} alt="nftImage" style={{ marginRight: "1rem" }} />
+              <Avatar
+                size={{ xs: 24, sm: 32, md: 30, lg: 40, xl: 55, xxl: 100 }}
+                src="https://joeschmoe.io/api/v1/random"
+              />
               <Lefttext style={{ color: "#A9A9A9" }}>created by <br/> {metaData.owner_of}</Lefttext>
             </div>
             <div style={{ color: "white", }}>
               <Leftheading>Contract Address</Leftheading>
 
               <br />
+              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",}}>
               <Lefttext>{metaData.token_address}</Lefttext>
+              <Borderbtn>Copy address</Borderbtn>
+
+              </div>
+              
 
             </div>
             <div style={{ color: "white" }}>
@@ -288,7 +314,7 @@ const Descpage = () => {
                   <img src={Eth} alt="" />
                   <div style={{ marginLeft: "0.4rem" }}>4d 16h 32m 10s</div>
                 </div>
-                <div>Place bid</div>
+                <Borderbtn>Place bid</Borderbtn>
               </div>
             </div>
           </div>
@@ -341,7 +367,6 @@ const Descpage = () => {
                     width: "80%",
                     textAlign: "left",
                     marginRight: "2rem",
-                    color: "white",
                     height: "100%",
                     color: "#A9A9A9",
                   }}

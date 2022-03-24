@@ -6,7 +6,6 @@ import ArtistPageLine from "../assets/images/Artistpageline.png";
 import styled from "styled-components";
 
 const Filternfts = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: 600;
   font-size: 1.2rem;
@@ -23,7 +22,7 @@ const ArtisPage = () => {
   const [music, setMusic] = useState(false);
 
   return (
-    <div style={{ height: "250vh", width: "100%" }}>
+    <div style={{ height: "250vh", width: "100%" ,paddingTop:"10rem"}}>
       <PageHeader subtitle="Home  >  Blogs  >  An open call to artists" />
       <div className="blogDetail__container" style={{ display:"flex",alignItems:"start",justifyContent:"space-between" }}>
         <section className="profile" style={{ width: "25%" }}>
@@ -146,10 +145,10 @@ const ArtisPage = () => {
               alignItems: "start",
               justifyContent: "flex-start",
               flexWrap: "wrap",
-              
+
             }}
           >
-            
+
             <LandingCard />
             <LandingCard />
             <LandingCard />
@@ -166,12 +165,12 @@ const ArtisPage = () => {
               width: "55rem",
             }}
           >
-            
+
             <LandingCard />
             <LandingCard />
             <LandingCard />
             <LandingCard />
-            
+
           </div>}
           {music&&<div
             style={{
@@ -182,9 +181,9 @@ const ArtisPage = () => {
               width: "55rem",
             }}
           >
-            
+
             <LandingCard />
-            
+
           </div>}
         </section>
       </div>

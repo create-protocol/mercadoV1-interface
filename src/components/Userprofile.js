@@ -1,26 +1,26 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import styled from "styled-components";
 import "font-awesome/css/font-awesome.min.css";
-
+import { useSelector, useDispatch } from 'react-redux';
 import contactus from "../assets/images/contactus.png";
 import filterimage from "../assets/images/Filter.png";
 import Landingcard from "./Profilecardbig";
 import FillterCard from "./FillterCard";
 import { Link } from "react-router-dom";
+import { Spin } from 'antd';
 import "../assets/css/filterdropdown.css";
 import Profileimg from "../assets/images/profileimg.png";
 import Tick from "../assets/images/tickimg.png";
 import Share from "../assets/images/share.png";
 import Settings from "../assets/images/settings.png";
 import Filterline from "../assets/images/filterbottomline.png";
-import CollectedCard from './CollectedCard'
-
+import CollectedCard from './CollectedCard';
+import axios from 'axios';
 const ImageContainer = styled.div`
   background: #313131;
   height: 15rem;
   width: 100%;
   margintop: 0;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: 600;
   font-size: 2.5rem;
@@ -32,7 +32,6 @@ const ImageContainer = styled.div`
 `;
 
 const TopText = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 1.1rem;
@@ -43,7 +42,6 @@ const TopText = styled.div`
 `;
 
 const InnerText = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-style: normal;
   font-weight: normal;
@@ -54,7 +52,6 @@ const InnerText = styled.div`
 `;
 
 const Radio = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 1rem;
@@ -62,7 +59,6 @@ const Radio = styled.div`
 `;
 
 const FormLabel = styled.div`
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: normal;
   font-size: 1.2rem;
@@ -88,7 +84,6 @@ const Whitebtn = styled.div`
   height: 62px;
   background: #b4b4b4;
   border-radius: 15px;
-  font-family: Century Gothic;
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -140,13 +135,13 @@ const reducer = (state, action) => {
     case "Collected": {
       return {
         Collected: true,
-  Created: false,
+        Created: false,
       };
     }
     case "Created": {
       return {
         Collected: false,
-  Created: true,
+        Created: true,
       };
     }
     default: {
@@ -158,20 +153,86 @@ const reducer = (state, action) => {
   }
 };
 const Userprofile = () => {
+
   const [filterOpen, setFilterOpen] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialstate);
+  const [ownerresponse, setOwnerresponse] = useState([]);
+  const walletData = useSelector(state => state.wallet.wallet);
+  console.log(walletData, 'this is the wallet data', walletData?.address);
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [loadingState, setLoadingState] = useState("not-loaded");
+
+
+    const apiKey = "sUFA8R6qs3OkJxrY9riiWlH_s7GJvfbH";
+
+    const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
+    const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
+    const tokenId = "2";
+    const tokenType = "erc721";
+    const fetchURL = `${baseURL}?contractAddress=${contractAddr}&tokenId=${tokenId}&tokenType=${tokenType}`
+    axios
+      .get(fetchURL)
+      .then((res) => {
+        setOwnerresponse(res.data);
+        setLoadingState("loaded");
+      })
+      .catch((err) => {
+        setError(err);
+        setIsLoaded(true);
+      });
+    console.log("here");
+
+
+
+
+
+
+
+  console.log(ownerresponse);
+    // console.log(ownerresponse.media[0].gateway);
+
+
+
+
+
+  useEffect(() => {
+    // Make the request and print the formatted response:
+    fetch(fetchURL)
+      .then(response => response.json())
+      .then(result=> setOwnerresponse(result))
+      .catch(error => console.log('error', error));
+
+  }, []);
+
+
+  if (loadingState !== "loaded") {
+    return (
+      <div
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px", justifyContent: 'center' }}
+      >
+        <div style={{minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+          <Spin size="large" />
+        </div>
+      </div>
+    );
+  }
+  console.log(ownerresponse);
+
 
   return (
+
     <>
-      <div style={{ width: "100%", marginTop: "5rem" }}>
+      {ownerresponse &&  ownerresponse.media && ownerresponse.media.length>0 ?  (
+        <div style={{ width: "100%", paddingTop: "10rem" }}>
         <ImageContainer>
           <Profilediv>
-            <img src={Profileimg} alt="hi" style={{ height: "28vh" }} />
+            <img src={ownerresponse.media[0].gateway} alt="hi" style={{ height: "28vh" }} />
             <TopText>
               Bright MBA
               <img src={Tick} style={{ marginLeft: ".5vw" }} />
             </TopText>
-            <InnerText>0dsf8....84h</InnerText>
+            <InnerText>{ownerresponse ? ownerresponse.contract.address : "null"}</InnerText>
             <InnerText>Joined January 2022</InnerText>
           </Profilediv>
         </ImageContainer>
@@ -186,10 +247,10 @@ const Userprofile = () => {
           }}
         >
           <div style={{ display: "flex", width: "80%" }}>
-            <Filtercurved onClick={()=>{dispatch({type:'Collected'})}}>
+            <Filtercurved onClick={() => { dispatch({ type: 'Collected' }) }}>
               Collected<div>0</div>
             </Filtercurved>
-            <Filtercurved onClick={()=>{dispatch({type:'Created'})}}>
+            <Filtercurved onClick={() => { dispatch({ type: 'Created' }) }}>
               Created<div>0</div>
             </Filtercurved>
             <Filtercurved>
@@ -329,78 +390,80 @@ const Userprofile = () => {
                 <FillterCard />
               </div>
             )}
-            {state.Collected&&
-            <div
-              style={{
-                width: filterOpen == true ? "80%" : "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-                marginLeft: filterOpen == true ? "4rem" : "2rem",
-              }}
-            >
+            {state.Collected &&
               <div
                 style={{
+                  width: filterOpen == true ? "80%" : "100%",
                   display: "flex",
-                  width: "100%",
-                  alignItems: "start",
-                  justifyContent: "flex-start",
-                  flexWrap: "wrap",
-                  marginLeft: "1.5rem",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  marginLeft: filterOpen == true ? "4rem" : "2rem",
                 }}
               >
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
-                <Landingcard />
+                <div
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    alignItems: "start",
+                    justifyContent: "flex-start",
+                    flexWrap: "wrap",
+                    marginLeft: "1.5rem",
+                  }}
+                >
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                  <Landingcard />
+                </div>
               </div>
-            </div>
-}
-            {state.Created&&
-            <div
-              style={{
-                width: filterOpen == true ? "80%" : "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-                marginLeft: filterOpen == true ? "2rem" : "4rem",
-              }}
-            >
+            }
+            {state.Created &&
               <div
                 style={{
+                  width: filterOpen == true ? "80%" : "100%",
                   display: "flex",
-                  width: "100%",
-                  alignItems: "start",
-                  justifyContent: "flex-start",
-                  flexWrap: "wrap",
-                  
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  marginLeft: filterOpen == true ? "2rem" : "4rem",
                 }}
               >
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>
-                <CollectedCard/>  
-                
+                <div
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    alignItems: "start",
+                    justifyContent: "flex-start",
+                    flexWrap: "wrap",
+
+                  }}
+                >
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+                  <CollectedCard />
+
+                </div>
               </div>
-            </div>
-}
+            }
           </div>
         </div>
       </div>
+      ):null}
+
     </>
   );
 };
