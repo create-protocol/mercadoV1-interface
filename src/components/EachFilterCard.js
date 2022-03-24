@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react'
 import arrow_down from '../assets/images/arrow_down2.png'
-import EachFilterButton from '../components/EachFilterButton'
+// import EachFilterButton from '../components/EachFilterButton'
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import CollectionsFilter from './FilterComponent/CollectionsFilter.js'
 import ToggleSwitch from "./FilterComponent/ToggleSwitch";
 import Pricerange from "./FilterComponent/Pricerange";
