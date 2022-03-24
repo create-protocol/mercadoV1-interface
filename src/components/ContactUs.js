@@ -65,6 +65,7 @@ background:none;
 margin-top:1rem;
 color:white;
 border:none;
+
 border-bottom:1px solid #565656
 `
 
@@ -218,7 +219,7 @@ const ContactUs = () => {
                 <Radio for="html">Business enquiries/ partnerships</Radio>
                 <br />
               </div>
-              <div style={{ display: "flex", flexDirection: "column",color:"#6C6767",width:"100%" }}>
+              <div style={{ display: "flex", flexDirection: "column",color:"white",width:"100%" }}>
                 
                 <FormLabel for="fname">Name*</FormLabel>
                 <InputForm
