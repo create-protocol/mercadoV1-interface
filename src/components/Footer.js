@@ -93,7 +93,6 @@ const Footer = (props) => {
           <FooterLink href="/">Home</FooterLink>
           <FooterLink href="/about">About</FooterLink>
           <FooterLink href="/">Community</FooterLink>
-          <FooterLink href="/blog">Blogs</FooterLink>
           <FooterLink href="/faq">FAQ</FooterLink>
 
           <FooterLink

@@ -138,7 +138,7 @@ const Descpage = () => {
       const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + collection + '/' + id + '?chain=eth',
       { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
       // const  imageMetaData = await axios.get(createURI(res.data.token_uri));
-      console.log(res.data.metadata, res, res.data, 'this is the response');
+      console.log(res.data);
       setMetaData({...res.data, ...JSON.parse(res.data.metadata)});
       setLoadingState("loaded");
     } catch(e){

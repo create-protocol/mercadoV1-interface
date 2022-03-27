@@ -166,11 +166,11 @@ const Userprofile = () => {
 
     const apiKey = "sUFA8R6qs3OkJxrY9riiWlH_s7GJvfbH";
 
-    const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata`;
+    const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs`;
     const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
     const tokenId = "2";
     const tokenType = "erc721";
-    const fetchURL = `${baseURL}?contractAddress=${contractAddr}&tokenId=${tokenId}&tokenType=${tokenType}`
+    const fetchURL = `${baseURL}?contractAddress=${contractAddr}`;
     axios
       .get(fetchURL)
       .then((res) => {

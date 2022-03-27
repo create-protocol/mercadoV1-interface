@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleWalletPopup } from "../store";
 import { Menu,Button,Dropdown } from 'antd';
 import {MenuOutlined} from '@ant-design/icons';
-import Web3 from "web3";
+import web3 from "web3";
 import "antd/dist/antd.css";
 
 const SubMenu = Menu;
