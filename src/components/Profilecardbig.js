@@ -40,7 +40,6 @@ const Imagecont = styled.div`
   object-fit: contain;
   width: 100%;
   border-radius: 0.5rem;
-  background: url(${Landingcardimg1});
   height:32vh;
   // -webkit-box-shadow: 0 8px 6px 10px black;
   //  -moz-box-shadow: 0 8px 6px 10px black;
@@ -67,7 +66,7 @@ const Btn = styled.div`
   }
 `;
 
-const  Heading2=styled.div`
+const Heading2 = styled.div`
 font-style: normal;
 font-weight: normal;
 font-size: .7rem;
@@ -78,7 +77,7 @@ line-height: 160%;
 color: #A9A9A9;
 `
 
-const Lowertext=styled.div`
+const Lowertext = styled.div`
 font-style: normal;
 font-weight: normal;
 font-size: .8rem;
@@ -91,16 +90,16 @@ color: #FFFFFF;
 margin-top:5%;
 
 `
-const LandingCard = (porps) => {
+const LandingCard = (props) => {
+  console.log(props.image)
   return (
     <Landingdiv>
-      <Imagecont >
-      </Imagecont>
-      <div style={{marginTop:"-2rem",width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-          <img src={porps.image} style={{width:"25%"}}/>
-          <div style={{marginLeft:"10%",width:"45%",fontWeight:"bold",display:"flex",alignItems:"center"}}>{porps.title} <img src={Eth} style={{marginLeft:"5%"}}/></div>
-          <Heading2>created by @brightmac</Heading2>
-          <Lowertext>{porps.desc}</Lowertext>
+      <img src={props.image} style={{ width: "85%" }} />
+      <div style={{ marginTop: "-2rem", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+        <img src={props.image} style={{ width: "25%" }} />
+        <div style={{ marginLeft: "10%", width: "45%", fontWeight: "bold", display: "flex", alignItems: "center" }}>{props.title} <img src={Eth} style={{ marginLeft: "5%" }} /></div>
+        <Heading2>created by @brightmac</Heading2>
+        <Lowertext>{props.desc}</Lowertext>
       </div>
       <div></div>
 

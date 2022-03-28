@@ -172,7 +172,7 @@ const Userprofile = () => {
     if (walletData && walletData.address) {
       console.log('wallet address', walletData);
       dispatch(getWalletNfts({
-        ownerAddr: "0xC2A4EE96F1EaCE85aF86703B0E77A671F97EAC46"
+        ownerAddr: "0x7104D69Cb26cC73F786081820eDd3A7F15084a47"
       }));
     }
     else {
@@ -383,13 +383,13 @@ const Userprofile = () => {
                     name={ele.title}
                     symbol={ele.symbol + ' #' + ele.token_id} />
                   ))} */}
-                  {/* {NFTData.ownedNfts.map(ele =>
-                  <Landingcard
-                   
-                    image={ele.metadata.background_image}
-                    title={ele.title}
-                    desc={ele.description} />
-              )} */}
+                  {NFTData.ownedNfts.map(ele =>
+                    <Landingcard
+                      background_image={ele.metadata.background_image}
+                      image={ele.metadata.image}
+                      title={ele.title}
+                      desc={ele.description} />
+                  )}
 
                 </div>
               </div>
@@ -415,7 +415,7 @@ const Userprofile = () => {
 
                   }}
                 >
-                 
+
                 </div>
               </div>
             }
