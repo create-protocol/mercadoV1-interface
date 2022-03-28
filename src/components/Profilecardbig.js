@@ -91,16 +91,16 @@ color: #FFFFFF;
 margin-top:5%;
 
 `
-const LandingCard = () => {
+const LandingCard = (porps) => {
   return (
     <Landingdiv>
-      <Imagecont>
+      <Imagecont >
       </Imagecont>
       <div style={{marginTop:"-2rem",width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
-          <img src={Landingowner} style={{width:"25%"}}/>
-          <div style={{marginLeft:"10%",width:"45%",fontWeight:"bold",display:"flex",alignItems:"center"}}>Blue World <img src={Eth} style={{marginLeft:"5%"}}/></div>
+          <img src={porps.image} style={{width:"25%"}}/>
+          <div style={{marginLeft:"10%",width:"45%",fontWeight:"bold",display:"flex",alignItems:"center"}}>{porps.title} <img src={Eth} style={{marginLeft:"5%"}}/></div>
           <Heading2>created by @brightmac</Heading2>
-          <Lowertext>Lorem ipsum dolor sit amet, consectetur Leo...</Lowertext>
+          <Lowertext>{porps.desc}</Lowertext>
       </div>
       <div></div>
 

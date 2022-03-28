@@ -15,6 +15,8 @@ import Share from "../assets/images/share.png";
 import Settings from "../assets/images/settings.png";
 import Filterline from "../assets/images/filterbottomline.png";
 import CollectedCard from './CollectedCard';
+import { toggleWalletPopup } from "../store";
+import { getWalletNfts } from '../store/profile/action';
 import axios from 'axios';
 const ImageContainer = styled.div`
   background: #313131;
@@ -153,86 +155,48 @@ const reducer = (state, action) => {
   }
 };
 const Userprofile = () => {
-
+  const dispatch = useDispatch();
   const [filterOpen, setFilterOpen] = useState(false);
-  const [state, dispatch] = useReducer(reducer, initialstate);
+  const [state, dispatchTemp] = useReducer(reducer, initialstate);
   const [ownerresponse, setOwnerresponse] = useState([]);
   const walletData = useSelector(state => state.wallet.wallet);
-  console.log(walletData, 'this is the wallet data', walletData?.address);
+  const NFTData = useSelector(state => state.profile.nftData)
+
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [loadingState, setLoadingState] = useState("not-loaded");
 
 
-    const apiKey = "sUFA8R6qs3OkJxrY9riiWlH_s7GJvfbH";
-
-    const baseURL = `https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs`;
-    const contractAddr = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
-    const tokenId = "2";
-    const tokenType = "erc721";
-    const fetchURL = `${baseURL}?contractAddress=${contractAddr}`;
-    axios
-      .get(fetchURL)
-      .then((res) => {
-        setOwnerresponse(res.data);
-        setLoadingState("loaded");
-      })
-      .catch((err) => {
-        setError(err);
-        setIsLoaded(true);
-      });
-    console.log("here");
-
-
-
-
-
-
-
-  console.log(ownerresponse);
-    // console.log(ownerresponse.media[0].gateway);
-
-
-
-
-
   useEffect(() => {
-    // Make the request and print the formatted response:
-    fetch(fetchURL)
-      .then(response => response.json())
-      .then(result=> setOwnerresponse(result))
-      .catch(error => console.log('error', error));
+    console.log("here", walletData);
+    if (walletData && walletData.address) {
+      console.log('wallet address', walletData);
+      dispatch(getWalletNfts({
+        ownerAddr: "0xC2A4EE96F1EaCE85aF86703B0E77A671F97EAC46"
+      }));
+    }
+    else {
+      dispatch(toggleWalletPopup());
+    }
 
-  }, []);
+  }, [walletData, dispatch]);
 
-
-  if (loadingState !== "loaded") {
-    return (
-      <div
-        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px", justifyContent: 'center' }}
-      >
-        <div style={{minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
-          <Spin size="large" />
-        </div>
-      </div>
-    );
-  }
-  console.log(ownerresponse);
+  console.log(NFTData);
+  // console.log(ownerresponse.media[0].gateway);
+  console.log(NFTData.ownedNfts);
 
 
   return (
-
     <>
-      {ownerresponse &&  ownerresponse.media && ownerresponse.media.length>0 ?  (
-        <div style={{ width: "100%", paddingTop: "10rem" }}>
+      <div style={{ width: "100%", paddingTop: "10rem" }}>
         <ImageContainer>
           <Profilediv>
-            <img src={ownerresponse.media[0].gateway} alt="hi" style={{ height: "28vh" }} />
+            {/* <img src={NFTData.media[0].gateway} alt="hi" style={{ height: "28vh" }} /> */}
             <TopText>
               Bright MBA
               <img src={Tick} style={{ marginLeft: ".5vw" }} />
             </TopText>
-            <InnerText>{ownerresponse ? ownerresponse.contract.address : "null"}</InnerText>
+            {/* <InnerText>{NFTData ? NFTData.contract.address : "null"}</InnerText> */}
             <InnerText>Joined January 2022</InnerText>
           </Profilediv>
         </ImageContainer>
@@ -247,10 +211,10 @@ const Userprofile = () => {
           }}
         >
           <div style={{ display: "flex", width: "80%" }}>
-            <Filtercurved onClick={() => { dispatch({ type: 'Collected' }) }}>
+            <Filtercurved onClick={() => { dispatchTemp({ type: 'Collected' }) }}>
               Collected<div>0</div>
             </Filtercurved>
-            <Filtercurved onClick={() => { dispatch({ type: 'Created' }) }}>
+            <Filtercurved onClick={() => { dispatchTemp({ type: 'Created' }) }}>
               Created<div>0</div>
             </Filtercurved>
             <Filtercurved>
@@ -411,14 +375,22 @@ const Userprofile = () => {
                     marginLeft: "1.5rem",
                   }}
                 >
-                  <Landingcard />
-                  <Landingcard />
-                  <Landingcard />
-                  <Landingcard />
-                  <Landingcard />
-                  <Landingcard />
-                  <Landingcard />
-                  <Landingcard />
+
+                  {/* {NFTData.ownedNfts.map(({ ele, idx }) => (
+                    <Landingcard
+                    image={ele[idx].metadata.image_url}
+                   
+                    name={ele.title}
+                    symbol={ele.symbol + ' #' + ele.token_id} />
+                  ))} */}
+                  {/* {NFTData.ownedNfts.map(ele =>
+                  <Landingcard
+                   
+                    image={ele.metadata.background_image}
+                    title={ele.title}
+                    desc={ele.description} />
+              )} */}
+
                 </div>
               </div>
             }
@@ -443,26 +415,14 @@ const Userprofile = () => {
 
                   }}
                 >
-                  <CollectedCard />
-                  <CollectedCard />
-                  <CollectedCard />
-                  <CollectedCard />
-                  <CollectedCard />
-                  <CollectedCard />
-                  <CollectedCard />
-                  <CollectedCard />
-                  <CollectedCard />
-                  <CollectedCard />
-                  <CollectedCard />
-                  <CollectedCard />
-
+                 
                 </div>
               </div>
             }
           </div>
         </div>
       </div>
-      ):null}
+
 
     </>
   );
