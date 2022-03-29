@@ -179,38 +179,38 @@ const Userprofile = () => {
     else {
       dispatch(toggleWalletPopup());
     }
-    fetchData();
+    // fetchData();
   }, [walletData, dispatch]);
 
   // console.log(NFTData);
   // console.log(ownerresponse.media[0].gateway);
-  console.log(NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract);
+  // console.log(NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract);
 
-  const fetchData = async () => {
+  // const fetchData = async () => {
 
-    const collectionTop = [NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract]
-    const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
-    console.log(collectionTopArr)
-    const responseAllNFT = await Promise.all(
-      collectionTopArr.map(async (ele, index) => {
-        const id = parseInt(index / 4) + 2;
-        try{
-          const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + ele + '/' + id + '?chain=eth',
-            { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
-            console.log(ele);
-          return res.data;
-        }
-        catch(err){
-          console.log(err);
-        }
-      })
-    );
-    setData(responseAllNFT);
-    setLoadingState("loaded");
-    console.log("response");
-    console.log(responseAllNFT);
+  //   const collectionTop = [NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract]
+  //   const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
+  //   console.log(collectionTopArr)
+  //   const responseAllNFT = await Promise.all(
+  //     collectionTopArr.map(async (ele, index) => {
+  //       const id = parseInt(index / 4) + 2;
+  //       try{
+  //         const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + ele + '/' + id + '?chain=eth',
+  //           { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
+  //           console.log(ele);
+  //         return res.data;
+  //       }
+  //       catch(err){
+  //         console.log(err);
+  //       }
+  //     })
+  //   );
+  //   setData(responseAllNFT);
+  //   setLoadingState("loaded");
+  //   console.log("response");
+  //   console.log(responseAllNFT);
 
-  }
+  // }
 
   return (
     <>
