@@ -98,7 +98,7 @@ const LandingCard = (props) => {
       <div style={{ marginTop: "-2rem", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
         <img src={props.image} style={{ width: "25%" }} />
         <div style={{ marginLeft: "10%", width: "45%", fontWeight: "bold", display: "flex", alignItems: "center" }}>{props.title} <img src={Eth} style={{ marginLeft: "5%" }} /></div>
-        <Heading2>created by @brightmac</Heading2>
+        {/* <Heading2>created by @brightmac</Heading2> */}
         <Lowertext>{props.desc}</Lowertext>
       </div>
       <div></div>
