@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
 import { Button } from 'antd';
+import {fetchItemMetaData} from '../../store/item/action';
 import "font-awesome/css/font-awesome.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import { useParams } from "react-router-dom";
-import "../../node_modules/video-react/dist/video-react.css"; // import css
-import Landingowner from "../assets/images/landingowner.png";
-import Eth from "../assets/images/Ethereum (ETH).png";
+import "../../../node_modules/video-react/dist/video-react.css"; // import css
+import Landingowner from "../../assets/images/landingowner.png";
+import Eth from "../../assets/images/Ethereum (ETH).png";
 import { Spin, Avatar } from 'antd';
 
 const Splitscreen = styled.div`
@@ -124,38 +125,28 @@ line-height:1;
 
 const createURI = (uri) => uri.slice(0,7) === "ipfs://" ? 'https://ipfs.infura.io/ipfs/' + uri.slice(7) : uri;
 
-const Descpage = () => {
-
+const ItemDescription = () => {
+  const dispatch = useDispatch();
+  const metaData = useSelector(state => state.item.itemData);
+  const loadingState = useSelector(state => state.item.itemDataLoading);
   const { collection,id } = useParams();
-  const [loadingState, setLoadingState] = useState("not-loaded");
+
   //itemid = itemid.toNumber();
   // var token_address = ethers.BigNumber.from(item1);
   // var itemId = ethers.BigNumber.from(item2);
   // console.log(collection,id);
 
-  const [metaData,setMetaData] = useState();
 
-  const fetchMetaData = async () => {
-    try {
-      const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + collection + '/' + id + '?chain=eth',
-      { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
-      // const  imageMetaData = await axios.get(createURI(res.data.token_uri));
-      console.log(res.data);
-      setMetaData({...res.data, ...JSON.parse(res.data.metadata)});
-      setLoadingState("loaded");
-    } catch(e){
-      console.log(e);
-    }
-
-  }
 
   useEffect(()=>{
-    fetchMetaData();
-  },[])
+    dispatch(fetchItemMetaData({
+      collection, id
+    }));
+  },[dispatch, collection, id]);
 
 
 
-  if (loadingState !== "loaded") {
+  if (loadingState) {
     return (
       <div
         style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px", justifyContent: 'center' }}
@@ -390,4 +381,7 @@ const Descpage = () => {
   );
 };
 
-export default Descpage;
+// const ItemDescription = () => <h1>Thisjisjlkajlskj</h1>
+
+
+export default ItemDescription;

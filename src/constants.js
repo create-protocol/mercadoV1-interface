@@ -3,7 +3,7 @@ import Previewnft from "./components/PreviewNft";
 import Viewprofile from "./components/ViewProfile";
 // import page2 from "./mints/nfts/page2";
 import faq from './components/FAQ';
-import DescriptionPage from "./components/DescriptionPage";
+import ItemDescription from "./pages/ItemDescription";
 import Profile from './components/Profile'
 import Infopage from './components/Infopage'
 import ContactUs from "./components/ContactUs";
@@ -46,15 +46,15 @@ const routes = [
     path: "/creator/bharat-thakur",
     component: Viewprofile,
   },
- 
+
   {
     pathName: "EXPLORE MARKETPLACE",
     path: "/EXPLORE MARKETPLACE",
   },
   {
-    pathName: "Description Page",
+    pathName: "description-page",
     path: "/asset/:itemid",
-    component:DescriptionPage,
+    component: ItemDescription,
   },
   {
     pathName: "profile",
@@ -79,10 +79,10 @@ const routes = [
   {
     pathName: "main",
     path: "/asset/:collection/:id",
-    component: Descpage,
+    component: ItemDescription,
   },
- 
-  
+
+
   {
     pathName: "artist",
     path: "/artist",
@@ -128,7 +128,7 @@ const routes = [
     path: "/settings",
     component: ProfileSettings,
   },
-  
+
 ];
 
 export { routes };
