@@ -4,6 +4,7 @@ import {
   FETCH_BID_INITIAL, FETCH_BID_SUCCESS, FETCH_BID_FAILURE, PLACE_BID_INITIAL, PLACE_BID_FAILURE, PLACE_BID_SUCCESS
 }
  from './constant';
+ import { _getBids, _createBid } from '../../api/nft.api.js';
 
 const MORALIS_API_KEY = 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip';
 const CHAIN = 'eth';
@@ -33,8 +34,16 @@ export const fetchItemMetaData = (payload) => {
 export const fetchOngoingBids = (payload) => {
   return async (dispatch) => {
     try {
+      const { tokenId } = payload || null;
+      console.log(tokenId, 'this is the token id');
       dispatch({
         type: FETCH_BID_INITIAL,
+      });
+      const data = await _getBids({tokenId: 'trialToken'});
+      console.log('on going bids fetched', data);
+      dispatch({
+        type: FETCH_BID_SUCCESS,
+        payload: data,
       });
     } catch (e) {
       dispatch({

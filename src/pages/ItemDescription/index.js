@@ -12,6 +12,7 @@ import "../../../node_modules/video-react/dist/video-react.css"; // import css
 import Landingowner from "../../assets/images/landingowner.png";
 import Eth from "../../assets/images/Ethereum (ETH).png";
 import { Spin, Avatar } from 'antd';
+import { fetchOngoingBids } from '../../store/item';
 
 const Splitscreen = styled.div`
   display: flex;
@@ -136,15 +137,17 @@ const ItemDescription = () => {
   // var itemId = ethers.BigNumber.from(item2);
   // console.log(collection,id);
 
-
-
-  useEffect(()=>{
+  useEffect(()=> {
     dispatch(fetchItemMetaData({
       collection, id
     }));
   },[dispatch, collection, id]);
 
-
+  useEffect(() => {
+    dispatch(fetchOngoingBids({
+    tokenId: collection
+    }));
+  }, []);
 
   if (loadingState) {
     return (
@@ -232,9 +235,6 @@ const ItemDescription = () => {
             </Desctext>}
             {/* {obj.name} */}
           </p>
-
-
-
           <div
             style={{
               width: "90%",
