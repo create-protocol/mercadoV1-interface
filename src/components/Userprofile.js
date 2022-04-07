@@ -182,7 +182,9 @@ const Userprofile = () => {
     // fetchData();
   }, [walletData, dispatch]);
 
-  // console.log(NFTData);
+
+
+  console.log(NFTData,' this is nft data');
   // console.log(ownerresponse.media[0].gateway);
   // console.log(NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract);
 
@@ -402,20 +404,14 @@ const Userprofile = () => {
                   }}
                 >
 
-                  {/* {NFTData.ownedNfts.map(({ ele, idx }) => (
+
+                  {NFTData?.ownedNfts?.map(ele =>
                     <Landingcard
-                    image={ele[idx].metadata.image_url}
-                   
-                    name={ele.title}
-                    symbol={ele.symbol + ' #' + ele.token_id} />
-                  ))} */}
-                  {/* {NFTData.ownedNfts.map(ele =>
-                    <Landingcard
-                      background_image={ele.metadata.image}
-                      image={ele.metadata.image}
+                      background_image={ele.media[0].gateway}
+                      image={ele.media[0].gateway}
                       title={ele.title}
                       desc={ele.description} />
-                  )} */}
+                  )}
 
                 </div>
               </div>
