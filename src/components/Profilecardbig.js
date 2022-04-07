@@ -91,7 +91,7 @@ margin-top:5%;
 
 `
 const LandingCard = (props) => {
-  console.log(props.image)
+  console.log(props.image, 'this is the image url');
   return (
     <Landingdiv>
       <img src={props.image} style={{ width: "85%" }} />
