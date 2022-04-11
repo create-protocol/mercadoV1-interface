@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from 'antd';
+import { ethers } from "ethers";
+import Web3Modal from "web3modal";
 import {fetchItemMetaData} from '../../store/item/action';
+import { nftmarketaddress, nftaddress } from "../../config";
+import Market from "../../ethereum/Marketplace.json";
+import NFT from "../../ethereum/NFT.json";
 import "font-awesome/css/font-awesome.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import Zoom from "react-medium-image-zoom";
@@ -13,6 +20,7 @@ import Landingowner from "../../assets/images/landingowner.png";
 import Eth from "../../assets/images/Ethereum (ETH).png";
 import { Spin, Avatar } from 'antd';
 import { fetchOngoingBids } from '../../store/item';
+import { sendTransaction } from "../../components/sendTransaction";
 
 const Splitscreen = styled.div`
   display: flex;
@@ -130,7 +138,7 @@ const ItemDescription = () => {
   const dispatch = useDispatch();
   const metaData = useSelector(state => state.item.itemData);
   const loadingState = useSelector(state => state.item.itemDataLoading);
-  const { collection,id } = useParams();
+  const { collection, id } = useParams();
 
   //itemid = itemid.toNumber();
   // var token_address = ethers.BigNumber.from(item1);
@@ -144,10 +152,38 @@ const ItemDescription = () => {
   },[dispatch, collection, id]);
 
   useEffect(() => {
-    dispatch(fetchOngoingBids({
-    tokenId: collection
-    }));
+    // dispatch(fetchOngoingBids({
+    // tokenId: collection
+    // }));
   }, []);
+
+  async function buyNft(nft) {
+    try {
+      const web3Modal = new Web3Modal();
+      const connection = await web3Modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
+      const signer = provider.getSigner();
+      window.wallet = signer;
+      window.provider = provider;
+      const contract = new ethers.Contract(
+        nftmarketaddress,
+        Market.abi,
+        signer
+      );
+      // console.log(nft);
+      // const price = ethers.utils.parseUnits(nft.price, "ether");
+      // console.log(nftaddress);
+      // console.log(nft.itemId);
+      await sendTransaction(
+        contract,
+        "buyNFT",
+        [collection],
+        "You have Purchse Token Successfully"
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   if (loadingState) {
     return (
@@ -199,7 +235,11 @@ const ItemDescription = () => {
                 size={{ xs: 24, sm: 32, md: 30, lg: 40, xl: 55, xxl: 100 }}
                 src="https://joeschmoe.io/api/v1/random"
               />
-              <Lefttext style={{ color: "#A9A9A9" }}>created by <br/> {metaData.owner_of}</Lefttext>
+              <Link to={`/profile/${metaData.owner_of}`}>
+                  <Lefttext style={{ color: "#A9A9A9" }}>created by <br/>
+                    {metaData.owner_of}
+                  </Lefttext>
+              </Link>
             </div>
             <div style={{ color: "white", }}>
               <Leftheading>Contract Address</Leftheading>
@@ -271,7 +311,12 @@ const ItemDescription = () => {
                   <img src={Eth} alt="" />
                   <div style={{ marginLeft: "0.4rem" }}>0.99 ETH</div>
                 </div>
-                <div style={{ background: "#229CEA", padding: ".7rem", borderRadius: "0.5rem", cursor: "pointer" }}>Buy now</div>
+                <div
+                  style={{ background: "#229CEA", padding: ".7rem", borderRadius: "0.5rem", cursor: "pointer" }}
+                  onClick={() => buyNft()}
+                >
+                  Buy now
+                </div>
               </div>
             </div>
             <div

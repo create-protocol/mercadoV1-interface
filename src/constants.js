@@ -18,6 +18,7 @@ import Privacy from "./components/Privacy/Privacy";
 import CommGuide from "./components/Privacy/CommGuide";
 import CookiesPolicy from "./components/Privacy/Cookie";
 import Userprofile from "./components/Userprofile";
+import ViewProfile from "./pages/Profile/ViewProfile";
 import ProfileSettings from './components/Profilesettings'
 
 const routes = [
@@ -81,8 +82,6 @@ const routes = [
     path: "/asset/:collection/:id",
     component: ItemDescription,
   },
-
-
   {
     pathName: "artist",
     path: "/artist",
@@ -122,6 +121,11 @@ const routes = [
     pathName: "profile",
     path: "/profile",
     component: Userprofile,
+  },
+  {
+    pathName: "viewProfile",
+    path: "/profile/:id",
+    component: ViewProfile,
   },
   {
     pathName: "settings",

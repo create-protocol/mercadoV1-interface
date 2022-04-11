@@ -17,7 +17,6 @@ const Routes = () => {
     <div>
       <Router>
         <Route path="/" component={NavBar}></Route>
-        
         <ScrollToTop>
           <Switch>
             {routes.map((route, i) => (

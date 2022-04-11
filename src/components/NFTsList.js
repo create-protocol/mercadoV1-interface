@@ -130,7 +130,7 @@ const Nftslist = (props) => {
     }
   }
 
-  
+
 
   if (loadingState != "loaded") {
     return (
@@ -167,13 +167,13 @@ const Nftslist = (props) => {
                 }}
               >
                 <Link to={`/asset/${nft.itemId}`}>
-                  
+
                     {nft.file === "mp4" ? (
                       <div className="videomint" style={{objectFit:"contain",marginRight:"1rem",display:"flex",flexDirection:"column",justifyContent:"center"}}>
                         <ImgHover>
                         <div
                         className="videomint"
-                          
+
                           style={{
                             width: "300px",
                             height: "270px",
@@ -184,9 +184,9 @@ const Nftslist = (props) => {
                           <div style={{alignItems:"center",marginTop:"20px"}}>
                           <Player  src={nft.image}></Player>
                           </div>
-                          
+
                         </div>
-                        
+
 
                         <p
                           style={{
@@ -211,7 +211,7 @@ const Nftslist = (props) => {
                         </p>
                         </ImgHover>
                       </div>
-                      
+
                     ) : (
                       <ImgHover>
                       <div className="nft-img-container " style={{marginLeft:"10px",border:"none"}}>
@@ -245,7 +245,7 @@ const Nftslist = (props) => {
                       </div>
                       </ImgHover>
                     )}
-                  
+
                 </Link>
               </div>
 
