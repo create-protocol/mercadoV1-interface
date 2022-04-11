@@ -169,9 +169,7 @@ const Userprofile = () => {
 
 
   useEffect(() => {
-    console.log("here", walletData);
     if (walletData && walletData.address) {
-      console.log('wallet address', walletData);
       dispatch(getWalletNfts({
         ownerAddr: "0x11D31054071C2Bfbd5D268DeA6E03847ba1f0Bc8"
       }));
