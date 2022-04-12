@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { Button } from 'antd';
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
-import {fetchItemMetaData} from '../../store/item/action';
+import { fetchItemMetaData, getNftById } from '../../store/item/action';
 import { nftmarketaddress, nftaddress } from "../../config";
 import Market from "../../ethereum/Marketplace.json";
 import NFT from "../../ethereum/NFT.json";
@@ -132,7 +132,7 @@ font-size: 18px;
 line-height:1;
 `
 
-const createURI = (uri) => uri.slice(0,7) === "ipfs://" ? 'https://ipfs.infura.io/ipfs/' + uri.slice(7) : uri;
+const createURI = (uri) => uri.slice(0, 7) === "ipfs://" ? 'https://ipfs.infura.io/ipfs/' + uri.slice(7) : uri;
 
 const ItemDescription = () => {
   const dispatch = useDispatch();
@@ -145,11 +145,11 @@ const ItemDescription = () => {
   // var itemId = ethers.BigNumber.from(item2);
   // console.log(collection,id);
 
-  useEffect(()=> {
-    dispatch(fetchItemMetaData({
-      collection, id
+  useEffect(() => {
+    dispatch(getNftById({
+      ownerAddr: collection, tokenId: id
     }));
-  },[dispatch, collection, id]);
+  }, [dispatch, collection, id]);
 
   useEffect(() => {
     // dispatch(fetchOngoingBids({
@@ -188,9 +188,9 @@ const ItemDescription = () => {
   if (loadingState) {
     return (
       <div
-        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px", justifyContent: 'center' }}
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom: "100px", justifyContent: 'center' }}
       >
-        <div style={{minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+        <div style={{ minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
           <Spin size="large" />
         </div>
       </div>
@@ -220,7 +220,7 @@ const ItemDescription = () => {
             {/* {obj.file=="mp4"?<Player src={obj.image}></Player>:  */}
             <Zoom>
               <img
-                src={createURI(metaData.image)}
+                src={metaData.metadata.image}
                 alt="nft"
                 style={{
                   width: "100%",
@@ -236,15 +236,15 @@ const ItemDescription = () => {
                 src="https://joeschmoe.io/api/v1/random"
               />
               <Link to={`/profile/${metaData.owner_of}`}>
-                  <Lefttext style={{ color: "#A9A9A9" }}>created by <br/>
-                    {metaData.owner_of}
-                  </Lefttext>
+                <Lefttext style={{ color: "#A9A9A9" }}>created by <br />
+                  {metaData.owner_of}
+                </Lefttext>
               </Link>
             </div>
             <div style={{ color: "white", }}>
               <Leftheading>Contract Address</Leftheading>
               <br />
-              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",}}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", }}>
                 <Lefttext>{metaData.token_address}</Lefttext>
                 <Borderbtn>Copy address</Borderbtn>
               </div>
@@ -268,7 +268,7 @@ const ItemDescription = () => {
             }}
           >
             {metaData && <Mainheading>{metaData.name}</Mainheading>}
-            <br/>
+            <br />
             <Mainheading className="text-muted">Description</Mainheading>
             {metaData && <Desctext>
               {metaData.description}
