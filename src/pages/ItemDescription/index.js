@@ -185,6 +185,7 @@ const ItemDescription = () => {
     }
   }
 
+  // console.log( createURI(metaData.metadata.image));
   if (loadingState) {
     return (
       <div
@@ -218,9 +219,9 @@ const ItemDescription = () => {
             }}
           >
             {/* {obj.file=="mp4"?<Player src={obj.image}></Player>:  */}
-            <Zoom>
-              <img
-                src={metaData.metadata.image}
+            {metaData &&  <Zoom>
+             {/* <img
+                 src={createURI(metaData.metadata.image)}
                 alt="nft"
                 style={{
                   width: "100%",
@@ -228,8 +229,9 @@ const ItemDescription = () => {
                   height: "70vh",
                   objectFit: "cover",
                 }}
-              />
-            </Zoom>
+              /> */}
+            </Zoom>}
+           
             <div style={{ marginTop: "1rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <Avatar
                 size={{ xs: 24, sm: 32, md: 30, lg: 40, xl: 55, xxl: 100 }}
@@ -245,14 +247,14 @@ const ItemDescription = () => {
               <Leftheading>Contract Address</Leftheading>
               <br />
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", }}>
-                <Lefttext>{metaData.token_address}</Lefttext>
+                {/* <Lefttext>{metaData.contract["address"]}</Lefttext> */}
                 <Borderbtn>Copy address</Borderbtn>
               </div>
             </div>
             <div style={{ color: "white" }}>
               <Leftheading>Token Id</Leftheading>
               <br />
-              <Lefttext>{metaData.token_id}</Lefttext>
+              {/* <Lefttext>{metaData.id["tokenId"]}</Lefttext> */}
             </div>
           </div>
         </Left>
@@ -267,11 +269,11 @@ const ItemDescription = () => {
               textAlign: "left",
             }}
           >
-            {metaData && <Mainheading>{metaData.name}</Mainheading>}
+            {/* {metaData && <Mainheading>{metaData.title}</Mainheading>} */}
             <br />
             <Mainheading className="text-muted">Description</Mainheading>
             {metaData && <Desctext>
-              {metaData.description}
+              {/* {metaData.description} */}
             </Desctext>}
             {/* {obj.name} */}
           </p>

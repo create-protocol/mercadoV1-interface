@@ -169,7 +169,9 @@ const Userprofile = () => {
 
 
   useEffect(() => {
+    console.log("here", walletData);
     if (walletData && walletData.address) {
+      console.log('wallet address', walletData);
       dispatch(getWalletNfts({
         ownerAddr: "0x11D31054071C2Bfbd5D268DeA6E03847ba1f0Bc8"
       }));
@@ -180,9 +182,7 @@ const Userprofile = () => {
     // fetchData();
   }, [walletData, dispatch]);
 
-
-
-  console.log(NFTData,' this is nft data');
+  // console.log(NFTData);
   // console.log(ownerresponse.media[0].gateway);
   // console.log(NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract);
 
@@ -402,14 +402,20 @@ const Userprofile = () => {
                   }}
                 >
 
-
-                  {NFTData?.ownedNfts?.map(ele =>
+                  {/* {NFTData.ownedNfts.map(({ ele, idx }) => (
                     <Landingcard
-                      background_image={ele.media[0].gateway}
-                      image={ele.media[0].gateway}
+                    image={ele[idx].metadata.image_url}
+                   
+                    name={ele.title}
+                    symbol={ele.symbol + ' #' + ele.token_id} />
+                  ))} */}
+                  {/* {NFTData.ownedNfts.map(ele =>
+                    <Landingcard
+                      background_image={ele.metadata.image}
+                      image={ele.metadata.image}
                       title={ele.title}
                       desc={ele.description} />
-                  )}
+                  )} */}
 
                 </div>
               </div>

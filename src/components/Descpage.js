@@ -241,9 +241,7 @@ const Descpage = () => {
             </Desctext>}
             {/* {obj.name} */}
           </p>
-
-
-
+          
           <div
             style={{
               width: "90%",
