@@ -235,7 +235,7 @@ const ItemDescription = () => {
           >
             {/* {obj.file=="mp4"?<Player src={obj.image}></Player>:  */}
             {metaData &&  <Zoom>
-             {/* <img
+             <img
                  src={createURI(metaData.metadata.image)}
                 alt="nft"
                 style={{
@@ -244,7 +244,7 @@ const ItemDescription = () => {
                   height: "70vh",
                   objectFit: "cover",
                 }}
-              /> */}
+              />
             </Zoom>}
            
             <div style={{ marginTop: "1rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -262,14 +262,14 @@ const ItemDescription = () => {
               <Leftheading>Contract Address</Leftheading>
               <br />
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", }}>
-                {/* <Lefttext>{metaData.contract["address"]}</Lefttext> */}
+                <Lefttext>{metaData.contract["address"]}</Lefttext>
                 <Borderbtn>Copy address</Borderbtn>
               </div>
             </div>
             <div style={{ color: "white" }}>
               <Leftheading>Token Id</Leftheading>
               <br />
-              {/* <Lefttext>{metaData.id["tokenId"]}</Lefttext> */}
+              <Lefttext>{metaData.id["tokenId"]}</Lefttext>
             </div>
             <div
             style={{
