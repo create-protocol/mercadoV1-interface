@@ -26,6 +26,7 @@ const Splitscreen = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  height:100rem;
   @media (max-width: 1000px) {
     flex-direction: column;
     overflow-y: hidden;
@@ -38,7 +39,7 @@ const Left = styled.div`
   align-items: center;
   width: 130%;
   margin-left: auto;
-  height: 120vh;
+  height: 100rem;
   @media (max-width: 1000px) {
     width: 100%;
     height: 60%;
@@ -73,6 +74,20 @@ box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.32);
   width: 100%;
   margin-left: 0;
   margin-top: 0.7rem;
+`;
+const Biddingcard1 = styled.div`
+background: linear-gradient(180deg, rgba(0, 0, 0, 0.11) 0%, rgba(0, 0, 0, 0.53125) 48.96%, rgba(55, 55, 55, 0.8) 100%);
+opacity: 0.75;
+box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.32);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8rem;
+  width: 100%;
+  margin-left: 0;
+  margin-top: 0.7rem;
+  margin-bottom:.5rem;
 `;
 const Mainheading = styled.div`
 font-style: normal;
@@ -256,6 +271,156 @@ const ItemDescription = () => {
               <br />
               {/* <Lefttext>{metaData.id["tokenId"]}</Lefttext> */}
             </div>
+            <div
+            style={{
+              width: "100%",
+              display: "flex",
+              textAlign: "left",
+              flexDirection: "column",
+              color: "white",
+              marginTop: "5rem"
+            }}
+          >
+            <Biddingtext>Properties</Biddingtext>
+
+            <Biddingcard1>
+              <div
+                style={{
+                  //   marginTop: "1.4rem",
+                  display: "flex",
+                  alignItems: "center",
+                  // marginLeft: "2rem",
+                  height: "100%",
+                }}
+              >
+                
+                <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginLeft: "2rem",
+                    color: "#A9A9A9"
+                  }}
+                >
+                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
+                    Background
+                  </div>
+                  <div style={{ fontSize: "1rem", marginTop: "1rem",color:"white" }}>
+                    Off white
+                  </div>
+                </div>
+              </div>
+              <div
+                style={{
+                  //   marginTop: "1.4rem",
+                  display: "flex",
+                  alignItems: "center",
+                  marginLeft: "2rem",
+                  height: "100%",
+                }}
+              >
+                
+                <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginLeft: "2rem",
+                    color: ""
+                  }}
+                >
+                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
+                    26.8
+                  </div>
+                  
+                </div>
+              </div>
+              <div>
+                <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginRight: "2rem",
+                    height: "100%",
+                    color: "#A9A9A9",
+                  }}
+                >
+                  <div style={{ fontSize: "1rem" }}>
+                    1990(19.9%)
+                  </div>
+                  
+                </div>
+              </div>
+            </Biddingcard1>
+            <Biddingcard1>
+              <div
+                style={{
+                  //   marginTop: "1.4rem",
+                  display: "flex",
+                  alignItems: "center",
+                  // marginLeft: "2rem",
+                  height: "100%",
+                }}
+              >
+                
+                <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginLeft: "2rem",
+                    color: "#A9A9A9"
+                  }}
+                >
+                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
+                    Background
+                  </div>
+                  <div style={{ fontSize: "1rem", marginTop: "1rem",color:"white" }}>
+                    Off white
+                  </div>
+                </div>
+              </div>
+              <div
+                style={{
+                  //   marginTop: "1.4rem",
+                  display: "flex",
+                  alignItems: "center",
+                  marginLeft: "2rem",
+                  height: "100%",
+                }}
+              >
+                
+                <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginLeft: "2rem",
+                    color: ""
+                  }}
+                >
+                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
+                    26.8
+                  </div>
+                  
+                </div>
+              </div>
+              <div>
+                <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginRight: "2rem",
+                    height: "100%",
+                    color: "#A9A9A9",
+                  }}
+                >
+                  <div style={{ fontSize: "1rem" }}>
+                    1990(19.9%)
+                  </div>
+                  
+                </div>
+              </div>
+            </Biddingcard1>
+
+          </div>
           </div>
         </Left>
         <Right>
