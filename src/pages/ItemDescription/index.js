@@ -153,6 +153,7 @@ const ItemDescription = () => {
   const dispatch = useDispatch();
   const metaData = useSelector(state => state.item.itemData);
   const loadingState = useSelector(state => state.item.itemDataLoading);
+  const [Properties, setProperties] = useState([]);
   const { collection, id } = useParams();
 
   //itemid = itemid.toNumber();
@@ -199,8 +200,8 @@ const ItemDescription = () => {
       console.log(e);
     }
   }
-
-  // console.log( createURI(metaData.metadata.image));
+  
+  console.log( metaData.metadata);
   if (loadingState) {
     return (
       <div
@@ -271,156 +272,7 @@ const ItemDescription = () => {
               <br />
               <Lefttext>{metaData.id["tokenId"]}</Lefttext>
             </div>
-            <div
-            style={{
-              width: "100%",
-              display: "flex",
-              textAlign: "left",
-              flexDirection: "column",
-              color: "white",
-              marginTop: "5rem"
-            }}
-          >
-            <Biddingtext>Properties</Biddingtext>
-
-            <Biddingcard1>
-              <div
-                style={{
-                  //   marginTop: "1.4rem",
-                  display: "flex",
-                  alignItems: "center",
-                  // marginLeft: "2rem",
-                  height: "100%",
-                }}
-              >
-                
-                <div
-                  style={{
-                    width: "80%",
-                    textAlign: "left",
-                    marginLeft: "2rem",
-                    color: "#A9A9A9"
-                  }}
-                >
-                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
-                    Background
-                  </div>
-                  <div style={{ fontSize: "1rem", marginTop: "1rem",color:"white" }}>
-                    Off white
-                  </div>
-                </div>
-              </div>
-              <div
-                style={{
-                  //   marginTop: "1.4rem",
-                  display: "flex",
-                  alignItems: "center",
-                  marginLeft: "2rem",
-                  height: "100%",
-                }}
-              >
-                
-                <div
-                  style={{
-                    width: "80%",
-                    textAlign: "left",
-                    marginLeft: "2rem",
-                    color: ""
-                  }}
-                >
-                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
-                    26.8
-                  </div>
-                  
-                </div>
-              </div>
-              <div>
-                <div
-                  style={{
-                    width: "80%",
-                    textAlign: "left",
-                    marginRight: "2rem",
-                    height: "100%",
-                    color: "#A9A9A9",
-                  }}
-                >
-                  <div style={{ fontSize: "1rem" }}>
-                    1990(19.9%)
-                  </div>
-                  
-                </div>
-              </div>
-            </Biddingcard1>
-            <Biddingcard1>
-              <div
-                style={{
-                  //   marginTop: "1.4rem",
-                  display: "flex",
-                  alignItems: "center",
-                  // marginLeft: "2rem",
-                  height: "100%",
-                }}
-              >
-                
-                <div
-                  style={{
-                    width: "80%",
-                    textAlign: "left",
-                    marginLeft: "2rem",
-                    color: "#A9A9A9"
-                  }}
-                >
-                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
-                    Background
-                  </div>
-                  <div style={{ fontSize: "1rem", marginTop: "1rem",color:"white" }}>
-                    Off white
-                  </div>
-                </div>
-              </div>
-              <div
-                style={{
-                  //   marginTop: "1.4rem",
-                  display: "flex",
-                  alignItems: "center",
-                  marginLeft: "2rem",
-                  height: "100%",
-                }}
-              >
-                
-                <div
-                  style={{
-                    width: "80%",
-                    textAlign: "left",
-                    marginLeft: "2rem",
-                    color: ""
-                  }}
-                >
-                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
-                    26.8
-                  </div>
-                  
-                </div>
-              </div>
-              <div>
-                <div
-                  style={{
-                    width: "80%",
-                    textAlign: "left",
-                    marginRight: "2rem",
-                    height: "100%",
-                    color: "#A9A9A9",
-                  }}
-                >
-                  <div style={{ fontSize: "1rem" }}>
-                    1990(19.9%)
-                  </div>
-                  
-                </div>
-              </div>
-            </Biddingcard1>
-
-          </div>
+           
           </div>
         </Left>
         <Right>
@@ -522,6 +374,9 @@ const ItemDescription = () => {
               </div>
             </div>
           </div>
+
+
+
           <div
             style={{
               width: "100%",
@@ -585,6 +440,99 @@ const ItemDescription = () => {
               </div>
             </Biddingcard>
 
+          </div>
+
+
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              textAlign: "left",
+              flexDirection: "column",
+              color: "white",
+              marginTop: "5rem",
+            }}
+          >
+            <Biddingtext>Properties</Biddingtext>
+
+            {metaData.metadata.attributes.map((property, index) => {
+              return (
+                <div key={index} style={{ display: "flex", alignItems: "center", justifyContent: "space-between",height:"100px" }}>
+                 <Biddingcard1>
+              <div
+                style={{
+                  //   marginTop: "1.4rem",
+                  display: "flex",
+                  alignItems: "center",
+                  // marginLeft: "2rem",
+                 
+
+                }}
+              >
+                
+                <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginLeft: "2rem",
+                    color: "#A9A9A9"
+                  }}
+                >
+                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
+                  {property.trait_type}
+                  </div>
+                  <div style={{ fontSize: "1rem", marginTop: "1rem",color:"white" }}>
+                  {property.value}
+                  </div>
+                </div>
+              </div>
+              <div
+                style={{
+                  //   marginTop: "1.4rem",
+                  display: "flex",
+                  alignItems: "center",
+                  marginLeft: "2rem",
+                  height: "100%",
+                }}
+              >
+                
+                <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginLeft: "2rem",
+                    color: ""
+                  }}
+                >
+                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
+                    26.8
+                  </div>
+                  
+                </div>
+              </div>
+              <div>
+                <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginRight: "2rem",
+                    height: "100%",
+                    color: "#A9A9A9",
+                  }}
+                >
+                  <div style={{ fontSize: "1rem" }}>
+                    1990(19.9%)
+                  </div>
+                  
+                </div>
+              </div>
+            </Biddingcard1>
+                  {/* <Lefttext>{property.trait_type}</Lefttext> */}
+                </div>
+              );
+            })}
+            
+            
           </div>
         </Right>
       </Splitscreen>}

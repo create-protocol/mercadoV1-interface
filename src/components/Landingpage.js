@@ -104,7 +104,7 @@ const Landingpage = (props) => {
       '0x59468516a8259058bad1ca5f8f4bff190d30e066',
       '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
       '0x90b2baca772f677f0eff93a844fa70d19fbbd46a',
-      '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb'
+      
     ]
     const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
     console.log(collectionTopArr)
