@@ -184,7 +184,7 @@ const ItemDescription = () => {
       console.log(e);
     }
   }
-
+  console.log(createURI(metaData.metadata.image))
   if (loadingState) {
     return (
       <div
@@ -245,14 +245,14 @@ const ItemDescription = () => {
               <Leftheading>Contract Address</Leftheading>
               <br />
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", }}>
-                <Lefttext>{metaData.token_address}</Lefttext>
+                {/* <Lefttext>{metaData.token_address}</Lefttext> */}
                 <Borderbtn>Copy address</Borderbtn>
               </div>
             </div>
             <div style={{ color: "white" }}>
               <Leftheading>Token Id</Leftheading>
               <br />
-              <Lefttext>{metaData.token_id}</Lefttext>
+              {/* <Lefttext>{metaData.token_id}</Lefttext> */}
             </div>
           </div>
         </Left>
