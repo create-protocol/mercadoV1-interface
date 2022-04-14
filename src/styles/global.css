@@ -277,6 +277,7 @@ div.singlepara {
   max-width: 200px;
   transform: translate(-50%, -50%);
   left: 50%;
+  
 }
 
 .profile .profile__info {
@@ -287,6 +288,7 @@ div.singlepara {
 
 .profile .profile__info .profile__name {
   display: flex;
+  margin: 16px;
   align-items: center;
   justify-content: space-between;
   width: fit-content;
@@ -308,6 +310,7 @@ div.singlepara {
   margin: 0.5rem 0;
   color: rgba(203, 203, 203, 1);
   font-weight: 400;
+  font-size: 1.2rem;
 }
 
 .blogDetail {

@@ -47,7 +47,7 @@ const InnerText = styled.div`
   font-style: normal;
   font-style: normal;
   font-weight: normal;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   line-height: 1.2rem;
 
   color: #ffffff;
@@ -184,31 +184,7 @@ const Userprofile = () => {
   // console.log(ownerresponse.media[0].gateway);
   console.log("bhakk", NFTData);
   const createURI = (uri) => uri ? uri.slice(0, 7) === "ipfs://" ? 'https://ipfs.infura.io/ipfs/' + uri.slice(7) : uri : null;
-  const fetchData = async () => {
-
-    const collectionTop = [NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract]
-    const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
-    console.log(collectionTopArr)
-    const responseAllNFT = await Promise.all(
-      collectionTopArr.map(async (ele, index) => {
-        const id = parseInt(index / 4) + 2;
-        try {
-          const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + ele + '/' + id + '?chain=eth',
-            { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
-          console.log(ele);
-          return res.data;
-        }
-        catch (err) {
-          console.log(err);
-        }
-      })
-    );
-    setData(responseAllNFT);
-    setLoadingState("loaded");
-    console.log("response");
-    console.log(responseAllNFT);
-
-  }
+  
   if (nftDataLoading) {
     return (
       <div
@@ -236,32 +212,38 @@ const Userprofile = () => {
         </ImageContainer>
         <Filtercurveddiv
           style={{
-            marginTop: "10rem",
+            marginTop: "16rem",
             padding: "0 4rem",
             width: "100%",
-            display: "flex",
+            display: "inline-flex",
             alignItems: "center",
             justifyContent: "space-between",
           }}
         >
           <div style={{ display: "flex", width: "80%" }}>
             <Filtercurved onClick={() => { dispatchTemp({ type: 'Collected' }) }}>
-              Collected<div>0</div>
+              <p style={{ color: "white" }}>Collected  {NFTData.totalCount}</p>
+
             </Filtercurved>
             <Filtercurved onClick={() => { dispatchTemp({ type: 'Created' }) }}>
-              Created<div>0</div>
+              <p style={{ color: "white" }}>Created  {0}</p>
+
             </Filtercurved>
             <Filtercurved>
-              Favourited<div>0</div>
+              <p style={{ color: "white" }}>Favourited  {0}</p>
+
             </Filtercurved>
             <Filtercurved>
-              Hidden<div>0</div>
+              <p style={{ color: "white" }}>Hidden  {0}</p>
+
             </Filtercurved>
             <Filtercurved>
-              Activity<div>0</div>
+              <p style={{ color: "white" }}>Activity  {0}</p>
+
             </Filtercurved>
             <Filtercurved>
-              Offers<div>0</div>
+              <p style={{ color: "white" }}>Offers  {0}</p>
+
             </Filtercurved>
           </div>
           <div
@@ -409,15 +391,6 @@ const Userprofile = () => {
                     marginLeft: "1.5rem",
                   }}
                 >
-
-                  {/* {NFTData.ownedNfts.map(({ ele, idx }) => (
-                    <Landingcard
-                    image={ele[idx].metadata.image_url}
-                   
-                    name={ele.title}
-                    symbol={ele.symbol + ' #' + ele.token_id} />
-                  ))} */}
-
                   {NFTData && NFTData.ownedNfts && NFTData.ownedNfts.map(ele =>
                     <Landingcard
                       image={createURI(ele.metadata.image)}

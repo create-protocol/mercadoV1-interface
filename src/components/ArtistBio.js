@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 import LandingCard from "./Newcard";
-
+import { useSelector, useDispatch } from 'react-redux';
 import ArtistPageLine from "../assets/images/Artistpageline.png";
 import styled from "styled-components";
+import { toggleWalletPopup } from "../store";
+import { getWalletNfts } from '../store/profile/action';
+import Landingcard from "./Profilecardbig";
 
+import { Spin } from 'antd';
 const Filternfts = styled.div`
   font-style: normal;
   font-weight: 600;
@@ -16,11 +20,78 @@ const Filternfts = styled.div`
   padding-bottom: 0.2rem;
 `;
 
+const initialstate = {
+  Collected: true,
+  Created: false,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "Collected": {
+      return {
+        Collected: true,
+        Created: false,
+      };
+    }
+    case "Created": {
+      return {
+        Collected: false,
+        Created: true,
+      };
+    }
+    default: {
+      return {
+        Collected: true,
+        Created: false,
+      };
+    }
+  }
+};
 const ArtisPage = () => {
   const [art, setArt] = useState(false);
   const [all, setall] = useState(true);
   const [music, setMusic] = useState(false);
+  const dispatch = useDispatch();
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [state, dispatchTemp] = useReducer(reducer, initialstate);
+  const [ownerresponse, setOwnerresponse] = useState([]);
+  const walletData = useSelector(state => state.wallet.wallet);
+  const nftDataLoading = useSelector(state => state.profile.nftDataLoading);
+  const NFTData = useSelector(state => state.profile.nftData)
 
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [loadingState, setLoadingState] = useState("not-loaded");
+  const [data, setData] = useState([]);
+
+
+  useEffect(() => {
+    console.log("here", walletData);
+    if (walletData && walletData.address) {
+      console.log('wallet address', walletData);
+      dispatch(getWalletNfts({
+        ownerAddr: "0xBbEacCEEaC84Fc6226523aa9f8440f2fbE4e6125"
+      }));
+    }
+    else {
+      dispatch(toggleWalletPopup());
+    }
+  }, [walletData, dispatch]);
+  // console.log(ownerresponse.media[0].gateway);
+  console.log("bhakk", NFTData);
+  const createURI = (uri) => uri ? uri.slice(0, 7) === "ipfs://" ? 'https://ipfs.infura.io/ipfs/' + uri.slice(7) : uri : null;
+  
+  if (nftDataLoading) {
+    return (
+      <div
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom: "100px", justifyContent: 'center' }}
+      >
+        <div style={{ minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+          <Spin size="large" />
+        </div>
+      </div>
+    );
+  }
   return (
     <div style={{ height: "250vh", width: "100%" ,paddingTop:"10rem"}}>
       <PageHeader subtitle="Home  >  Blogs  >  An open call to artists" />
@@ -32,18 +103,19 @@ const ArtisPage = () => {
                 <img src="/profile_banner.png" alt="profile banner" />
               </div>
               <div id="profile_pic">
-                <img src="/profile.png" alt="profile image" />
+                <img src={"//joeschmoe.io/api/v1/random"} alt="profile image" />
               </div>
             </div>
             <div className="profile__info">
               <div className="profile__name">
-                <h4>Bright Mba</h4>
+                <h4>Bright Mba </h4>
                 <img
                   style={{ marginLeft: "0.25rem" }}
                   src="/verified.svg"
                   alt="verified"
                 />
               </div>
+              <p style={{color:"#ffffff",fontSize:"1.2rem"}}>{walletData && walletData.address}</p>
               <h5 className="profile__username">@brightmac</h5>
               <p className="profile__bio">
                 I am an artist of the real world with creative ideas of the
@@ -61,7 +133,7 @@ const ArtisPage = () => {
                   fontWeight: "600px",
                 }}
               >
-                CREATED (20)
+                CREATED ({NFTData.totalCount})
               </p>
               <p
                 style={{
@@ -70,7 +142,7 @@ const ArtisPage = () => {
                   fontWeight: "600px",
                 }}
               >
-                COLLECTED (15)
+                COLLECTED ({NFTData.totalCount})
               </p>
               <p
                 style={{
@@ -79,7 +151,7 @@ const ArtisPage = () => {
                   fontWeight: "600px",
                 }}
               >
-                FAVOURITES (35)
+                FAVOURITES (0)
               </p>
               <p
                 style={{
@@ -145,16 +217,28 @@ const ArtisPage = () => {
               alignItems: "start",
               justifyContent: "flex-start",
               flexWrap: "wrap",
-
+             
             }}
           >
 
-            <LandingCard />
-            <LandingCard />
-            <LandingCard />
-            <LandingCard />
-            <LandingCard />
-            <LandingCard />
+<div
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    alignItems: "start",
+                    justifyContent: "flex-start",
+                    flexWrap: "wrap",
+                    marginLeft: "1.5rem",
+                  }}
+                >
+                  {NFTData && NFTData.ownedNfts && NFTData.ownedNfts.map(ele =>
+                    <Landingcard
+                      image={createURI(ele.metadata.image)}
+                      title={ele.title}
+                      desc={ele.description} />
+                  )}
+
+                </div>
           </div>}
           {art&&<div
             style={{
@@ -166,10 +250,24 @@ const ArtisPage = () => {
             }}
           >
 
-            <LandingCard />
-            <LandingCard />
-            <LandingCard />
-            <LandingCard />
+<div
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    alignItems: "start",
+                    justifyContent: "flex-start",
+                    flexWrap: "wrap",
+                    marginLeft: "1.5rem",
+                  }}
+                >
+                  {NFTData && NFTData.ownedNfts && NFTData.ownedNfts.map(ele =>
+                    <Landingcard
+                      image={createURI(ele.metadata.image)}
+                      title={ele.title}
+                      desc={ele.description} />
+                  )}
+
+                </div>
 
           </div>}
           {music&&<div
@@ -182,8 +280,24 @@ const ArtisPage = () => {
             }}
           >
 
-            <LandingCard />
+<div
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    alignItems: "start",
+                    justifyContent: "flex-start",
+                    flexWrap: "wrap",
+                    marginLeft: "1.5rem",
+                  }}
+                >
+                  {NFTData && NFTData.ownedNfts && NFTData.ownedNfts.map(ele =>
+                    <Landingcard
+                      image={createURI(ele.metadata.image)}
+                      title={ele.title}
+                      desc={ele.description} />
+                  )}
 
+                </div>
           </div>}
         </section>
       </div>
