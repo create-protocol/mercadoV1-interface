@@ -17,6 +17,7 @@ const Landingdiv = styled.div`
     rgba(0, 0, 0, 0.53125) 48.96%,
     rgba(55, 55, 55, 0.8) 100%
   );
+
   opacity: 0.75;
   box-shadow: 0px -10px 25px rgba(0, 0, 0, 0.32);
   border-radius: 24px;
@@ -55,6 +56,7 @@ const Btn = styled.div`
   font-size: 1rem;
   padding: 0.5rem;
   height: 2.5rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -107,16 +109,16 @@ const LandingCard = (props) => {
         </div>
       </Imagecont>
       <div style={{ marginTop: "3vh", display: "flex", alignItems: "center",height:"8vh" }}>
-        {/* <img
+        <img
           style={{ objectFit: "contain", width: "2.2rem" }}
           src={Landingowner}
           alt="landingimg"
-        /> */}
+        />
         <div style={{ width: "80%", textAlign: "left", marginLeft: "1rem" }}>
-          <div style={{ fontSize: "1rem", fontWeight: "bold" }}>{props.name || <Skeleton />}</div>
-          {/* <div className="text-truncate" style={{ color: "#A9A9A9", fontSize: "0.7rem" }}>
-            created by {props.owner || <Skeleton />}
-          </div> */}
+          <div style={{ fontSize: "1rem", fontWeight: "bold" }}>{props.name }</div>
+          <div className="text-truncate" style={{ color: "#A9A9A9", fontSize: "0.7rem" }}>
+            created by {props.owner }
+          </div>
         </div>
       </div>
       <div style={{ width: "100%", marginTop: "0.5rem" }}>
@@ -136,9 +138,9 @@ const LandingCard = (props) => {
         >
           <div style={{ display: "flex" }}>
             <img src={Eth} alt="" />
-            <div style={{ marginLeft: "0.4rem" }}>{props.symbol || <Skeleton count={10}/>}</div>
+            <div style={{ marginLeft: "0.4rem" }}>{props.symbol }</div>
           </div>
-          {/* <div>Bid 12 ETH</div> */}
+          <div>Bid 12 ETH</div>
         </div>
       </div> 
     </Landingdiv>

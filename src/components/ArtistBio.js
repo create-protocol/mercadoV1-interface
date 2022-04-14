@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { toggleWalletPopup } from "../store";
 import { getWalletNfts } from '../store/profile/action';
 import Landingcard from "./Profilecardbig";
-
+import { Link } from "react-router-dom";
 import { Spin } from 'antd';
 const Filternfts = styled.div`
   font-style: normal;
@@ -222,23 +222,27 @@ const ArtisPage = () => {
           >
 
 <div
-                  style={{
-                    display: "flex",
-                    width: "100%",
-                    alignItems: "start",
-                    justifyContent: "flex-start",
-                    flexWrap: "wrap",
-                    marginLeft: "1.5rem",
-                  }}
-                >
-                  {NFTData && NFTData.ownedNfts && NFTData.ownedNfts.map(ele =>
-                    <Landingcard
-                      image={createURI(ele.metadata.image)}
-                      title={ele.title}
-                      desc={ele.description} />
-                  )}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
+            <div style={{ display: "flex", width: "100%", alignItems: "start", justifyContent: "flex-start", flexWrap: "wrap" }}>
+              {NFTData && NFTData.ownedNfts && NFTData.ownedNfts.map(ele =>
+                <Link to={`/asset/${ele.contract["address"]}/${ele.id["tokenId"]}`} style={{textDecoration:"none",color:"white"}}>
+                  <Landingcard
+                    image={createURI(ele.metadata.image)}
+                    title={ele.title}
+                    desc={ele.description}
+                    symbol={ele.symbol + ' #' + ele.token_id} /></Link>
+              )}
+            </div>
+          </div>
 
-                </div>
+
+
           </div>}
           {art&&<div
             style={{

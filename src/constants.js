@@ -120,7 +120,7 @@ const routes = [
   {
     pathName: "profile",
     path: "/profile",
-    component: Userprofile,
+    component: ArtisPage,
   },
   {
     pathName: "viewProfile",
