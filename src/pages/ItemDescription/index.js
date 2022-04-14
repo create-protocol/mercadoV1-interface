@@ -264,7 +264,7 @@ const ItemDescription = () => {
               <br />
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", }}>
                 <Lefttext>{metaData.contract["address"]}</Lefttext>
-                <Borderbtn>Copy address</Borderbtn>
+                {/* <Borderbtn>Copy address</Borderbtn> */}
               </div>
             </div>
             <div style={{ color: "white" }}>
@@ -457,7 +457,7 @@ const ItemDescription = () => {
 
             {metaData.metadata.attributes.map((property, index) => {
               return (
-                <div key={index} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "100px" }}>
+                <div key={index} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "80px" }}>
                   <Biddingcard1>
                     <div
                       style={{
@@ -465,11 +465,8 @@ const ItemDescription = () => {
                         display: "flex",
                         alignItems: "center",
                         // marginLeft: "2rem",
-
-
                       }}
                     >
-
                       <div
                         style={{
                           width: "80%",

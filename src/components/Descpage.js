@@ -124,45 +124,45 @@ font-size: 18px;
 line-height:1;
 `
 
-const createURI = (uri) => uri.slice(0,7) === "ipfs://" ? 'https://ipfs.infura.io/ipfs/' + uri.slice(7) : uri;
+const createURI = (uri) => uri.slice(0, 7) === "ipfs://" ? 'https://ipfs.infura.io/ipfs/' + uri.slice(7) : uri;
 
 const Descpage = () => {
 
-  const { collection,id } = useParams();
+  const { collection, id } = useParams();
   const [loadingState, setLoadingState] = useState("not-loaded");
   //itemid = itemid.toNumber();
   // var token_address = ethers.BigNumber.from(item1);
   // var itemId = ethers.BigNumber.from(item2);
   // console.log(collection,id);
 
-  const [metaData,setMetaData] = useState();
+  const [metaData, setMetaData] = useState();
 
   const fetchMetaData = async () => {
     try {
       const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + collection + '/' + id + '?chain=eth',
-      { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
+        { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
       // const  imageMetaData = await axios.get(createURI(res.data.token_uri));
       console.log(res.data);
-      setMetaData({...res.data, ...JSON.parse(res.data.metadata)});
+      setMetaData({ ...res.data, ...JSON.parse(res.data.metadata) });
       setLoadingState("loaded");
-    } catch(e){
+    } catch (e) {
       console.log(e);
     }
 
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchMetaData();
-  },[])
+  }, [])
 
 
 
   if (loadingState !== "loaded") {
     return (
       <div
-        style={{ minHeight: "100vh", alignContent: "center", marginBottom:"100px", justifyContent: 'center' }}
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom: "100px", justifyContent: 'center' }}
       >
-        <div style={{minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
+        <div style={{ minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
           <Spin size="large" />
         </div>
       </div>
@@ -170,7 +170,7 @@ const Descpage = () => {
   }
   return (
     <>
-      {metaData && <Splitscreen style={{ paddingTop: "10rem",height:"50rem" }}>
+      {metaData && <Splitscreen style={{ paddingTop: "10rem", height: "50rem" }}>
         <Left>
           <div
             style={{
@@ -207,14 +207,14 @@ const Descpage = () => {
                 size={{ xs: 24, sm: 32, md: 30, lg: 40, xl: 55, xxl: 100 }}
                 src="https://joeschmoe.io/api/v1/random"
               />
-              <Lefttext style={{ color: "#A9A9A9" }}>created by <br/> {metaData.owner_of}</Lefttext>
+              <Lefttext style={{ color: "#A9A9A9" }}>created by <br /> {metaData.owner_of}</Lefttext>
             </div>
             <div style={{ color: "white", }}>
-              <Leftheading>Contract Address</Leftheading>
+              {/* <Leftheading>Contract Address</Leftheading> */}
               <br />
-              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",}}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", }}>
                 <Lefttext>{metaData.token_address}</Lefttext>
-                <Borderbtn>Copy address</Borderbtn>
+                {/* <Borderbtn>Copy address</Borderbtn> */}
               </div>
             </div>
             <div style={{ color: "white" }}>
@@ -223,69 +223,69 @@ const Descpage = () => {
               <Lefttext>{metaData.token_id}</Lefttext>
             </div>
             <div
-            style={{
-              width: "100%",
-              display: "flex",
-              textAlign: "left",
-              flexDirection: "column",
-              color: "white",
-              marginTop: "5rem"
-            }}
-          >
-            <Biddingtext>Ongoing Bids</Biddingtext>
+              style={{
+                width: "100%",
+                display: "flex",
+                textAlign: "left",
+                flexDirection: "column",
+                color: "white",
+                marginTop: "5rem"
+              }}
+            >
+              <Biddingtext>Ongoing Bids</Biddingtext>
 
-            <Biddingcard>
-              <div
-                style={{
-                  //   marginTop: "1.4rem",
-                  display: "flex",
-                  alignItems: "center",
-                  marginLeft: "2rem",
-                  height: "100%",
-                }}
-              >
-                <img
-                  style={{ objectFit: "contain", width: "5rem" }}
-                  src={Landingowner}
-                  alt="landingimg"
-                />
+              <Biddingcard>
                 <div
                   style={{
-                    width: "80%",
-                    textAlign: "left",
+                    //   marginTop: "1.4rem",
+                    display: "flex",
+                    alignItems: "center",
                     marginLeft: "2rem",
-                    color: "#A9A9A9"
-                  }}
-                >
-                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
-                    By woodshelf
-                  </div>
-                  <div style={{ fontSize: "1rem", marginTop: "1rem" }}>
-                    Bid at 20Eth
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div
-                  style={{
-                    width: "80%",
-                    textAlign: "left",
-                    marginRight: "2rem",
                     height: "100%",
-                    color: "#A9A9A9",
                   }}
                 >
-                  <div style={{ fontSize: "1rem" }}>
-                    365 ETH
-                  </div>
-                  <div style={{ fontSize: "0.9rem", marginTop: "1rem" }}>
-                    11:46AM
+                  <img
+                    style={{ objectFit: "contain", width: "5rem" }}
+                    src={Landingowner}
+                    alt="landingimg"
+                  />
+                  <div
+                    style={{
+                      width: "80%",
+                      textAlign: "left",
+                      marginLeft: "2rem",
+                      color: "#A9A9A9"
+                    }}
+                  >
+                    <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
+                      By woodshelf
+                    </div>
+                    <div style={{ fontSize: "1rem", marginTop: "1rem" }}>
+                      Bid at 20Eth
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Biddingcard>
+                <div>
+                  <div
+                    style={{
+                      width: "80%",
+                      textAlign: "left",
+                      marginRight: "2rem",
+                      height: "100%",
+                      color: "#A9A9A9",
+                    }}
+                  >
+                    <div style={{ fontSize: "1rem" }}>
+                      365 ETH
+                    </div>
+                    <div style={{ fontSize: "0.9rem", marginTop: "1rem" }}>
+                      11:46AM
+                    </div>
+                  </div>
+                </div>
+              </Biddingcard>
 
-          </div>
+            </div>
           </div>
         </Left>
         <Right>
@@ -300,14 +300,14 @@ const Descpage = () => {
             }}
           >
             {metaData && <Mainheading>{metaData.name}</Mainheading>}
-            <br/>
+            <br />
             <Mainheading className="text-muted">Description</Mainheading>
             {metaData && <Desctext>
               {metaData.description}
             </Desctext>}
             {/* {obj.name} */}
           </p>
-          
+
           <div
             style={{
               width: "90%",
