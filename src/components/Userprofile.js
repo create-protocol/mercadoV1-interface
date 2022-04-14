@@ -167,13 +167,12 @@ const Userprofile = () => {
   const [loadingState, setLoadingState] = useState("not-loaded");
   const [data, setData] = useState([]);
 
-
   useEffect(() => {
     console.log("here", walletData);
     if (walletData && walletData.address) {
       console.log('wallet address', walletData);
       dispatch(getWalletNfts({
-        ownerAddr: "0x11D31054071C2Bfbd5D268DeA6E03847ba1f0Bc8"
+        ownerAddr: "0xE984D64029Cf9c520A06360755DAEE90E3Bf6bcc"
       }));
     }
     else {
@@ -182,47 +181,47 @@ const Userprofile = () => {
     // fetchData();
   }, [walletData, dispatch]);
 
-  // console.log(NFTData);
+  console.log(NFTData);
   // console.log(ownerresponse.media[0].gateway);
-  // console.log(NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract);
+  // console.log(NFTData);
+  // const createURI = (uri) => uri.slice(0, 7) === "ipfs://" ? 'https://ipfs.infura.io/ipfs/' + uri.slice(7) : uri;
+  const fetchData = async () => {
 
-  // const fetchData = async () => {
+    const collectionTop = [NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract]
+    const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
+    console.log(collectionTopArr)
+    const responseAllNFT = await Promise.all(
+      collectionTopArr.map(async (ele, index) => {
+        const id = parseInt(index / 4) + 2;
+        try{
+          const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + ele + '/' + id + '?chain=eth',
+            { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
+            console.log(ele);
+          return res.data;
+        }
+        catch(err){
+          console.log(err);
+        }
+      })
+    );
+    setData(responseAllNFT);
+    setLoadingState("loaded");
+    console.log("response");
+    console.log(responseAllNFT);
 
-  //   const collectionTop = [NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract]
-  //   const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
-  //   console.log(collectionTopArr)
-  //   const responseAllNFT = await Promise.all(
-  //     collectionTopArr.map(async (ele, index) => {
-  //       const id = parseInt(index / 4) + 2;
-  //       try{
-  //         const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + ele + '/' + id + '?chain=eth',
-  //           { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
-  //           console.log(ele);
-  //         return res.data;
-  //       }
-  //       catch(err){
-  //         console.log(err);
-  //       }
-  //     })
-  //   );
-  //   setData(responseAllNFT);
-  //   setLoadingState("loaded");
-  //   console.log("response");
-  //   console.log(responseAllNFT);
-
-  // }
-
+  }
+  
   return (
     <>
       <div style={{ width: "100%", paddingTop: "10rem" }}>
         <ImageContainer>
           <Profilediv>
-            {/* <img src={NFTData.media[0].gateway} alt="hi" style={{ height: "28vh" }} /> */}
+            <img src={"//joeschmoe.io/api/v1/jon"} alt="hi" style={{ height: "28vh" }} />
             <TopText>
               Bright MBA
               <img src={Tick} style={{ marginLeft: ".5vw" }} />
             </TopText>
-            {/* <InnerText>{NFTData ? NFTData.contract.address : "null"}</InnerText> */}
+            {/* <InnerText>{NFTData ?  NFTData.ownedNfts[0].contract : "null"}</InnerText> */}
             <InnerText>Joined January 2022</InnerText>
           </Profilediv>
         </ImageContainer>
@@ -409,10 +408,10 @@ const Userprofile = () => {
                     name={ele.title}
                     symbol={ele.symbol + ' #' + ele.token_id} />
                   ))} */}
-                  {/* {NFTData.ownedNfts.map(ele =>
+{/* 
+                  {NFTData.ownedNfts.map(ele =>
                     <Landingcard
-                      background_image={ele.metadata.image}
-                      image={ele.metadata.image}
+                      image={createURI(ele.metadata.image)}
                       title={ele.title}
                       desc={ele.description} />
                   )} */}

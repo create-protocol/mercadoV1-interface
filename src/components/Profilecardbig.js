@@ -92,12 +92,14 @@ margin-top:5%;
 `
 const LandingCard = (props) => {
   console.log(props.image, 'this is the image url');
+  console.log(props.title, 'this is the name');
+  console.log(props.desc, 'this is the desc');
   return (
     <Landingdiv>
       <img src={props.image} style={{ width: "85%" }} />
       <div style={{ marginTop: "-2rem", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-        <img src={props.image} style={{ width: "25%" }} />
-        <div style={{ marginLeft: "10%", width: "45%", fontWeight: "bold", display: "flex", alignItems: "center" }}>{props.title} <img src={Eth} style={{ marginLeft: "5%" }} /></div>
+        {/* <img src={props.image} style={{ width: "25%" }} /> */}
+        <div style={{ marginLeft: "10%", width: "45%", fontWeight: "bold", display: "flex", alignItems: "center",marginTop:"20%" }}>{props.title} <img src={Eth} style={{ marginLeft: "5%" }} /></div>
         {/* <Heading2>created by @brightmac</Heading2> */}
         <Lowertext>{props.desc}</Lowertext>
       </div>
