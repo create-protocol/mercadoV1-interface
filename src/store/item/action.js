@@ -53,7 +53,6 @@ export const getNftById = (payload) => {
       });
 
       const res = await axios.get(`https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata/?contractAddress=${ownerAddr}&tokenId=${tokenId}`);
-      console.log("chutiya")
       console.log(res);
       dispatch({
         type: FETCH_ITEM_METADATA_SUCCESS,

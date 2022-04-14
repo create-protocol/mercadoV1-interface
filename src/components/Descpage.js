@@ -16,9 +16,11 @@ const Splitscreen = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  
   @media (max-width: 1000px) {
     flex-direction: column;
-    overflow-y: hidden;
+    // overflow-y: hidden;
+    height:50rem;
   }
 `;
 const Left = styled.div`
@@ -168,7 +170,7 @@ const Descpage = () => {
   }
   return (
     <>
-      {metaData && <Splitscreen style={{ paddingTop: "10rem" }}>
+      {metaData && <Splitscreen style={{ paddingTop: "10rem",height:"50rem" }}>
         <Left>
           <div
             style={{
@@ -220,6 +222,70 @@ const Descpage = () => {
               <br />
               <Lefttext>{metaData.token_id}</Lefttext>
             </div>
+            <div
+            style={{
+              width: "100%",
+              display: "flex",
+              textAlign: "left",
+              flexDirection: "column",
+              color: "white",
+              marginTop: "5rem"
+            }}
+          >
+            <Biddingtext>Ongoing Bids</Biddingtext>
+
+            <Biddingcard>
+              <div
+                style={{
+                  //   marginTop: "1.4rem",
+                  display: "flex",
+                  alignItems: "center",
+                  marginLeft: "2rem",
+                  height: "100%",
+                }}
+              >
+                <img
+                  style={{ objectFit: "contain", width: "5rem" }}
+                  src={Landingowner}
+                  alt="landingimg"
+                />
+                <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginLeft: "2rem",
+                    color: "#A9A9A9"
+                  }}
+                >
+                  <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
+                    By woodshelf
+                  </div>
+                  <div style={{ fontSize: "1rem", marginTop: "1rem" }}>
+                    Bid at 20Eth
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div
+                  style={{
+                    width: "80%",
+                    textAlign: "left",
+                    marginRight: "2rem",
+                    height: "100%",
+                    color: "#A9A9A9",
+                  }}
+                >
+                  <div style={{ fontSize: "1rem" }}>
+                    365 ETH
+                  </div>
+                  <div style={{ fontSize: "0.9rem", marginTop: "1rem" }}>
+                    11:46AM
+                  </div>
+                </div>
+              </div>
+            </Biddingcard>
+
+          </div>
           </div>
         </Left>
         <Right>
@@ -241,9 +307,7 @@ const Descpage = () => {
             </Desctext>}
             {/* {obj.name} */}
           </p>
-
-
-
+          
           <div
             style={{
               width: "90%",

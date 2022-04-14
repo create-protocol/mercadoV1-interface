@@ -160,6 +160,7 @@ const Userprofile = () => {
   const [state, dispatchTemp] = useReducer(reducer, initialstate);
   const [ownerresponse, setOwnerresponse] = useState([]);
   const walletData = useSelector(state => state.wallet.wallet);
+  const nftDataLoading = useSelector(state => state.profile.nftDataLoading);
   const NFTData = useSelector(state => state.profile.nftData)
 
   const [error, setError] = useState(null);
@@ -169,60 +170,67 @@ const Userprofile = () => {
 
 
   useEffect(() => {
+    console.log("here", walletData);
     if (walletData && walletData.address) {
+      console.log('wallet address', walletData);
       dispatch(getWalletNfts({
-        ownerAddr: "0x11D31054071C2Bfbd5D268DeA6E03847ba1f0Bc8"
+        ownerAddr: "0x1659E5033e29cF53a24dDB383EE609567D35A651  "
       }));
     }
     else {
       dispatch(toggleWalletPopup());
     }
-    // fetchData();
   }, [walletData, dispatch]);
-
-
-
-  console.log(NFTData,' this is nft data');
   // console.log(ownerresponse.media[0].gateway);
-  // console.log(NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract);
+  console.log("bhakk", NFTData);
+  const createURI = (uri) => uri ? uri.slice(0, 7) === "ipfs://" ? 'https://ipfs.infura.io/ipfs/' + uri.slice(7) : uri : null;
+  const fetchData = async () => {
 
-  // const fetchData = async () => {
+    const collectionTop = [NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract]
+    const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
+    console.log(collectionTopArr)
+    const responseAllNFT = await Promise.all(
+      collectionTopArr.map(async (ele, index) => {
+        const id = parseInt(index / 4) + 2;
+        try {
+          const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + ele + '/' + id + '?chain=eth',
+            { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
+          console.log(ele);
+          return res.data;
+        }
+        catch (err) {
+          console.log(err);
+        }
+      })
+    );
+    setData(responseAllNFT);
+    setLoadingState("loaded");
+    console.log("response");
+    console.log(responseAllNFT);
 
-  //   const collectionTop = [NFTData.ownedNfts[0] && NFTData.ownedNfts[0].contract]
-  //   const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
-  //   console.log(collectionTopArr)
-  //   const responseAllNFT = await Promise.all(
-  //     collectionTopArr.map(async (ele, index) => {
-  //       const id = parseInt(index / 4) + 2;
-  //       try{
-  //         const res = await axios.get('https://deep-index.moralis.io/api/v2/nft/' + ele + '/' + id + '?chain=eth',
-  //           { 'headers': { "X-API-Key": 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1DetmpGpnip' } });
-  //           console.log(ele);
-  //         return res.data;
-  //       }
-  //       catch(err){
-  //         console.log(err);
-  //       }
-  //     })
-  //   );
-  //   setData(responseAllNFT);
-  //   setLoadingState("loaded");
-  //   console.log("response");
-  //   console.log(responseAllNFT);
-
-  // }
-
+  }
+  if (nftDataLoading) {
+    return (
+      <div
+        style={{ minHeight: "100vh", alignContent: "center", marginBottom: "100px", justifyContent: 'center' }}
+      >
+        <div style={{ minHeight: '100vh', display: 'flex', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+          <Spin size="large" />
+        </div>
+      </div>
+    );
+  }
   return (
     <>
       <div style={{ width: "100%", paddingTop: "10rem" }}>
         <ImageContainer>
           <Profilediv>
-            {/* <img src={NFTData.media[0].gateway} alt="hi" style={{ height: "28vh" }} /> */}
+            <img src={"//joeschmoe.io/api/v1/jon"} alt="hi" style={{ height: "28vh" }} />
             <TopText>
               Bright MBA
               <img src={Tick} style={{ marginLeft: ".5vw" }} />
             </TopText>
-            {/* <InnerText>{NFTData ? NFTData.contract.address : "null"}</InnerText> */}
+            <InnerText>{walletData && walletData.address}</InnerText>
             <InnerText>Joined January 2022</InnerText>
           </Profilediv>
         </ImageContainer>
@@ -402,11 +410,17 @@ const Userprofile = () => {
                   }}
                 >
 
-
-                  {NFTData?.ownedNfts?.map(ele =>
+                  {/* {NFTData.ownedNfts.map(({ ele, idx }) => (
                     <Landingcard
-                      background_image={ele.media[0].gateway}
-                      image={ele.media[0].gateway}
+                    image={ele[idx].metadata.image_url}
+                   
+                    name={ele.title}
+                    symbol={ele.symbol + ' #' + ele.token_id} />
+                  ))} */}
+
+                  {NFTData && NFTData.ownedNfts && NFTData.ownedNfts.map(ele =>
+                    <Landingcard
+                      image={createURI(ele.metadata.image)}
                       title={ele.title}
                       desc={ele.description} />
                   )}
