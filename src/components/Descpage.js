@@ -120,7 +120,7 @@ line-height:0.5rem;
 
 const Lefttext = styled.div`
 font-style: normal;
-font-size: 18px;
+font-size: 2px;
 line-height:1;
 `
 

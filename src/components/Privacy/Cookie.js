@@ -5,6 +5,7 @@ import img from "../../assets/images/sep line who.png"
 function CookiesPolicy() {
   return (
     <>
+    <div style={{ height: "600vh", width: "100%" ,paddingTop:"10rem"}}>
       <PageHeader title="Cookies policy" />
       <div style={{ color: 'white', paddingBottom: '100px' }}>
         <div className="containerpri" style={{ padding: "100px" }}>
@@ -48,6 +49,7 @@ function CookiesPolicy() {
           <h2 id='commH2'>Where can I get further information?</h2>
           <p id='commP'>If you have any questions about our use of cookies or other technologies, please email us at info@createprotocol.org</p>
         </div>
+      </div>
       </div>
     </>
   );

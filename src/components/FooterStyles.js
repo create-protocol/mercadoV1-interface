@@ -5,11 +5,12 @@ export const Containertop= styled.div`
 padding-top:3rem;
 width:100%;
 display:flex;
+position:relative;
 align-items:center;
 justify-content:center;
 flex-direction:column;
 background:  black;
-padding-bottom:3rem;
+padding-bottom:0.2rem;
 opacity:0.6;
 `
 

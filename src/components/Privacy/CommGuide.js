@@ -5,8 +5,9 @@ import img from "../../assets/images/sep line who.png"
 function CommGuide() {
   return (
     <>
-    <PageHeader title="Community guidelines" />
-        <div style={{ color:'white', paddingBottom:'100px'}}>
+     <div style={{ height: "600vh", width: "100%" ,paddingTop:"10rem"}}>
+    <PageHeader title="Community guidelines"  />
+        <div style={{ color:'white', paddingBottom:'100px',}}>
             <div className="containerpri" style={{ padding: "100px" }}>
                 
                 <img id='privacyImg' src={img} alt='line' />
@@ -69,6 +70,7 @@ function CommGuide() {
                 <h5 id='commH5'>Give us Feedback.</h5>
                 <p id='commP'>We're crazy about feedback, so give us some. Contact admin@createprotocol.org with ideas on how we can improve Mercado.studio, strengthen the community, or if you have any questions about our policies and guidelines.</p>
             </div>
+        </div>
         </div>
     </>
   );

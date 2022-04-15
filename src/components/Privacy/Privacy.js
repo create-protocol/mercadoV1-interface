@@ -4,6 +4,7 @@ import img from "../../assets/images/sep line who.png"
 function Privacy() {
   return (
     <>
+     <div style={{ height: "600vh", width: "100%" ,paddingTop:"10rem"}}>
       <PageHeader title="Privacy Policy" />
       <div
         style={{
@@ -275,6 +276,7 @@ function Privacy() {
             feel free to contact us at admin@createprotocol.org.a
           </p>
         </div>
+      </div>
       </div>
     </>
   );

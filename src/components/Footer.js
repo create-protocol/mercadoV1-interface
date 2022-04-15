@@ -97,7 +97,7 @@ const Footer = (props) => {
 
           <FooterLink
             href="/privacy-policy"
-            style={{ marginTop: "1.2rem", marginLeft: "" }}
+            style={{ marginTop: "3.2rem", marginLeft: "" }}
           >
             PRIVACY & POLICY
           </FooterLink>

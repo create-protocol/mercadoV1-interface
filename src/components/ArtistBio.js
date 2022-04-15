@@ -115,7 +115,9 @@ const ArtisPage = () => {
                   alt="verified"
                 />
               </div>
-              <p style={{color:"#ffffff",fontSize:"1.2rem"}}>{walletData && walletData.address}</p>
+              <p style={{color:"#ffffff",fontSize:"1.0rem"}}>{walletData &&  walletData.address.substring(0, 6) +
+                            "..." +
+                            walletData.address.slice(-4)}</p>
               <h5 className="profile__username">@brightmac</h5>
               <p className="profile__bio">
                 I am an artist of the real world with creative ideas of the
