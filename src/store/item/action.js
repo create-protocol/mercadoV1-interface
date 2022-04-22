@@ -104,15 +104,15 @@ export const fetchOngoingBids = (payload) => {
   }
 }
 
-export const placeBid = (payload) => {
+export const createBid = (payload) => {
   return async (dispatch) => {
     try {
       dispatch({
-        type: PLACE_BID_INITIAL,
+        type: CREATE_BID_INITIAL,
       })
     } catch (e) {
       dispatch({
-        type: PLACE_BID_FAILURE,
+        type: CREATE_BID_FAILURE,
       })
     }
   }

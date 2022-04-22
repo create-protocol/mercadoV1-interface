@@ -7,7 +7,7 @@ import { Button, Row, Col } from 'antd';
 import { CopyFilled } from '@ant-design/icons';
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
-import { fetchItemMetaData, getNftById } from '../../store/item/action';
+import { fetchItemMetaData, getNftById, createBid } from '../../store/item/action';
 import { nftmarketaddress, nftaddress } from "../../config";
 import Market from "../../ethereum/Marketplace.json";
 import NFT from "../../ethereum/NFT.json";
@@ -22,6 +22,7 @@ import Eth from "../../assets/images/Ethereum (ETH).png";
 import { Spin, Avatar } from 'antd';
 import { fetchOngoingBids } from '../../store/item';
 import { sendTransaction } from "../../components/sendTransaction";
+import Counter from "../../components/Counter";
 
 const Splitscreen = styled.div`
   display: flex;
@@ -363,13 +364,13 @@ const ItemDescription = () => {
                 }}
               >
                 <div style={{ display: "flex" }}>
-                  <img src={Eth} alt="" />
-                  <div style={{ marginLeft: "0.4rem" }}>4d 16h 32m 10s</div>
+                  <img src={Eth} alt="" style={{marginRight: '8px'}} />
+                  <Counter />
                 </div>
                 <Borderbtn
                   style={{paddingLeft: '10px'}}
                   onClick={() => {
-                    console.log('click on the bid button');
+                    dispatch(createBid());
                   }}
                 >Place bid </Borderbtn>
               </div>
