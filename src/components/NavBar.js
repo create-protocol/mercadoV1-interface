@@ -306,7 +306,8 @@ const NavBar = (props) => {
                         width: "10rem",
                         borderRadius: "10px",
                         border:"none",
-                        fontFamily: 'Montserrat, sans-serif'
+                        fontFamily: 'Montserrat, sans-serif',
+                        height: '47px',
                       }}
                       className="border-gradient"
                       onClick={handleToggle}

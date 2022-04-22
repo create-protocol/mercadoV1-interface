@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Button } from 'antd';
+import { Button, Row, Col } from 'antd';
+import { CopyFilled } from '@ant-design/icons';
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
-import { fetchItemMetaData, getNftById } from '../../store/item/action';
+import { fetchItemMetaData, getNftById, createBid } from '../../store/item/action';
 import { nftmarketaddress, nftaddress } from "../../config";
 import Market from "../../ethereum/Marketplace.json";
 import NFT from "../../ethereum/NFT.json";
@@ -21,6 +22,7 @@ import Eth from "../../assets/images/Ethereum (ETH).png";
 import { Spin, Avatar } from 'antd';
 import { fetchOngoingBids } from '../../store/item';
 import { sendTransaction } from "../../components/sendTransaction";
+import Counter from "../../components/Counter";
 
 const Splitscreen = styled.div`
   display: flex;
@@ -98,9 +100,8 @@ line-height: 140%;`
 const Borderbtn = styled(Button)`
   cursor: pointer;
   border-radius: 7px;
-  padding: 0.5rem 1.4rem;
+  padding: 0 10px 0 2px;
   margin-left: 0.5rem;
-  padding-top: 0.45rem;
   font-weight: 600;
   font-size: 12px;
   color: white;
@@ -215,15 +216,14 @@ const ItemDescription = () => {
   }
   return (
     <>
-      {metaData && <Splitscreen style={{ paddingTop: "10rem" }}>
-        <Left>
+      {metaData && <Row style={{ paddingTop: "10rem" }} justify="center">
+        <Col span={10}>
           <div
             style={{
               padding: "2rem",
               paddinTop: "0",
               marginTop: "0",
               height: "100%",
-              width: "80%",
               borderRadius: "10px",
               display: "flex",
               alignItems: "start",
@@ -235,7 +235,7 @@ const ItemDescription = () => {
             }}
           >
             {/* {obj.file=="mp4"?<Player src={obj.image}></Player>:  */}
-            {metaData && <Zoom>
+            {metaData && <Zoom wrapStyle={{width: '100%'}}>
               <img
                 src={createURI(metaData.metadata.image)}
                 alt="nft"
@@ -262,9 +262,10 @@ const ItemDescription = () => {
             <div style={{ color: "white", }}>
               <Leftheading>Contract Address</Leftheading>
               <br />
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", }}>
-                <Lefttext>{metaData.contract["address"]}</Lefttext>
-                {/* <Borderbtn>Copy address</Borderbtn> */}
+              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",}}>
+                <Lefttext>{metaData.token_address}</Lefttext>
+
+                <Borderbtn> <CopyFilled /> Copy</Borderbtn>
               </div>
             </div>
             <div style={{ color: "white" }}>
@@ -274,8 +275,8 @@ const ItemDescription = () => {
             </div>
 
           </div>
-        </Left>
-        <Right>
+        </Col>
+        <Col span={11}>
           <p
             style={{
               color: "white",
@@ -363,12 +364,13 @@ const ItemDescription = () => {
                 }}
               >
                 <div style={{ display: "flex" }}>
-                  <img src={Eth} alt="" />
-                  <div style={{ marginLeft: "0.4rem" }}>4d 16h 32m 10s</div>
+                  <img src={Eth} alt="" style={{marginRight: '8px'}} />
+                  <Counter />
                 </div>
                 <Borderbtn
+                  style={{paddingLeft: '10px'}}
                   onClick={() => {
-                    console.log('click on the bid button');
+                    dispatch(createBid());
                   }}
                 >Place bid </Borderbtn>
               </div>
@@ -439,7 +441,6 @@ const ItemDescription = () => {
                 </div>
               </div>
             </Biddingcard>
-
           </div>
 
 
@@ -531,8 +532,8 @@ const ItemDescription = () => {
 
 
           </div>
-        </Right>
-      </Splitscreen>}
+        </Col>
+      </Row>}
       {/* <Footer /> */}
     </>
   );

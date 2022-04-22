@@ -61,14 +61,6 @@
   }
 }
 
-button {
-  width: 221px;
-  margin: 5px;
-  height: 47px;
-  text-align: center;
-  /* height: 60px; */
-}
-
 .border-gradient {
   border: 2px solid;
   border-image-slice: 1;
