@@ -23,45 +23,7 @@ import { Spin, Avatar } from 'antd';
 import { fetchOngoingBids } from '../../store/item';
 import { sendTransaction } from "../../components/sendTransaction";
 import Counter from "../../components/Counter";
-
-const Splitscreen = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height:100rem;
-  @media (max-width: 1000px) {
-    flex-direction: column;
-    overflow-y: hidden;
-  }
-`;
-const Left = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 130%;
-  margin-left: auto;
-  height: 100rem;
-  @media (max-width: 1000px) {
-    width: 100%;
-    height: 60%;
-  }
-`;
-const Right = styled.div`
-  display: flex;
-  flex-direction:column;
-  justify-content: start;
-  align-items: start;
-  margin-right:100px;
-  width: 100%;
-  border:1px solid black
-  flex-wrap:wrap
-  @media (max-width: 1000px) {
-    width:100%;
-    height:60%;
-    overflow:hidden;
-  }
-`;
+import PlaceBidDrawer from './PlaceBidDrawer';
 
 
 const Biddingcard = styled.div`
@@ -154,6 +116,7 @@ const ItemDescription = () => {
   const dispatch = useDispatch();
   const metaData = useSelector(state => state.item.itemData);
   const loadingState = useSelector(state => state.item.itemDataLoading);
+  const [bidDrawer, setBidDrawer] = useState(false);
   const [Properties, setProperties] = useState([]);
   const { collection, id } = useParams();
 
@@ -202,7 +165,6 @@ const ItemDescription = () => {
     }
   }
 
-  console.log(metaData.metadata);
   if (loadingState) {
     return (
       <div
@@ -253,9 +215,9 @@ const ItemDescription = () => {
                 size={{ xs: 24, sm: 32, md: 30, lg: 40, xl: 55, xxl: 100 }}
                 src="https://joeschmoe.io/api/v1/random"
               />
-              <Link to={`/profile/${metaData.owner_of}`}>
+              <Link to={`/profile/${metaData?.owner_of}`}>
                 <Lefttext style={{ color: "#A9A9A9" }}>created by <br />
-                  {metaData.owner_of}
+                  {metaData?.owner_of}
                 </Lefttext>
               </Link>
             </div>
@@ -263,7 +225,7 @@ const ItemDescription = () => {
               <Leftheading>Contract Address</Leftheading>
               <br />
               <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",}}>
-                <Lefttext>{metaData.token_address}</Lefttext>
+                <Lefttext>{metaData?.token_address}</Lefttext>
 
                 <Borderbtn> <CopyFilled /> Copy</Borderbtn>
               </div>
@@ -371,14 +333,23 @@ const ItemDescription = () => {
                   style={{paddingLeft: '10px'}}
                   onClick={() => {
                     dispatch(createBid());
+                    setBidDrawer(true);
                   }}
-                >Place bid </Borderbtn>
+                >
+                  Place bid
+                </Borderbtn>
+                <Borderbtn
+                  style={{paddingLeft: '10px'}}
+                  onClick={() => {
+                    dispatch(createBid());
+                    setBidDrawer(true);
+                  }}
+                >
+                  Sell
+               </Borderbtn>
               </div>
             </div>
           </div>
-
-
-
           <div
             style={{
               width: "100%",
@@ -456,7 +427,7 @@ const ItemDescription = () => {
           >
             <Biddingtext>Properties</Biddingtext>
 
-            {metaData.metadata.attributes.map((property, index) => {
+            {metaData?.metadata?.attributes?.map((property, index) => {
               return (
                 <div key={index} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "80px" }}>
                   <Biddingcard1>
@@ -505,7 +476,6 @@ const ItemDescription = () => {
                         <div style={{ fontSize: "1rem", fontWeight: "normal" }}>
                           26.8
                         </div>
-
                       </div>
                     </div>
                     <div>
@@ -529,12 +499,15 @@ const ItemDescription = () => {
                 </div>
               );
             })}
-
-
           </div>
         </Col>
       </Row>}
-      {/* <Footer /> */}
+      <PlaceBidDrawer
+        visible={bidDrawer}
+        showDrawer={() => setBidDrawer(true)}
+        onClose={() => setBidDrawer(false)}
+        nftData={metaData}
+      />
     </>
   );
 };

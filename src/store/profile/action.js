@@ -14,7 +14,7 @@ export const getWalletNfts = (payload) => {
         type: GET_PROFILE_NFT_INITIAL
       });
 
-      const res = await axios.get(`https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTs/?owner=${ownerAddr}`);
+      const res = await axios.get(`https://eth-kovan.alchemyapi.io/v2/${apiKey}/getNFTs/?owner=${ownerAddr}`);
       // console.log("yoyo", res);
       dispatch({
         type: GET_PROFILE_NFT_SUCCESS,
@@ -27,5 +27,3 @@ export const getWalletNfts = (payload) => {
     }
   }
 };
-
-

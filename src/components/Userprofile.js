@@ -167,24 +167,21 @@ const Userprofile = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [loadingState, setLoadingState] = useState("not-loaded");
   const [data, setData] = useState([]);
-
+  console.log(NFTData, 'this is nft data');
 
   useEffect(() => {
-    console.log("here", walletData);
     if (walletData && walletData.address) {
-      console.log('wallet address', walletData);
       dispatch(getWalletNfts({
-        ownerAddr: "0x1659E5033e29cF53a24dDB383EE609567D35A651  "
+        ownerAddr: walletData.address
       }));
     }
     else {
       dispatch(toggleWalletPopup());
     }
   }, [walletData, dispatch]);
-  // console.log(ownerresponse.media[0].gateway);
-  console.log("bhakk", NFTData);
+
   const createURI = (uri) => uri ? uri.slice(0, 7) === "ipfs://" ? 'https://ipfs.infura.io/ipfs/' + uri.slice(7) : uri : null;
-  
+
   if (nftDataLoading) {
     return (
       <div
@@ -203,11 +200,9 @@ const Userprofile = () => {
           <Profilediv>
             <img src={"//joeschmoe.io/api/v1/jon"} alt="hi" style={{ height: "28vh" }} />
             <TopText>
-              Bright MBA
-              <img src={Tick} style={{ marginLeft: ".5vw" }} />
+              <img src={Tick} alt='verified' style={{ marginLeft: ".5vw" }} />
+              <InnerText>{walletData && walletData.address}</InnerText>
             </TopText>
-            <InnerText>{walletData && walletData.address}</InnerText>
-            <InnerText>Joined January 2022</InnerText>
           </Profilediv>
         </ImageContainer>
         <Filtercurveddiv
@@ -373,12 +368,12 @@ const Userprofile = () => {
             {state.Collected &&
               <div
                 style={{
-                  width: filterOpen == true ? "80%" : "100%",
+                  width: filterOpen ? "80%" : "100%",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   flexDirection: "column",
-                  marginLeft: filterOpen == true ? "4rem" : "2rem",
+                  marginLeft: filterOpen ? "4rem" : "2rem",
                 }}
               >
                 <div
@@ -392,24 +387,25 @@ const Userprofile = () => {
                   }}
                 >
                   {NFTData && NFTData.ownedNfts && NFTData.ownedNfts.map(ele =>
-                    <Landingcard
-                      image={createURI(ele.metadata.image)}
-                      title={ele.title}
-                      desc={ele.description} />
+                    <Link to={`/asset/${ele.contract["address"]}/${ele.id["tokenId"]}`}>
+                      <Landingcard
+                        image={createURI(ele.metadata.image)}
+                        title={ele.title}
+                        desc={ele.description} />
+                    </Link>
                   )}
-
                 </div>
               </div>
             }
             {state.Created &&
               <div
                 style={{
-                  width: filterOpen == true ? "80%" : "100%",
+                  width: filterOpen ? "80%" : "100%",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   flexDirection: "column",
-                  marginLeft: filterOpen == true ? "2rem" : "4rem",
+                  marginLeft: filterOpen ? "2rem" : "4rem",
                 }}
               >
                 <div

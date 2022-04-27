@@ -52,7 +52,7 @@ export const getNftById = (payload) => {
         type: FETCH_ITEM_METADATA_INITIAL,
       });
 
-      const res = await axios.get(`https://eth-mainnet.alchemyapi.io/v2/${apiKey}/getNFTMetadata/?contractAddress=${ownerAddr}&tokenId=${tokenId}`);
+      const res = await axios.get(`https://eth-kovan.alchemyapi.io/v2/${apiKey}/getNFTMetadata/?contractAddress=${ownerAddr}&tokenId=${tokenId}`);
       console.log(res);
       dispatch({
         type: FETCH_ITEM_METADATA_SUCCESS,
