@@ -117,10 +117,15 @@ const routes = [
     path: "/allnft",
     component: AllNFT,
   },
+  // {
+  //   pathName: "profile",
+  //   path: "/profile",
+  //   component: ArtisPage,
+  // },
   {
     pathName: "profile",
     path: "/profile",
-    component: ArtisPage,
+    component: Userprofile,
   },
   {
     pathName: "viewProfile",
