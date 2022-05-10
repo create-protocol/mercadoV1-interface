@@ -61,8 +61,8 @@ const style = {
     width : "100%",
     padding: "10px 20px",
     margin: "3px",
-    marginBottom:"10px"
-
+    marginBottom:"10px",
+    cursor: "pointer"
 
   },
   cardText : {
