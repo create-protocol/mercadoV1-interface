@@ -104,7 +104,7 @@ const Landingpage = (props) => {
       '0x59468516a8259058bad1ca5f8f4bff190d30e066',
       '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
       '0x90b2baca772f677f0eff93a844fa70d19fbbd46a',
-      
+
     ]
     const collectionTopArr = [...collectionTop, ...collectionTop, ...collectionTop] // To collect data of 5 NFTs
     console.log(collectionTopArr)
@@ -266,7 +266,7 @@ const Landingpage = (props) => {
           >
             <div style={{ display: "flex", width: "100%", alignItems: "start", justifyContent: "flex-start", flexWrap: "wrap" }}>
               {data.map(ele =>
-                <Link to={`/asset/${ele.token_address}/${ele.token_id}`} style={{textDecoration:"none",color:"white"}}>
+                <Link to={`/asset/${ele?.token_address}/${ele.token_id}`} style={{textDecoration:"none",color:"white"}}>
                   <Landingcard
                     image={JSON.parse(ele.metadata)}
                     owner={ele.owner}

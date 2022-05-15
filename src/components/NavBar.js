@@ -16,6 +16,7 @@ import { Menu,Button,Dropdown } from 'antd';
 import {MenuOutlined} from '@ant-design/icons';
 import web3 from "web3";
 import "antd/dist/antd.css";
+import { getEllipsisTxt } from "../utils/formatters";
 
 const SubMenu = Menu;
 export const GradientButton = styled.div`
@@ -282,9 +283,7 @@ const NavBar = (props) => {
                       trigger={['click']}>
                       <a  style={{color: 'white', fontSize: '1.2rem', fontWeight: 'bold', textDecoration: "none"}}
                          onClick={e => e.preventDefault()}>
-                        {wallet.address.substring(0, 5) +
-                          "..." +
-                         wallet.address.slice(-4)}
+                        {getEllipsisTxt(wallet.address, 5)}
                       </a>
                     </Dropdown>
                   </>
