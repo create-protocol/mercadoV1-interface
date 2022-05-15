@@ -24,7 +24,7 @@ import { fetchOngoingBids } from '../../store/item';
 import { sendTransaction } from "../../components/sendTransaction";
 import Counter from "../../components/Counter";
 import PlaceBidDrawer from './PlaceBidDrawer';
-
+import ListForSaleModal from './ListForSaleModal';
 
 const Biddingcard = styled.div`
 background: linear-gradient(180deg, rgba(0, 0, 0, 0.11) 0%, rgba(0, 0, 0, 0.53125) 48.96%, rgba(55, 55, 55, 0.8) 100%);
@@ -119,7 +119,9 @@ const ItemDescription = () => {
   const [bidDrawer, setBidDrawer] = useState(false);
   const [Properties, setProperties] = useState([]);
   const { collection, id } = useParams();
-
+  const [saleModal, setSaleModal] = useState(false);
+  const openSaleModal = () => setSaleModal(true);
+  const closeSaleModal = () => setSaleModal(false);
   //itemid = itemid.toNumber();
   // var token_address = ethers.BigNumber.from(item1);
   // var itemId = ethers.BigNumber.from(item2);
@@ -239,6 +241,9 @@ const ItemDescription = () => {
           </div>
         </Col>
         <Col span={11}>
+          <button onClick={openSaleModal}>
+            List For Sale
+          </button>
           <p
             style={{
               color: "white",
@@ -502,6 +507,12 @@ const ItemDescription = () => {
           </div>
         </Col>
       </Row>}
+      <ListForSaleModal
+        openModal={openSaleModal}
+        closeModal={closeSaleModal}
+        isModalVisible={saleModal}
+        nftData={metaData}
+      />
       <PlaceBidDrawer
         visible={bidDrawer}
         showDrawer={() => setBidDrawer(true)}
