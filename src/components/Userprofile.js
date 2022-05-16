@@ -6,7 +6,7 @@ import contactus from "../assets/images/contactus.png";
 import filterimage from "../assets/images/Filter.png";
 import Landingcard from "./Profilecardbig";
 import FillterCard from "./FillterCard";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Card, Image, Spin, Tooltip } from "antd";
 import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import "../assets/css/filterdropdown.css";
@@ -173,6 +173,7 @@ const Userprofile = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [loadingState, setLoadingState] = useState("not-loaded");
   const [data, setData] = useState([]);
+  const history = useHistory();
   console.log(NFTData, "this is nft data");
   // const nftCards = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
@@ -526,7 +527,16 @@ const Userprofile = () => {
                               alignItems: "center",
                             }}
                           >
-                            <button className="cardBtn">Sell</button>
+                            <button
+                              onClick={() =>
+                                history.push(
+                                  `/asset/${ele.contract["address"]}/${ele.id["tokenId"]}`
+                                )
+                              }
+                              className="cardBtn"
+                            >
+                              Sell
+                            </button>
                             <button>Like</button>
                           </div>
                         </div>
