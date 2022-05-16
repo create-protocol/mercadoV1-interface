@@ -246,7 +246,6 @@ const NavBar = (props) => {
                     style={{
                       display: "flex",
 
-<<<<<<< HEAD
                       alignItems: "center",
                       justifyContent: "center",
                       fontSize: "0.9rem",
@@ -300,55 +299,6 @@ const NavBar = (props) => {
                     </>
                   </div>
                 ) : (
-=======
-                <div   className="border-gradient2" style={{
-                  display: "flex",
-
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "0.9rem",
-                  width: "10rem",
-                  height:"3rem",
-                  borderRadius: "10px",
-                  border:"none",
-                  fontFamily: 'Montserrat, sans-serif'
-                }}
-
-                >
-
-                  <>
-                    <Dropdown
-                      overlay={(
-                        <Menu>
-                          <Menu.Item key="0">
-                            <NavLink to="/profile">
-                              <div style={{ textDecoration: "none" }}>Profile ({wallet.address.substring(0, 5) +
-                            "..." +
-                           wallet.address.slice(-4)})</div>
-                            </NavLink>
-                          </Menu.Item>
-                          <Menu.Item key="1">
-                          <a href="/profile">My Items</a>
-                          </Menu.Item>
-                          <Menu.Item key="1">
-                          <a href="/collections">My Collections</a>
-                          </Menu.Item>
-                          <Menu.Item key="1">
-                          <a href="/profile">Offers</a>
-                          </Menu.Item>
-                        </Menu>
-                      )}
-                      trigger={['click']}>
-                      <a  style={{color: 'white', fontSize: '1.2rem', fontWeight: 'bold', textDecoration: "none"}}
-                         onClick={e => e.preventDefault()}>
-                        {getEllipsisTxt(wallet.address, 5)}
-                      </a>
-                    </Dropdown>
-                  </>
-                </div>
-
-                ): (
->>>>>>> 0d0ffa8d22ec84b29c7c0eeb4e0d2745e66ee71d
                   <div
                     style={{
                       borderRadius: "8px",
