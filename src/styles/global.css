@@ -97,7 +97,7 @@ div.singlepara {
   align-items: center;
   letter-spacing: 0.3vmin;
   color: #a0abb8;
-  border:none;
+  border: none;
 }
 .formlable2 {
   left: 16.51%;
@@ -163,6 +163,21 @@ div.singlepara {
     rgba(96, 219, 212, 1),
     rgba(92, 228, 207, 0)
   );
+}
+
+.card-divider-active {
+  width: 100%;
+  margin: 1.25rem 0;
+  height: 5px;
+  border: 1px solid;
+  border-image-source: linear-gradient(
+    276.11deg,
+    rgba(27, 249, 249, 0.05) -62.54%,
+    rgba(23, 246, 206, 0.95) -52.6%,
+    rgba(34, 122, 255, 0.98) 95.62%,
+    rgba(76, 146, 251, 0.5) 114.16%
+  );
+  border-image-slice: 1;
 }
 
 .faq-divider-inactive {
@@ -277,7 +292,6 @@ div.singlepara {
   max-width: 200px;
   transform: translate(-50%, -50%);
   left: 50%;
-  
 }
 
 .profile .profile__info {
@@ -462,4 +476,102 @@ div.singlepara {
   width: 341px;
   height: 47px;
   margin-bottom: 10px;
+}
+
+.mainCard {
+  /* position: absolute; */
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.11) 0%,
+    rgba(0, 0, 0, 0.53125) 48.96%,
+    rgba(55, 55, 55, 0.8) 100%
+  );
+  opacity: 0.75;
+  box-shadow: 0px -10px 25px rgba(0, 0, 0, 0.32);
+  border-radius: 24px;
+  border: 0;
+}
+
+.creatorName {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 120%;
+  /* identical to box height, or 16px */
+
+  color: #8c8c8c;
+}
+
+.creationTitle {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  /* or 19px */
+
+  color: #e3e3e3;
+}
+
+.cardBtn {
+  box-sizing: border-box;
+  border: 1px solid;
+  border-image-source: linear-gradient(
+    276.11deg,
+    rgba(27, 249, 249, 0.05) -62.54%,
+    rgba(23, 246, 206, 0.95) -52.6%,
+    rgba(34, 122, 255, 0.98) 95.62%,
+    rgba(76, 146, 251, 0.5) 114.16%
+  );
+  border-image-slice: 5;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 30px;
+  border-radius: 5px;
+  width: 80px;
+  height: 40px;
+  background: transparent;
+  color: white;
+  font-weight: 600;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 6px;
+}
+
+.borderBtn {
+  width: 155px;
+  height: 47px;
+  cursor: pointer;
+  border-radius: 7px;
+  padding: 0 10px 0 2px;
+  margin-left: 0.5rem;
+  font-weight: 600;
+  font-size: 12px;
+  color: white;
+  border: solid 2px transparent;
+  background-image: linear-gradient(black, black),
+    linear-gradient(
+      279.52deg,
+      rgba(27, 249, 249, 0.05) -39.47%,
+      rgba(23, 247, 206, 0.840625) -5.82%,
+      rgba(34, 122, 255, 0.958132) 99.45%,
+      rgba(76, 146, 251, 0.5) 136.47%
+    );
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px black inset;
 }

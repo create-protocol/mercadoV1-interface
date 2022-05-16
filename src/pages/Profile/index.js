@@ -1,10 +1,4 @@
-import React from 'react';
+import ProfileView from "./ProfileView";
+import ViewProfile from "./ViewProfile";
 
-
-const Profile = () => {
-  return <>
-      <h1>Profile Page</h1>
-  </>
-};
-
-export default Profile;
+export { ProfileView, ViewProfile };

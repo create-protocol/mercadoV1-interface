@@ -12,10 +12,11 @@ import Navdropline from "../assets/images/navdropline.png";
 import ConnectWallet from "./ConnectWallet";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleWalletPopup } from "../store";
-import { Menu,Button,Dropdown } from 'antd';
-import {MenuOutlined} from '@ant-design/icons';
+import { Menu, Button, Dropdown } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
 import web3 from "web3";
 import "antd/dist/antd.css";
+import { getEllipsisTxt } from "../utils/formatters";
 
 const SubMenu = Menu;
 export const GradientButton = styled.div`
@@ -61,42 +62,43 @@ const Navdiv = styled.div`
 `;
 
 const NavLink = styled(Link)`
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 `;
 
 const NavBar = (props) => {
-
   const [showDrawer, setShowDrawer] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
 
-  const dispatch = useDispatch()
-  const handleToggle = () => {dispatch(toggleWalletPopup())};
-  const wallet =  useSelector(state => state.wallet.wallet)
+  const dispatch = useDispatch();
+  const handleToggle = () => {
+    dispatch(toggleWalletPopup());
+  };
+  const wallet = useSelector((state) => state.wallet.wallet);
 
   useEffect(() => {
-    const handleScroll = _ => {
+    const handleScroll = (_) => {
       if (window.pageYOffset > 100) {
-        setScrolled(true)
+        setScrolled(true);
       } else {
-        setScrolled(false)
+        setScrolled(false);
       }
-    }
-    window.addEventListener('scroll', handleScroll)
-    return _ => {
-      window.removeEventListener('scroll', handleScroll)
-    }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return (_) => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
-  }
+  };
 
   // console.log(Web3.eth.getBalance("0x407d73d8a49eeb85d32cf465507dd71d507100c1"))
-//  var bal= web3.eth.getBalance(wallet.address)
-// .then(console.log);
-//   console.log("here are we"+bal);
+  //  var bal= web3.eth.getBalance(wallet.address)
+  // .then(console.log);
+  //   console.log("here are we"+bal);
   return (
     <>
       <Navdiv>
@@ -107,7 +109,7 @@ const NavBar = (props) => {
             justifyContent: "space-between",
           }}
         >
-          <MenuOutlined style={{color: 'white', fontSize: '2rem'}}/>
+          <MenuOutlined style={{ color: "white", fontSize: "2rem" }} />
 
           <div id="menuToggle">
             <input type="checkbox" />
@@ -147,14 +149,14 @@ const NavBar = (props) => {
           top: "0",
           width: "100%",
           zIndex: "1000",
-          transition:".8s",
-          background: !scrolled ? 'transparent' : '#1a1a1a',
-          height: !scrolled ? '8rem' : '5rem'
+          transition: ".8s",
+          background: !scrolled ? "transparent" : "#1a1a1a",
+          height: !scrolled ? "8rem" : "5rem",
         }}
       >
         <div
           className="header-container"
-          style={{marginTop: !scrolled ? '3rem' : 0, transition:".3s",}}
+          style={{ marginTop: !scrolled ? "3rem" : 0, transition: ".3s" }}
         >
           <div
             className="header-ham"
@@ -214,7 +216,7 @@ const NavBar = (props) => {
                   </div>
                 </div>
               </NavLink>
-              <NavLink  to="/assets/create" style={{ color: "#FFF" }}>
+              <NavLink to="/assets/create" style={{ color: "#FFF" }}>
                 <div style={{ textDecoration: "none" }}>Create</div>
               </NavLink>
 
@@ -238,63 +240,69 @@ const NavBar = (props) => {
               </NavLink>
 
               <div style={{ marginRight: "6.5rem" }}>
-
-
                 {wallet && wallet.address ? (
+                  <div
+                    className="border-gradient2"
+                    style={{
+                      display: "flex",
 
-                <div   className="border-gradient2" style={{
-                  display: "flex",
-
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "0.9rem",
-                  width: "10rem",
-                  height:"3rem",
-                  borderRadius: "10px",
-                  border:"none",
-                  fontFamily: 'Montserrat, sans-serif'
-                }}
-
-                >
-
-                  <>
-                    <Dropdown
-                      overlay={(
-                        <Menu>
-                          <Menu.Item key="0">
-                            <NavLink to="/profile">
-                              <div style={{ textDecoration: "none" }}>Profile ({wallet.address.substring(0, 5) +
-                            "..." +
-                           wallet.address.slice(-4)})</div>
-                            </NavLink>
-                          </Menu.Item>
-                          <Menu.Item key="1">
-                          <a href="/profile">My Items</a>
-                          </Menu.Item>
-                          <Menu.Item key="1">
-                          <a href="/collections">My Collections</a>
-                          </Menu.Item>
-                          <Menu.Item key="1">
-                          <a href="/profile">Offers</a>
-                          </Menu.Item>
-                        </Menu>
-                      )}
-                      trigger={['click']}>
-                      <a  style={{color: 'white', fontSize: '1.2rem', fontWeight: 'bold', textDecoration: "none"}}
-                         onClick={e => e.preventDefault()}>
-                        {wallet.address.substring(0, 5) +
-                          "..." +
-                         wallet.address.slice(-4)}
-                      </a>
-                    </Dropdown>
-                  </>
-                </div>
-
-                ): (
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "0.9rem",
+                      width: "10rem",
+                      height: "3rem",
+                      borderRadius: "10px",
+                      border: "none",
+                      fontFamily: "Montserrat, sans-serif",
+                    }}
+                  >
+                    <>
+                      <Dropdown
+                        overlay={
+                          <Menu>
+                            <Menu.Item key="0">
+                              <NavLink to="/profile">
+                                <div style={{ textDecoration: "none" }}>
+                                  Profile (
+                                  {wallet.address.substring(0, 5) +
+                                    "..." +
+                                    wallet.address.slice(-4)}
+                                  )
+                                </div>
+                              </NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="1">
+                              <a href="/profile">My Items</a>
+                            </Menu.Item>
+                            <Menu.Item key="1">
+                              <a href="/collections">My Collections</a>
+                            </Menu.Item>
+                            <Menu.Item key="1">
+                              <a href="/profile">Offers</a>
+                            </Menu.Item>
+                          </Menu>
+                        }
+                        trigger={["click"]}
+                      >
+                        <a
+                          style={{
+                            color: "white",
+                            fontSize: "1.2rem",
+                            fontWeight: "bold",
+                            textDecoration: "none",
+                          }}
+                          onClick={(e) => e.preventDefault()}
+                        >
+                          {getEllipsisTxt(wallet.address, 5)}
+                        </a>
+                      </Dropdown>
+                    </>
+                  </div>
+                ) : (
                   <div
                     style={{
                       borderRadius: "8px",
-                      border:"none"
+                      border: "none",
                     }}
                   >
                     <button
@@ -305,9 +313,9 @@ const NavBar = (props) => {
                         fontSize: "0.9rem",
                         width: "10rem",
                         borderRadius: "10px",
-                        border:"none",
-                        fontFamily: 'Montserrat, sans-serif',
-                        height: '47px',
+                        border: "none",
+                        fontFamily: "Montserrat, sans-serif",
+                        height: "47px",
                       }}
                       className="border-gradient"
                       onClick={handleToggle}
