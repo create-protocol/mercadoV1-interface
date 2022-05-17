@@ -21,6 +21,8 @@ import { getWalletNfts } from "../store/profile/action";
 import axios from "axios";
 import { getEllipsisTxt } from "../utils/formatters";
 import { height } from "@mui/system";
+import exLink from "../assets/images/exLink.svg";
+import heartIcon from "../assets/images/heart.svg";
 const { Meta } = Card;
 
 const ImageContainer = styled.div`
@@ -264,7 +266,12 @@ const Userprofile = () => {
                 </p>
               </div>
 
-              <InnerText>
+              <InnerText
+                onClick={() => navigator.clipboard.writeText(walletData.address)}
+                style={{
+                  cursor: "pointer",
+                }}
+              >
                 {walletData && getEllipsisTxt(walletData.address, 5)}
               </InnerText>
               <InnerText>Joined January 2022</InnerText>
@@ -473,6 +480,11 @@ const Userprofile = () => {
                     NFTData.ownedNfts &&
                     NFTData?.ownedNfts.map((ele, index) => (
                       <Card
+                        onClick={() =>
+                          history.push(
+                            `/asset/${ele.contract["address"]}/${ele.id["tokenId"]}`
+                          )
+                        }
                         hoverable
                         className="mainCard"
                         cover={
@@ -505,10 +517,19 @@ const Userprofile = () => {
                               </p>
                             </div>
                             <a href="/" target="_blank">
-                              ExLinkIcon
+                              <img
+                                src={exLink}
+                                alt=""
+                                style={{
+                                  height: "30px",
+                                  width: "30px",
+                                }}
+                              />
                             </a>
                           </div>
-                          <div
+
+                          {/* divider line */}
+                          {/* <div
                             style={{
                               display: "flex",
                               justifyContent: "space-between",
@@ -519,8 +540,10 @@ const Userprofile = () => {
                               className="card-divider-active"
                               style={{ height: ".1rem" }}
                             />
-                          </div>
-                          <div
+                          </div> */}
+
+                          {/* List btn and Like btn */}
+                          {/* <div
                             style={{
                               display: "flex",
                               justifyContent: "space-between",
@@ -535,75 +558,23 @@ const Userprofile = () => {
                               }
                               className="cardBtn"
                             >
-                              Sell
+                              List
                             </button>
-                            <button>Like</button>
-                          </div>
+                            <img
+                              src={heartIcon}
+                              alt=""
+                              style={{
+                                cursor: "pointer",
+                                height: "20px",
+                                width: "20px",
+                              }}
+                            />
+                          </div> */}
                         </div>
                       </Card>
                     ))}
                 </div>
               </div>
-
-              {/* {state.Collected && (
-              <div
-                style={{
-                  width: filterOpen ? "80%" : "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  marginLeft: filterOpen ? "4rem" : "2rem",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    width: "100%",
-                    alignItems: "start",
-                    justifyContent: "flex-start",
-                    flexWrap: "wrap",
-                    marginLeft: "1.5rem",
-                  }}
-                >
-                  {NFTData &&
-                    NFTData.ownedNfts &&
-                    NFTData.ownedNfts.map((ele) => (
-                      <Link
-                        to={`/asset/${ele.contract["address"]}/${ele.id["tokenId"]}`}
-                      >
-                        <Landingcard
-                          image={createURI(ele.metadata.image)}
-                          title={ele.title}
-                          desc={ele.description}
-                        />
-                      </Link>
-                    ))}
-                </div>
-              </div>
-            )} */}
-              {/* {state.Created && (
-              <div
-                style={{
-                  width: filterOpen ? "80%" : "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  marginLeft: filterOpen ? "2rem" : "4rem",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    width: "100%",
-                    alignItems: "start",
-                    justifyContent: "flex-start",
-                    flexWrap: "wrap",
-                  }}
-                ></div>
-              </div>
-            )} */}
             </div>
           </div>
         )}

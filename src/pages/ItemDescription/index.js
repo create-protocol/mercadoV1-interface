@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { Button, Row, Col } from "antd";
 import { CopyFilled } from "@ant-design/icons";
@@ -143,8 +143,11 @@ const ItemDescription = () => {
   const [bidDrawer, setBidDrawer] = useState(false);
   const [Properties, setProperties] = useState([]);
   const { collection, id } = useParams();
+  const walletData = useSelector((state) => state.wallet.wallet);
+  const history = useHistory();
   console.log("metaData", metaData);
   const onGoingBid = [0, 1, 2, 3];
+  const isOwnner = true;
 
   //itemid = itemid.toNumber();
   // var token_address = ethers.BigNumber.from(item1);
@@ -351,6 +354,9 @@ const ItemDescription = () => {
               Pellentesque purus nibh, sodales a magna vitae, cursus suscipit
               lacus.
             </p>
+
+            {/* block if it is owner's */}
+
             <div
               style={{
                 width: "90%",
@@ -359,107 +365,140 @@ const ItemDescription = () => {
                 justifyContent: "space-between",
               }}
             >
-              <div
-                style={{
-                  marginTop: "0.5rem",
-                  color: "white",
-                  textAlign: "left",
-                  height: "4rem",
-                }}
-              >
-                <Biddingtext>Current Price</Biddingtext>
+              {isOwnner && (
                 <div
                   style={{
-                    background: "black",
-                    width: "18rem",
-                    height: "4rem",
-                    borderRadius: "0.7rem",
+                    width: "126px",
+                    height: "50px",
+                    left: "1125px",
+                    top: "543px",
+                    fontSize: "20px",
+                    background:
+                      "linear-gradient(279.52deg, rgba(27, 249, 249, 0.05) -39.47%, rgba(23, 247, 206, 0.840625) -5.82%, rgba(34, 122, 255, 0.958132) 99.45%, rgba(76, 146, 251, 0.5) 136.47%)",
+                    borderRadius: "10px",
                     display: "flex",
+                    justifyContent: "center",
                     alignItems: "center",
-                    justifyContent: "space-between",
-                    padding: "1rem 1rem",
-                    fontSize: ".7rem",
-                    fontWeight: "500",
-                    marginTop: "1rem",
+                    cursor: "pointer",
+                    color: "white"
                   }}
+                  onClick={() =>
+                    history.push(
+                      `/asset/${metaData.contract["address"]}/${metaData.id["tokenId"]}/editlisting`
+                    )
+                  }
                 >
-                  <div style={{ display: "flex" }}>
-                    <img src={Eth} alt="" />
-                    <div
-                      style={{
-                        marginLeft: "0.4rem",
-                        fontFamily: "Heebo",
-                        fontStyle: "normal",
-                        fontWeight: "500",
-                        fontSize: "14px",
-                        lineHeight: "21px",
-                      }}
-                    >
-                      0.99 ETH
-                    </div>
-                  </div>
+                  List Item
+                </div>
+              )}
+              {!isOwnner && (
+                <>
                   <div
                     style={{
-                      width: "126px",
-                      height: "50px",
-                      left: "1125px",
-                      top: "543px",
-                      fontSize: "20px",
-                      background:
-                        "linear-gradient(279.52deg, rgba(27, 249, 249, 0.05) -39.47%, rgba(23, 247, 206, 0.840625) -5.82%, rgba(34, 122, 255, 0.958132) 99.45%, rgba(76, 146, 251, 0.5) 136.47%)",
-                      borderRadius: "10px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => buyNft()}
-                  >
-                    Buy now
-                  </div>
-                </div>
-              </div>
-              <div
-                style={{
-                  marginTop: "0.5rem",
-                  color: "white",
-                  textAlign: "left",
-                  height: "4rem",
-                }}
-              >
-                <Biddingtext>Bid ends in</Biddingtext>
-                <div
-                  style={{
-                    background: "black",
-                    width: "303px",
-                    height: "70px",
-                    borderRadius: "0.7rem",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    padding: "1rem 1rem",
-                    fontSize: ".7rem",
-                    fontWeight: "500",
-                    marginTop: "1rem",
-                  }}
-                >
-                  <div style={{ display: "flex" }}>
-                    {/* <img src={Eth} alt="" style={{ marginRight: "8px" }} /> */}
-                    <Counter />
-                  </div>
-                  <Borderbtn
-                    style={{ paddingLeft: "10px", width: "134px" }}
-                    onClick={() => {
-                      dispatch(createBid());
-                      setOpen(true);
-                      // setBidDrawer(true)
+                      marginTop: "0.5rem",
+                      color: "white",
+                      textAlign: "left",
+                      height: "4rem",
                     }}
                   >
-                    Place bid
-                  </Borderbtn>
-                </div>
-              </div>
+                    <Biddingtext>Current Price</Biddingtext>
+                    <div
+                      style={{
+                        background: "black",
+                        width: "18rem",
+                        height: "4rem",
+                        borderRadius: "0.7rem",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        padding: "1rem 1rem",
+                        fontSize: ".7rem",
+                        fontWeight: "500",
+                        marginTop: "1rem",
+                      }}
+                    >
+                      <div style={{ display: "flex" }}>
+                        <img src={Eth} alt="" />
+                        <div
+                          style={{
+                            marginLeft: "0.4rem",
+                            fontFamily: "Heebo",
+                            fontStyle: "normal",
+                            fontWeight: "500",
+                            fontSize: "14px",
+                            lineHeight: "21px",
+                          }}
+                        >
+                          0.99 ETH
+                        </div>
+                      </div>
+                      <div
+                        style={{
+                          width: "126px",
+                          height: "50px",
+                          left: "1125px",
+                          top: "543px",
+                          fontSize: "20px",
+                          background:
+                            "linear-gradient(279.52deg, rgba(27, 249, 249, 0.05) -39.47%, rgba(23, 247, 206, 0.840625) -5.82%, rgba(34, 122, 255, 0.958132) 99.45%, rgba(76, 146, 251, 0.5) 136.47%)",
+                          borderRadius: "10px",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => buyNft()}
+                      >
+                        Buy now
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      marginTop: "0.5rem",
+                      color: "white",
+                      textAlign: "left",
+                      height: "4rem",
+                    }}
+                  >
+                    <Biddingtext>Bid ends in</Biddingtext>
+                    <div
+                      style={{
+                        background: "black",
+                        width: "303px",
+                        height: "70px",
+                        borderRadius: "0.7rem",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        padding: "1rem 1rem",
+                        fontSize: ".7rem",
+                        fontWeight: "500",
+                        marginTop: "1rem",
+                      }}
+                    >
+                      <div style={{ display: "flex" }}>
+                        {/* <img src={Eth} alt="" style={{ marginRight: "8px" }} /> */}
+                        <Counter />
+                      </div>
+                      <Borderbtn
+                        style={{ paddingLeft: "10px", width: "134px" }}
+                        onClick={() => {
+                          dispatch(createBid());
+                          setOpen(true);
+                          // setBidDrawer(true)
+                        }}
+                      >
+                        Place bid
+                      </Borderbtn>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
+
+            {/* block if it is owner's */}
 
             {/* Onggoing bid section */}
             <div
@@ -469,7 +508,7 @@ const ItemDescription = () => {
                 textAlign: "left",
                 flexDirection: "column",
                 color: "white",
-                marginTop: "5rem",
+                marginTop: isOwnner ? "2rem" : "5rem",
               }}
             >
               <Biddingtext>Ongoing Bids</Biddingtext>

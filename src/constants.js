@@ -2,24 +2,25 @@ import Previewnft from "./components/PreviewNft";
 // import Search from "./components/Search";
 import Viewprofile from "./components/ViewProfile";
 // import page2 from "./mints/nfts/page2";
-import faq from './components/FAQ';
+import faq from "./components/FAQ";
 import ItemDescription from "./pages/ItemDescription";
-import Profile from './components/Profile'
-import Infopage from './components/Infopage'
+import Profile from "./components/Profile";
+import Infopage from "./components/Infopage";
 import ContactUs from "./components/ContactUs";
 import Mintnft from "./components/MintNft";
-import Landingpage from './components/Landingpage'
+import Landingpage from "./components/Landingpage";
 import Descpage from "./components/Descpage";
 import ArtisPage from "./components/ArtistBio";
-import Blog from "./components/Blog"
-import Collections from "./components/Collections"
-import AllNFT from './components/AllNFT'
+import Blog from "./components/Blog";
+import Collections from "./components/Collections";
+import AllNFT from "./components/AllNFT";
 import Privacy from "./components/Privacy/Privacy";
 import CommGuide from "./components/Privacy/CommGuide";
 import CookiesPolicy from "./components/Privacy/Cookie";
 import Userprofile from "./components/Userprofile";
 import ViewProfile from "./pages/Profile/ViewProfile";
-import ProfileSettings from './components/Profilesettings'
+import ProfileSettings from "./components/Profilesettings";
+import EditListItem from "./pages/ListItem/EditListItem";
 
 const routes = [
   {
@@ -83,6 +84,11 @@ const routes = [
     component: ItemDescription,
   },
   {
+    pathName: "edit-listing",
+    path: "/asset/:collection/:id/editlisting",
+    component: EditListItem,
+  },
+  {
     pathName: "artist",
     path: "/artist",
     component: ArtisPage,
@@ -97,7 +103,7 @@ const routes = [
     path: "/privacy-policy",
     component: Privacy,
   },
-   {
+  {
     pathName: "community-guidelines",
     path: "/community-guidelines",
     component: CommGuide,
@@ -137,7 +143,6 @@ const routes = [
     path: "/settings",
     component: ProfileSettings,
   },
-
 ];
 
 export { routes };

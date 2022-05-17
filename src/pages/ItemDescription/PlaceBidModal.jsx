@@ -16,7 +16,6 @@ const PlaceBidModal = ({
     { key: "eth", label: "ETH", fullname: "ethereum", image: Eth },
   ];
 
-  console.log(currencyLable);
   return (
     <div
       style={{
@@ -140,7 +139,6 @@ const PlaceBidModal = ({
                   paddingLeft: "10px",
                   paddingRight: "10px",
                 }}
-                
               >
                 {CURRENCY.map((item, index) => (
                   <option
