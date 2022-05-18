@@ -257,6 +257,7 @@ const NavBar = (props) => {
                     }}
                   >
                     <>
+                    {/*
                       <Dropdown
                         overlay={
                           <Menu>
@@ -272,13 +273,13 @@ const NavBar = (props) => {
                               </NavLink>
                             </Menu.Item>
                             <Menu.Item key="1">
-                              <a href="/profile">My Items</a>
+                              <Link to="/profile">My Items</Link>
                             </Menu.Item>
-                            <Menu.Item key="1">
-                              <a href="/collections">My Collections</a>
+                            <Menu.Item key="2">
+                              <Link to="/collections">My Collections</Link>
                             </Menu.Item>
-                            <Menu.Item key="1">
-                              <a href="/profile">Offers</a>
+                            <Menu.Item key="3">
+                              <Link to="/profile">Offers</Link>
                             </Menu.Item>
                           </Menu>
                         }
@@ -296,6 +297,32 @@ const NavBar = (props) => {
                           {getEllipsisTxt(wallet.address, 5)}
                         </a>
                       </Dropdown>
+                      */}
+                        <div className="dropdown">
+                          <button className="dropbtn"
+                            onClick={(e) => e.preventDefault()}
+                          >
+                            {getEllipsisTxt(wallet.address, 5)}
+                          </button>
+                          <div className="dropdown-content">
+                          <NavLink to="/profile" style={{ display: "flex", flexDirection: "column" }}>
+                              Profile (
+                              {wallet.address.substring(0, 5) +
+                                "..." +
+                                wallet.address.slice(-4)}
+                              )
+                              <img src={Navdropline} alt="bar" />
+                          </NavLink>
+                          <NavLink to="/profile" style={{ display: "flex", flexDirection: "column" }}>My Items
+                            <img src={Navdropline} alt="bar" />
+                          </NavLink>
+                          <NavLink to="/collections" style={{ display: "flex", flexDirection: "column" }}>My Collections
+                            <img src={Navdropline} alt="bar" />
+                          </NavLink>
+                          <NavLink to="/profile">Offers</NavLink>
+                          </div>
+                        </div>
+
                     </>
                   </div>
                 ) : (
