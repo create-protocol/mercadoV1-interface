@@ -17,6 +17,7 @@ import { MenuOutlined } from "@ant-design/icons";
 import web3 from "web3";
 import "antd/dist/antd.css";
 import { getEllipsisTxt } from "../utils/formatters";
+import useWallet from '../hooks/wallet/provider';
 
 const SubMenu = Menu;
 export const GradientButton = styled.div`
@@ -69,13 +70,24 @@ const NavBar = (props) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
-  const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
+  const [isWalletModalOpen, setWalletModal] = useState(false);
 
+  const openWalletModal = () => {
+    console.log('click on open wallet');
+    setWalletModal(true);
+  }
+  const hideWalletModal = () => {
+    setWalletModal(false);
+  }
+  const name = props.location.pathname.replaceAll("-", " ").replace("/", "");
+  const {
+    account,
+    isActive
+  } = useWallet();
   const dispatch = useDispatch();
   const handleToggle = () => {
     dispatch(toggleWalletPopup());
   };
-  const wallet = useSelector((state) => state.wallet.wallet);
 
   useEffect(() => {
     const handleScroll = (_) => {
@@ -240,7 +252,7 @@ const NavBar = (props) => {
               </NavLink>
 
               <div style={{ marginRight: "6.5rem" }}>
-                {wallet && wallet.address ? (
+                {isActive && account ? (
                   <div
                     className="border-gradient2"
                     style={{
@@ -302,14 +314,14 @@ const NavBar = (props) => {
                           <button className="dropbtn"
                             onClick={(e) => e.preventDefault()}
                           >
-                            {getEllipsisTxt(wallet.address, 5)}
+                            {getEllipsisTxt(account, 5)}
                           </button>
                           <div className="dropdown-content">
                           <NavLink to="/profile" style={{ display: "flex", flexDirection: "column" }}>
                               Profile (
-                              {wallet.address.substring(0, 5) +
+                              {account.substring(0, 5) +
                                 "..." +
-                                wallet.address.slice(-4)}
+                                account.slice(-4)}
                               )
                               <img src={Navdropline} alt="bar" />
                           </NavLink>
@@ -345,7 +357,7 @@ const NavBar = (props) => {
                         height: "47px",
                       }}
                       className="border-gradient"
-                      onClick={handleToggle}
+                      onClick={openWalletModal}
                     >
                       Connect Wallet
                     </button>
@@ -376,7 +388,11 @@ const NavBar = (props) => {
           ></Drawerroutes>
         </Drawer>
       </Navdivdesktop>
-      <ConnectWallet />
+      <ConnectWallet
+        isWalletModalOpen={isWalletModalOpen}
+        hideWalletModal={hideWalletModal}
+        openWalletModal={openWalletModal}
+      />
     </>
   );
 };
