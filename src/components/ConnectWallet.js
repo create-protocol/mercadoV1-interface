@@ -2,17 +2,25 @@ import React, { useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { useDispatch,useSelector } from "react-redux";
 import { addMetamask, addWalletConnect, toggleWalletPopup } from "../store";
+import useWallet from '../hooks/wallet/provider';
 
 
-export default function ConnectWallet() {
+export default function ConnectWallet({
+  isWalletModalOpen,
+  hideWalletModal,
+}) {
   // const [show, setShow] = useState(false);
+  console.log(isWalletModalOpen, hideWalletModal);
   const walletStore =  useSelector(state => state.wallet)
-
-  console.log(walletStore);
+  const params = useWallet();
+  const {
+    metaConnect,
+    isActive
+  } = params;
  const dispatch = useDispatch()
 
   const handleToggle = () => {dispatch(toggleWalletPopup())};
-  
+
   useEffect(() => {
     if(window.ethereum && walletStore.wallet) {
       window.ethereum.on('accountsChanged', () => {
@@ -21,12 +29,18 @@ export default function ConnectWallet() {
     }
   }, []);
 
+  const handleWalletConnect = () => {
+    metaConnect();
+    hideWalletModal();
+    //dispatch(addMetamask());
+  }
+
   return (
     <>
     <div>
     <Modal
-        show={walletStore.isWalletModelOpen}
-        onHide={handleToggle}
+        show={isWalletModalOpen}
+        onHide={hideWalletModal}
         backdrop="static"
         keyboard={false}
 
@@ -36,7 +50,7 @@ export default function ConnectWallet() {
         </Modal.Header>
         {walletStore.Error && <div className="alert alert-danger m-3" role="alert">{walletStore.Error}</div>}
         <Modal.Body>
-          <div className="walletCard d-flex justify-content-between" onClick={() => {dispatch(addMetamask())}} style={style.Card} >
+          <div className="walletCard d-flex justify-content-between" onClick={handleWalletConnect} style={style.Card} >
             <div style={style.cardText}>MetaMask</div>
             <img width="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/800px-MetaMask_Fox.svg.png" alt="metamsk" />
           </div>
