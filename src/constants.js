@@ -21,6 +21,7 @@ import Userprofile from "./components/Userprofile";
 import ViewProfile from "./pages/Profile/ViewProfile";
 import ProfileSettings from "./components/Profilesettings";
 import EditListItem from "./pages/ListItem/EditListItem";
+import SaleItem from "./pages/ListItem/SaleItem";
 
 const routes = [
   {
@@ -87,6 +88,11 @@ const routes = [
     pathName: "edit-listing",
     path: "/asset/:collection/:id/editlisting",
     component: EditListItem,
+  },
+  {
+    pathName: "edit-listing",
+    path: "/asset/:collection/:id/listing",
+    component: SaleItem,
   },
   {
     pathName: "artist",

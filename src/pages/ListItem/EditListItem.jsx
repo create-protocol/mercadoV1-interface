@@ -1,12 +1,16 @@
 import { Spin } from "antd";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import setting from "../../assets/images/setting.svg";
 import share from "../../assets/images/share.svg";
 import upArrow from "../../assets/images/upArrow.svg";
 
 const EditListItem = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const metaData = useSelector((state) => state.item.itemData);
   const data = true;
+  const history = useHistory();
   if (isLoading) {
     return (
       <div
@@ -68,6 +72,11 @@ const EditListItem = () => {
             cursor: "pointer",
             color: "white",
           }}
+          onClick={() =>
+            history.push(
+              `/asset/${metaData.contract["address"]}/${metaData.id["tokenId"]}/listing`
+            )
+          }
         >
           List for sale
         </div>

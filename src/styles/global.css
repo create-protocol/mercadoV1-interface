@@ -622,3 +622,28 @@ td {
   box-shadow: 2px 1000px 1px #252729 inset;
   /* border: hidden; */
 }
+
+/* .innerBox {
+  position: absolute;
+  width: 1642px;
+  height: 910px;
+  left: 144px;
+  top: 200px;
+
+  background: #252729;
+}
+
+.text_1 {
+  position: absolute;
+  width: 172px;
+  height: 32px;
+  left: 100px;
+  top: 100px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 32px;
+
+  color: #ffffff;
+} */

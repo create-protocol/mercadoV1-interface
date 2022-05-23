@@ -380,7 +380,7 @@ const ItemDescription = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     cursor: "pointer",
-                    color: "white"
+                    color: "white",
                   }}
                   onClick={() =>
                     history.push(
