@@ -73,17 +73,17 @@ const Mainheading = styled.div`
   font-weight: 600;
   font-size: 2.3rem;
   line-height: 140%;
+  color: white;
+  text-align: left;
 `;
 
-const Borderbtn = styled(Button)`
-  width: 155px;
-  height: 47px;
+const Borderbtn = styled.div`
   cursor: pointer;
   border-radius: 7px;
-  padding: 0 10px 0 2px;
-  margin-left: 0.5rem;
-  font-weight: 600;
-  font-size: 12px;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  font-weight: 400;
+  font-size: 14px;
   color: white;
   border: solid 2px transparent;
   background-image: linear-gradient(black, black),
@@ -105,6 +105,7 @@ const Desctext = styled.div`
   font-size: 1rem;
   line-height: 160%;
   color: #a9a9a9;
+  text-align: left;
 `;
 
 const Biddingtext = styled.div`
@@ -119,9 +120,10 @@ const Leftheading = styled.div`
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
-  margin-top: 3rem;
   color: #a9a9a9;
   line-height: 0.5rem;
+  padding: 0;
+  margin: 1rem 0;
 `;
 
 const Lefttext = styled.div`
@@ -147,7 +149,7 @@ const ItemDescription = () => {
   const history = useHistory();
   console.log("metaData", metaData);
   const onGoingBid = [0, 1, 2, 3];
-  const isOwnner = true;
+  const isOwnner = false;
 
   //itemid = itemid.toNumber();
   // var token_address = ethers.BigNumber.from(item1);
@@ -156,10 +158,7 @@ const ItemDescription = () => {
 
   useEffect(() => {
     dispatch(
-      getNftById({
-        ownerAddr: collection,
-        tokenId: id,
-      })
+      fetchItemMetaData({collection, id})
     );
   }, [dispatch, collection, id]);
 
@@ -224,8 +223,8 @@ const ItemDescription = () => {
   return (
     <>
       {metaData && (
-        <Row style={{ paddingTop: "10rem" }} justify="center">
-          <Col span={10}>
+        <Row style={{ paddingTop: "10rem" }} justify="start">
+          <Col span={10} offset={1}>
             <div
               style={{
                 padding: "2rem",
@@ -236,19 +235,17 @@ const ItemDescription = () => {
                 display: "flex",
                 alignItems: "start",
                 justifyContent: "start",
-                paddingBottom: "0",
                 overflow: "hidden",
                 flexDirection: "column",
                 textAlign: "left",
-                marginBottom: "30px",
               }}
             >
               {/* {obj.file=="mp4"?<Player src={obj.image}></Player>:  */}
               {metaData && (
                 <Zoom wrapStyle={{ width: "100%" }}>
                   <img
-                    src="https://master.d5doaty1zxnym.amplifyapp.com/static/media/Group%201491.8420d890.png"
-                    // src={createURI(metaData.metadata.image)}
+                    //src="https://master.d5doaty1zxnym.amplifyapp.com/static/media/Group%201491.8420d890.png"
+                    src={createURI(metaData?.image)}
                     alt="nft"
                     style={{
                       width: "100%",
@@ -286,14 +283,14 @@ const ItemDescription = () => {
                 />
                 <Link to={`/profile/${metaData?.owner_of}`}>
                   <Lefttext style={{ color: "#A9A9A9", marginLeft: "8px" }}>
-                    created by @brigthmac
-                    {/* {metaData?.owner_of} */}
+                     {metaData?.owner_of}
                   </Lefttext>
                 </Link>
               </div>
-              <div style={{ color: "white" }}>
-                <Leftheading>Contract Address</Leftheading>
-                <br />
+              <div style={{ color: "white", marginTop: '2rem' }}>
+                <Leftheading>
+                  Contract Address
+                </Leftheading>
                 <div
                   style={{
                     display: "flex",
@@ -301,25 +298,18 @@ const ItemDescription = () => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <Lefttext>{metaData?.contract.address}</Lefttext>
-
-                  <Borderbtn>
-                    {" "}
-                    <CopyFilled /> Copy
-                  </Borderbtn>
+                  <Lefttext>{metaData?.token_address}</Lefttext>
                 </div>
               </div>
-              <div style={{ color: "white" }}>
+              <div style={{ color: "white", marginTop: '2rem' }}>
                 <Leftheading>Token Id</Leftheading>
-                <br />
                 <Lefttext>
-                  {/* 344567 */}
-                  {metaData.id["tokenId"]}
+                  {metaData?.token_id}
                 </Lefttext>
               </div>
             </div>
           </Col>
-          <Col span={11}>
+          <Col span={9} style={{paddingLeft: '1rem'}}>
             <p
               style={{
                 color: "white",
@@ -331,14 +321,14 @@ const ItemDescription = () => {
                 fontWeight: 600,
               }}
             >
-              {/* {metaData && <Mainheading>{metaData.title}</Mainheading>} */}
-              {/* <br /> */}
-              {/* <Mainheading className="text-muted">Description</Mainheading> */}
-              {/* {metaData && <Desctext>{metaData.description}</Desctext>} */}
-              {/* {obj.name} */}
-              Title
+
+
             </p>
-            <p
+            {metaData && <Mainheading>{metaData.name}</Mainheading>}
+            <br />
+            <Desctext>{ metaData?.description || 'No description available'}</Desctext>
+
+            {/*<p
               style={{
                 fontStyle: "normal",
                 fontWeight: 400,
@@ -353,15 +343,14 @@ const ItemDescription = () => {
               id nunc eget, gravida accumsan sem. Morbi nec rutrum nulla.
               Pellentesque purus nibh, sodales a magna vitae, cursus suscipit
               lacus.
-            </p>
+            </p>*/}
 
             {/* block if it is owner's */}
 
             <div
               style={{
-                width: "90%",
                 display: "flex",
-                alignItems: "center",
+                alignItems: "start",
                 justifyContent: "space-between",
               }}
             >
@@ -405,15 +394,11 @@ const ItemDescription = () => {
                     <div
                       style={{
                         background: "black",
-                        width: "18rem",
-                        height: "4rem",
-                        borderRadius: "0.7rem",
+                        borderRadius: "7px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "space-between",
-                        padding: "1rem 1rem",
-                        fontSize: ".7rem",
-                        fontWeight: "500",
+                        padding: "1rem",
                         marginTop: "1rem",
                       }}
                     >
@@ -422,7 +407,6 @@ const ItemDescription = () => {
                         <div
                           style={{
                             marginLeft: "0.4rem",
-                            fontFamily: "Heebo",
                             fontStyle: "normal",
                             fontWeight: "500",
                             fontSize: "14px",
@@ -434,18 +418,14 @@ const ItemDescription = () => {
                       </div>
                       <div
                         style={{
-                          width: "126px",
-                          height: "50px",
-                          left: "1125px",
-                          top: "543px",
-                          fontSize: "20px",
+                          fontSize: "14px",
+                          fontWeight: "600",
                           background:
                             "linear-gradient(279.52deg, rgba(27, 249, 249, 0.05) -39.47%, rgba(23, 247, 206, 0.840625) -5.82%, rgba(34, 122, 255, 0.958132) 99.45%, rgba(76, 146, 251, 0.5) 136.47%)",
-                          borderRadius: "10px",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
                           cursor: "pointer",
+                          borderRadius: "7px",
+                          padding: "0.5rem 1rem",
+                          marginLeft: "1rem",
                         }}
                         onClick={() => buyNft()}
                       >
@@ -466,9 +446,7 @@ const ItemDescription = () => {
                     <div
                       style={{
                         background: "black",
-                        width: "303px",
-                        height: "70px",
-                        borderRadius: "0.7rem",
+                        borderRadius: "7px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "space-between",
@@ -483,7 +461,6 @@ const ItemDescription = () => {
                         <Counter />
                       </div>
                       <Borderbtn
-                        style={{ paddingLeft: "10px", width: "134px" }}
                         onClick={() => {
                           dispatch(createBid());
                           setOpen(true);
@@ -681,7 +658,7 @@ const ItemDescription = () => {
         nftData={metaData}
       /> */}
 
-      <PlaceBidModal visible={open} onClose={setOpen} nftData={metaData} />
+      <PlaceBidModal visible={open} onClose={() => setOpen(false)} nftData={metaData} />
     </>
   );
 };
