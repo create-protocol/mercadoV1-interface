@@ -420,6 +420,9 @@ div.singlepara {
   .blog {
     grid-column: span 4 / span 4;
   }
+  .outerBox {
+    display: grid;
+  }
   .profile {
     grid-column: span 4 / span 4;
     margin-top: 0;
@@ -623,27 +626,75 @@ td {
   /* border: hidden; */
 }
 
-/* .innerBox {
-  position: absolute;
-  width: 1642px;
-  height: 910px;
-  left: 144px;
-  top: 200px;
-
-  background: #252729;
+.tableBox {
+  margin-top: 40px;
+  width: 100%;
+  height: 89px;
+  background: #090909;
+  border-radius: 5px 5px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
-.text_1 {
-  position: absolute;
-  width: 172px;
-  height: 32px;
-  left: 100px;
-  top: 100px;
-
+.tableBox p {
   font-style: normal;
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 32px;
-
+  font-weight: 600;
+  font-size: 24px;
   color: #ffffff;
-} */
+}
+
+.dataTableBoxOuter {
+  width: 100%;
+  height: 293px;
+  background: #252729;
+  border-radius: 5px;
+}
+
+.dataTableBox {
+  width: 100%;
+  height: 293px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dataTableBox p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #a9a9a9;
+}
+
+.gradientBtn {
+  width: 126px;
+  height: 50px;
+  font-size: 20px;
+  background: linear-gradient(
+    279.52deg,
+    rgba(27, 249, 249, 0.05) -39.47%,
+    rgba(23, 247, 206, 0.840625) -5.82%,
+    rgba(34, 122, 255, 0.958132) 99.45%,
+    rgba(76, 146, 251, 0.5) 136.47%
+  );
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  border: hidden;
+}
+
+.tableRmBtn {
+  text-align: end;
+}
+
+.tableRmBtn:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

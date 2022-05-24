@@ -164,74 +164,25 @@ const EditListItem = () => {
 
       {/* table boxes start */}
       <div
-        style={{
-          marginTop: "40px",
-          width: "1650px",
-          height: "89px",
-          left: "196px",
-          top: "795px",
-          background: "#090909",
-          borderRadius: "5px 5px 0px 0px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          color: "white",
-          paddingLeft: "40px",
-          paddingRight: "40px",
-        }}
+        className="tableBox"
       >
-        <p
-          style={{
-            fontStyle: "normal",
-            fontHeight: "600",
-            fontSize: "24px",
-            color: "#FFFFFF",
-            position: "absolute",
-            left: "10%",
-            top: "745px",
-          }}
-        >
+        <p>
           Price history
         </p>
         <img
           style={{
             cursor: "pointer",
-            position: "absolute",
-            left: "90%",
-            right: "20.73%",
           }}
           src={upArrow}
           alt=""
         />
       </div>
       <div
-        style={{
-          width: "1650px",
-          height: "293px",
-          background: "#252729",
-          borderRadius: "5px",
-        }}
+        className="dataTableBoxOuter"
       >
         {!data ? (
-          <div
-            style={{
-              width: "1650px",
-              height: "293px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: "20px",
-            }}
-          >
-            <p
-              style={{
-                fontStyle: "normal",
-                fontHeight: "400",
-                fontSize: "18px",
-                lineHeight: "150%",
-                color: "#A9A9A9",
-              }}
-            >
+          <div className="dataTableBox">
+            <p>
               No data to show
             </p>
           </div>
@@ -240,76 +191,26 @@ const EditListItem = () => {
         )}
       </div>
 
-      <div
-        style={{
-          //   position: "absolute",
-          marginTop: "40px",
-          width: "1650px",
-          height: "89px",
-          left: "196px",
-          top: "795px",
-          background: "#090909",
-          borderRadius: "5px 5px 0px 0px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          color: "white",
-          paddingLeft: "40px",
-          paddingRight: "40px",
-        }}
-      >
-        <p
-          style={{
-            fontStyle: "normal",
-            fontHeight: "600",
-            fontSize: "24px",
-            color: "#FFFFFF",
-            position: "absolute",
-            left: "10%",
-            top: "1165px",
-          }}
-        >
+      <div className="tableBox">
+        <p>
           Listings
         </p>
         <img
           style={{
             cursor: "pointer",
-            position: "absolute",
-            left: "90%",
-            right: "20.73%",
           }}
           src={upArrow}
           alt=""
         />
       </div>
       <div
-        style={{
-          width: "1650px",
-          height: "293px",
-          background: "#252729",
-          borderRadius: "5px",
-        }}
+        className="dataTableBoxOuter"
       >
         {!data ? (
           <div
-            style={{
-              width: "1650px",
-              height: "293px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: "20px",
-            }}
+            className="dataTableBox"
           >
-            <p
-              style={{
-                fontStyle: "normal",
-                fontHeight: "400",
-                fontSize: "18px",
-                lineHeight: "150%",
-                color: "#A9A9A9",
-              }}
-            >
+            <p>
               No data to show
             </p>
           </div>
@@ -355,9 +256,7 @@ const EditListItem = () => {
                 <td>24 days</td>
                 <td>You</td>
                 <td
-                  style={{
-                    textAlign: "end",
-                  }}
+                  className="tableRmBtn"
                 >
                   Remove listing
                 </td>
@@ -368,75 +267,27 @@ const EditListItem = () => {
       </div>
 
       <div
-        style={{
-          //   position: "absolute",
-          marginTop: "40px",
-          width: "1650px",
-          height: "89px",
-          left: "196px",
-          top: "795px",
-          background: "#090909",
-          borderRadius: "5px 5px 0px 0px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          color: "white",
-          paddingLeft: "40px",
-          paddingRight: "40px",
-        }}
+        className="tableBox"
       >
-        <p
-          style={{
-            fontStyle: "normal",
-            fontHeight: "600",
-            fontSize: "24px",
-            color: "#FFFFFF",
-            position: "absolute",
-            left: "10%",
-            top: "1590px",
-          }}
-        >
+        <p>
           Offers
         </p>
         <img
           style={{
             cursor: "pointer",
-            position: "absolute",
-            left: "90%",
-            right: "20.73%",
           }}
           src={upArrow}
           alt=""
         />
       </div>
       <div
-        style={{
-          width: "1650px",
-          height: "293px",
-          background: "#252729",
-          borderRadius: "5px",
-        }}
+        className="dataTableBoxOuter"
       >
         {!data ? (
           <div
-            style={{
-              width: "1650px",
-              height: "293px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: "20px",
-            }}
+            className="dataTableBox"
           >
-            <p
-              style={{
-                fontStyle: "normal",
-                fontHeight: "400",
-                fontSize: "18px",
-                lineHeight: "150%",
-                color: "#A9A9A9",
-              }}
-            >
+            <p>
               No data to show
             </p>
           </div>
@@ -505,22 +356,8 @@ const EditListItem = () => {
                       Counter
                     </button>
                     <button
-                      style={{
-                        width: "126px",
-                        height: "50px",
-                        left: "1125px",
-                        top: "543px",
-                        fontSize: "20px",
-                        background:
-                          "linear-gradient(279.52deg, rgba(27, 249, 249, 0.05) -39.47%, rgba(23, 247, 206, 0.840625) -5.82%, rgba(34, 122, 255, 0.958132) 99.45%, rgba(76, 146, 251, 0.5) 136.47%)",
-                        borderRadius: "10px",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        cursor: "pointer",
-                        color: "white",
-                        border: "hidden",
-                      }}
+                      className="gradientBtn"
+
                     >
                       Accept offer
                     </button>
@@ -531,76 +368,29 @@ const EditListItem = () => {
           </div>
         )}
       </div>
+
       <div
-        style={{
-          //   position: "absolute",
-          marginTop: "40px",
-          width: "1650px",
-          height: "89px",
-          left: "196px",
-          top: "795px",
-          background: "#090909",
-          borderRadius: "5px 5px 0px 0px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          color: "white",
-          paddingLeft: "40px",
-          paddingRight: "40px",
-        }}
+        className="tableBox"
       >
-        <p
-          style={{
-            fontStyle: "normal",
-            fontHeight: "600",
-            fontSize: "24px",
-            color: "#FFFFFF",
-            position: "absolute",
-            left: "10%",
-            top: "2010px",
-          }}
-        >
+        <p>
           Item activity
         </p>
         <img
           style={{
             cursor: "pointer",
-            position: "absolute",
-            left: "90%",
-            right: "20.73%",
           }}
           src={upArrow}
           alt=""
         />
       </div>
       <div
-        style={{
-          width: "1650px",
-          height: "293px",
-          background: "#252729",
-          borderRadius: "5px",
-        }}
+        className="dataTableBoxOuter"
       >
         {!data ? (
           <div
-            style={{
-              width: "1650px",
-              height: "293px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: "20px",
-            }}
+            className="dataTableBox"
           >
-            <p
-              style={{
-                fontStyle: "normal",
-                fontHeight: "400",
-                fontSize: "18px",
-                lineHeight: "150%",
-                color: "#A9A9A9",
-              }}
-            >
+            <p>
               No data to show
             </p>
           </div>
