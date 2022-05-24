@@ -9,6 +9,7 @@ const PlaceBidModal = ({
   showDrawer = () => null,
   onClose,
   nftData = {},
+  balanceInEth = 0,
 }) => {
   const [currencyLable, setCurrencyLable] = useState("ETH");
   const error = false;
@@ -184,6 +185,7 @@ const PlaceBidModal = ({
                   }}
                 />
 
+
                 {/* Vertical line */}
                 <div
                   style={{
@@ -246,7 +248,7 @@ const PlaceBidModal = ({
               >
                 {error
                   ? `You dont have enough ETH. Available balance is 1.5 ${currencyLable}`
-                  : `Your available balance is 1.5 ${currencyLable}`}
+                  : `Your available balance is ${balanceInEth} ${currencyLable}`}
               </p>
             </div>
 

@@ -27,8 +27,8 @@ import { Spin, Avatar } from "antd";
 import { fetchOngoingBids } from "../../store/item";
 import { sendTransaction } from "../../components/sendTransaction";
 import Counter from "../../components/Counter";
-import PlaceBidDrawer from "./PlaceBidDrawer";
 import PlaceBidModal from "./PlaceBidModal";
+import useWallet from "../../hooks/wallet/provider";
 
 const Biddingcard = styled.div`
   background: linear-gradient(
@@ -147,9 +147,17 @@ const ItemDescription = () => {
   const { collection, id } = useParams();
   const walletData = useSelector((state) => state.wallet.wallet);
   const history = useHistory();
+  const params = useWallet();
+  const {
+    metaConnect,
+    isActive,
+    account,
+    balanceInEth
+  } = params;
+  console.log(params, 'this params is the wallet data');
   console.log("metaData", metaData);
   const onGoingBid = [0, 1, 2, 3];
-  const isOwnner = false;
+  const isOwnner = account === metaData?.owner_of;
 
   //itemid = itemid.toNumber();
   // var token_address = ethers.BigNumber.from(item1);
@@ -464,7 +472,6 @@ const ItemDescription = () => {
                         onClick={() => {
                           dispatch(createBid());
                           setOpen(true);
-                          // setBidDrawer(true)
                         }}
                       >
                         Place bid
@@ -658,7 +665,7 @@ const ItemDescription = () => {
         nftData={metaData}
       /> */}
 
-      <PlaceBidModal visible={open} onClose={() => setOpen(false)} nftData={metaData} />
+      <PlaceBidModal visible={open} onClose={() => setOpen(false)} nftData={metaData} balanceInEth={balanceInEth}/>
     </>
   );
 };
