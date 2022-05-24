@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Filterline from "../../assets/images/filterbottomline.png";
 import Eth from "../../assets/images/Ethereum (ETH).png";
+import { Modal } from 'antd';
+import './style.css';
 
 const PlaceBidModal = ({
   visible,
   showDrawer = () => null,
   onClose,
   nftData = {},
+  balanceInEth = 0,
 }) => {
   const [currencyLable, setCurrencyLable] = useState("ETH");
   const error = false;
@@ -17,30 +20,26 @@ const PlaceBidModal = ({
   ];
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        display: visible ? "flex" : "none",
-        top: "0px",
-        left: "0px",
-        alignItems: "center",
-        justifyContent: "center",
-        overflow: "hidden",
-        background: "rgba(80, 80, 80, 0.4)",
-        backdropFilter: "blur(5px)",
-        zIndex: 50,
-        height: "100%",
-        width: "100%",
-      }}
+    <Modal
+       centered
+       footer={false}
+       bodyStyle={{
+         padding: 0,
+         borderRadius: '24px',
+         display: 'flex',
+         alignItems: 'center',
+         justifyContent:'center',
+       }}
+       closable={false}
+       maskStyle={{background: 'rgba(80, 80, 80, 0.4)',}}
+       visible={visible}
+       onCancel={onClose}
+       width={'100%'}
     >
       <div
         style={{
-          position: "absolute",
           width: "839px",
           height: "438px",
-          left: "541px",
-          top: "240px",
-
           background: "#131313",
           boxShadow: "0px 4px 12px rgba(68, 68, 68, 0.15)",
           borderRadius: "24px",
@@ -186,6 +185,7 @@ const PlaceBidModal = ({
                   }}
                 />
 
+
                 {/* Vertical line */}
                 <div
                   style={{
@@ -248,7 +248,7 @@ const PlaceBidModal = ({
               >
                 {error
                   ? `You dont have enough ETH. Available balance is 1.5 ${currencyLable}`
-                  : `Your available balance is 1.5 ${currencyLable}`}
+                  : `Your available balance is ${balanceInEth} ${currencyLable}`}
               </p>
             </div>
 
@@ -355,7 +355,7 @@ const PlaceBidModal = ({
           </div>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 };
 

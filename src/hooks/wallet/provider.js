@@ -4,6 +4,7 @@ import {
 } from '@web3-react/core';
 import { injected } from './connector';
 import { useEagerConnect, useInactiveListener } from './hooks';
+import { formatEther } from "@ethersproject/units";
 
 export const WalletContext = React.createContext(null);
 
@@ -131,6 +132,12 @@ export const WalletProvider = ({ children }) => {
     }
   }, [library, account, chainId]);
 
+  const balanceInEth = ethBalance === undefined
+            ? "..."
+            : ethBalance === null
+            ? "Error"
+            : `${parseFloat(formatEther(ethBalance)).toPrecision(4)}`;
+
   const values = useMemo(
     () => ({
       isActive,
@@ -144,6 +151,7 @@ export const WalletProvider = ({ children }) => {
       ethBalance,
       blockNumber,
       error,
+      balanceInEth,
     }),
     [
       isActive,
@@ -157,6 +165,7 @@ export const WalletProvider = ({ children }) => {
       ethBalance,
       blockNumber,
       error,
+      balanceInEth
     ],
   );
 
