@@ -3,6 +3,7 @@ import {
   FETCH_ITEM_METADATA_INITIAL, FETCH_ITEM_METADATA_SUCCESS, FETCH_ITEM_METADATA_FAILURE,
   FETCH_BID_INITIAL, FETCH_BID_SUCCESS, FETCH_BID_FAILURE, PLACE_BID_INITIAL, PLACE_BID_FAILURE, PLACE_BID_SUCCESS,
   FETCH_NFT_PRICE_INITIAL, FETCH_NFT_PRICE_SUCCESS, FETCH_NFT_PRICE_FAILURE,CREATE_BID_INITIAL, CREATE_BID_FAILURE,
+  CREATE_BID_SUCCESS,
 }
   from './constant';
 import { _getBids, _createBid } from '../../api/nft.api.js';
@@ -14,6 +15,7 @@ const MORALIS_API_KEY = 'ElMD1BX3aHki68CAPToKw00tx6W6JdEDru1JAH0NMl2KXGPsEylGW1D
 const CHAIN = 'eth';
 const MARKET_PLACE = 'opensea';
 
+// to get nft details of a particular NFT
 export const fetchItemMetaData = (payload) => {
   return async (dispatch) => {
     try {
@@ -43,6 +45,7 @@ export const fetchItemMetaData = (payload) => {
 }
 
 
+// to get total nfts of a wallet
 export const getNftById = (payload) => {
   return async (dispatch) => {
     const ownerAddr = payload.ownerAddr || null;
@@ -110,9 +113,18 @@ export const createBid = (payload) => {
       dispatch({
         type: CREATE_BID_INITIAL,
       })
+      console.log(payload, 'this is the payload');
+      // const data = await _createBid(payload);
+      // console.log('create bid is successfull with response', data);
+      // dispatch({
+      //   type: CREATE_BID_SUCCESS,
+      //   payload: data,
+      // })
     } catch (e) {
+      console.log('failed to create a bid');
       dispatch({
         type: CREATE_BID_FAILURE,
+        payload: e,
       })
     }
   }

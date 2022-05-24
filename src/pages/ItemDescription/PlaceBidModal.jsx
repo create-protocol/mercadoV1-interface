@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Filterline from "../../assets/images/filterbottomline.png";
 import Eth from "../../assets/images/Ethereum (ETH).png";
-import { Modal } from 'antd';
+import { Modal, Button } from 'antd';
 import './style.css';
 
 const PlaceBidModal = ({
@@ -10,14 +10,38 @@ const PlaceBidModal = ({
   onClose,
   nftData = {},
   balanceInEth = 0,
+  dispatchCreateBid = () => null,
+  modalLoading = false,
+  ownerAddr
 }) => {
+
   const [currencyLable, setCurrencyLable] = useState("ETH");
+
   const error = false;
+
   const CURRENCY = [
     { key: "eth", label: "ETH", fullname: "ethereum", image: Eth },
     { key: "weth", label: "WETH", fullname: "wrappped Ethereum", image: Eth },
     { key: "eth", label: "ETH", fullname: "ethereum", image: Eth },
   ];
+
+  const [bidData, setBidData] = useState({
+    bidPrice: 0,
+    ownerAddr: '',
+    signature: '',
+    nftData: '',
+    tokenId: '',
+  });
+
+  const submitBid = () => {
+    const { token_address, owner_of  } = nftData || {};
+    dispatchCreateBid({
+      ...bidData,
+      tokenId: token_address,
+      ownerOf: owner_of,
+      ownerAddr: ownerAddr,
+    });
+  };
 
   return (
     <Modal
@@ -87,7 +111,6 @@ const PlaceBidModal = ({
           </div>
         </div>
         <img src={Filterline} style={{ width: "80%", height: "4px" }} alt="" />
-
         <div
           style={{
             display: "flex",
@@ -175,13 +198,14 @@ const PlaceBidModal = ({
                     paddingLeft: "20px",
                   }}
                   type="text"
-                  name=""
+                  name="bidPrice"
                   id=""
                   placeholder="0.00"
-                  onKeyPress={(e) => {
+                  onChange={(e) => {
                     if (!/([0-9.])/.test(e.key)) {
                       e.preventDefault();
                     }
+                    setBidData({...bidData, [e.target.name]: e.target.value});
                   }}
                 />
 
@@ -304,43 +328,22 @@ const PlaceBidModal = ({
                   display: "flex",
                 }}
               >
-                <div
-                  style={{
-                    width: "126px",
-                    height: "50px",
-                    left: "1125px",
-                    top: "543px",
-                    fontSize: "20px",
-                    background:
-                      "linear-gradient(279.52deg, rgba(27, 249, 249, 0.05) -39.47%, rgba(23, 247, 206, 0.840625) -5.82%, rgba(34, 122, 255, 0.958132) 99.45%, rgba(76, 146, 251, 0.5) 136.47%)",
-                    borderRadius: "10px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    cursor: "pointer",
-                    color: "white",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontStyle: "normal",
-                      fontWeight: "600",
-                      fontSize: "16px",
-                      lineHeight: "20px",
-
-                      display: "flex",
-                      alignItems: "center",
-
-                      color: "#FFFFFF",
-
-                      flex: "none",
-                      order: "0",
-                      flexGrow: "0",
-                    }}
-                  >
-                    Place bid
-                  </span>
-                </div>
+              <Button
+                type="text"
+                style={{
+                  fontSize: "14px",
+                  fontWeight: "600",
+                  background:
+                    "linear-gradient(279.52deg, rgba(27, 249, 249, 0.05) -39.47%, rgba(23, 247, 206, 0.840625) -5.82%, rgba(34, 122, 255, 0.958132) 99.45%, rgba(76, 146, 251, 0.5) 136.47%)",
+                  cursor: "pointer",
+                  borderRadius: "7px",
+                  // padding: "0.5rem 1rem 1rem 1rem",
+                  color: 'white',
+                }}
+                onClick={submitBid}
+              >
+                Place bid
+              </Button>
 
                 {error && (
                   <button
