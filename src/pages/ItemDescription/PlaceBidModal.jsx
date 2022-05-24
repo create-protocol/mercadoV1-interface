@@ -28,7 +28,6 @@ const PlaceBidModal = ({
          display: 'flex',
          alignItems: 'center',
          justifyContent:'center',
-
        }}
        closable={false}
        maskStyle={{background: 'rgba(80, 80, 80, 0.4)',}}
