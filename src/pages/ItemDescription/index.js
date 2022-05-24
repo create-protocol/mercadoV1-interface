@@ -11,6 +11,7 @@ import {
   fetchItemMetaData,
   getNftById,
   createBid,
+  fetchOngoingBids,
 } from "../../store/item/action";
 import { nftmarketaddress, nftaddress } from "../../config";
 import Market from "../../ethereum/Marketplace.json";
@@ -24,7 +25,6 @@ import "../../../node_modules/video-react/dist/video-react.css"; // import css
 import Landingowner from "../../assets/images/landingowner.png";
 import Eth from "../../assets/images/Ethereum (ETH).png";
 import { Spin, Avatar } from "antd";
-import { fetchOngoingBids } from "../../store/item";
 import { sendTransaction } from "../../components/sendTransaction";
 import Counter from "../../components/Counter";
 import PlaceBidModal from "./PlaceBidModal";
@@ -141,11 +141,12 @@ const ItemDescription = () => {
   const dispatch = useDispatch();
   const metaData = useSelector((state) => state.item.itemData);
   const loadingState = useSelector((state) => state.item.itemDataLoading);
+  const walletData = useSelector((state) => state.wallet.wallet);
+  const modalLoading = useSelector((state) => state.item.placeBidModalLoading);
   const [open, setOpen] = useState(false);
   const [bidDrawer, setBidDrawer] = useState(false);
   const [Properties, setProperties] = useState([]);
   const { collection, id } = useParams();
-  const walletData = useSelector((state) => state.wallet.wallet);
   const history = useHistory();
   const params = useWallet();
   const {
@@ -154,11 +155,14 @@ const ItemDescription = () => {
     account,
     balanceInEth
   } = params;
-  console.log(params, 'this params is the wallet data');
-  console.log("metaData", metaData);
+
   const onGoingBid = [0, 1, 2, 3];
   const isOwnner = account === metaData?.owner_of;
 
+
+  const dispatchCreateBid = (payload) => {
+    dispatch(createBid(payload));
+  }
   //itemid = itemid.toNumber();
   // var token_address = ethers.BigNumber.from(item1);
   // var itemId = ethers.BigNumber.from(item2);
@@ -334,7 +338,7 @@ const ItemDescription = () => {
             </p>
             {metaData && <Mainheading>{metaData.name}</Mainheading>}
             <br />
-            <Desctext>{ metaData?.description || 'No description available'}</Desctext>
+            <Desctext>{ metaData?.description || 'No description available' }</Desctext>
 
             {/*<p
               style={{
@@ -665,7 +669,15 @@ const ItemDescription = () => {
         nftData={metaData}
       /> */}
 
-      <PlaceBidModal visible={open} onClose={() => setOpen(false)} nftData={metaData} balanceInEth={balanceInEth}/>
+      <PlaceBidModal
+        visible={open}
+        onClose={() => setOpen(false)}
+        nftData={metaData}
+        balanceInEth={balanceInEth}
+        dispatchCreateBid={dispatchCreateBid}
+        modalLoading={modalLoading}
+        ownerAddr={account}
+      />
     </>
   );
 };

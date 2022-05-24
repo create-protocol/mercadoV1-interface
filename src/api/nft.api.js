@@ -15,7 +15,7 @@ export const _getBids = async (payload) => {
 
 // to create a bid
 export const _createBid = async (payload) => {
-  const { data, tokenId } = payload;
+  const { tokenId, ...data } = payload;
   const res = await axios({
     method: 'post',
     url: `${BASE_URL}/api/offer/create-bid/${tokenId}`,
