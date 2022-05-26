@@ -37,11 +37,13 @@ import {
           itemDataError: true,
         };
       case CREATE_BID_INITIAL:
+        console.log('create bid initial', action.payload);
         return {
           ...state,
           placeBidModalLoading: true,
         };
       case CREATE_BID_SUCCESS:
+        console.log('create bid success', action.payload);
         return {
           ...state,
           placeBidModalLoading: false,

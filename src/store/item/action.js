@@ -114,8 +114,8 @@ export const createBid = (payload) => {
         type: CREATE_BID_INITIAL,
       })
       console.log(payload, 'this is the payload');
-      // const data = await _createBid(payload);
-      // console.log('create bid is successfull with response', data);
+      const data = await _createBid(payload);
+      console.log('create bid is successfull with response', data);
       // dispatch({
       //   type: CREATE_BID_SUCCESS,
       //   payload: data,

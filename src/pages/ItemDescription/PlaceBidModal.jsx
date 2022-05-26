@@ -12,7 +12,8 @@ const PlaceBidModal = ({
   balanceInEth = 0,
   dispatchCreateBid = () => null,
   modalLoading = false,
-  ownerAddr
+  accountAddr,
+  library,
 }) => {
 
   const [currencyLable, setCurrencyLable] = useState("ETH");
@@ -27,20 +28,33 @@ const PlaceBidModal = ({
 
   const [bidData, setBidData] = useState({
     bidPrice: 0,
-    ownerAddr: '',
+    accountAddr: '',
     signature: '',
     nftData: '',
     tokenId: '',
   });
 
   const submitBid = () => {
-    const { token_address, owner_of  } = nftData || {};
-    dispatchCreateBid({
-      ...bidData,
-      tokenId: token_address,
-      ownerOf: owner_of,
-      ownerAddr: ownerAddr,
-    });
+    const { token_address, owner_of, token_id  } = nftData || {};
+    library
+     .getSigner(accountAddr)
+     .signMessage("👋")
+     .then(signature => {
+       dispatchCreateBid({
+         ...bidData,
+         tokenAddr: token_address,
+         ownerOf: owner_of,
+         accountAddr: accountAddr,
+         signature: signature,
+         tokenId: token_id,
+       });
+     })
+     .catch(error => {
+       window.alert(
+         "Failure!" +
+           (error && error.message ? `\n\n${error.message}` : "")
+       );
+     });
   };
 
   return (
