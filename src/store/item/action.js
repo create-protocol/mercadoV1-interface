@@ -87,12 +87,11 @@ export const getNftById = (payload) => {
 export const fetchOngoingBids = (payload) => {
   return async (dispatch) => {
     try {
-      const { tokenId } = payload || null;
-      console.log(tokenId, 'this is the token id');
+      const { tokenAddr, tokenId } = payload || null;
       dispatch({
         type: FETCH_BID_INITIAL,
       });
-      const data = await _getBids({ tokenId: 'trialToken' });
+      const data = await _getBids({ tokenAddr: 2, tokenId: 1 });
       console.log('on going bids fetched', data);
       dispatch({
         type: FETCH_BID_SUCCESS,
@@ -114,8 +113,8 @@ export const createBid = (payload) => {
         type: CREATE_BID_INITIAL,
       })
       console.log(payload, 'this is the payload');
-      // const data = await _createBid(payload);
-      // console.log('create bid is successfull with response', data);
+      const data = await _createBid(payload);
+      console.log('create bid is successfull with response', data);
       // dispatch({
       //   type: CREATE_BID_SUCCESS,
       //   payload: data,

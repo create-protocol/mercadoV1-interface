@@ -74,7 +74,7 @@ const EditListItem = () => {
           }}
           onClick={() =>
             history.push(
-              `/asset/${metaData.contract["address"]}/${metaData.id["tokenId"]}/listing`
+              `/asset/${metaData?.token_address}/${metaData?.tokenId}/listing`
             )
           }
         >

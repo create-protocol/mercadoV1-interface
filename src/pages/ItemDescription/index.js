@@ -153,12 +153,12 @@ const ItemDescription = () => {
     metaConnect,
     isActive,
     account,
-    balanceInEth
+    balanceInEth,
+    library,
   } = params;
 
   const onGoingBid = [0, 1, 2, 3];
   const isOwnner = account === metaData?.owner_of;
-
 
   const dispatchCreateBid = (payload) => {
     dispatch(createBid(payload));
@@ -174,11 +174,14 @@ const ItemDescription = () => {
     );
   }, [dispatch, collection, id]);
 
-  // useEffect(() => {
-  //   // dispatch(fetchOngoingBids({
-  //   // tokenId: collection
-  //   // }));
-  // }, []);
+  useEffect(() => {
+    if(collection && id) {
+      dispatch(fetchOngoingBids({
+        tokenId: id,
+        tokenAddr: collection,
+      }));
+    }
+  }, [id, collection, dispatch]);
 
   async function buyNft(nft) {
     try {
@@ -193,10 +196,7 @@ const ItemDescription = () => {
         Market.abi,
         signer
       );
-      // console.log(nft);
-      // const price = ethers.utils.parseUnits(nft.price, "ether");
-      // console.log(nftaddress);
-      // console.log(nft.itemId);
+
       await sendTransaction(
         contract,
         "buyNFT",
@@ -339,24 +339,6 @@ const ItemDescription = () => {
             {metaData && <Mainheading>{metaData.name}</Mainheading>}
             <br />
             <Desctext>{ metaData?.description || 'No description available' }</Desctext>
-
-            {/*<p
-              style={{
-                fontStyle: "normal",
-                fontWeight: 400,
-                fontSize: "18px",
-                lineHeight: "150%",
-                textAlign: "start",
-                color: "#A9A9A9",
-              }}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget
-              venenatis metus, bibendum congue magna. Sed urna turpis, pharetra
-              id nunc eget, gravida accumsan sem. Morbi nec rutrum nulla.
-              Pellentesque purus nibh, sodales a magna vitae, cursus suscipit
-              lacus.
-            </p>*/}
-
             {/* block if it is owner's */}
 
             <div
@@ -385,7 +367,7 @@ const ItemDescription = () => {
                   }}
                   onClick={() =>
                     history.push(
-                      `/asset/${metaData.contract["address"]}/${metaData.id["tokenId"]}/editlisting`
+                      `/asset/${metaData?.token_address}/${metaData?.tokenId}/editlisting`
                     )
                   }
                 >
@@ -662,13 +644,6 @@ const ItemDescription = () => {
           </Col>
         </Row>
       )}
-      {/* <PlaceBidDrawer
-        visible={bidDrawer}
-        showDrawer={() => setBidDrawer(true)}
-        onClose={() => setBidDrawer(false)}
-        nftData={metaData}
-      /> */}
-
       <PlaceBidModal
         visible={open}
         onClose={() => setOpen(false)}
@@ -676,7 +651,8 @@ const ItemDescription = () => {
         balanceInEth={balanceInEth}
         dispatchCreateBid={dispatchCreateBid}
         modalLoading={modalLoading}
-        ownerAddr={account}
+        accountAddr={account}
+        library={library}
       />
     </>
   );
