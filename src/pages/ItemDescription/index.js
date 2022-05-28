@@ -160,7 +160,6 @@ const ItemDescription = () => {
   const onGoingBid = [0, 1, 2, 3];
   const isOwnner = account === metaData?.owner_of;
 
-
   const dispatchCreateBid = (payload) => {
     dispatch(createBid(payload));
   }
