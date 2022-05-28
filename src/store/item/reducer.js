@@ -5,6 +5,9 @@ import {
     CREATE_BID_INITIAL,
     CREATE_BID_SUCCESS,
     CREATE_BID_FAILURE,
+    FETCH_BID_INITIAL,
+    FETCH_BID_SUCCESS,
+    FETCH_BID_FAILURE,
   } from './constant';
 
 
@@ -14,6 +17,8 @@ import {
     itemDataError: false,
     placeBidModalLoading: false,
     placeBidError: null,
+    bidData: [],
+    bidLoading: false,
   };
 
   export const itemReducer = (state = initialState, action) => {
@@ -35,6 +40,22 @@ import {
           ...state,
           itemDataLoading: false,
           itemDataError: true,
+        };
+      case FETCH_BID_INITIAL:
+       return {
+         ...state,
+         bidLoading: true,
+       };
+      case FETCH_BID_SUCCESS:
+        return {
+          ...state,
+          bidLoading: false,
+          bidData: action.payload,
+        };
+      case FETCH_BID_FAILURE:
+        return {
+          ...state,
+          bidLoading: false,
         };
       case CREATE_BID_INITIAL:
         console.log('create bid initial', action.payload);

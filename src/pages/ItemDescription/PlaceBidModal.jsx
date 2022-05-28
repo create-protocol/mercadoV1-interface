@@ -16,6 +16,7 @@ const PlaceBidModal = ({
   library,
 }) => {
 
+  const { token_address, owner_of, token_id  } = nftData || {};
   const [currencyLable, setCurrencyLable] = useState("ETH");
 
   const error = false;
@@ -27,15 +28,10 @@ const PlaceBidModal = ({
   ];
 
   const [bidData, setBidData] = useState({
-    bidPrice: 0,
-    accountAddr: '',
-    signature: '',
-    nftData: '',
-    tokenId: '',
+    amount: 0,
   });
 
   const submitBid = () => {
-    const { token_address, owner_of, token_id  } = nftData || {};
     library
      .getSigner(accountAddr)
      .signMessage("👋")
@@ -44,9 +40,12 @@ const PlaceBidModal = ({
          ...bidData,
          tokenAddr: token_address,
          ownerOf: owner_of,
-         accountAddr: accountAddr,
+         signer: accountAddr,
          signature: signature,
          tokenId: token_id,
+         v: '1',
+         r: '2',
+         s: '3'
        });
      })
      .catch(error => {

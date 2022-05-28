@@ -174,11 +174,14 @@ const ItemDescription = () => {
     );
   }, [dispatch, collection, id]);
 
-  // useEffect(() => {
-  //   // dispatch(fetchOngoingBids({
-  //   // tokenId: collection
-  //   // }));
-  // }, []);
+  useEffect(() => {
+    if(collection && id) {
+      dispatch(fetchOngoingBids({
+        tokenId: id,
+        tokenAddr: collection,
+      }));
+    }
+  }, [id, collection, dispatch]);
 
   async function buyNft(nft) {
     try {
