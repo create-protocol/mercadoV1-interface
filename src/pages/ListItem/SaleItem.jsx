@@ -1,208 +1,183 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
 import timeOutlined from "../../assets/images/timeOutlined.svg";
 import dollerIcon from "../../assets/images/dollerIcon.svg";
 import downArr from "../../assets/images/downArr.svg";
 import ConfirmationModal from "./ConfirmationModal";
+import { createListing } from '../../store/item';
+import { Form, Col, Row, Input, Select, DatePicker, Space, InputNumber, Tabs, Typography } from 'antd';
+import { DollarCircleFilled, ClockCircleOutlined } from '@ant-design/icons';
+import Eth from "../../assets/images/Ethereum (ETH).png";
+import './index.css';
+
+const { TabPane } = Tabs;
+const { Title } = Typography;
+
+const { RangePicker } = DatePicker;
+
+const FixedPriceTabTitle = () => <div style={{
+  height: "132px",
+  borderRadius: "5px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: 'center'
+}}>
+  <div>
+
+    <img src={dollerIcon} alt="" />
+    <p style={{
+      fontStyle: "normal",
+      fontWeight: 500,
+      fontSize: "1rem",
+      color: "#FFFFFF",
+    }}>Fixed price</p>
+  </div>
+</div>
+
+const TimedAuctionTabTitle = () =>   <div style={{
+    borderRadius: "5px",
+    display: "flex",
+    alignItems: "center",
+    height: "132px",
+  }}>
+    <div>
+      <img src={timeOutlined} alt="" />
+      <p style={{
+        fontStyle: "normal",
+        fontWeight: 500,
+        fontSize: "1rem",
+        color: "#FFFFFF",
+      }}>Timed auction</p>
+    </div>
+  </div>
+
+const CURRENCY = [
+  {key: 'eth', label: 'ETH', fullname: 'ethereum', image: Eth},
+  {key: 'weth', label: 'WETH', fullname:'wrapether', image: Eth},
+];
+
+const STRATEGY = [
+  {key: 1, label: 'Sell to highest bidder', image: Eth},
+  {key: 2, label: 'Sell with declining price', image: Eth},
+];
 
 const SaleItem = () => {
   const [isActive, setIsActive] = useState(1);
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const toggalTab = (index) => {
-    setIsActive(index)
+    setIsActive(index);
   }
+
+  function disabledDate(current) {
+  // Can not select days before today and today
+    return current && current < new Date();
+  }
+
+
+  const handleSubmit = () => {
+    setOpen(true);
+    dispatch(createListing());
+  };
+
   return (
-    <>
-      <div
-        style={{
-          paddingTop: "15rem",
-          marginBottom: "150px",
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <div className="outerBox" style={{
-          width: "90%",
-          height: "950px",
-          backgroundColor: "#252729",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}>
+    <div style={{padding: "12rem 8rem",}}>
+    <Row style={{
+        display:'flex',
+        justifyContent: 'center',
+        alignItems: 'start',
+        boxShadow: '0px -10px 25px rgba(0, 0, 0, 0.32)',
+        padding: '2rem',
+        backgroundColor: '#252729',
+      }} gutter={16}>
+      <Col span={10} >
+        <Title style={{color: 'white', textAlign: 'left'}} level={4}>Choose your type</Title>
+        <Form layout="vertical" hideRequiredMark  className="card-container">
+          <Tabs
+            defaultActiveKey="1"
+            onChange={() => console.log('tab change')}
+            tabBarGutter={10}
+            hideAdd
+            tabBarExtraContent={<></>}
+            type='card'
+          >
+            <TabPane tab={<FixedPriceTabTitle />} key="1">
 
-
-          <div style={{
-            width: "40%",
-            height: "100%",
-            padding: "60px"
-          }}>
-            <p style={{
-              fontStyle: "normal",
-              fontWeight: 500,
-              fontSize: "22px",
-              color: "#FFFFFF",
-              textAlign: "start"
-            }}>Choose your type</p>
-            <div style={{
-              display: "flex",
-              justifyContent: 'center',
-              alignItems: "center",
-              gap: "40px"
-            }}>
-              <div onClick={() => toggalTab(1)} style={{
-                height: "132px",
-                width: "242px",
-                borderRadius: "5px",
-                backgroundColor: isActive === 1 ? "#080808" : "#333840",
-                cursor: "pointer",
-                display: "grid",
-                alignItems: "center"
-              }}>
-                <div>
-
-                  <img src={dollerIcon} alt="" />
-                  <p style={{
-                    fontStyle: "normal",
-                    fontWeight: 500,
-                    fontSize5px: "20px",
-                    color: "#FFFFFF",
-                  }}>Fixed price</p>
-                </div>
-              </div>
-              <div onClick={() => toggalTab(2)} style={{
-                height: "132px",
-                width: "242px",
-                borderRadius: "5px",
-                backgroundColor: isActive === 2 ? "#080808" : "#333840",
-                cursor: "pointer",
-                display: "grid",
-                alignItems: "center"
-              }}>
-                <div>
-
-                  <img src={timeOutlined} alt="" />
-                  <p style={{
-                    fontStyle: "normal",
-                    fontWeight: 500,
-                    fontSize5px: "20px",
-                    color: "#FFFFFF",
-                  }}>Timed auction</p>
-                </div>
-              </div>
-            </div>
-
-            <p style={{
-              fontStyle: "normal",
-              fontWeight: 500,
-              fontSize: "22px",
-              color: "#FFFFFF",
-              textAlign: "start",
-              marginTop: "42px"
-            }}>Choose your type</p>
-
-
-            <div style={{
-              marginTop: "10px",
-              height: "49px",
-              width: "530px",
-              display: 'flex',
-              justifyContent: "space-between",
-              alignItems: "center",
-              backgroundColor: "#333840",
-              cursor: "pointer",
-              paddingLeft: "10px",
-              paddingRight: "10px",
-              borderRadius: "10px"
-            }}>
-              <p style={{
-                fontWeight: 400,
-                fontSize: "16px",
-                color: "#F0F0F0"
-              }}>Sell to highest bidder</p>
-              <img src={downArr} alt="" />
-            </div>
-
-            <p style={{
-              fontStyle: "normal",
-              fontWeight: 500,
-              fontSize: "22px",
-              color: "#FFFFFF",
-              textAlign: "start",
-              marginTop: "20px"
-            }}>Starting price</p>
-            <div style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: "20px"
-            }}>
-              <div style={{
-                width: "142px",
-                height: "49px",
-                backgroundColor: "#333840",
-                borderRadius: "10px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "5px"
-              }}>
-                <img src="" alt="" />
-                <p style={{
-                  fontStyle: "normal",
-                  fontWeight: 400,
-                  fontSize: "16px",
-                  color: "#FFFFFF",
-                }}>WETH</p>
-                <img src={downArr} alt="" style={{
-                  width: "20px"
-                }} />
-              </div>
-              <input type="text" placeholder="Amount" style={{
-                width: "355px",
-                height: "49px",
-                backgroundColor: "#333840",
-                borderRadius: "10px",
-                display: "flex",
-                justifyContent: "start",
-                alignItems: "center",
-                padding: "20px",
-                outline: "none",
-                border: "hidden",
-                color: "white"
-              }} />
-            </div>
-
-            <p style={{
-              fontStyle: "normal",
-              fontWeight: 500,
-              fontSize: "22px",
-              color: "#FFFFFF",
-              textAlign: "start",
-              marginTop: "20px"
-            }}>Choose your duration</p>
-            <div style={{
-              marginTop: "10px",
-              height: "49px",
-              width: "100%",
-              display: 'flex',
-              justifyContent: "space-between",
-              alignItems: "center",
-              backgroundColor: "#333840",
-              cursor: "pointer",
-              paddingLeft: "10px",
-              paddingRight: "10px",
-              borderRadius: "10px"
-            }}>
-              <p style={{
-                fontWeight: 400,
-                fontSize: "16px",
-                color: "#F0F0F0"
-              }}>7 Days</p>
-              <img src={downArr} alt="" />
-            </div>
-
+            </TabPane>
+            <TabPane tab={<TimedAuctionTabTitle />} key="2">
+            <Title style={{color: 'white', textAlign: 'left'}} level={4}>Auction Strategy</Title>
+            <Row gutter={16}>
+              <Col span={24}>
+                <Form.Item
+                  name="strategy"
+                  rules={[{ required: true, message: 'Please select an strategy' }]}
+                >
+                  <Select placeholder="Currency" defaultValue={'eth'}>
+                    {
+                      STRATEGY.map(item => (
+                        <option key={item.key} value={item.key} label={item.label}>
+                          <Space>
+                            <img src={item.image} />
+                            <span>{item.label}</span>
+                          </Space>
+                        </option>
+                      ))
+                    }
+                  </Select>
+                </Form.Item>
+              </Col>
+            </Row>
+            <Title style={{color: 'white', textAlign: 'left'}} level={4}>Starting Price</Title>
+            <Row gutter={16}>
+              <Col span={4}>
+                <Form.Item
+                  name="Currency"
+                  rules={[{ required: true, message: 'Please select an currency' }]}
+                >
+                  <Select placeholder="Currency" defaultValue={'eth'}>
+                    {
+                      CURRENCY.map(item => (
+                        <option key={item.key} value={item.key} label={item.label}>
+                          <Space>
+                            <img src={item.image} />
+                            <span>{item.label}</span>
+                          </Space>
+                        </option>
+                      ))
+                    }
+                  </Select>
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item
+                  name="price"
+                  rules={[{ required: true, message: 'Price is required' }]}
+                >
+                  <InputNumber
+                    style={{width: '200px'}}
+                    min="0"
+                    onChange={(e) => console.log(e)}
+                    stringMode
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+            <Title style={{color: 'white', textAlign: 'left'}} level={4}>Choose your duration</Title>
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item
+                  name="duration"
+                  rules={[{ required: true, message: 'Please choose the dateTime' }]}
+                >
+                  <Space direction="vertical" size={12}>
+                    <RangePicker
+                      disabledDate={disabledDate}
+                    />
+                  </Space>
+                </Form.Item>
+              </Col>
+            </Row>
             <div style={{
               marginTop: "40px",
               height: "150px",
@@ -262,82 +237,65 @@ const SaleItem = () => {
               style={{
                 marginTop: "25px"
               }}
-              onClick={() => setOpen(true)}
+              onClick={handleSubmit}
 
             >
               List for sale
             </div>
-          </div>
-
-
+            </TabPane>
+          </Tabs>
+        </Form>
+      </Col>
+      <Col span={12} offset={2}>
+        <div style={{
+          borderLeft: '1px solid white',
+          paddingLeft: '3rem',
+        }}>
+          <Title style={{color: 'white', textAlign: 'left'}} level={4}>Preview</Title>
           <div style={{
-            width: "805px",
-            height: "0px",
-            border: "1px solid #FFFFFF",
-            transform: "rotate(90deg)"
+            padding: "21px",
+            height: '20rem',
+            width: '20rem',
+            background: "linear-gradient(180deg, rgba(0, 0, 0, 0.11) 0%, rgba(0, 0, 0, 0.53125) 48.96%, rgba(55, 55, 55, 0.8) 100%)",
+            borderRadius: "24px",
+            opacity: 0.75,
+            boxShadow: "0px -10px 25px rgba(0, 0, 0, 0.32)",
           }}>
+            <img src="https://master.d5doaty1zxnym.amplifyapp.com/static/media/Group%201491.8420d890.png" alt="" style={{
+              width: "100%"
+            }} />
 
-          </div>
-
-          <div style={{
-            width: "40%",
-            height: "100%",
-            padding: "60px",
-          }}>
-            <p style={{
-              fontStyle: "normal",
-              fontWeight: 500,
-              fontSize: "22px",
-              color: "#FFFFFF",
-              textAlign: "start"
-            }}>Preview</p>
 
             <div style={{
-              padding: "21px",
               width: "100%",
-              height: "60%",
-              background: "linear-gradient(180deg, rgba(0, 0, 0, 0.11) 0%, rgba(0, 0, 0, 0.53125) 48.96%, rgba(55, 55, 55, 0.8) 100%)",
-              borderRadius: "24px",
-              opacity: 0.75,
-              boxShadow: "0px -10px 25px rgba(0, 0, 0, 0.32)",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center"
             }}>
-              <img src="https://master.d5doaty1zxnym.amplifyapp.com/static/media/Group%201491.8420d890.png" alt="" style={{
-                width: "100%"
-              }} />
-
 
               <div style={{
-                width: "100%",
-                height: "100%",
+                width: "332px",
+                height: "43px",
+                background: "#090909",
+                borderRadius: "16px",
+                color: "white",
                 display: "flex",
-                justifyContent: "center"
+                justifyContent: "center",
+                alignItems: 'center',
+                marginTop: "40px",
+                cursor: "pointer"
               }}>
-
-                <div style={{
-                  width: "332px",
-                  height: "43px",
-                  background: "#090909",
-                  borderRadius: "16px",
-                  color: "white",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: 'center',
-                  marginTop: "40px",
-                  cursor: "pointer"
-                }}>
-                  <img src="" alt="" />
-                  1.25 ETH
-                </div>
+                <img src="" alt="" />
+                1.25 ETH
               </div>
-
             </div>
+
           </div>
-
         </div>
-      </div >
-
-      <ConfirmationModal visible={open} onClose={setOpen} />
-    </>
+      </Col>
+    </Row>
+    <ConfirmationModal visible={open} onClose={setOpen} />
+    </div>
   );
 };
 

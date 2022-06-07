@@ -8,6 +8,9 @@ import {
     FETCH_BID_INITIAL,
     FETCH_BID_SUCCESS,
     FETCH_BID_FAILURE,
+    CREATE_LISTING_INITIAL,
+    CREATE_LISTING_SUCCESS,
+    CREATE_LISTING_FAILURE,
   } from './constant';
 
 
@@ -19,6 +22,8 @@ import {
     placeBidError: null,
     bidData: [],
     bidLoading: false,
+    listingLoading: true,
+    listingError: null,
   };
 
   export const itemReducer = (state = initialState, action) => {
@@ -58,13 +63,11 @@ import {
           bidLoading: false,
         };
       case CREATE_BID_INITIAL:
-        console.log('create bid initial', action.payload);
         return {
           ...state,
           placeBidModalLoading: true,
         };
       case CREATE_BID_SUCCESS:
-        console.log('create bid success', action.payload);
         return {
           ...state,
           placeBidModalLoading: false,
@@ -74,6 +77,22 @@ import {
           ...state,
           placeBidModalLoading: false,
           placeBidError: action.payload,
+        }
+      case CREATE_LISTING_INITIAL:
+        return {
+          ...state,
+          listingLoading: true,
+        }
+      case CREATE_LISTING_SUCCESS:
+        console.log(action.payload);
+        return {
+          ...state,
+          listingLoading: false,
+        }
+      case CREATE_LISTING_FAILURE:
+        return {
+          ...state,
+          listingLoading: false,
         }
     }
     return state;

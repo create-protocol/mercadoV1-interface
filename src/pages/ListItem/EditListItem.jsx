@@ -5,12 +5,14 @@ import { useHistory } from "react-router-dom";
 import setting from "../../assets/images/setting.svg";
 import share from "../../assets/images/share.svg";
 import upArrow from "../../assets/images/upArrow.svg";
+import { createURI } from "../../utils/formatters";
 
-const EditListItem = () => {
+const EditListItem = ({props}) => {
   const [isLoading, setIsLoading] = useState(false);
-  const metaData = useSelector((state) => state.item.itemData);
   const data = true;
   const history = useHistory();
+  const metaData = history.location.state;
+  console.log(metaData, 'edit listing page');
   if (isLoading) {
     return (
       <div
@@ -74,7 +76,7 @@ const EditListItem = () => {
           }}
           onClick={() =>
             history.push(
-              `/asset/${metaData?.token_address}/${metaData?.tokenId}/listing`
+              `/asset/${metaData?.token_address}/${metaData?.token_id}/listing`
             )
           }
         >
@@ -94,7 +96,7 @@ const EditListItem = () => {
             left: "160px",
             top: "250px",
           }}
-          src="https://master.d5doaty1zxnym.amplifyapp.com/static/media/Group%201491.8420d890.png"
+          src={createURI(metaData?.image)}
           alt=""
         />
       </div>
@@ -131,7 +133,7 @@ const EditListItem = () => {
           color: "#A9A9A9",
         }}
       >
-        Lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing e...
+        {metaData.name}
       </p>
       <p
         style={{
@@ -159,7 +161,7 @@ const EditListItem = () => {
           color: "#A9A9A9",
         }}
       >
-        Lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing e...{" "}
+        { metaData?.description || 'No description available' }
       </p>
 
       {/* table boxes start */}
