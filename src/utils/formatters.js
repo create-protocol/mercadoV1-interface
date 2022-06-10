@@ -4,3 +4,9 @@ export const getEllipsisTxt = (str, n = 6) => {
     }
     return "";
   };
+
+
+  export const createURI = (uri) =>
+    uri.slice(0, 7) === "ipfs://"
+      ? "https://ipfs.infura.io/ipfs/" + uri.slice(7)
+      : uri;

@@ -26,7 +26,7 @@ export const _createBid = async (payload) => {
 }
 
 // to list NFT for a sale
-export const _listForSell = async (payload) => {
+export const _listForSale = async (payload) => {
   const {  ...data } = payload;
   const res = await axios({
     method: 'post',

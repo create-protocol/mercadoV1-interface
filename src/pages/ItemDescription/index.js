@@ -29,6 +29,7 @@ import { sendTransaction } from "../../components/sendTransaction";
 import Counter from "../../components/Counter";
 import PlaceBidModal from "./PlaceBidModal";
 import useWallet from "../../hooks/wallet/provider";
+import { createURI } from "../../utils/formatters";
 
 const Biddingcard = styled.div`
   background: linear-gradient(
@@ -132,10 +133,7 @@ const Lefttext = styled.div`
   line-height: 1;
 `;
 
-const createURI = (uri) =>
-  uri.slice(0, 7) === "ipfs://"
-    ? "https://ipfs.infura.io/ipfs/" + uri.slice(7)
-    : uri;
+
 
 const ItemDescription = () => {
   const dispatch = useDispatch();
@@ -158,7 +156,8 @@ const ItemDescription = () => {
   } = params;
 
   const onGoingBid = [0, 1, 2, 3];
-  const isOwnner = account === metaData?.owner_of;
+  // const isOwnner = account === metaData?.owner_of;
+  const isOwnner = true;
 
   const dispatchCreateBid = (payload) => {
     dispatch(createBid(payload));
@@ -367,7 +366,10 @@ const ItemDescription = () => {
                   }}
                   onClick={() =>
                     history.push(
-                      `/asset/${metaData?.token_address}/${metaData?.tokenId}/editlisting`
+                      `/asset/${metaData?.token_address}/${metaData?.token_id}/editlisting`,
+                      {
+                        ...metaData,
+                      }
                     )
                   }
                 >

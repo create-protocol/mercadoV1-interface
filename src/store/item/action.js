@@ -3,10 +3,10 @@ import {
   FETCH_ITEM_METADATA_INITIAL, FETCH_ITEM_METADATA_SUCCESS, FETCH_ITEM_METADATA_FAILURE,
   FETCH_BID_INITIAL, FETCH_BID_SUCCESS, FETCH_BID_FAILURE, PLACE_BID_INITIAL, PLACE_BID_FAILURE, PLACE_BID_SUCCESS,
   FETCH_NFT_PRICE_INITIAL, FETCH_NFT_PRICE_SUCCESS, FETCH_NFT_PRICE_FAILURE,CREATE_BID_INITIAL, CREATE_BID_FAILURE,
-  CREATE_BID_SUCCESS,
+  CREATE_BID_SUCCESS, CREATE_LISTING_INITIAL, CREATE_LISTING_SUCCESS, CREATE_LISTING_FAILURE,
 }
   from './constant';
-import { _getBids, _createBid } from '../../api/nft.api.js';
+import { _getBids, _createBid, _listForSale } from '../../api/nft.api.js';
 
 
 
@@ -115,14 +115,37 @@ export const createBid = (payload) => {
       console.log(payload, 'this is the payload');
       const data = await _createBid(payload);
       console.log('create bid is successfull with response', data);
-      // dispatch({
-      //   type: CREATE_BID_SUCCESS,
-      //   payload: data,
-      // })
+      dispatch({
+        type: CREATE_BID_SUCCESS,
+        payload: data,
+      });
     } catch (e) {
       console.log('failed to create a bid');
       dispatch({
         type: CREATE_BID_FAILURE,
+        payload: e,
+      })
+    }
+  }
+}
+
+export const createListing = (payload) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: CREATE_LISTING_INITIAL,
+      })
+      console.log(payload, 'this is the payload');
+      const data = await _listForSale(payload);
+      console.log('create bid is successfull with response', data);
+      dispatch({
+        type: CREATE_LISTING_SUCCESS,
+        payload: data,
+      });
+    } catch (e) {
+      console.log('failed to create a bid');
+      dispatch({
+        type: CREATE_LISTING_FAILURE,
         payload: e,
       })
     }
